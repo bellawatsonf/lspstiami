@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import jsHttpCookie from "cookie";
+// import jsHttpCookie from "cookie";
 import { NextRequest } from "next/server";
 
 const inter = Inter({ subsets: ["latin"] });
