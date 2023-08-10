@@ -14,7 +14,7 @@ import {
   useCustom,
 } from "@table-library/react-table-library/table";
 
-import Dashboard from "../component/dashboardContainer";
+// import Dashboard from "../../component/dashboardContainer";
 import { Button } from "@mui/material";
 import styleSkema from "./skema.module.css";
 const key = "Composed Table";
