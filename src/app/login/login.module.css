@@ -1,0 +1,45 @@
+.container {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgb(218, 251, 253);
+  /* padding-top: 40px; */
+  padding-bottom: 30px;
+}
+
+.boxLogin {
+  top: 20%;
+  position: relative;
+  width: 40%;
+  background: white;
+  /* height: 100%; */
+  margin: auto;
+  display: block;
+  padding-bottom: 90px;
+}
+
+.logo {
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 150px;
+  margin: auto;
+  display: block;
+}
+
+.contentLogin {
+  /* background: grey; */
+  width: 60%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  margin: auto;
+  display: block;
+}
+
+.boxRole {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/*  */

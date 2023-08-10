@@ -1,0 +1,359 @@
+.box-banner {
+  height: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  /* padding-top: 50px; */
+  padding-bottom: 50px;
+}
+
+.desc-banner {
+  position: relative;
+  /* top: 30%; */
+}
+
+.banner-img {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+.inform-section {
+  width: 100%;
+  background: rgb(192, 237, 241);
+  min-height: 400px;
+  height: 100%;
+  padding: 30px 30px;
+}
+
+.informsection-img {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+.desc-informsection {
+  position: relative;
+  top: 8%;
+}
+
+.benefit-box {
+  width: 100%;
+  background-color: rgb(4, 9, 36);
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.benefit-card {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  /* border: 4px solid rgb(45, 195, 208); */
+  border: 4px solid #336666;
+  border-radius: 16px;
+  height: 100%;
+  padding: 50px 34px;
+  /* margin-top: 30px; */
+}
+
+.benefit-img {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.benefit-img img {
+  width: 150px;
+}
+.insight-box {
+  background-color: rgb(254, 195, 17);
+  height: 100%;
+  min-height: 600px;
+  padding-bottom: 100px;
+}
+
+.imginsight {
+  width: 70%;
+  /* display: block;
+  margin: auto; */
+  z-index: 1;
+  position: absolute;
+}
+
+.box-infoinsight {
+  z-index: 999;
+  position: relative;
+  margin-top: 50px;
+}
+.desc-insight {
+  font-size: 17px;
+  color: #040924;
+  font-weight: 400;
+  margin-top: 50px;
+}
+
+.best-product {
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  padding-bottom: 140px;
+}
+
+.img-bestproduct {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+.info-bestproduct {
+  display: flex;
+  /* display: inline-block; */
+  vertical-align: middle;
+  color: #44474c;
+}
+.imgproduct {
+  width: 45px;
+}
+
+.forDesktop {
+  display: block;
+}
+
+.forMobile {
+  display: none;
+}
+
+.boxInfografis {
+  background: rgb(192, 237, 241);
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  height: 160px;
+}
+@media (max-width: 768px) {
+  .desc-insight {
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .box-infoinsight {
+    z-index: none;
+    position: static;
+    margin-top: 50px;
+  }
+  .imginsight {
+    display: none;
+    position: static;
+
+    z-index: none;
+  }
+  .box-banner {
+    height: 100%;
+    padding-bottom: 50px;
+  }
+
+  .desc-banner {
+    position: relative;
+    top: 1%;
+  }
+
+  .banner-img {
+    display: block;
+    margin: auto;
+
+    /* margin-right: 100px; */
+    width: 100%;
+    /* background: red; */
+  }
+
+  .gambarbanner {
+    width: 100%;
+    display: block;
+    margin: auto;
+    /* justify-content: center; */
+  }
+
+  .desc-banner button {
+    width: 100%;
+  }
+
+  .inform-section {
+    width: 100%;
+    background: rgb(192, 237, 241);
+    min-height: 400px;
+    height: 100%;
+    padding: 0;
+  }
+
+  .informsection-img {
+    display: block;
+    margin: auto;
+    /* margin-right: 0px; */
+    width: 90%;
+  }
+  .gambarinformsection {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  .desc-informsection {
+    position: relative;
+    top: 1%;
+    padding-bottom: 50px;
+  }
+  .benefit-box {
+    width: 100%;
+    background-color: rgb(4, 9, 36);
+    /* height: 100px; */
+    padding: 35px;
+  }
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
+  }
+
+  .img-bestproduct {
+    padding-bottom: 30px;
+  }
+
+  .boxInfografis {
+    background: rgb(192, 237, 241);
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .boxInfografis {
+    background: rgb(192, 237, 241);
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  .desc-insight {
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .box-banner {
+    height: 100%;
+    padding-bottom: 50px;
+  }
+
+  .desc-banner {
+    position: relative;
+    top: 1%;
+  }
+  .banner-img {
+    display: flex;
+    justify-content: center;
+    margin-right: 100px;
+  }
+
+  .informsection-img {
+    display: flex;
+    justify-content: center;
+    margin-right: 0px;
+  }
+  .desc-informsection {
+    position: relative;
+    top: 1%;
+    padding-bottom: 50px;
+  }
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1199px) {
+  .boxInfografis {
+    background: rgb(192, 237, 241);
+    width: 60%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    height: 180px;
+    margin-bottom: 20px;
+  }
+  .gambarbanner {
+    width: 100%;
+    display: block;
+    margin: auto;
+    /* justify-content: center; */
+  }
+
+  .banner-img {
+    width: 100%;
+  }
+
+  .inform-section {
+    width: 100%;
+    background: rgb(192, 237, 241);
+    min-height: 400px;
+    height: 100%;
+    padding: 0;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .informsection-img {
+    display: block;
+    margin: auto;
+    /* margin-right: 0px; */
+    width: 100%;
+  }
+  .gambarinformsection {
+    width: 60%;
+    display: block;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1450px) {
+  .boxInfografis {
+    background: rgb(192, 237, 241);
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    height: 160px;
+    margin-bottom: 0px;
+  }
+  .banner-img {
+    margin-right: 0px;
+  }
+  .gambarbanner {
+    width: 95%;
+    display: block;
+    margin: auto;
+    /* justify-content: center; */
+  }
+
+  .inform-section {
+    width: 100%;
+    background: rgb(192, 237, 241);
+    min-height: 400px;
+    height: 100%;
+    padding: 0;
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+  .informsection-img {
+    display: block;
+    margin: auto;
+    margin-right: 0px;
+    /* width: 100%; */
+  }
+}
