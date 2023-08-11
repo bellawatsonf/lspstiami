@@ -3,7 +3,7 @@
   width: 100%;
   height: 100vh;
   background: rgb(218, 251, 253);
-  /* padding-top: 40px; */
+  /* padding-top: 30px; */
   padding-bottom: 30px;
 }
 
@@ -16,6 +16,7 @@
   margin: auto;
   display: block;
   padding-bottom: 90px;
+  padding-top: 30px;
 }
 
 .logo {
@@ -42,4 +43,17 @@
   margin-top: 10px;
 }
 
-/*  */
+@media (max-width: 768px) {
+  .boxLogin {
+    width: 90%;
+    padding-bottom: 50px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .boxLogin {
+    width: 70%;
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+}
