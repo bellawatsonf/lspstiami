@@ -17,6 +17,12 @@
   margin-right: 100px;
 }
 
+.gambarinformsection {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
 .inform-section {
   width: 100%;
   background: rgb(192, 237, 241);
@@ -230,6 +236,11 @@
 }
 
 @media (min-width: 769px) and (max-width: 960px) {
+  .gambarinformsection {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
   .boxInfografis {
     background: rgb(192, 237, 241);
     width: 60%;
@@ -279,6 +290,11 @@
 }
 
 @media (min-width: 961px) and (max-width: 1199px) {
+  .gambarinformsection {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
   .boxInfografis {
     background: rgb(192, 237, 241);
     width: 60%;
@@ -322,6 +338,11 @@
 }
 
 @media (min-width: 1200px) and (max-width: 1450px) {
+  .gambarinformsection {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
   .boxInfografis {
     background: rgb(192, 237, 241);
     width: 90%;

@@ -81,7 +81,7 @@ export default function Home() {
               <div className={styles["informsection-img"]}>
                 <img
                   className={`${styles.gambarinformsection}`}
-                  src="https://www.crayon.co/hs-fs/hubfs/PMA%20Pulse%202023_HomepageImage.png?width=542&height=450&name=PMA%20Pulse%202023_HomepageImage.png"
+                  src="/aset4.png"
                 />
               </div>
             </div>
@@ -101,6 +101,7 @@ export default function Home() {
                     fontSize: "22px",
                     paddingTop: "15px",
                     paddingBottom: "50px",
+                    textAlign: "justify",
                   }}
                 >
                   Sertifikasi profesi memiliki banyak manfaat penting bagi
