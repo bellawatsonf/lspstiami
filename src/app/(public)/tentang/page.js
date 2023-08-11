@@ -74,7 +74,7 @@ export default function AboutUs() {
           </Typography>
           <div className="row">
             <div className="col-lg-12">
-              <img src="/tentang.jpeg" />
+              <img className={`${styles.imgtentang}`} src="/tentang.jpeg" />
             </div>
             <div className="col-lg-12">
               <Typography

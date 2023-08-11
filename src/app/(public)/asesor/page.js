@@ -18,6 +18,7 @@ import { fetchAsesorServices } from "@/app/services/asesor";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { makeStyles } from "@material-ui/core/styles";
 // import dataAsesor from "./data.js";
+import dataAsesor from "./data";
 
 const key = "Sort";
 const useStyles = makeStyles({
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 
 export default function AsesorTable() {
   const classes = useStyles();
+  console.log(dataAsesor, "dtasesor");
   // let dataAsesor = [
   //   {
   //     name: "Euis Komalawati",
@@ -172,7 +174,7 @@ export default function AsesorTable() {
     },
     {
       label: "Bidang Skema",
-      renderCell: (item) => item.Skema.nama_skema,
+      renderCell: (item) => item.nama_skema,
       sort: { sortKey: "bidang_skema" },
     },
   ];
@@ -252,7 +254,8 @@ export default function AsesorTable() {
             </Typography>
             <CompactTable
               columns={COLUMNS}
-              data={{ nodes: data?.dataAsesor }}
+              // data={{ nodes: data?.dataAsesor }}
+              data={{ nodes: dataAsesor }}
               // sort={sort}
               // pagination={pagination}
               theme={theme}
@@ -264,13 +267,13 @@ export default function AsesorTable() {
                 marginTop: "35px",
               }}
             >
-              <Pagination
+              {/* <Pagination
                 count={data.totalPage}
                 page={stateField.page}
                 // color="primary"
                 onChange={handleChange}
                 className={classes.paginationStyle}
-              />
+              /> */}
             </div>
           </div>
         </>

@@ -12,6 +12,7 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSkema } from "@/app/services/skema";
 import axios from "axios";
+import dataSkema from "./data";
 
 export default function SertifikasiPage() {
   let dispatch = useDispatch();
@@ -89,6 +90,7 @@ export default function SertifikasiPage() {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+  console.log(dataSkema, "dtskema");
   return (
     <>
       <div className={`${stylesTentang.bannertentang}`}>
@@ -157,7 +159,7 @@ export default function SertifikasiPage() {
             {" "}
             Daftar Skema Sertifikasi
           </Typography>
-          {skema.map((el) => (
+          {dataSkema.map((el) => (
             <Accordion
               expanded={expanded === `panel${el.id}`}
               onChange={handleChange(`panel${el.id}`)}
