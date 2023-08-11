@@ -35,7 +35,7 @@ let dataSkema = [
   {
     id: 3,
     no_skema: "dddsds22",
-    nama_skema: "PKKNI Level V Pada Kompetensi Keahlian Kewirausahaan Industri",
+    nama_skema: "KKNI Level V Bidang Kewirausahaan Industri",
     createdAt: new Date(),
     updatedAt: new Date(),
     unitkompetensi: [],
