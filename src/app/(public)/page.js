@@ -96,16 +96,25 @@ export default function Home() {
                 >
                   AYO IKUT SERTIFIKASI!
                 </Typography>
-                <Typography sx={{ fontSize: "22px", paddingTop: "15px" }}>
-                  Dengan memiliki sertifikasi, individu dapat menunjukkan bahwa
-                  mereka memiliki keahlian dan pengetahuan yang diperlukan untuk
-                  bekerja dalam bidang tertentu. Sertifikasi juga dapat membantu
-                  membedakan diri dari kandidat lain dalam persaingan untuk
-                  posisi pekerjaan yang diinginkan. Banyak perusahaan menawarkan
-                  insentif finansial kepada karyawan yang memperoleh sertifikasi
-                  tertentu. Ini karena perusahaan percaya bahwa karyawan yang
-                  memiliki sertifikasi dapat memberikan nilai tambah yang lebih
-                  besar pada bisnis mereka.
+                <Typography
+                  sx={{
+                    fontSize: "22px",
+                    paddingTop: "15px",
+                    paddingBottom: "50px",
+                  }}
+                >
+                  Sertifikasi profesi memiliki banyak manfaat penting bagi
+                  individu dalam bidang pekerjaan mereka. Sertifikasi dapat
+                  membantu meningkatkan peluang karir, meningkatkan kredibilitas
+                  profesional, meningkatkan keahlian dan pengetahuan,
+                  meningkatkan gaji, mendapatkan kesempatan pelatihan yang lebih
+                  baik, menghindari kesenjangan keterampilan, mengurangi risiko
+                  kesalahan, memperkuat etika profesional, meningkatkan
+                  kepercayaan diri, dan meningkatkan profesionalisme. Oleh
+                  karena itu, jika kamu ingin meningkatkan karir kamu dan
+                  meningkatkan kemampuan kamu dalam bidang tertentu,
+                  pertimbangkan untuk memperoleh sertifikasi profesi yang diakui
+                  oleh industri kamu.
                 </Typography>
               </div>
             </div>
@@ -608,7 +617,7 @@ export default function Home() {
                     textAlign: "center",
                   }}
                 >
-                  Sertifikat Terbit
+                  Asesi
                 </Typography>
                 <CountUp start={0} end={32} delay={0}>
                   {({ countUpRef }) => (

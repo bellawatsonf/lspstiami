@@ -45,9 +45,8 @@ export default function Footer() {
               </div>
 
               <div className="d-flex mt-3 justify-content-center">
-                <Typography sx={{ fontSize: "15px" }}>Alamat </Typography>
                 <Typography sx={{ fontSize: "15px", paddingLeft: "5px" }}>
-                  : Business Development Center (B'Dev Center) - Jl. Ahmad Yani
+                  Business Development Center (B'Dev Center) - Jl. Ahmad Yani
                   No.4, RT.5RT.004/RW.020, Pekayon Jaya, Kec. Bekasi Sel., Kota
                   Bks, Jawa Barat 17148
                 </Typography>

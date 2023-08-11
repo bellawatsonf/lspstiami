@@ -14,7 +14,9 @@ export default function Navbar() {
       <div className="container">
         <div className="row align-items-center">
           <div className="col-5 col-md-6">
-            <img className={`${style.logo}`} src="/logoolsp.png" />
+            <Link href="/">
+              <img className={`${style.logo}`} src="/logoolsp.png" />
+            </Link>
           </div>
           <div className={`${style.forDesktop} col col-md-6`}>
             <ul className={`${style.menuList}`}>
