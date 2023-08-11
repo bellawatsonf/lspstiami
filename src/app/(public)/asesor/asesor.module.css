@@ -14,6 +14,9 @@
 }
 
 @media (max-width: 768px) {
+  .boxTable {
+    width: 95%;
+  }
   .boxImg {
     max-width: 768px;
     max-height: 150px;
@@ -27,6 +30,9 @@
 }
 
 @media (min-width: 769px) and (max-width: 960px) {
+  .boxTable {
+    width: 95%;
+  }
   .boxImg {
     max-width: 960px;
     max-height: 150px;
@@ -40,6 +46,9 @@
 }
 
 @media (min-width: 961px) and (max-width: 1199px) {
+  .boxTable {
+    width: 95%;
+  }
   .boxImg {
     max-width: 1199px;
     max-height: 150px;
@@ -52,9 +61,12 @@
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1300px) {
+@media (min-width: 1200px) and (max-width: 1500px) {
+  .boxTable {
+    width: 85%;
+  }
   .boxImg {
-    max-width: 1300px;
+    max-width: 1500px;
     max-height: 200px;
     background: none;
   }

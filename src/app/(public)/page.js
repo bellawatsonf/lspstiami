@@ -526,7 +526,7 @@ export default function Home() {
                 >
                   Skema
                 </Typography>
-                <CountUp start={0} end={skema.length} delay={0}>
+                <CountUp start={0} end={10} delay={0}>
                   {({ countUpRef }) => (
                     <Typography
                       sx={{
