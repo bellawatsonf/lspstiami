@@ -13,12 +13,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSkema } from "@/app/services/skema";
 import axios from "axios";
 import dataSkema from "./data";
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer";
+import LoadingComponent from "../component/loading";
 
 export default function SertifikasiPage() {
   let dispatch = useDispatch();
   const skema = useSelector((state) => state.skema.skema);
   console.log(skema, "dataskema");
   let [user, setUser] = React.useState("");
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
 
   React.useEffect(() => {
     dispatch(fetchSkema());
@@ -91,8 +98,12 @@ export default function SertifikasiPage() {
     setExpanded(newExpanded ? panel : false);
   };
   console.log(dataSkema, "dtskema");
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
+      <Navbar />
       <div className={`${stylesTentang.bannertentang}`}>
         <div className={`${styles.boxImg}`}>
           <img
@@ -238,6 +249,7 @@ export default function SertifikasiPage() {
           </Accordion> */}
         </div>
       </div>
+      <Footer />
     </>
   );
 }

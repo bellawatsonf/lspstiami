@@ -21,7 +21,7 @@
 .boxImg {
   max-width: 1903px;
   height: 400px;
-  background: red;
+  /* background: red; */
 }
 
 @media (max-width: 768px) {

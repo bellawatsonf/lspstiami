@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ModalRekomendasiAsesi from "../../components/modal";
 import { fetchAsesiSkemaById } from "@/app/services/asesiskema";
+import { Loading } from "@/app/services/skema";
+import LoadingComponent from "@/app/(public)/component/loading";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -41,6 +43,7 @@ export default function DetailAsesi_Pendaftaran() {
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
+  let loading = useSelector((state) => state.skema.loading);
 
   const handleClose = () => {
     setOpen(false);
@@ -59,6 +62,7 @@ export default function DetailAsesi_Pendaftaran() {
 
   function handleCheckBuktiBayar(status) {
     let input = { status_pembayaran: status };
+    dispatch(Loading(true));
     axios({
       method: "PATCH",
       url: `http://localhost:3001/edit-status-pembayaran/${asesiSkemaById?.asesi?.id}`,
@@ -70,7 +74,12 @@ export default function DetailAsesi_Pendaftaran() {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally((_) => dispatch(Loading(false)));
+  }
+
+  if (loading) {
+    return <LoadingComponent />;
   }
   return (
     <>
@@ -232,7 +241,7 @@ export default function DetailAsesi_Pendaftaran() {
               />
             </div>
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>KTP</Typography>
+              <Typography sx={{ color: "#acacac" }}>Pas Foto</Typography>
               {/* <Typography
                 sx={{ color: "black" }}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.pas_foto)}
@@ -276,8 +285,31 @@ export default function DetailAsesi_Pendaftaran() {
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>
-                Status Pembayaran
+                Surat Pernyataan
               </Typography>
+              {/* <Typography
+                sx={{ color: "black" }}
+                onClick={(e) =>
+                  handleImage(asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung)
+                }
+              >
+                {asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
+              </Typography> */}
+              <img
+                src={
+                  "http://localhost:3001/" +
+                  asesiSkemaById?.asesi?.surat_pernyataan
+                }
+                alt={asesiSkemaById?.asesi?.surat_pernyataan}
+                onClick={(e) =>
+                  handleImage(asesiSkemaById?.asesi?.surat_pernyataan)
+                }
+                className="img"
+                style={{ width: "100px", cursor: "pointer" }}
+              />
+            </div>
+            <div className="col-6 mb-3">
+              <Typography sx={{ color: "#acacac" }}>Bukti Bayar</Typography>
               <div className="d-flex" style={{ width: "100%" }}>
                 {/* <Typography
                   sx={{ color: "black" }}
@@ -304,6 +336,8 @@ export default function DetailAsesi_Pendaftaran() {
                     justifyContent: "flex-end",
                     height: "100%",
                     bottom: "0px",
+                    position: "relative",
+                    top: "30px",
                   }}
                 >
                   <div style={{ marginTop: "20px" }}>

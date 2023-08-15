@@ -2,10 +2,23 @@
 
 import { Typography } from "@mui/material";
 import styles from "./tentang.module.css";
+import React from "react";
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer";
+import LoadingComponent from "../component/loading";
 
 export default function AboutUs() {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
+      <Navbar />
       <div className={`${styles.bannertentang}`}>
         <div className={`${styles.boxImg}`}>
           <img
@@ -361,6 +374,7 @@ export default function AboutUs() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   asesis: [],
   AsesiById: {},
+  loading: true,
 };
 
 const asesiSlice = createSlice({
@@ -24,9 +25,16 @@ const asesiSlice = createSlice({
         type: "asesi/getAsesiById",
       };
     },
+    getLoading: (state, action) => {
+      return {
+        ...state,
+        loading: action.loading,
+        type: "asesi/getLoading",
+      };
+    },
   },
 });
-export const { getAsesi } = asesiSlice.actions;
+export const { getAsesi, getLoading } = asesiSlice.actions;
 export default asesiSlice.reducer;
 
 // export default function reducer(state = initialState, action) {

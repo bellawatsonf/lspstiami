@@ -1,0 +1,27 @@
+.loadingStyle {
+  width: 13%;
+}
+
+@media (max-width: 768px) {
+  .loadingStyle {
+    width: 45%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .loadingStyle {
+    width: 45%;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1199px) {
+  .loadingStyle {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+  .loadingStyle {
+    width: 25%;
+  }
+}

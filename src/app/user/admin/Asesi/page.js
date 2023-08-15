@@ -12,6 +12,7 @@ import RejectedPayment from "./rejectedpayment";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAsesiSkemaServices } from "../../../services/asesiskema";
+import LoadingComponent from "@/app/(public)/component/loading";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,6 +58,7 @@ export default function Asesi() {
   // const [dataAsesi, setDataAsesi] = React.useState([]);
   // console.log(dataAsesiSkema, "dataasesipage");
   const dispatch = useDispatch();
+  let loading = useSelector((state) => state.skema.loading);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -83,7 +85,10 @@ export default function Asesi() {
   // React.useEffect(() => {
   //   fetchData();
   // }, []);
-
+  console.log(loading, "loading");
+  if (loading) {
+    return <LoadingComponent />;
+  }
   console.log(dataAsesiSkema, "deteasesi");
   return (
     <>

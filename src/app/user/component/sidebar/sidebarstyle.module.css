@@ -1,35 +1,41 @@
 .boxMenu {
   width: 15%;
-  height: 100vh;
+  /* height: 100vh; */
   background: #040924;
 }
 
 .boxlogo {
-  width: 90%;
-  padding-top: 20px;
+  /* width: 90%;
+  padding-top: 20px; */
 }
 
 .boxListMenu {
   width: 90%;
   display: block;
   margin: auto;
-  padding: 40px 0px 40px 0px;
+  /* padding: 40px 0px 40px 0px; */
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .boxlist {
   width: 100%;
-  padding: 10px;
-  /* background: grey; */
-  margin-top: 10px;
+  padding: 3px;
+  /* margin-top: 10px; */
   color: white;
+  text-decoration: none;
 }
 
 .boxlist:hover {
   width: 100%;
-  padding: 10px 10px;
+  /* padding: 10px 10px; */
   background: rgb(192, 237, 241);
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: #040924;
   border-radius: 10px;
+}
+
+.imglogo {
+  width: 80%;
+  display: block;
+  margin: auto;
 }

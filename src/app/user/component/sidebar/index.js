@@ -8,38 +8,53 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Sidebar() {
-  let [user, setUser] = useState("");
-  useEffect(() => {
-    try {
-      let value = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
-      console.log(value, "value");
-      setUser(value);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-  console.log(user.role, user === "", "role");
+  // let [user, setUser] = useState("");
+  // useEffect(() => {
+  //   try {
+  //     let value = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
+  //     console.log(value, "value");
+  //     setUser(value);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
+  // console.log(user.role, user === "", "role");
+  // let user = null;
+  // useEffect(() => {
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  // }, []);
+  console.log(user, "disidebar");
   return (
     <>
-      {user !== "" ? (
+      {user !== null ? (
         <div className={`${sidebarStyle.boxMenu}`}>
           <div className="aa" style={{ height: "100vh" }}>
             <div className={`${sidebarStyle.boxlogo}`}>
-              <img src="https://www.crayon.co/hubfs/Horizontal_4C_WHTWordmark-1.svg" />
+              <img className={`${sidebarStyle.imglogo}`} src="/logoolsp.png" />
             </div>
             <div className={`${sidebarStyle.boxListMenu}`}>
-              {user.role !== "asesi" ? (
+              {user.role === "admin" ? (
                 <MenuList sx={{ fontSize: "20px", letterSpacing: "3px" }}>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
-                      <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      <Link href="/user/admin/Asesi">Asesi</Link>
+                      <PersonPinIcon
+                        sx={{ marginRight: "5px", marginTop: "3px" }}
+                      />
+                      <Link
+                        className={`${sidebarStyle.boxlist}`}
+                        href="/user/admin/Asesi"
+                      >
+                        Asesi
+                      </Link>
                     </MenuItem>
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      <Link href="/user/admin/SkemaSertifikasi">
+                      <Link
+                        className={`${sidebarStyle.boxlist}`}
+                        href="/user/admin/skema-sertifikasi"
+                      >
                         Skema Sertifikasi
                       </Link>
                     </MenuItem>
@@ -47,13 +62,20 @@ export default function Sidebar() {
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      Unit Kompetensi
+                      <Link
+                        href="/user/admin/unit-kompetensi"
+                        className={`${sidebarStyle.boxlist}`}
+                      >
+                        Unit Kompetensi
+                      </Link>
                     </MenuItem>
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      Asesi
+                      <Link href="" className={`${sidebarStyle.boxlist}`}>
+                        Kriteria Unjuk Kerja
+                      </Link>
                     </MenuItem>
                   </div>
                 </MenuList>
@@ -62,19 +84,31 @@ export default function Sidebar() {
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      <Link href="/user/dashboard">Dashboard</Link>
+                      <Link
+                        className={`${sidebarStyle.boxlist}`}
+                        href="/user/dashboard"
+                      >
+                        Dashboard
+                      </Link>
                     </MenuItem>
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      <Link href="/user/profiluser">Riwayat Pribadi</Link>
+                      <Link
+                        className={`${sidebarStyle.boxlist}`}
+                        href="/user/profiluser"
+                      >
+                        Riwayat Pribadi
+                      </Link>
                     </MenuItem>
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
-                      Nilai
+                      <Link href="" className={`${sidebarStyle.boxlist}`}>
+                        Nilai
+                      </Link>
                     </MenuItem>
                   </div>
                 </MenuList>

@@ -1,11 +1,11 @@
 import axios from "axios";
+import { fetchSkemaById } from "./skema";
 
-export function fetchSkema(skema) {
+export function fetchUnitKompetensi(skema) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
-    dispatch(Loading(true));
     axios({
-      url: "http://localhost:3001/skemasertifikasi",
+      url: "http://localhost:3001/unitkompetensi",
       method: "GET",
     })
       .then((data) => {
@@ -17,21 +17,16 @@ export function fetchSkema(skema) {
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
-      })
-      .finally((_) => {
-        dispatch(Loading(false));
       });
   };
 }
 
-export function fetchSkemaById(id) {
+export function fetchUnitKompetensiById(id) {
   console.log(id, "skemabyid idservice");
   return (dispatch, prevState) => {
-    dispatch(Loading(true));
-
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/get-skemaById/${id}`,
+      url: `http://localhost:3001/unitkompetensibyid/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -43,23 +38,21 @@ export function fetchSkemaById(id) {
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
-      })
-      .finally((_) => {
-        dispatch(Loading(false));
       });
   };
 }
 
-export function addSkema(input) {
+export function addUnitKompetensi(input) {
+  console.log(input, "druunit");
   return (dispatch, prevState) => {
     axios({
-      url: "http://localhost:3001/add-skemasertifikasi",
+      url: "http://localhost:3001/add-unitkompetensi",
       method: "post",
       data: input,
     })
       .then((data) => {
         console.log(data, "skemabyid dari service");
-        dispatch(fetchSkema());
+        dispatch(fetchSkemaById(input.id_skema));
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
@@ -67,17 +60,17 @@ export function addSkema(input) {
   };
 }
 
-export function editSkema(input, id) {
+export function editUnitKompetensi(input, id) {
   console.log(input, id, "dari service");
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/edit-skemaById/${id}`,
+      url: `http://localhost:3001/edit-unitkompetensibyid/${id}`,
       method: "put",
       data: input,
     })
       .then((data) => {
         console.log(data, "skemabyid dari service");
-        dispatch(fetchSkema());
+        dispatch(fetchSkemaById(input.id_skema));
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
@@ -85,27 +78,18 @@ export function editSkema(input, id) {
   };
 }
 
-export function deleteSkema(id) {
+export function deleteUnitKompetensi(id, idskema) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/delete-skema/${id}`,
+      url: `http://localhost:3001/delete-unitkompetensibyid/${id}`,
       method: "delete",
     })
       .then((data) => {
         console.log(data, "deleteservice");
-        dispatch(fetchSkema());
+        dispatch(fetchSkemaById(idskema));
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
       });
-  };
-}
-
-export function Loading(value) {
-  return (dispatch, prevState) => {
-    dispatch({
-      type: "skema/getLoading",
-      loading: value,
-    });
   };
 }

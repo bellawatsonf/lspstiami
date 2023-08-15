@@ -2,7 +2,7 @@
 
 import styles from "./asesor.module.css";
 import stylesTentang from "../tentang/tentang.module.css";
-import { Pagination, Typography } from "@mui/material";
+import { Box, Pagination, Typography } from "@mui/material";
 import * as React from "react";
 
 import { CompactTable } from "@table-library/react-table-library/compact";
@@ -19,6 +19,9 @@ import { usePagination } from "@table-library/react-table-library/pagination";
 import { makeStyles } from "@material-ui/core/styles";
 // import dataAsesor from "./data.js";
 import dataAsesor from "./data";
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer";
+import LoadingComponent from "../component/loading";
 
 const key = "Sort";
 const useStyles = makeStyles({
@@ -31,6 +34,11 @@ const useStyles = makeStyles({
 });
 
 export default function AsesorTable() {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
   const classes = useStyles();
   console.log(dataAsesor, "dtasesor");
   // let dataAsesor = [
@@ -183,10 +191,15 @@ export default function AsesorTable() {
   // if (asesor.nodes.length === 0) {
   //   return <p>ddd</p>;
   // }
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       {data ? (
         <>
+          <Navbar />
           <div className={`${stylesTentang.bannertentang}`}>
             <div className={`${styles.boxImg}`}>
               <img
@@ -276,6 +289,7 @@ export default function AsesorTable() {
               /> */}
             </div>
           </div>
+          <Footer />
         </>
       ) : null}
     </>

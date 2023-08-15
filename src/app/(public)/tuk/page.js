@@ -12,10 +12,22 @@ import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSkema } from "@/app/services/skema";
 import axios from "axios";
+import Navbar from "../component/Navbar";
+import Footer from "../component/footer";
+import LoadingComponent from "../component/loading";
 
 export default function TUkPage() {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
+      <Navbar />
       <div className={`${stylesTentang.bannertentang}`}>
         <div className={`${styles.boxImg}`}>
           <img
@@ -100,6 +112,7 @@ export default function TUkPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

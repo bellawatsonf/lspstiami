@@ -13,8 +13,17 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { Formik } from "formik";
 import { useParams } from "next/navigation";
 import axios from "axios";
+import LoadingComponent from "@/app/(public)/component/loading";
+import { useSelector } from "react-redux";
 
 export default function Step4(props) {
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   let sigPad = useRef({});
   console.log(sigPad, "signaturepad");
   let data = "";
@@ -86,6 +95,9 @@ export default function Step4(props) {
       });
   }
   console.log(stateField.tujuan_asesmen, "img");
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       <Formik

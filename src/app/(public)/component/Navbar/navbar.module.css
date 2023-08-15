@@ -1,3 +1,7 @@
+/* .navigation {
+  position: relative;
+} */
+
 .menuList {
   display: flex;
   list-style-type: none;

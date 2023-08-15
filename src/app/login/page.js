@@ -17,6 +17,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import LoadingComponent from "../(public)/component/loading";
 
 const useStyles = makeStyles({
   root: {
@@ -45,7 +46,10 @@ export default function Login() {
   };
   const [stateField, setStateField] = useState(initialState);
   const [role, setRole] = useState("");
-
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
   const handleChange = (e) => {
     setRole(e.target.value);
   };
@@ -71,8 +75,10 @@ export default function Login() {
       data: { id_token_google },
     })
       .then((data) => {
+        console.log("masuk");
         console.log(data, "dataaa");
         localStorage.setItem("token", data.data.token);
+
         let token = localStorage.getItem("token");
         // console.log(settoken, "settoken");
         router.push("/admin/Asesi");
@@ -103,6 +109,8 @@ export default function Login() {
 
   const login = useGoogleLogin({
     onSuccess: (resp) => {
+      setLoading(true);
+
       console.log(resp, "resp");
       let id_token_google = resp.access_token;
       console.log(id_token_google, "tokengoogle");
@@ -125,8 +133,17 @@ export default function Login() {
               nama: data.data.data.nama_lengkap,
             })
           );
-          Cookies.set("token", id_token_google);
-          Cookies.set("user", JSON.stringify(data.data.data));
+          sessionStorage.setItem("token", id_token_google);
+          sessionStorage.setItem(
+            "user",
+            JSON.stringify({
+              id: data.data.data.id,
+              role: data.data.data.role,
+              nama: data.data.data.nama_lengkap,
+            })
+          );
+          // Cookies.set("token", id_token_google);
+          // Cookies.set("user", JSON.stringify(data.data.data));
           router.push("/user/dashboard");
           // let token = localStorage.getItem("token");
           // // console.log(settoken, "settoken");
@@ -137,7 +154,10 @@ export default function Login() {
           // }
           // console.log(statusLogin, token, "tokeeen");
         })
-        .catch((err) => console.log(err, "errorss"));
+        .catch((err) => console.log(err, "errorss"))
+        .finally((_) => {
+          setLoading(false);
+        });
     },
     // flow: "auth-code",
     onError: (error) => console.log("Login Failed:", error),
@@ -145,6 +165,7 @@ export default function Login() {
 
   function handleSubmitLogin(input) {
     console.log(input, "inputloginadmin");
+    setLoading(true);
     axios({
       method: "POST",
       url: "http://localhost:3001/login",
@@ -152,7 +173,16 @@ export default function Login() {
     })
       .then((data) => {
         console.log(data.data, "data");
+        sessionStorage.setItem("token", data.data.token);
         localStorage.setItem(
+          "user",
+          JSON.stringify({
+            id: data.data.id,
+            role: data.data.role,
+            nama: data.data.nama,
+          })
+        );
+        sessionStorage.setItem(
           "user",
           JSON.stringify({
             id: data.data.id,
@@ -164,9 +194,14 @@ export default function Login() {
       })
       .catch((err) => {
         console.log(err, "error");
+      })
+      .finally((_) => {
+        setLoading(false);
       });
   }
-
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       {/* <a href="/registrasi">registrasi</a> */}

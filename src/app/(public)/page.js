@@ -6,23 +6,32 @@ import styles from "./page.module.css";
 import Footer from "./component/footer";
 import CountUp from "react-countup";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchSkema } from "../services/skema";
 import { fetchAsesorServices } from "../services/asesor";
+import Navbar from "./component/Navbar";
+import LoadingComponent from "./component/loading";
 
 export default function Home() {
   let dispatch = useDispatch();
   let skema = useSelector((state) => state.skema.skema);
   let asesor = useSelector((state) => state.asesor.asesor);
-
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
   useEffect(() => {
     dispatch(fetchSkema());
     // dispatch(fetchAsesorServices());
   }, []);
 
   console.log(skema, "skema");
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
+      <Navbar />
       <div className={styles["box-banner"]}>
         <div className="container">
           <div className="row">
@@ -639,7 +648,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

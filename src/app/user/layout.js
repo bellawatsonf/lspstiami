@@ -42,8 +42,12 @@ export default function DashboardLayout({ children }) {
   let router = useRouter();
   let token;
   let user;
+  let sessionToken = null;
+  let sessionUser = null;
 
   try {
+    sessionToken = sessionStorage.getItem("token");
+    sessionUser = JSON.parse(sessionStorage.getItem("user"));
     token = localStorage.getItem("token");
     user = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
     console.log(localStorage.getItem("token"), typeof user, "tokendd");
@@ -51,19 +55,23 @@ export default function DashboardLayout({ children }) {
     console.log("gak dapet token");
   }
 
+  console.log(sessionToken, sessionUser?.role, "user");
   return (
-    <div className={inter.className}>
-      {/* {token && user.role === "asesi" ? ( */}
-      <div className={`${styleDashboard.boxContainer}`}>
-        <Sidebar />
-        <div className={`${styleDashboard.boxContent}`}>
-          <HeaderDashboard />
-          <div className={`${styleDashboard.content}`}>{children}</div>
+    <>
+      {(sessionToken && sessionUser?.role === "asesi") ||
+      (sessionToken && sessionUser?.role === "admin") ? (
+        <div className={inter.className}>
+          <div className={`${styleDashboard.boxContainer}`}>
+            <Sidebar />
+            <div className={`${styleDashboard.boxContent}`}>
+              <HeaderDashboard />
+              <div className={`${styleDashboard.content}`}>{children}</div>
+            </div>
+          </div>
         </div>
-      </div>
-      {/* ) : (
+      ) : (
         router.push("/login")
-      )} */}
-    </div>
+      )}
+    </>
   );
 }

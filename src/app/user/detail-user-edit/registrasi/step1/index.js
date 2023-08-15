@@ -1,18 +1,29 @@
 import { Formik } from "formik";
 import styles from "./step1.module.css";
 import { TextField, Typography, Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 // import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import axios from "axios";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import LoadingComponent from "@/app/(public)/component/loading";
 
 export default function Step1(props) {
+  const router = useRouter();
   console.log(props.dataAsesi, "prop");
   let params = useParams();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+  console.log(loading, "loadingstep1");
   let id = params.id;
   const initialState = {
     nama_lengkap: "",
@@ -29,6 +40,11 @@ export default function Step1(props) {
   };
   const [stateField, setStateField] = useState(initialState);
   console.log(Object.keys(props.dataAsesi).length !== 0, "hhh");
+  //   useEffect(()=>{
+  // setTimeout(() => {
+
+  // }, 1000);
+  //   },[])
   useState(() => {
     if (Object.keys(props.dataAsesi).length !== 0) {
       setStateField((prevState) => {
@@ -72,10 +88,15 @@ export default function Step1(props) {
     })
       .then((data) => {
         console.log(data, "berhasil");
+        router.push("/user/profiluser");
       })
       .catch((e) => {
         console.log(e, "errorini");
       });
+  }
+
+  if (loading) {
+    return <LoadingComponent />;
   }
   return (
     <Formik
@@ -470,7 +491,7 @@ export default function Step1(props) {
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             <Button
               variant="contained"
-              sx={{ textTransform: "none" }}
+              sx={{ textTransform: "none", marginTop: "20px" }}
               type="submit"
             >
               Simpan

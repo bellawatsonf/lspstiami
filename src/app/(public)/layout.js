@@ -1,8 +1,12 @@
+"use client";
+
 import "./../globals.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Inter } from "next/font/google";
 import Navbar from "./component/Navbar";
 import Footer from "./component/footer";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +17,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Layout({ children }) {
   console.log({ children }, "children");
+  const router = usePathname();
+  console.log(router, "router");
+
   return (
     <section>
-      <Navbar />
+      {/* <Navbar /> */}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 }

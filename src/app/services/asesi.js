@@ -1,9 +1,11 @@
 import axios from "axios";
 import { getAsesi } from "../reducers/asesiReducer";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { Loading } from "./skema";
 
 export function fetchAsesiServices(page, size) {
   return (dispatch, prevState) => {
+    dispatch(Loading(true));
     console.log(dispatch, "dispatch");
     axios({
       url: "http://localhost:3001/asesi",
@@ -18,12 +20,17 @@ export function fetchAsesiServices(page, size) {
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
       });
   };
 }
 
 export function fetchAsesiById(id) {
   return (dispatch, prevState) => {
+    dispatch(Loading(true));
+
     axios({
       url: `http://localhost:3001/asesi/${id}`,
       method: "GET",
@@ -37,6 +44,9 @@ export function fetchAsesiById(id) {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
       });
   };
 }

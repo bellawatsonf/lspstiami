@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import LoadingComponent from "@/app/(public)/component/loading";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -50,10 +51,20 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 export default function DashboardUser() {
   const [expanded, setExpanded] = React.useState("panel1");
   const [sort, setSort] = React.useState("asc");
+  const [loading, setLoading] = React.useState(true);
 
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       <div

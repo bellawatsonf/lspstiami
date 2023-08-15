@@ -1,12 +1,23 @@
 "use client";
 
+import LoadingComponent from "@/app/(public)/component/loading";
+import { fetchAsesiById } from "@/app/services/asesi";
 import { Typography, Box, Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ProfileUser() {
   let router = useRouter();
   let [user, setUser] = useState("");
+  let dataUser = useSelector((state) => state.asesi.AsesiById);
+  const dispatch = useDispatch();
+  const id = JSON.parse(sessionStorage.getItem("user"));
+  let loading = useSelector((state) => state.skema.loading);
+  console.log(dataUser, "datauser");
+  useEffect(() => {
+    dispatch(fetchAsesiById(id.id));
+  }, []);
   useEffect(() => {
     try {
       let value = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
@@ -20,6 +31,10 @@ export default function ProfileUser() {
     router.push(`detail-user-edit/${id}`);
   }
   console.log(user);
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -45,32 +60,65 @@ export default function ProfileUser() {
         <div style={{ marginLeft: "25px" }}>
           <div className="row">
             <div className="col-3 mt-3">Nama Lengkap</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-9 mt-3">
+              : {dataUser.nama_lengkap ? dataUser.nama_lengkap : "-"}
+            </div>
             <div className="col-3 mt-3">Tempat / tgl. Lahir</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-9 mt-3">
+              :{" "}
+              {dataUser.tempat_lahir && dataUser.tgl_lahir
+                ? dataUser.tempat_lahir +
+                  " / " +
+                  dataUser.tgl_lahir
+                    .toString()
+                    .replace(/T.*/, "")
+                    .split("-")
+                    .reverse()
+                    .join("-")
+                : "-"}
+            </div>
             <div className="col-3 mt-3">Jenis Kelamin</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-9 mt-3">
+              : {dataUser.jenis_kelamin ? dataUser.jenis_kelamin : "-"}
+            </div>
             <div className="col-3 mt-3">Kebangsaan</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-9 mt-3">
+              : {dataUser.kebangsaan ? dataUser.kebangsaan : "-"}
+            </div>
             <div className="col-3 mt-3">Alamat Rumah</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-9 mt-3">
+              : {dataUser.alamat_rumah ? dataUser.alamat_rumah : "-"}
+            </div>
             <div className="col-3 mt-3">Kode Pos</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-9 mt-3">
+              : {dataUser.kodepos ? dataUser.kodepos : "-"}
+            </div>
             <div className="col-3 mt-3">No.Telepon / Email</div>
             <div className="col-9 mt-3">
               <div className="row">
                 <div className="col-2 mt-3">: Rumah</div>
-                <div className="col-4 mt-3">: 021948939</div>
-                <div className="col-2 mt-3">Kantor</div>
-                <div className="col-4 mt-3">: 535363636</div>
-                <div className="col-2 mt-3">: HP</div>
-                <div className="col-4 mt-3">: 082111969187</div>
+                <div className="col-4 mt-3">
+                  : {dataUser.tlp ? dataUser.tlp : "-"}
+                </div>
+                {/* <div className="col-2 mt-3">Kantor</div>
+                <div className="col-4 mt-3">: {dataUser.tlp_kantor}</div> */}
+                <div className="col-2 mt-3">HP</div>
+                <div className="col-4 mt-3">
+                  : {dataUser.phone_number ? dataUser.phone_number : "-"}
+                </div>
                 <div className="col-2 mt-3">Email</div>
-                <div className="col-4 mt-3">: bella@gmail.com</div>
+                <div className="col-4 mt-3">
+                  : {dataUser.email ? dataUser.email : "-"}
+                </div>
               </div>
             </div>
             <div className="col-3 mt-3">Pendidikan Terakhir</div>
-            <div className="col-9 mt-3">: S-1</div>
+            <div className="col-9 mt-3">
+              :{" "}
+              {dataUser.kualifikasi_pendidikan
+                ? dataUser.kualifikasi_pendidikan
+                : "-"}
+            </div>
           </div>
         </div>
       </Box>
@@ -85,33 +133,40 @@ export default function ProfileUser() {
         </div>
         <div style={{ marginLeft: "25px" }}>
           <div className="row">
-            <div className="col-3 mt-3">Nama Lengkap</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
-            <div className="col-3 mt-3">Tempat / tgl. Lahir</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
-            <div className="col-3 mt-3">Jenis Kelamin</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
-            <div className="col-3 mt-3">Kebangsaan</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
-            <div className="col-3 mt-3">Alamat Rumah</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
+            <div className="col-3 mt-3">Nama Lembaga / Perusahaan</div>
+            <div className="col-9 mt-3">
+              : {dataUser.nama_instansi ? dataUser.nama_instansi : "-"}
+            </div>
+            <div className="col-3 mt-3">Jabatan</div>
+            <div className="col-9 mt-3">
+              : {dataUser.jabatan ? dataUser.jabatan : "-"}
+            </div>
+            <div className="col-3 mt-3">Alamat</div>
+            <div className="col-9 mt-3">
+              : {dataUser.alamat_kantor ? dataUser.alamat_kantor : "-"}
+            </div>
             <div className="col-3 mt-3">Kode Pos</div>
-            <div className="col-9 mt-3">: Bella Fitsolyna</div>
-            <div className="col-3 mt-3">No.Telepon / Email</div>
+            <div className="col-9 mt-3">
+              : {dataUser.kodepos_kantor ? dataUser.kodepos_kantor : "-"}
+            </div>
+            <div className="col-3 mt-3">No.Telepon / Fax / Email</div>
+
             <div className="col-9 mt-3">
               <div className="row">
-                <div className="col-2 mt-3">: Rumah</div>
-                <div className="col-4 mt-3">: 021948939</div>
-                <div className="col-2 mt-3">Kantor</div>
-                <div className="col-4 mt-3">: 535363636</div>
-                <div className="col-2 mt-3">: HP</div>
-                <div className="col-4 mt-3">: 082111969187</div>
+                <div className="col-2 mt-3">: Telp</div>
+                <div className="col-4 mt-3">
+                  : {dataUser.tlp_kantor ? dataUser.tlp_kantor : "-"}
+                </div>
                 <div className="col-2 mt-3">Email</div>
-                <div className="col-4 mt-3">: bella@gmail.com</div>
+                <div className="col-4 mt-3">
+                  : {dataUser.email_kantor ? dataUser.email_kantor : "-"}
+                </div>
+                <div className="col-2 mt-3">: Fax</div>
+                <div className="col-4 mt-3">
+                  :{dataUser.fax ? dataUser.fax : "-"}
+                </div>
               </div>
             </div>
-            <div className="col-3 mt-3">Pendidikan Terakhir</div>
-            <div className="col-9 mt-3">: S-1</div>
           </div>
         </div>
       </Box>
@@ -123,9 +178,11 @@ export default function ProfileUser() {
       <Box sx={{ marginTop: "30px", paddingLeft: "25px" }}>
         <div className="row">
           <div className="col-3 mt-2">Jenis Skema Sertifikasi</div>
-          <div className="col-9 mt-2">: Bella Fitsolyna</div>
+          <div className="col-9 mt-2">: Belum Dipilih</div>
           <div className="col-3 mt-3">Tujuan Asesmen yang Diambil</div>
-          <div className="col-9 mt-3">: Bella Fitsolyna</div>
+          <div className="col-9 mt-3">
+            : {dataUser.tujuan_asesmen ? dataUser.tujuan_asesmen : "-"}
+          </div>
         </div>
       </Box>
     </>

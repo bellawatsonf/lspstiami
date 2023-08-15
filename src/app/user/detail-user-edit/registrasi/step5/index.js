@@ -14,13 +14,26 @@ import { Formik } from "formik";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
+import LoadingComponent from "@/app/(public)/component/loading";
+import { useSelector } from "react-redux";
 
 export default function Step5(props) {
+  const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   const initialState = {
     id_skema: "",
     id_asesi: "",
   };
   const [stateField, setStateField] = useState(initialState);
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <>
       <Formik
