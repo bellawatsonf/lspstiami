@@ -172,6 +172,7 @@ export default function SertifikasiPage() {
           </Typography>
           {dataSkema.map((el) => (
             <Accordion
+              key={el.id}
               expanded={expanded === `panel${el.id}`}
               onChange={handleChange(`panel${el.id}`)}
             >
@@ -183,8 +184,8 @@ export default function SertifikasiPage() {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                  {el.unitkompetensi.map((unit) => (
-                    <li>{unit.judul_unit}</li>
+                  {el.unitkompetensi.map((unit, i) => (
+                    <li key={i}>{unit.judul_unit}</li>
                   ))}
                 </ul>
                 <div className={`${styles.boxButton}`}>
