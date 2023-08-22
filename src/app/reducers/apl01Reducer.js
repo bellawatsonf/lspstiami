@@ -1,37 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  asesor: {
-    dataAsesor: [],
-    totalPage: 0,
-    asesorById: {},
-  },
-  AsesorById: {},
+  apl01: [],
+  // totalPage: 0,
+  // asesorById: {},
+
+  apl01ById: {},
 };
 
-const asesorSlice = createSlice({
-  name: "asesor",
+const apl01Slice = createSlice({
+  name: "apl01",
   initialState,
   reducers: {
-    getAsesor: (state = initialState, action) => {
+    getApl01: (state = initialState, action) => {
       console.log(action, "action reducer");
       return {
         ...state,
-        asesor: action.asesor,
-        type: "asesor/getAsesor",
+        apl01: action.apl01,
+        type: "apl01/getApl01",
       };
     },
-    getAsesorById: (state, action) => {
+    getApl01ById: (state, action) => {
       return {
         ...state,
-        asesorById: action.asesorById,
-        type: "asesor/getAsesorById",
+        apl01ById: action.apl01ById,
+        type: "apl01/getApl01ById",
       };
     },
   },
 });
-export const { getAsesor, getAsesorById } = asesorSlice.actions;
-export default asesorSlice.reducer;
+export const { getApl01, getApl01ById } = apl01Slice.actions;
+export default apl01Slice.reducer;
 
 // export default function reducer(state = initialState, action) {
 //   switch (action.type) {

@@ -11,14 +11,14 @@ import FormLabel from "@mui/material/FormLabel";
 import SignatureCanvas from "react-signature-canvas";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { Formik } from "formik";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { useSelector } from "react-redux";
 
 export default function Step4(props) {
   const [loading, setLoading] = useState(true);
-
+  const router = useRouter();
   React.useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -89,6 +89,7 @@ export default function Step4(props) {
     })
       .then((data) => {
         console.log(data, "berhasil");
+        router.push("/user/profiluser");
       })
       .catch((e) => {
         console.log(e, "errorini");

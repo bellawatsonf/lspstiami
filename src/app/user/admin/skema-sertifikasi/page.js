@@ -105,25 +105,30 @@ export default function SkemaSertifikasi() {
                   <Cell>NO SKEMA BELUM ADA</Cell>
                   <Cell>{item.nama_skema}</Cell>
                   <Cell>
-                    <div className="d-flex">
-                      <ModeEditIcon
-                        sx={{
-                          color: "blue",
-                          marginRight: "10px",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => {
-                          setOpen(true);
-                          setStatusModal("edit");
-                          setId(item.id);
-                          console.log(id, "id");
-                          dispatch(fetchSkemaById(item.id));
-                        }}
-                      />
-                      <RemoveCircleOutlineIcon
-                        sx={{ cursor: "pointer" }}
-                        onClick={() => dispatch(deleteSkema(item.id))}
-                      />
+                    <div
+                      className="d-flex"
+                      style={{ justifyContent: "center" }}
+                    >
+                      <span>
+                        <ModeEditIcon
+                          sx={{
+                            color: "blue",
+                            marginRight: "10px",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setOpen(true);
+                            setStatusModal("edit");
+                            setId(item.id);
+                            console.log(id, "id");
+                            dispatch(fetchSkemaById(item.id));
+                          }}
+                        />
+                        <RemoveCircleOutlineIcon
+                          sx={{ cursor: "pointer" }}
+                          onClick={() => dispatch(deleteSkema(item.id))}
+                        />
+                      </span>
                     </div>
                   </Cell>
                 </Row>

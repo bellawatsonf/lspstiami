@@ -10,7 +10,10 @@ import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import ModalRekomendasiAsesi from "../../components/modal";
-import { fetchAsesiSkemaById } from "@/app/services/asesiskema";
+import {
+  // fetchAsesiSkemaById,
+  fetchAsesiSkemaByIdDetail,
+} from "@/app/services/asesiskema";
 import { Loading } from "@/app/services/skema";
 import LoadingComponent from "@/app/(public)/component/loading";
 
@@ -28,6 +31,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 export default function DetailAsesi_Pendaftaran() {
   const asesiSkemaById = useSelector(
     (state) => state.asesiskema.AsesiSkemaById
@@ -36,28 +51,26 @@ export default function DetailAsesi_Pendaftaran() {
   const dispatch = useDispatch();
   const params = useParams();
   const id = params.id;
-
+  console.log(id, "id");
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [image, setImage] = useState("false");
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
   let loading = useSelector((state) => state.skema.loading);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleImage = (value) => {
     console.log(value);
-    setImage(`http://localhost:3001/${value}`);
+    setImage(`${value}`);
     setOpen(true);
     console.log(image);
   };
 
   useEffect(() => {
-    dispatch(fetchAsesiSkemaById(id));
+    dispatch(fetchAsesiSkemaByIdDetail(id));
   }, []);
 
   function handleCheckBuktiBayar(status) {
@@ -199,7 +212,7 @@ export default function DetailAsesi_Pendaftaran() {
                 {asesiSkemaById?.asesi?.ijazah}
               </Typography> */}
               <img
-                src={"http://localhost:3001/" + asesiSkemaById?.asesi?.ijazah}
+                src={asesiSkemaById?.asesi?.ijazah}
                 alt={asesiSkemaById?.asesi?.ijazah}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.ijazah)}
                 className="img"
@@ -215,9 +228,7 @@ export default function DetailAsesi_Pendaftaran() {
                 {asesiSkemaById?.asesi?.transkrip}
               </Typography> */}
               <img
-                src={
-                  "http://localhost:3001/" + asesiSkemaById?.asesi?.transkrip
-                }
+                src={asesiSkemaById?.asesi?.transkrip}
                 alt={asesiSkemaById?.asesi?.transkrip}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.transkrip)}
                 className="img"
@@ -233,7 +244,7 @@ export default function DetailAsesi_Pendaftaran() {
                 {asesiSkemaById?.asesi?.img_ktp}
               </Typography> */}
               <img
-                src={"http://localhost:3001/" + asesiSkemaById?.asesi?.img_ktp}
+                src={asesiSkemaById?.asesi?.img_ktp}
                 alt={asesiSkemaById?.asesi?.img_ktp}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.img_ktp)}
                 className="img"
@@ -249,7 +260,7 @@ export default function DetailAsesi_Pendaftaran() {
                 {asesiSkemaById?.asesi?.pas_foto}
               </Typography> */}
               <img
-                src={"http://localhost:3001/" + asesiSkemaById?.asesi?.pas_foto}
+                src={asesiSkemaById?.asesi?.pas_foto}
                 alt={asesiSkemaById?.asesi?.pas_foto}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.pas_foto)}
                 className="img"
@@ -269,10 +280,7 @@ export default function DetailAsesi_Pendaftaran() {
                 {asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
               </Typography> */}
               <img
-                src={
-                  "http://localhost:3001/" +
-                  asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung
-                }
+                src={asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
                 alt={asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
                 onClick={(e) =>
                   handleImage(
@@ -296,10 +304,7 @@ export default function DetailAsesi_Pendaftaran() {
                 {asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
               </Typography> */}
               <img
-                src={
-                  "http://localhost:3001/" +
-                  asesiSkemaById?.asesi?.surat_pernyataan
-                }
+                src={asesiSkemaById?.asesi?.surat_pernyataan}
                 alt={asesiSkemaById?.asesi?.surat_pernyataan}
                 onClick={(e) =>
                   handleImage(asesiSkemaById?.asesi?.surat_pernyataan)
@@ -318,10 +323,7 @@ export default function DetailAsesi_Pendaftaran() {
                   {asesiSkemaById?.asesi?.bukti_bayar}
                 </Typography> */}
                 <img
-                  src={
-                    "http://localhost:3001/" +
-                    asesiSkemaById?.asesi?.bukti_bayar
-                  }
+                  src={asesiSkemaById?.asesi?.bukti_bayar}
                   alt={asesiSkemaById?.asesi?.bukti_bayar}
                   onClick={(e) =>
                     handleImage(asesiSkemaById?.asesi?.bukti_bayar)
@@ -337,7 +339,7 @@ export default function DetailAsesi_Pendaftaran() {
                     height: "100%",
                     bottom: "0px",
                     position: "relative",
-                    top: "30px",
+                    // top: "30px",
                   }}
                 >
                   <div style={{ marginTop: "20px" }}>
@@ -375,6 +377,25 @@ export default function DetailAsesi_Pendaftaran() {
           </div>
         </div>
       </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        {/* <Box sx={style}> */}
+        <img
+          src={image}
+          style={{
+            width: "65%",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        {/* </Box> */}
+      </Modal>
       <ModalRekomendasiAsesi
         openModal={openModal}
         handleCloseModal={handleCloseModal}

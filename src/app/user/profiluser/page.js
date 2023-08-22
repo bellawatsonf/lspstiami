@@ -3,6 +3,8 @@
 import LoadingComponent from "@/app/(public)/component/loading";
 import { fetchAsesiById } from "@/app/services/asesi";
 import { Typography, Box, Button } from "@mui/material";
+import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +16,7 @@ export default function ProfileUser() {
   const dispatch = useDispatch();
   const id = JSON.parse(sessionStorage.getItem("user"));
   let loading = useSelector((state) => state.skema.loading);
+  let [selectedSkema, setSkema] = useState("");
   console.log(dataUser, "datauser");
   useEffect(() => {
     dispatch(fetchAsesiById(id.id));
@@ -26,7 +29,20 @@ export default function ProfileUser() {
     } catch (error) {
       console.log(error);
     }
+    getSelectedSkema();
   }, []);
+
+  function getSelectedSkema() {
+    axios({
+      method: "GET",
+      url: `http://localhost:3001/asesi-skema/${id.id}`,
+    })
+      .then((data) => {
+        console.log(data.data.data.skema.nama_skema, "selectedskema");
+        setSkema(data.data.data.skema.nama_skema);
+      })
+      .catch((err) => console.log(err));
+  }
   function DetailEdit(id) {
     router.push(`detail-user-edit/${id}`);
   }
@@ -178,7 +194,16 @@ export default function ProfileUser() {
       <Box sx={{ marginTop: "30px", paddingLeft: "25px" }}>
         <div className="row">
           <div className="col-3 mt-2">Jenis Skema Sertifikasi</div>
-          <div className="col-9 mt-2">: Belum Dipilih</div>
+          <div className="col-9 mt-2">
+            :{" "}
+            {selectedSkema === "" ? (
+              <Link style={{ textDecoration: "none" }} href="/sertifikasi">
+                Pilih Skema
+              </Link>
+            ) : (
+              selectedSkema
+            )}
+          </div>
           <div className="col-3 mt-3">Tujuan Asesmen yang Diambil</div>
           <div className="col-9 mt-3">
             : {dataUser.tujuan_asesmen ? dataUser.tujuan_asesmen : "-"}

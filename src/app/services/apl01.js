@@ -1,24 +1,19 @@
 import axios from "axios";
 import { getAsesi } from "../reducers/asesiReducer";
 
-export function fetchAsesorServices(params) {
+export function fetchApl01(params) {
   // console.log(params.page, params.size, "ph");
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/asesor?page=${params.page - 1}&size=${
-        params.size
-      }`,
+      url: `http://localhost:3001/apl01`,
       method: "GET",
     })
       .then((data) => {
-        console.log(data, "dataasesor dari service");
+        console.log(data.data.data, "apl01");
         dispatch({
-          type: "asesor/getAsesor",
-          asesor: {
-            dataAsesor: data.data.listData,
-            totalPage: data.data.totalPages,
-          },
+          type: "apl01/getApl01",
+          apl01: data.data.data,
         });
       })
       .catch((err) => {
@@ -27,17 +22,17 @@ export function fetchAsesorServices(params) {
   };
 }
 
-export function fetchAsesorById(id) {
+export function fetchApl01ById(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/get-asesorById/${id}`,
+      url: `http://localhost:3001/apl01byid/${id}`,
       method: "GET",
     })
       .then((data) => {
-        console.log(data.data.data, "databyid");
+        console.log(data.data.data, "databyids");
         dispatch({
-          type: "asesor/getAsesorById",
-          asesorById: data.data.data,
+          type: "apl01/getApl01ById",
+          apl01ById: data.data.data,
         });
       })
       .catch((err) => {

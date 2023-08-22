@@ -1,13 +1,22 @@
 "use client";
 
-import { MenuItem, MenuList } from "@mui/material";
+import { Button, MenuItem, MenuList } from "@mui/material";
 import sidebarStyle from "./sidebarstyle.module.css";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Menu from "@mui/material/Menu";
 
 export default function Sidebar() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   // let [user, setUser] = useState("");
   // useEffect(() => {
   //   try {
@@ -59,7 +68,7 @@ export default function Sidebar() {
                       </Link>
                     </MenuItem>
                   </div>
-                  <div className={`${sidebarStyle.boxlist}`}>
+                  {/* <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
                       <Link
@@ -75,6 +84,65 @@ export default function Sidebar() {
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
                       <Link href="" className={`${sidebarStyle.boxlist}`}>
                         Kriteria Unjuk Kerja
+                      </Link>
+                    </MenuItem>
+                  </div> */}
+                  <div className={`${sidebarStyle.boxlist}`}>
+                    <PersonPinIcon sx={{ marginLeft: "15px" }} />
+                    <Button
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClick}
+                      style={{
+                        textTransform: "none",
+                        color: "white",
+                        fontSize: "15px",
+                        marginLeft: "-5px",
+                      }}
+                    >
+                      User
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>
+                        {" "}
+                        <Link
+                          // className={`${sidebarStyle.boxlist}`}
+                          href="/user/admin/admin"
+                          style={{ color: "black", textDecoration: "none" }}
+                        >
+                          Admin
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        {" "}
+                        <Link
+                          // className={`${sidebarStyle.boxlist}`}
+                          href="/user/admin/asesor"
+                          style={{ color: "black", textDecoration: "none" }}
+                        >
+                          Asesor
+                        </Link>
+                      </MenuItem>
+                    </Menu>
+                  </div>
+                  <div className={`${sidebarStyle.boxlist}`}>
+                    <MenuItem>
+                      <PersonPinIcon sx={{ marginRight: "5px" }} />
+                      <Link
+                        className={`${sidebarStyle.boxlist}`}
+                        href="/user/admin/report"
+                      >
+                        Report
                       </Link>
                     </MenuItem>
                   </div>

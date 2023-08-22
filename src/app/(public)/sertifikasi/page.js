@@ -16,8 +16,10 @@ import dataSkema from "./data";
 import Navbar from "../component/Navbar";
 import Footer from "../component/footer";
 import LoadingComponent from "../component/loading";
+import { useRouter } from "next/navigation";
 
 export default function SertifikasiPage() {
+  let router = useRouter();
   let dispatch = useDispatch();
   const skema = useSelector((state) => state.skema.skema);
   console.log(skema, "dataskema");
@@ -50,11 +52,12 @@ export default function SertifikasiPage() {
     })
       .then((data) => {
         console.log(data);
+        router.push("/user/profiluser");
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log(input);
+    console.log(input, "input");
   }
   console.log(skema, "skema");
   const Accordion = styled((props) => (
@@ -170,7 +173,7 @@ export default function SertifikasiPage() {
             {" "}
             Daftar Skema Sertifikasi
           </Typography>
-          {dataSkema.map((el) => (
+          {skema.map((el) => (
             <Accordion
               key={el.id}
               expanded={expanded === `panel${el.id}`}

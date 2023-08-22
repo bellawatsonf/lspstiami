@@ -6,7 +6,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import store from "./store";
-
+import { PDFViewer } from "@react-pdf/renderer";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -63,7 +63,9 @@ export default function RootLayout({ children }) {
             style={{ width: "100%" }}
           >
             {/* <div style={{ visibility: hasAccess ? "visible" : "hidden" }}> */}
+            {/* <PDFViewer> */}
             {children}
+            {/* </PDFViewer> */}
 
             {/* </div> */}
           </GoogleOAuthProvider>

@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 // import jsHttpCookie from "cookie";
 import { NextRequest } from "next/server";
+import { PDFViewer } from "@react-pdf/renderer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,6 +61,7 @@ export default function DashboardLayout({ children }) {
     <>
       {(sessionToken && sessionUser?.role === "asesi") ||
       (sessionToken && sessionUser?.role === "admin") ? (
+        // <PDFViewer>
         <div className={inter.className}>
           <div className={`${styleDashboard.boxContainer}`}>
             <Sidebar />
@@ -70,6 +72,7 @@ export default function DashboardLayout({ children }) {
           </div>
         </div>
       ) : (
+        // {/* </PDFViewer> */}
         router.push("/login")
       )}
     </>

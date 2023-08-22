@@ -26,7 +26,7 @@ import LoadingComponent from "../component/loading";
 const key = "Sort";
 const useStyles = makeStyles({
   paginationStyle: {
-    "& .Mui-selected ": {
+    "& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected ": {
       background: "rgb(45, 195, 208)",
       color: "white",
     },
@@ -182,7 +182,7 @@ export default function AsesorTable() {
     },
     {
       label: "Bidang Skema",
-      renderCell: (item) => item.nama_skema,
+      renderCell: (item) => item.Skema.nama_skema,
       sort: { sortKey: "bidang_skema" },
     },
   ];
@@ -267,8 +267,8 @@ export default function AsesorTable() {
             </Typography>
             <CompactTable
               columns={COLUMNS}
-              // data={{ nodes: data?.dataAsesor }}
-              data={{ nodes: dataAsesor }}
+              data={{ nodes: data?.dataAsesor }}
+              // data={{ nodes: dataAsesor }}
               // sort={sort}
               // pagination={pagination}
               theme={theme}
@@ -280,13 +280,13 @@ export default function AsesorTable() {
                 marginTop: "35px",
               }}
             >
-              {/* <Pagination
+              <Pagination
                 count={data.totalPage}
                 page={stateField.page}
                 // color="primary"
                 onChange={handleChange}
                 className={classes.paginationStyle}
-              /> */}
+              />
             </div>
           </div>
           <Footer />

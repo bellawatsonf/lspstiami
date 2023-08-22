@@ -14,11 +14,22 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import LoadingComponent from "@/app/(public)/component/loading";
 
 const key = "Composed Table";
 
 export default function PendingPayment(props) {
-  console.log(props.dataAsesi, "props");
+  console.log(props.dataAsesiSkema, "props");
+  let loading = useSelector((state) => state.skema.loading);
+  const [dataSkema, setSkema] = useState({ nodes: [] });
+
+  // useEffect(() => {
+  //   if (props.dataAsesiSkema.length > 0) {
+  //     setSkema({ nodes: props.dataAsesiSkema });
+  //   }
+  // });
+  // console.log(dataSkema, "dtskema");
   let data = [
     {
       nama_asesi: "budianto",
@@ -96,9 +107,11 @@ export default function PendingPayment(props) {
   const router = useRouter();
 
   const theme = useTheme(getTheme());
-
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
-    <Table data={{ nodes: props.dataAsesi ?? [] }} theme={theme}>
+    <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
       {(tableList) => (
         <>
           <Header>
@@ -114,8 +127,9 @@ export default function PendingPayment(props) {
           </Header>
 
           <Body>
-            {tableList?.map((item, i) =>
-              item.asesi.status_pembayaran === "pending" ? (
+            {tableList?.map(
+              (item, i) => (
+                // item.asesi.status_pembayaran === "pending" ? (
                 <Row
                   key={i}
                   onClick={(e) => {
@@ -131,7 +145,8 @@ export default function PendingPayment(props) {
                   <Cell>{item.asesi.bukti_bayar}</Cell>
                   <Cell>{item.asesi.status_pembayaran}</Cell>
                 </Row>
-              ) : null
+              )
+              // ) : null
             )}
           </Body>
         </>

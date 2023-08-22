@@ -12,7 +12,7 @@ export function fetchAsesiSkemaServices(asesiskema) {
       method: "GET",
     })
       .then((data) => {
-        console.log(data.data.data, "dataasesi dari service");
+        console.log(data.data.data, "asesiskema dari service");
         dispatch({
           type: "asesiskema/getAsesiSkema",
           asesiskema: data.data.data,
@@ -27,12 +27,12 @@ export function fetchAsesiSkemaServices(asesiskema) {
   };
 }
 
-export function fetchAsesiSkemaById(id) {
+export function fetchAsesiSkemaByIdDetail(id) {
   return (dispatch, prevState) => {
     dispatch(Loading(true));
 
     axios({
-      url: `http://localhost:3001/asesi-skema/${id}`,
+      url: `http://localhost:3001/get-detail/${id}`,
       method: "GET",
     })
       .then((data) => {

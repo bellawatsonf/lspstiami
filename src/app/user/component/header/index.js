@@ -25,6 +25,8 @@ export default function HeaderDashboard() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user, "user");
   let router = useRouter();
 
   function handleLogout() {
@@ -43,6 +45,11 @@ export default function HeaderDashboard() {
             padding: "10px",
           }}
         >
+          <Typography
+            sx={{ fontWeight: 600, fontSize: "15px", paddingTop: "10px" }}
+          >
+            Halo, {user.nama}
+          </Typography>
           <Person3Icon
             onClick={handleOpen}
             sx={{ fontSize: "50px", cursor: "pointer" }}

@@ -115,7 +115,9 @@ export default function Asesi() {
             <RejectedPayment />
           </div>
         </Box>
-      ) : null}
+      ) : (
+        <p style={{ textAlign: "center" }}>data belum tersedia</p>
+      )}
     </>
   );
 }

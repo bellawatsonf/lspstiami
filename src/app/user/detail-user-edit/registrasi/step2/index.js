@@ -117,7 +117,8 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Nama Instansi"
                   id="fullWidth"
                   name="nama_instansi"
                   value={values.nama_instansi}
@@ -146,7 +147,8 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Jabatan Anda"
                   id="fullWidth"
                   name="jabatan"
                   value={values.jabatan}
@@ -175,7 +177,8 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Alamat Kantor Anda"
                   id="fullWidth"
                   name="alamat_kantor"
                   value={values.alamat_kantor}
@@ -205,7 +208,8 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Kode Pos Kantor Anda"
                   id="fullWidth"
                   name="kodepos_kantor"
                   value={values.kodepos_kantor}
@@ -235,10 +239,11 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Nomo Telp Kantor Anda"
                   id="fullWidth"
                   name="telp_kantor"
-                  value={values.telp_kantor}
+                  value={values.tlp_kantor}
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
@@ -265,7 +270,8 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Fax Kantor Anda"
                   id="fullWidth"
                   name="fax"
                   value={values.fax}
@@ -294,7 +300,8 @@ export default function Step2(props) {
           {errors.email && touched.email && errors.email} */}
                 <TextField
                   fullWidth
-                  label="fullWidth"
+                  // label="fullWidth"
+                  placeholder="Masukkan Email Kantor Anda"
                   id="fullWidth"
                   name="email_kantor"
                   value={values.email_kantor}
