@@ -68,7 +68,7 @@ export default function Step1(props) {
 
   function getProvinsi() {
     axios({
-      url: "http://localhost:3001/provinsi",
+      url: "/api/provinsi",
       method: "get",
     })
       .then((data) => {
@@ -84,7 +84,7 @@ export default function Step1(props) {
 
   function getKota() {
     axios({
-      url: `http://localhost:3001/kota/${selectedProv}`,
+      url: `/api/kota/${selectedProv}`,
       method: "get",
     })
       .then((data) => {
@@ -161,7 +161,7 @@ export default function Step1(props) {
     console.log(input, "inputan");
     axios({
       method: "PUT",
-      url: `http://localhost:3001/edit-asesi/${id}`,
+      url: `/api/edit-asesi/${id}`,
       data: input,
     })
       .then((data) => {

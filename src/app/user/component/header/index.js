@@ -26,7 +26,7 @@ export default function HeaderDashboard() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const user = JSON.parse(sessionStorage.getItem("user"));
-  console.log(user, "user");
+  // console.log(user, "user");
   let router = useRouter();
 
   function handleLogout() {

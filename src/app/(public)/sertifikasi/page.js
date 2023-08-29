@@ -17,6 +17,9 @@ import Navbar from "../component/Navbar";
 import Footer from "../component/footer";
 import LoadingComponent from "../component/loading";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+import ModalDaftarSkema from "./modal-daftarskema";
+import { useState } from "react";
 
 export default function SertifikasiPage() {
   let router = useRouter();
@@ -24,7 +27,16 @@ export default function SertifikasiPage() {
   const skema = useSelector((state) => state.skema.skema);
   console.log(skema, "dataskema");
   let [user, setUser] = React.useState("");
+  let [tokenuser, settoken] = React.useState("");
+  // let dataUser = JSON.parse(sessionStorage.getItem("user"));
+  // let token = sessionStorage.getItem("token");
+  // console.log(dataUser, token, "usertoken");
   const [loading, setLoading] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [paramsuser, setParams] = useState();
+
   React.useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
@@ -32,32 +44,59 @@ export default function SertifikasiPage() {
   React.useEffect(() => {
     dispatch(fetchSkema());
     try {
-      let value = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
+      let token = sessionStorage.getItem("token");
+      let value = JSON.parse(sessionStorage.getItem("user")); //untuk ubah dari string ke obj
       console.log(value, "value");
       setUser(value);
+      settoken(token);
     } catch (error) {
       console.log(error);
     }
   }, []);
 
-  function daftarSkema(idSkema) {
+  function daftarSkema(param) {
+    console.log(param, "masuk daftar skema");
+
     let input = {
-      id_skema: idSkema,
+      id_skema: param.id,
       id_asesi: user.id,
     };
-    axios({
-      method: "POST",
-      url: "http://localhost:3001/add-asesi-skema",
-      data: input,
-    })
-      .then((data) => {
-        console.log(data);
-        router.push("/user/profiluser");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(input, "input");
+    if (user?.role === "asesi" && tokenuser) {
+      console.log("masuk if");
+      setOpen(true);
+      setParams(param);
+      // Swal.fire({
+      //   // text: "Anda akan mendaftar skema",
+      //   // title: param.nama_skema,
+      //   html:
+      //     "Anda akan mendaftar skema" + "</br>" + `<b>${param.nama_skema}</b>`,
+      //   // icon: "warning",
+      //   showCancelButton: true,
+      //   confirmButtonColor: "#3085d6",
+      //   cancelButtonColor: "#d33",
+      //   confirmButtonText: "Yes, delete it!",
+      // }).then((result) => {
+      //   if (result.isConfirmed) {
+      //     Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      //   }
+      // });
+      // axios({
+      //   method: "POST",
+      //   url :"/api/add-asesi-skema",
+      //   data: input,
+      // })
+      //   .then((data) => {
+      //     console.log(data);
+      //     router.push("/user/profiluser");
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+    } else {
+      console.log("masuk else");
+      router.push("/login");
+    }
+    // console.log(input, "input");
   }
   console.log(skema, "skema");
   const Accordion = styled((props) => (
@@ -106,6 +145,14 @@ export default function SertifikasiPage() {
   }
   return (
     <>
+      <ModalDaftarSkema
+        open={open}
+        handleClose={handleClose}
+        // handleOpen={handleOpen}
+        setOpen={setOpen}
+        params={paramsuser}
+        datauser={user}
+      />
       <Navbar />
       <div className={`${stylesTentang.bannertentang}`}>
         <div className={`${styles.boxImg}`}>
@@ -203,9 +250,9 @@ export default function SertifikasiPage() {
                       fontWeight: 600,
                       textTransform: "none",
                     }}
-                    onClick={() => daftarSkema(el.id)}
+                    // onClick={() => daftarSkema(el)}
                   >
-                    Daftar Skema
+                    kuota tersedia : {el.kuota}
                   </Button>
                 </div>
               </AccordionDetails>

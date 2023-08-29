@@ -8,7 +8,7 @@ export function fetchAsesiServices(page, size) {
     dispatch(Loading(true));
     console.log(dispatch, "dispatch");
     axios({
-      url: "http://localhost:3001/asesi",
+      url: "/api/asesi",
       method: "GET",
     })
       .then((data) => {
@@ -28,11 +28,12 @@ export function fetchAsesiServices(page, size) {
 }
 
 export function fetchAsesiById(id) {
+  console.log("masuk fetch asesi by id");
   return (dispatch, prevState) => {
     dispatch(Loading(true));
 
     axios({
-      url: `http://localhost:3001/asesi/${id}`,
+      url: `/api/asesi/${id}`,
       method: "GET",
     })
       .then((data) => {

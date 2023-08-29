@@ -6,9 +6,7 @@ export function fetchAdmin(param) {
     console.log(dispatch, "dispatch");
     dispatch(Loading(true));
     axios({
-      url: `http://localhost:3001/admin?page=${param.page - 1}&size=${
-        param.size
-      }`,
+      url: `/api/admin?page=${param.page - 1}&size=${param.size}`,
       method: "GET",
     })
       .then((data) => {
@@ -33,7 +31,7 @@ export function fetchAdminById(id) {
 
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/get-adminById/${id}`,
+      url: `/api/get-adminById/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -55,7 +53,7 @@ export function fetchAdminById(id) {
 export function addAdmin(input) {
   return (dispatch, prevState) => {
     axios({
-      url: "http://localhost:3001/add-admin",
+      url: "/api/add-admin",
       method: "post",
       data: input,
     })
@@ -73,7 +71,7 @@ export function editAdmin(input, id) {
   console.log(input, id, "dari service");
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/edit-admin/${id}`,
+      url: `/api/edit-admin/${id}`,
       method: "patch",
       data: input,
     })
@@ -90,7 +88,7 @@ export function editAdmin(input, id) {
 export function deleteAdmin(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/delete-admin/${id}`,
+      url: `/api/delete-admin/${id}`,
       method: "delete",
     })
       .then((data) => {

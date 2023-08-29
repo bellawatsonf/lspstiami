@@ -14,6 +14,8 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import { useRouter } from "next/navigation";
+import { Button, Typography } from "@mui/material";
+import { RemoveCircleOutline } from "@mui/icons-material";
 
 const key = "Composed Table";
 
@@ -108,14 +110,15 @@ export default function ApprovedPayment(props) {
               <HeaderCell>KTP</HeaderCell>
               <HeaderCell>Ijazah</HeaderCell>
               <HeaderCell>Pas Foto</HeaderCell>
-              <HeaderCell>Bukti Bayar</HeaderCell>
-              <HeaderCell>Status Pembayaran</HeaderCell>
+              <HeaderCell>Jenis Paket</HeaderCell>
+              <HeaderCell>Status Pengecekan</HeaderCell>
+              <HeaderCell></HeaderCell>
             </HeaderRow>
           </Header>
 
           <Body>
             {tableList?.map((item, i) =>
-              item.asesi.status_pembayaran === "paid" ? (
+              item.jenis_paket === "ujikom" ? (
                 <Row
                   key={i}
                   onClick={(e) => {
@@ -128,8 +131,39 @@ export default function ApprovedPayment(props) {
                   <Cell>{item.asesi.img_ktp}</Cell>
                   <Cell>{item.asesi.ijazah}</Cell>
                   <Cell>{item.asesi.pas_foto}</Cell>
-                  <Cell>{item.asesi.bukti_bayar}</Cell>
-                  <Cell>{item.asesi.status_pembayaran}</Cell>
+                  <Cell>{item.jenis_paket}</Cell>
+                  <Cell>
+                    <Typography
+                      sx={{
+                        color:
+                          item.status_cek === "belum-dicek"
+                            ? "grey"
+                            : item.status_cek === "revisi"
+                            ? "red"
+                            : "blue",
+                      }}
+                    >
+                      {item.status_cek === "belum-dicek"
+                        ? "false"
+                        : item.status_cek}
+                    </Typography>
+                  </Cell>
+                  <Cell>
+                    <div className="d-flex">
+                      <Button
+                        variant="contained"
+                        onClick={(e) => {
+                          router.push(`/user/admin/Asesi/detail/${item.id}`);
+                        }}
+                      >
+                        Detail
+                      </Button>
+                      <RemoveCircleOutline
+                        sx={{ marginTop: "8px", marginLeft: "10px" }}
+                        onClick={() => dispatch(deleteAsesiSkema(item.id))}
+                      />
+                    </div>
+                  </Cell>
                 </Row>
               ) : null
             )}

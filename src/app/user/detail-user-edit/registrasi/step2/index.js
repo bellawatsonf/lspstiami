@@ -59,7 +59,7 @@ export default function Step2(props) {
     console.log(input, "inputan");
     axios({
       method: "PUT",
-      url: `http://localhost:3001/edit-asesi/${id}`,
+      url: `/api/edit-asesi/${id}`,
       data: input,
     })
       .then((data) => {

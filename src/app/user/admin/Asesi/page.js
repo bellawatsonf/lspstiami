@@ -68,7 +68,7 @@ export default function Asesi() {
   }, []);
   // const fetchData = () => {
   //   axios({
-  //     url: "http://localhost:3001/asesi",
+  //     url :"/api/asesi",
   //     method: "get",
   //   })
   //     .then((data) => {
@@ -100,9 +100,9 @@ export default function Asesi() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Pending" {...a11yProps(0)} />
-              <Tab label="Approved" {...a11yProps(1)} />
-              <Tab label="Rejected" {...a11yProps(2)} />
+              <Tab label="Ujikom Pengayaan" {...a11yProps(0)} />
+              <Tab label="Ujikom" {...a11yProps(1)} />
+              {/* <Tab label="Rejected" {...a11yProps(2)} /> */}
             </Tabs>
           </Box>
           <div hidden={value !== 0}>
@@ -111,9 +111,9 @@ export default function Asesi() {
           <div hidden={value !== 1}>
             <ApprovedPayment dataAsesiSkema={dataAsesiSkema} />
           </div>
-          <div hidden={value !== 2}>
+          {/* <div hidden={value !== 2}>
             <RejectedPayment />
-          </div>
+          </div> */}
         </Box>
       ) : (
         <p style={{ textAlign: "center" }}>data belum tersedia</p>

@@ -5,7 +5,7 @@ export function fetchKriteriaKerja(skema) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: "http://localhost:3001/kriteria-unitkerja",
+      url: "/api/kriteria-unitkerja",
       method: "GET",
     })
       .then((data) => {
@@ -26,7 +26,7 @@ export function fetchKriteriaKerjaById(id) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/kriteriakerjabyid/${id}`,
+      url: `/api/kriteriakerjabyid/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -46,7 +46,7 @@ export function addKriteriaKerja(input, idSkema) {
   console.log(input, "masukdrkriteria");
   return (dispatch, prevState) => {
     axios({
-      url: "http://localhost:3001/add-kriteria-unitkerja",
+      url: "/api/add-kriteria-unitkerja",
       method: "post",
       data: input,
     })
@@ -64,7 +64,7 @@ export function editKriteriaKerja(input, idSkema, idKriteria) {
   console.log(input, "dari service");
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/edit-kriteriakerjabyid/${idKriteria}`,
+      url: `/api/edit-kriteriakerjabyid/${idKriteria}`,
       method: "put",
       data: input,
     })
@@ -81,7 +81,7 @@ export function editKriteriaKerja(input, idSkema, idKriteria) {
 export function deleteKriteriaKerja(id, idskema) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/delete-kriteriakerjabyid/${id}`,
+      url: `/api/delete-kriteriakerjabyid/${id}`,
       method: "delete",
     })
       .then((data) => {

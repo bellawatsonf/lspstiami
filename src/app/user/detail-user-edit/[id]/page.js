@@ -124,7 +124,7 @@ export default function DetailEdit() {
               {/* <Tab label="Data Sertifikasi" {...a11yProps(2)} /> */}
               <Tab label="Kelengkapan Berkas" {...a11yProps(2)} />
               <Tab label="Tanda Tangan Asesi" {...a11yProps(3)} />
-              <Tab label="Sertifikasi" {...a11yProps(4)} />
+              {/* <Tab label="Sertifikasi" {...a11yProps(4)} /> */}
             </Tabs>
           </Box>
           <div hidden={value !== 0}>
@@ -140,9 +140,9 @@ export default function DetailEdit() {
           <div hidden={value !== 3}>
             <Step4 dataAsesi={userById} />
           </div>
-          <div hidden={value !== 4}>
+          {/* <div hidden={value !== 4}>
             <Step5 dataAsesi={userById} />
-          </div>
+          </div> */}
         </Box>
       ) : null}
     </>

@@ -5,7 +5,7 @@ export function fetchUnitKompetensi(skema) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: "http://localhost:3001/unitkompetensi",
+      url: "/api/unitkompetensi",
       method: "GET",
     })
       .then((data) => {
@@ -26,7 +26,7 @@ export function fetchUnitKompetensiById(id) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/unitkompetensibyid/${id}`,
+      url: `/api/unitkompetensibyid/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -46,7 +46,7 @@ export function addUnitKompetensi(input) {
   console.log(input, "druunit");
   return (dispatch, prevState) => {
     axios({
-      url: "http://localhost:3001/add-unitkompetensi",
+      url: "/api/add-unitkompetensi",
       method: "post",
       data: input,
     })
@@ -64,7 +64,7 @@ export function editUnitKompetensi(input, id) {
   console.log(input, id, "dari service");
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/edit-unitkompetensibyid/${id}`,
+      url: `/api/edit-unitkompetensibyid/${id}`,
       method: "put",
       data: input,
     })
@@ -81,7 +81,7 @@ export function editUnitKompetensi(input, id) {
 export function deleteUnitKompetensi(id, idskema) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/delete-unitkompetensibyid/${id}`,
+      url: `/api/delete-unitkompetensibyid/${id}`,
       method: "delete",
     })
       .then((data) => {

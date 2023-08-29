@@ -6,9 +6,7 @@ export function fetchAsesorServices(params) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/asesor?page=${params.page - 1}&size=${
-        params.size
-      }`,
+      url: `/api/asesor?page=${params.page - 1}&size=${params.size}`,
       method: "GET",
     })
       .then((data) => {
@@ -30,7 +28,7 @@ export function fetchAsesorServices(params) {
 export function fetchAsesorById(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/get-asesorById/${id}`,
+      url: `/api/get-asesorById/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -49,7 +47,7 @@ export function fetchAsesorById(id) {
 export function addAsesor(input) {
   return (dispatch, prevState) => {
     axios({
-      url: "http://localhost:3001/add-asesor",
+      url: "/api/add-asesor",
       method: "post",
       data: input,
     })
@@ -67,7 +65,7 @@ export function editAsesor(input, id) {
   console.log(input, id, "dari service");
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/edit-asesor/${id}`,
+      url: `/api/edit-asesor/${id}`,
       method: "patch",
       data: input,
     })
@@ -84,7 +82,7 @@ export function editAsesor(input, id) {
 export function deleteAsesor(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/delete-asesor/${id}`,
+      url: `/api/delete-asesor/${id}`,
       method: "delete",
     })
       .then((data) => {

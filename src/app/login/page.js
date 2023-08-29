@@ -18,6 +18,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import LoadingComponent from "../(public)/component/loading";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles({
   root: {
@@ -45,7 +46,7 @@ export default function Login() {
     password: "",
   };
   const [stateField, setStateField] = useState(initialState);
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("asesi");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -70,7 +71,7 @@ export default function Login() {
     // console.log(id_token_google, "tokengoogle");
 
     axios({
-      url: "http://localhost:3001/loginGoogle",
+      url: "/api/loginGoogle",
       method: "POST",
       data: { id_token_google },
     })
@@ -116,7 +117,7 @@ export default function Login() {
       console.log(id_token_google, "tokengoogle");
 
       axios({
-        url: "http://localhost:3001/loginGoogle",
+        url: "/api/loginGoogle",
         method: "POST",
 
         data: { id_token_google },
@@ -168,11 +169,11 @@ export default function Login() {
     setLoading(true);
     axios({
       method: "POST",
-      url: "http://localhost:3001/login",
+      url: "/api/login",
       data: input,
     })
       .then((data) => {
-        console.log(data.data, "data");
+        console.log(data.data, "datalogin");
         sessionStorage.setItem("token", data.data.token);
         localStorage.setItem(
           "user",
@@ -193,7 +194,10 @@ export default function Login() {
         router.push("/user/admin/Asesi");
       })
       .catch((err) => {
-        console.log(err, "error");
+        Swal.fire({
+          icon: "error",
+          text: "Email / Password tidak valid",
+        });
       })
       .finally((_) => {
         setLoading(false);
@@ -209,182 +213,179 @@ export default function Login() {
         {/* <div className={`${style.boxLogo}`}></div> */}
         <div className={`${style.boxLogin}`}>
           <img className={`${style.logo}`} src="/logoolsp.png" />
-          {role !== "" ? (
-            <div className={`${style.contentLogin}`}>
-              {role === "asesi" ? (
-                <>
-                  <Typography
-                    sx={{
-                      fontSize: "30px",
-                      textAlign: "center",
-                      fontWeight: 700,
-                      paddingBottom: "20px",
-                    }}
-                  >
-                    Masuk
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: "12px",
-                      textAlign: "center",
-                      fontWeight: 700,
-                      paddingBottom: "50px",
-                      color: "grey",
-                    }}
-                  >
-                    Bagi Calon Asesi Silahkan Masuk Melalui Google
-                  </Typography>
-
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "50%",
-                      background: "grey",
-                      display: "block",
-                      margin: "auto",
-                    }}
-                    onClick={() => login()}
-                  >
-                    {" "}
-                    <GoogleIcon /> Sign in
-                  </Button>
-                </>
-              ) : (
-                // <div className="d-flex mb-3 mt-5">
-                //   <hr
-                //     style={{
-                //       color: "grey",
-                //       background: "grey",
-                //       height: 2,
-                //       width: "50%",
-                //     }}
-                //   />
-                //   <Typography
-                //     sx={{
-                //       fontSize: "12px",
-                //       textAlign: "center",
-                //       fontWeight: 700,
-                //       paddingBottom: "20px",
-                //       color: "grey",
-                //     }}
-                //   >
-                //     or
-                //   </Typography>
-                //   <hr
-                //     style={{
-                //       color: "grey",
-                //       background: "grey",
-                //       height: 2,
-                //       width: "50%",
-                //     }}
-                //   />
-                // </div>
-                <Formik
-                  validateOnChange={true}
-                  initialValues={stateField}
-                  onSubmit={(values, { setSubmitting }) => {
-                    handleSubmitLogin(values);
+          <div className={`${style.contentLogin}`}>
+            <Typography
+              sx={{
+                fontSize: "30px",
+                textAlign: "center",
+                fontWeight: 700,
+                paddingBottom: "20px",
+              }}
+            >
+              Masuk
+            </Typography>
+            <Typography sx={{ textAlign: "center", fontWeight: 600 }}>
+              Silahkan Pilih Peran Anda
+            </Typography>
+            <div className={`${style.boxRole}`}>
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <InputLabel id="demo-select-small-label">Peran</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={role}
+                  label="Role"
+                  onChange={handleChange}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value="asesi">Asesi</MenuItem>
+                  <MenuItem value="notasesi">Asesor / Admin</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+          </div>
+          <div className={`${style.contentLogin}`}>
+            {role === "asesi" ? (
+              <>
+                {/* <Typography
+                  sx={{
+                    fontSize: "30px",
+                    textAlign: "center",
+                    fontWeight: 700,
+                    paddingBottom: "20px",
                   }}
                 >
-                  {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    isSubmitting,
-                  }) => (
-                    <form onSubmit={handleSubmit}>
-                      <TextField
-                        id="standard-password-input"
-                        label="Email"
-                        type="email"
-                        name="email"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        autoComplete="current-password"
-                        variant="standard"
-                        className={classes.root}
-                        value={values.email}
-                      />
-                      <TextField
-                        id="standard-password-input"
-                        label="Password"
-                        type="password"
-                        name="password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}
-                        autoComplete="current-password"
-                        variant="standard"
-                        className={classes.root}
-                      />
-                      <Typography
-                        sx={{
-                          fontSize: "12px",
-                          textAlign: "center",
-                          fontWeight: 700,
-                          paddingTop: "20px",
-                          paddingBottom: "30px",
-                          color: "black",
-                          textAlign: "right",
-                        }}
-                      >
-                        Forgot Password
-                      </Typography>
-                      <Button
-                        variant="contained"
-                        sx={{
-                          background: "black",
-                          width: "100%",
-                          marginTop: "20px",
-                          borderRadius: "10px",
-                        }}
-                        type="submit"
-                      >
-                        Masuk
-                      </Button>
-                    </form>
-                  )}
-                </Formik>
-              )}
-            </div>
-          ) : (
-            <div className={`${style.contentLogin}`}>
-              <Typography
-                sx={{
-                  fontSize: "30px",
-                  textAlign: "center",
-                  fontWeight: 700,
-                  paddingBottom: "20px",
+                  Masuk
+                </Typography> */}
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                    textAlign: "center",
+                    fontWeight: 700,
+                    paddingBottom: "50px",
+                    color: "grey",
+                  }}
+                >
+                  Bagi Calon Asesi Silahkan Masuk Melalui Google
+                </Typography>
+
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "50%",
+                    background: "grey",
+                    display: "block",
+                    margin: "auto",
+                  }}
+                  onClick={() => login()}
+                >
+                  {" "}
+                  <GoogleIcon /> Sign in
+                </Button>
+              </>
+            ) : (
+              // <div className="d-flex mb-3 mt-5">
+              //   <hr
+              //     style={{
+              //       color: "grey",
+              //       background: "grey",
+              //       height: 2,
+              //       width: "50%",
+              //     }}
+              //   />
+              //   <Typography
+              //     sx={{
+              //       fontSize: "12px",
+              //       textAlign: "center",
+              //       fontWeight: 700,
+              //       paddingBottom: "20px",
+              //       color: "grey",
+              //     }}
+              //   >
+              //     or
+              //   </Typography>
+              //   <hr
+              //     style={{
+              //       color: "grey",
+              //       background: "grey",
+              //       height: 2,
+              //       width: "50%",
+              //     }}
+              //   />
+              // </div>
+              <Formik
+                validateOnChange={true}
+                initialValues={stateField}
+                onSubmit={(values, { setSubmitting }) => {
+                  handleSubmitLogin(values);
                 }}
               >
-                Masuk
-              </Typography>
-              <Typography sx={{ textAlign: "center", fontWeight: 600 }}>
-                Silahkan Pilih Peran Anda
-              </Typography>
-              <div className={`${style.boxRole}`}>
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Peran</InputLabel>
-                  <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
-                    value={role}
-                    label="Role"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="asesi">Asesi</MenuItem>
-                    <MenuItem value="notasesi">Asesor / Admin</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-            </div>
-          )}
+                {({
+                  values,
+                  errors,
+                  touched,
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  isSubmitting,
+                }) => (
+                  <form onSubmit={handleSubmit}>
+                    <TextField
+                      id="standard-password-input"
+                      label="Email"
+                      type="email"
+                      name="email"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      autoComplete="current-password"
+                      variant="standard"
+                      className={classes.root}
+                      value={values.email}
+                    />
+                    <TextField
+                      id="standard-password-input"
+                      label="Password"
+                      type="password"
+                      name="password"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.password}
+                      autoComplete="current-password"
+                      variant="standard"
+                      className={classes.root}
+                    />
+                    <Typography
+                      sx={{
+                        fontSize: "12px",
+                        textAlign: "center",
+                        fontWeight: 700,
+                        paddingTop: "20px",
+                        paddingBottom: "30px",
+                        color: "black",
+                        textAlign: "right",
+                      }}
+                    >
+                      Forgot Password
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        background: "black",
+                        width: "100%",
+                        marginTop: "20px",
+                        borderRadius: "10px",
+                      }}
+                      type="submit"
+                    >
+                      Masuk
+                    </Button>
+                  </form>
+                )}
+              </Formik>
+            )}
+          </div>
         </div>
       </div>
     </>

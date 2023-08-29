@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   asesiskema: [],
   AsesiSkemaById: {},
+  asesiSkemaByUser: [],
 };
 
 const asesiskemaSlice = createSlice({
@@ -24,9 +25,17 @@ const asesiskemaSlice = createSlice({
         type: "asesiskema/getAsesiSkemaById",
       };
     },
+    getAsesiSkemaByUser: (state, action) => {
+      return {
+        ...state,
+        asesiSkemaByUser: action.asesiSkemaByUser,
+        type: "asesiskema/getAsesiSkemaByUser",
+      };
+    },
   },
 });
-export const { getAsesiSkema, getAsesiSkemaById } = asesiskemaSlice.actions;
+export const { getAsesiSkema, getAsesiSkemaById, getAsesiSkemaByUser } =
+  asesiskemaSlice.actions;
 export default asesiskemaSlice.reducer;
 
 // export default function reducer(state = initialState, action) {

@@ -58,7 +58,7 @@ export default function Step3() {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      url: `http://localhost:3001/edit-asesi/${id}`,
+      url: `/api/edit-asesi/${id}`,
       data: formData,
     })
       .then((data) => {
@@ -85,7 +85,7 @@ export default function Step3() {
     //     headers: {
     //       "Content-Type": "multipart/form-data",
     //     },
-    //     url: `http://localhost:3001/edit-asesi/${id}`,
+    //     url: `/api/edit-asesi/${id}`,
     //     data: input,
     //   })
     //     .then((data) => {

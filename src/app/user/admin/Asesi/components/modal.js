@@ -6,13 +6,15 @@ import Modal from "@mui/material/Modal";
 import ModalTtdAdmin from "./modalTtdAdmin";
 import axios from "axios";
 import { useParams } from "next/navigation";
+import { CloseOutlined } from "@mui/icons-material";
+import Swal from "sweetalert2";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 500,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -28,20 +30,29 @@ export default function ModalRekomendasiAsesi(props) {
   let id_asesikema = params.id;
 
   function prosesRekomendasiAsesi(value) {
-    let idAdmin = JSON.parse(localStorage.getItem("user"));
+    let idAdmin = JSON.parse(sessionStorage.getItem("user"));
     let input = {
       rekomendasi_sebagai_asesi: value,
       id_asesi_skema: id_asesikema,
       id_admin: idAdmin.id,
+      status_ujikom: "aktif",
+      id_asesi: props.id_asesi,
     };
-    props.handleCloseModal();
-    handleOpenModalTtd();
+    // props.handleCloseModal();
+    // handleOpenModalTtd();
     axios({
       method: "POST",
-      url: "http://localhost:3001/add-apl01",
+      url: "/api/add-apl01",
       data: input,
     })
       .then((data) => {
+        // Swal.fire({
+        //   position: "top-end",
+        //   icon: "success",
+        //   title: "berhasil memperbaharui data",
+        //   showConfirmButton: false,
+        //   timer: 1500,
+        // });
         console.log(data, "ini datanya");
         props.handleCloseModal();
         handleOpenModalTtd();
@@ -54,14 +65,29 @@ export default function ModalRekomendasiAsesi(props) {
     <>
       <Modal
         open={props.openModal}
-        onClose={props.handleCloseModal}
+        // onClose={props.handleCloseModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              cursor: "pointer",
+              color: "red",
+            }}
+          >
+            <CloseOutlined
+              onClick={() => {
+                props.setOpenModal(false);
+                // props.setStatusForm("");
+              }}
+            />
+          </div>
           <Typography id="modal-modal-title" sx={{ fontSize: "17px" }}>
-            Apakah Anda Akan Merekomendasikan <b>{props.nama_asesi}</b> Sebagai
-            Asesi ?
+            Apakah Anda yakin akan merekomendasikan <b>{props.nama_asesi}</b>{" "}
+            Sebagai Asesi ?
           </Typography>
           <div className="d-flex justify-content-center mt-5">
             <Button
@@ -98,6 +124,7 @@ export default function ModalRekomendasiAsesi(props) {
       <ModalTtdAdmin
         openModalTtd={openModalTtd}
         handleCloseModalTtd={handleCloseModalTtd}
+        idAsesi={props.id_asesi}
       />
     </>
   );

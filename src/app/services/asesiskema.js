@@ -8,7 +8,7 @@ export function fetchAsesiSkemaServices(asesiskema) {
     dispatch(Loading(true));
 
     axios({
-      url: "http://localhost:3001/asesi-skema",
+      url: "/api/asesi-skema",
       method: "GET",
     })
       .then((data) => {
@@ -32,7 +32,7 @@ export function fetchAsesiSkemaByIdDetail(id) {
     dispatch(Loading(true));
 
     axios({
-      url: `http://localhost:3001/get-detail/${id}`,
+      url: `/api/get-detail/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -44,6 +44,52 @@ export function fetchAsesiSkemaByIdDetail(id) {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
+      });
+  };
+}
+
+export function fetchAsesiSkemaByUser(userId) {
+  console.log("datauserasesiskemabyuser", userId);
+  return (dispatch, prevState) => {
+    dispatch(Loading(true));
+
+    axios({
+      url: `/api/asesi-skema/${userId}`,
+      method: "GET",
+    })
+      .then((data) => {
+        console.log(data.data, "datauserasesiskemabyuser");
+        dispatch({
+          type: "asesiskema/getAsesiSkemaByUser",
+          asesiSkemaByUser: data.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err, "datausererror");
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
+      });
+  };
+}
+
+export function deleteAsesiSkema(id) {
+  return (dispatch, prevState) => {
+    dispatch(Loading(true));
+
+    axios({
+      url: `/api/delete-asesiskema/${id}`,
+      method: "DELETE",
+    })
+      .then((data) => {
+        console.log(data.data, "datauserasesiskemabyuser");
+        dispatch(fetchAsesiSkemaServices());
+      })
+      .catch((err) => {
+        console.log(err, "datausererror");
       })
       .finally((_) => {
         dispatch(Loading(false));

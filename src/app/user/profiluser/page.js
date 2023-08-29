@@ -2,40 +2,55 @@
 
 import LoadingComponent from "@/app/(public)/component/loading";
 import { fetchAsesiById } from "@/app/services/asesi";
+import { fetchAsesiSkemaByUser } from "@/app/services/asesiskema";
 import { Typography, Box, Button } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DownloadPdf from "../component/donwloadPdf";
+import { fetchApl01ByUser } from "@/app/services/apl01";
 
 export default function ProfileUser() {
   let router = useRouter();
   let [user, setUser] = useState("");
   let dataUser = useSelector((state) => state.asesi.AsesiById);
+  let asesiskemabyuser = useSelector(
+    (state) => state.asesiskema.asesiSkemaByUser
+  );
   const dispatch = useDispatch();
   const id = JSON.parse(sessionStorage.getItem("user"));
   let loading = useSelector((state) => state.skema.loading);
   let [selectedSkema, setSkema] = useState("");
-  console.log(dataUser, "datauser");
+  let aplbyuser = useSelector((state) => state.apl01.apl01ByUser);
+  console.log(dataUser, "datauserrr");
   useEffect(() => {
     dispatch(fetchAsesiById(id.id));
-  }, []);
-  useEffect(() => {
-    try {
-      let value = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
-      console.log(value, "value");
-      setUser(value);
-    } catch (error) {
-      console.log(error);
-    }
-    getSelectedSkema();
+    dispatch(fetchApl01ByUser(id.id));
   }, []);
 
-  function getSelectedSkema() {
+  useEffect(() => {
+    // try {
+    //   let value = JSON.parse(localStorage.getItem("user")); //untuk ubah dari string ke obj
+    //   let valueuser = JSON.parse(sessionStorage.getItem("user")); //untuk ubah dari string ke obj
+    //   console.log(value, "value");
+    //   setUser(value);
+    // if (value) {
+    //   getSelectedSkema(value.id);
+    // }
+    getSelectedSkema(dataUser.id);
+
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }, []);
+
+  function getSelectedSkema(idUser) {
+    console.log("masuk getselected");
     axios({
       method: "GET",
-      url: `http://localhost:3001/asesi-skema/${id.id}`,
+      url: `/api/asesi-skema/${id.id}`,
     })
       .then((data) => {
         console.log(data.data.data.skema.nama_skema, "selectedskema");
@@ -46,18 +61,47 @@ export default function ProfileUser() {
   function DetailEdit(id) {
     router.push(`detail-user-edit/${id}`);
   }
-  console.log(user);
+
+  // useEffect(() => {
+  //   let valueuser = JSON.parse(sessionStorage.getItem("user"));
+  //   dispatch(fetchAsesiSkemaByUser(valueuser.id));
+  // }, []);
+
+  console.log(aplbyuser, "apl01byuser");
 
   if (loading) {
     return <LoadingComponent />;
   }
   return (
     <>
+      {/* {asesiskemabyuser.length > 0 ? (
+        <> */}
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        {/* <Button
+          variant="outlined"
+          // disabled={asesiskemabyuser.map((el) => {
+          //   el.status_cek === "sudah-dicek" ? false : true;
+          // })}
+
+          sx={{ fontWeight: 700, textTransform: "none", marginRight: "10px" }}
+          onClick={() => DetailEdit(id.id)}
+        >
+          Download PDF
+        </Button> */}
+        {aplbyuser !== null ? <DownloadPdf data={aplbyuser} /> : null}
+
         <Button
           variant="outlined"
-          sx={{ fontWeight: 700, textTransform: "none" }}
-          onClick={() => DetailEdit(user.id)}
+          // disabled={asesiskemabyuser.map((el) => {
+          //   el.status_cek === "sudah-dicek" ? false : true;
+          // })}
+          sx={{
+            fontWeight: 700,
+            textTransform: "none",
+            background: "#1976D2",
+            color: "white",
+          }}
+          onClick={() => DetailEdit(id.id)}
         >
           Ubah
         </Button>
@@ -197,7 +241,7 @@ export default function ProfileUser() {
           <div className="col-9 mt-2">
             :{" "}
             {selectedSkema === "" ? (
-              <Link style={{ textDecoration: "none" }} href="/sertifikasi">
+              <Link style={{ textDecoration: "none" }} href="/list-skema">
                 Pilih Skema
               </Link>
             ) : (
@@ -210,6 +254,10 @@ export default function ProfileUser() {
           </div>
         </div>
       </Box>
+      {/* </>
+      ) : (
+        <LoadingComponent />
+      )} */}
     </>
   );
 }

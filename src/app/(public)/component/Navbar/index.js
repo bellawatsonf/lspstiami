@@ -5,10 +5,43 @@ import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import LoadingComponent from "../loading";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  console.log(open, "open");
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  let token = sessionStorage.getItem("token");
+  let [loading, setLoading] = useState(false);
+  // let loading = useSelector((state)=>state.skema.loading)
+  console.log(user, "userdrnavbar");
+  console.log(loading, "loadingdrnavbar");
+
+  useEffect(() => {
+    console.log(user, "druseeffect");
+    if (loading) {
+      setTimeout(() => setLoading(false), 1000);
+    }
+  }, [user]);
+  function handleLogout(e) {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      console.log("handleLogout");
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("user");
+      // router.push("/login");
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(true);
+    }
+  }
+  if (loading) {
+    return <LoadingComponent />;
+  }
   return (
     <div className="navigation">
       <div className="container">
@@ -48,9 +81,24 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className={style["nav-item"]}>
-                <Link className={style["nav-item"]} href="/login">
-                  Masuk
-                </Link>
+                {user && token ? (
+                  <Link
+                    className={style["nav-item"]}
+                    style={{ color: "blue", fontWeight: 700 }}
+                    // onClick={(e) => handleLogout(e)}
+                    href={
+                      user.role === "asesi"
+                        ? "/user/dashboard"
+                        : "/user/admin/Asesi"
+                    }
+                  >
+                    Dashboard
+                  </Link>
+                ) : (
+                  <Link className={style["nav-item"]} href="/login">
+                    Masuk
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

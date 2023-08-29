@@ -5,7 +5,7 @@ export function fetchSkema(skema) {
     console.log(dispatch, "dispatch");
     dispatch(Loading(true));
     axios({
-      url: "http://localhost:3001/skemasertifikasi",
+      url: "/api/skemasertifikasi",
       method: "GET",
     })
       .then((data) => {
@@ -31,7 +31,7 @@ export function fetchSkemaById(id) {
 
     console.log(dispatch, "dispatch");
     axios({
-      url: `http://localhost:3001/get-skemaById/${id}`,
+      url: `/api/get-skemaById/${id}`,
       method: "GET",
     })
       .then((data) => {
@@ -53,7 +53,7 @@ export function fetchSkemaById(id) {
 export function addSkema(input) {
   return (dispatch, prevState) => {
     axios({
-      url: "http://localhost:3001/add-skemasertifikasi",
+      url: "/api/add-skemasertifikasi",
       method: "post",
       data: input,
     })
@@ -71,7 +71,7 @@ export function editSkema(input, id) {
   console.log(input, id, "dari service");
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/edit-skemaById/${id}`,
+      url: `/api/edit-skemaById/${id}`,
       method: "put",
       data: input,
     })
@@ -88,7 +88,7 @@ export function editSkema(input, id) {
 export function deleteSkema(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `http://localhost:3001/delete-skema/${id}`,
+      url: `/api/delete-skema/${id}`,
       method: "delete",
     })
       .then((data) => {

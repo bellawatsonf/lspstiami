@@ -8,7 +8,7 @@
 }
 
 .boxLogin {
-  top: 20%;
+  top: 12%;
   position: relative;
   width: 40%;
   background: white;
@@ -30,7 +30,7 @@
 .contentLogin {
   /* background: grey; */
   width: 60%;
-  padding-top: 40px;
+  padding-top: 10px;
   padding-bottom: 40px;
 
   margin: auto;

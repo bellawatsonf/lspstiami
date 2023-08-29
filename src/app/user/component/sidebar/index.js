@@ -7,8 +7,10 @@ import PersonPinIcon from "@mui/icons-material/PersonPin";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
+  let router = useRouter();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -39,7 +41,12 @@ export default function Sidebar() {
         <div className={`${sidebarStyle.boxMenu}`}>
           <div className="aa" style={{ height: "100vh" }}>
             <div className={`${sidebarStyle.boxlogo}`}>
-              <img className={`${sidebarStyle.imglogo}`} src="/logoolsp.png" />
+              <img
+                className={`${sidebarStyle.imglogo}`}
+                style={{ cursor: "pointer" }}
+                src="/logoolsp.png"
+                onClick={() => router.push("/")}
+              />
             </div>
             <div className={`${sidebarStyle.boxListMenu}`}>
               {user.role === "admin" ? (
@@ -156,7 +163,7 @@ export default function Sidebar() {
                         className={`${sidebarStyle.boxlist}`}
                         href="/user/dashboard"
                       >
-                        Dashboard
+                        Status
                       </Link>
                     </MenuItem>
                   </div>
@@ -167,18 +174,18 @@ export default function Sidebar() {
                         className={`${sidebarStyle.boxlist}`}
                         href="/user/profiluser"
                       >
-                        Riwayat Pribadi
+                        Data Asesi
                       </Link>
                     </MenuItem>
                   </div>
-                  <div className={`${sidebarStyle.boxlist}`}>
+                  {/* <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
                       <PersonPinIcon sx={{ marginRight: "5px" }} />
                       <Link href="" className={`${sidebarStyle.boxlist}`}>
                         Nilai
                       </Link>
                     </MenuItem>
-                  </div>
+                  </div> */}
                 </MenuList>
               )}
             </div>

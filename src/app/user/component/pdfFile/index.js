@@ -1,4 +1,11 @@
-import { Page, Text, Image, Document, Stylesheet } from "@react-pdf/renderer";
+import {
+  Page,
+  Text,
+  Image,
+  Document,
+  Stylesheet,
+  View,
+} from "@react-pdf/renderer";
 import style from "./pdf.module.css";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -53,11 +60,6 @@ export default function PdfFile() {
     return { name, calories, fat, carbs, protein };
   }
 
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-  ];
   return (
     // <Provider store={store}>
     <Document>
@@ -284,6 +286,7 @@ export default function PdfFile() {
             <Table sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
+                  <StyledTableCell>No.</StyledTableCell>
                   <StyledTableCell>Kode Unit</StyledTableCell>
                   <StyledTableCell>Judul Unit</StyledTableCell>
                   <StyledTableCell>
@@ -292,8 +295,11 @@ export default function PdfFile() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {apl01byid?.asesi_skema?.skema?.unitkompetensi.map((row) => (
+                {apl01byid?.asesi_skema?.skema?.unitkompetensi.map((row, i) => (
                   <StyledTableRow key={row.name}>
+                    <StyledTableCell component="th" scope="row">
+                      {(i += 1)}
+                    </StyledTableCell>
                     <StyledTableCell component="th" scope="row">
                       {row.kode_unit}
                     </StyledTableCell>
@@ -365,6 +371,59 @@ export default function PdfFile() {
                       {row.judul_unit}
                     </StyledTableCell>
                     <StyledTableCell>SKKNI</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
+        <Box sx={{ marginBottom: "30px" }}>
+          <div
+            style={{
+              display: "flex",
+              paddingBottom: "20px",
+              // paddingTop: "20px",
+            }}
+          >
+            <Typography sx={{ fontWeight: 700 }}>b.</Typography>
+            <div style={{ paddingLeft: "10px" }}>
+              <Typography sx={{ fontWeight: 700, paddingBottom: "10px" }}>
+                Bukti kompetensi yang relevan :
+              </Typography>
+            </div>
+          </div>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell rowSpan={2}>No.</StyledTableCell>
+                  <StyledTableCell rowSpan={2}>
+                    Rincian Bukti Pendidikan/Pelatihan, Pengalaman Kerja,
+                    Pengalaman Hidup
+                  </StyledTableCell>
+                  <StyledTableCell colSpan={4} align="center">
+                    Lampiran Bukti
+                  </StyledTableCell>
+                </TableRow>
+                <TableRow>
+                  <StyledTableCell colSpan={2}>Ada</StyledTableCell>
+                  <StyledTableCell colSpan={2}>Tidak Ada</StyledTableCell>
+                  {/* <StyledTableCell>Ada</StyledTableCell> */}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {apl01byid?.asesi_skema?.skema?.unitkompetensi.map((row, i) => (
+                  <StyledTableRow key={row.id}>
+                    <StyledTableCell component="th" scope="row">
+                      {(i += 1)}
+                    </StyledTableCell>
+                    <StyledTableCell>{row.judul_unit}</StyledTableCell>
+                    <StyledTableCell colSpan={2}>
+                      {row.judul_unit}
+                    </StyledTableCell>
+                    <StyledTableCell colSpan={2}>
+                      {row.judul_unit}
+                    </StyledTableCell>
                   </StyledTableRow>
                 ))}
               </TableBody>

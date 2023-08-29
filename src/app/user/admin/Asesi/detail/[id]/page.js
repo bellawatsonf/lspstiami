@@ -16,6 +16,7 @@ import {
 } from "@/app/services/asesiskema";
 import { Loading } from "@/app/services/skema";
 import LoadingComponent from "@/app/(public)/component/loading";
+import ModalAlasanPenolakan from "../../components/modal-alasanpenolakan";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -60,6 +61,9 @@ export default function DetailAsesi_Pendaftaran() {
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
+  const [openModalPenolakan, setOpenModalPenolakan] = useState(false);
+  const handleOpenModalPenolakan = () => setOpenModalPenolakan(true);
+  const handleCloseModalPenolakan = () => setOpenModalPenolakan(false);
   let loading = useSelector((state) => state.skema.loading);
 
   const handleImage = (value) => {
@@ -78,7 +82,7 @@ export default function DetailAsesi_Pendaftaran() {
     dispatch(Loading(true));
     axios({
       method: "PATCH",
-      url: `http://localhost:3001/edit-status-pembayaran/${asesiSkemaById?.asesi?.id}`,
+      url: `/api/edit-status-pembayaran/${asesiSkemaById?.asesi?.id}`,
       data: input,
     })
       .then((data) => {
@@ -89,6 +93,30 @@ export default function DetailAsesi_Pendaftaran() {
         console.log(err);
       })
       .finally((_) => dispatch(Loading(false)));
+  }
+
+  function handleUpdateStatusCek(param) {
+    let input = { status_cek: param };
+    // dispatch(Loading(true));
+    if (param === "terima") {
+      handleOpenModal();
+      axios({
+        method: "PATCH",
+        url: `/api/update-status-cek/${id}`,
+        data: input,
+      })
+        .then((data) => {
+          console.log(data);
+          // handleOpenModal();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      // .finally((_) => dispatch(Loading(false)));
+    } else if (param === "revisi") {
+      // alert("tampili modal input revisi6+");
+      setOpenModalPenolakan(true);
+    }
   }
 
   if (loading) {
@@ -314,20 +342,23 @@ export default function DetailAsesi_Pendaftaran() {
               />
             </div>
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>Bukti Bayar</Typography>
+              <Typography sx={{ color: "#acacac" }}>
+                Tanda Tangan Asesi
+              </Typography>
               <div className="d-flex" style={{ width: "100%" }}>
-                {/* <Typography
-                  sx={{ color: "black" }}
-                  onClick={(e) => handleImage(asesiSkemaById?.asesi?.bukti_bayar)}
-                >
-                  {asesiSkemaById?.asesi?.bukti_bayar}
-                </Typography> */}
-                <img
+                {/* <img
                   src={asesiSkemaById?.asesi?.bukti_bayar}
                   alt={asesiSkemaById?.asesi?.bukti_bayar}
                   onClick={(e) =>
                     handleImage(asesiSkemaById?.asesi?.bukti_bayar)
                   }
+                  className="img"
+                  style={{ width: "100px", cursor: "pointer" }}
+                /> */}
+                <img
+                  src={asesiSkemaById?.asesi?.ttd_asesi}
+                  alt={asesiSkemaById?.asesi?.ttd_asesi}
+                  onClick={(e) => handleImage(asesiSkemaById?.asesi?.ttd_asesi)}
                   className="img"
                   style={{ width: "100px", cursor: "pointer" }}
                 />
@@ -342,35 +373,40 @@ export default function DetailAsesi_Pendaftaran() {
                     // top: "30px",
                   }}
                 >
-                  <div style={{ marginTop: "20px" }}>
-                    <Button
-                      variant="contained"
-                      color="success"
-                      sx={{
-                        marginRight: "10px",
-                        fontSize: "14px",
-                        textTransform: "none",
-                      }}
-                      onClick={() => {
-                        handleCheckBuktiBayar("paid");
-                      }}
-                    >
-                      Terima
-                    </Button>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        marginRight: "10px",
-                        fontSize: "14px",
-                        textTransform: "none",
-                      }}
-                      onClick={() => {
-                        handleCheckBuktiBayar("unpaid");
-                      }}
-                    >
-                      Tolak
-                    </Button>
-                  </div>
+                  {asesiSkemaById?.status_cek === "terima" ? null : (
+                    <div style={{ marginTop: "20px" }}>
+                      <Button
+                        variant="contained"
+                        color="success"
+                        sx={{
+                          marginRight: "10px",
+                          fontSize: "14px",
+                          textTransform: "none",
+                        }}
+                        onClick={() => {
+                          // handleCheckBuktiBayar("paid");
+                          handleUpdateStatusCek("terima");
+                        }}
+                      >
+                        Terima
+                      </Button>
+
+                      <Button
+                        variant="contained"
+                        sx={{
+                          marginRight: "10px",
+                          fontSize: "14px",
+                          textTransform: "none",
+                        }}
+                        onClick={() => {
+                          // handleCheckBuktiBayar("unpaid");
+                          handleUpdateStatusCek("revisi");
+                        }}
+                      >
+                        Tolak
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -400,6 +436,14 @@ export default function DetailAsesi_Pendaftaran() {
         openModal={openModal}
         handleCloseModal={handleCloseModal}
         nama_asesi={asesiSkemaById?.asesi?.nama_lengkap}
+        id_asesi={asesiSkemaById.asesi?.id}
+        setOpenModal={setOpenModal}
+      />
+      <ModalAlasanPenolakan
+        openModalPenolakan={openModalPenolakan}
+        setOpenModalPenolakan={setOpenModalPenolakan}
+        id_asesi={asesiSkemaById.asesi?.id}
+        idAsesiSkema={id}
       />
     </>
   );

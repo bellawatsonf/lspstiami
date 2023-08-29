@@ -11,6 +11,9 @@ import { Button } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LoadingComponent from "@/app/(public)/component/loading";
+import { useRouter } from "next/navigation";
+import ModalDaftarSkema from "@/app/(public)/sertifikasi/modal-daftarskema";
+import axios from "axios";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -52,91 +55,146 @@ export default function DashboardUser() {
   const [expanded, setExpanded] = React.useState("panel1");
   const [sort, setSort] = React.useState("asc");
   const [loading, setLoading] = React.useState(true);
-
+  const router = useRouter();
+  const [userdata, setUser] = React.useState();
+  const [info, setInfo] = React.useState([]);
+  // const user = JSON.parse(sessionStorage.getItem("user"));
   React.useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+    let value = JSON.parse(sessionStorage.getItem("user"));
+    setUser(value);
+    getInfoByUser(value.id);
   }, []);
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  function getInfoByUser(id) {
+    console.log("getinfobyuser");
+    axios({
+      method: "GET",
+      url: `/api/info/${id}`,
+    })
+      .then((data) => {
+        console.log(data.data.data, "dataa");
+        setInfo(data.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   if (loading) {
     return <LoadingComponent />;
   }
+  console.log(info, "infoo");
   return (
     <>
-      <div
-        className="d-flex"
-        style={{
-          width: "100%",
-          // background: "red",
-          justifyContent: "flex-end",
-          marginBottom: "30px",
-        }}
-      >
-        <Button
-          variant="outlined"
-          style={{ textTransform: "none", fontWeight: 600 }}
-        >
-          Urutkan{" "}
-          {sort === "asc" ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
-        </Button>
-      </div>
-      <div>
-        <Accordion
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
-        >
-          <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography>Informasi Status Pembayaran</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
+      {info.length === 0 ? (
+        <div style={{ width: "100%", marginBottom: "30px" }}>
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontSize: "20px",
+              textAlign: "center",
+              paddingBottom: "10px",
+            }}
+          >
+            Selamat Datang {userdata?.nama},
+          </Typography>
+          <div className="d-flex" style={{ justifyContent: "center" }}>
+            <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
+              Anda belum melakukan pendaftaran,
             </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded === "panel2"}
-          onChange={handleChange("panel2")}
-        >
-          <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-            <Typography>Jadwal Ujian</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
+            <Typography
+              sx={{
+                color: "blue",
+                cursor: "pointer",
+                fontSize: "15px",
+                textAlign: "center",
+              }}
+              onClick={() => {
+                router.push("/user/list-skema");
+              }}
+            >
+              {" "}
+              silahkan klik untuk melakukan pendaftaran{" "}
             </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion
-          expanded={expanded === "panel3"}
-          onChange={handleChange("panel3")}
+          </div>
+          {/* <div
+          className="d-flex"
+          style={{
+            // background: "red",
+            width: "100%",
+            justifyContent: "flex-start",
+            marginBottom: "30px",
+          }}
         >
-          <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-            <Typography>Hasil Pengumuman</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </div>
+          <Button
+            variant="outlined"
+            style={{
+              textTransform: "none",
+              fontWeight: 600,
+              color: "white",
+              background: "#1976d2",
+            }}
+            onClick={() => {
+              router.push("/sertifikasi");
+            }}
+          >
+            Sertifikasi
+          </Button>
+        </div> */}
+          {/* <div
+          className="d-flex"
+          style={{
+            width: "100%",
+            // background: "red",
+            justifyContent: "flex-end",
+            marginBottom: "30px",
+          }}
+        >
+          <Button
+            variant="outlined"
+            style={{ textTransform: "none", fontWeight: 600 }}
+          >
+            Urutkan{" "}
+            {sort === "asc" ? (
+              <KeyboardArrowDownIcon />
+            ) : (
+              <KeyboardArrowUpIcon />
+            )}
+          </Button>
+        </div> */}
+        </div>
+      ) : (
+        <div>
+          <Typography
+            sx={{ fontSize: "15px", fontWeight: "bold", marginBottom: "10px" }}
+          >
+            Info Status
+          </Typography>
+
+          {info?.map((el, i) => (
+            <Accordion
+              key={i}
+              expanded={expanded === `panel${i}`}
+              onChange={handleChange(`panel${i}`)}
+            >
+              <AccordionSummary
+                aria-controls="panel1d-content"
+                id="panel1d-header"
+              >
+                <Typography>{el.info_status}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>{el.deskripsi_info}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </div>
+      )}
     </>
   );
 }

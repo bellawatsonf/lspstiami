@@ -14,8 +14,11 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import { useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoadingComponent from "@/app/(public)/component/loading";
+import { RemoveCircle, RemoveCircleOutline } from "@mui/icons-material";
+import { deleteAsesiSkema } from "@/app/services/asesiskema";
+import { Button } from "@mui/material";
 
 const key = "Composed Table";
 
@@ -23,6 +26,9 @@ export default function PendingPayment(props) {
   console.log(props.dataAsesiSkema, "props");
   let loading = useSelector((state) => state.skema.loading);
   const [dataSkema, setSkema] = useState({ nodes: [] });
+  const router = useRouter();
+  const theme = useTheme(getTheme());
+  let dispatch = useDispatch();
 
   // useEffect(() => {
   //   if (props.dataAsesiSkema.length > 0) {
@@ -104,53 +110,76 @@ export default function PendingPayment(props) {
       status_pembayaran: "pending",
     },
   ];
-  const router = useRouter();
 
-  const theme = useTheme(getTheme());
   if (loading) {
     return <LoadingComponent />;
   }
-  return (
-    <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
-      {(tableList) => (
-        <>
-          <Header>
-            <HeaderRow>
-              <HeaderCell>Nama Asesi</HeaderCell>
-              <HeaderCell>Jenis Skema Sertifikasi</HeaderCell>
-              <HeaderCell>KTP</HeaderCell>
-              <HeaderCell>Ijazah</HeaderCell>
-              <HeaderCell>Pas Foto</HeaderCell>
-              <HeaderCell>Bukti Bayar</HeaderCell>
-              <HeaderCell>Status Pembayaran</HeaderCell>
-            </HeaderRow>
-          </Header>
+  if (props.dataAsesiSkema) {
+    return (
+      <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
+        {(tableList) => (
+          <>
+            <Header>
+              <HeaderRow>
+                <HeaderCell>Nama Asesi</HeaderCell>
+                <HeaderCell>Jenis Skema Sertifikasi</HeaderCell>
+                <HeaderCell>KTP</HeaderCell>
+                <HeaderCell>Ijazah</HeaderCell>
+                <HeaderCell>Pas Foto</HeaderCell>
+                <HeaderCell>Bukti Bayar</HeaderCell>
+                <HeaderCell>Jenis Paket</HeaderCell>
+                <HeaderCell>Status Pengecekan</HeaderCell>
+                <HeaderCell></HeaderCell>
+              </HeaderRow>
+            </Header>
 
-          <Body>
-            {tableList?.map(
-              (item, i) => (
-                // item.asesi.status_pembayaran === "pending" ? (
-                <Row
-                  key={i}
-                  onClick={(e) => {
-                    router.push(`/user/admin/Asesi/detail/${item.id}`);
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  <Cell>{item.asesi.nama_lengkap}</Cell>
-                  <Cell>{item.skema.nama_skema}</Cell>
-                  <Cell>{item.asesi.img_ktp}</Cell>
-                  <Cell>{item.asesi.ijazah}</Cell>
-                  <Cell>{item.asesi.pas_foto}</Cell>
-                  <Cell>{item.asesi.bukti_bayar}</Cell>
-                  <Cell>{item.asesi.status_pembayaran}</Cell>
-                </Row>
-              )
-              // ) : null
-            )}
-          </Body>
-        </>
-      )}
-    </Table>
-  );
+            <Body>
+              {tableList?.map(
+                (item, i) => (
+                  <>
+                    {item.jenis_paket === "pengayaan-ujikom" ? (
+                      <Row key={i} style={{ cursor: "pointer" }}>
+                        <Cell>{item.asesi.nama_lengkap}</Cell>
+                        <Cell>{item.skema.nama_skema}</Cell>
+                        <Cell>{item.asesi.img_ktp}</Cell>
+                        <Cell>{item.asesi.ijazah}</Cell>
+                        <Cell>{item.asesi.pas_foto}</Cell>
+                        <Cell>{item.asesi.bukti_bayar}</Cell>
+                        <Cell>{item.jenis_paket}</Cell>
+                        <Cell>
+                          {item.status_cek === "belum-dicek" ? "false" : "true"}
+                        </Cell>
+                        <Cell>
+                          <div className="d-flex">
+                            <Button
+                              variant="contained"
+                              onClick={(e) => {
+                                router.push(
+                                  `/user/admin/Asesi/detail/${item.id}`
+                                );
+                              }}
+                            >
+                              Detail
+                            </Button>
+                            <RemoveCircleOutline
+                              sx={{ marginTop: "8px", marginLeft: "10px" }}
+                              onClick={() =>
+                                dispatch(deleteAsesiSkema(item.id))
+                              }
+                            />
+                          </div>
+                        </Cell>
+                      </Row>
+                    ) : null}
+                  </>
+                  // item.asesi.status_pembayaran === "pending" ? (
+                )
+                // ) : null
+              )}
+            </Body>
+          </>
+        )}
+      </Table>
+    );
+  }
 }
