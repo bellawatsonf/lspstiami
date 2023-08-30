@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import {
@@ -104,7 +104,7 @@ export default function RejectedPayment() {
   return (
     <Table data={dataSkema} theme={theme}>
       {(tableList) => (
-        <>
+        <Fragment>
           <Header>
             <HeaderRow>
               <HeaderCell>Nama Asesi</HeaderCell>
@@ -128,7 +128,7 @@ export default function RejectedPayment() {
               </Row>
             ))}
           </Body>
-        </>
+        </Fragment>
       )}
     </Table>
   );

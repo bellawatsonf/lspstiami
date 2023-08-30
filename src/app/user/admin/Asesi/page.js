@@ -91,7 +91,7 @@ export default function Asesi() {
   }
   console.log(dataAsesiSkema, "deteasesi");
   return (
-    <>
+    <React.Fragment>
       {dataAsesiSkema.length > 0 ? (
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -118,7 +118,7 @@ export default function Asesi() {
       ) : (
         <p style={{ textAlign: "center" }}>data belum tersedia</p>
       )}
-    </>
+    </React.Fragment>
   );
 }
 

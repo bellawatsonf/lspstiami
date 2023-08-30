@@ -100,7 +100,7 @@ export default function ModalForm(props) {
               isSubmitting,
               /* and other goodies */
             }) => (
-              <>
+              <React.Fragment>
                 <div className="row">
                   <div className="col-3 mb-3">
                     <label style={{ paddingTop: "20px" }}>No. Skema </label>
@@ -141,7 +141,7 @@ export default function ModalForm(props) {
                     Submit
                   </Button>
                 </div>
-              </>
+              </React.Fragment>
             )}
           </Formik>
         </Box>

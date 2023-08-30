@@ -196,9 +196,9 @@ export default function AsesorTable() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <React.Fragment>
       {data ? (
-        <>
+        <React.Fragment>
           <Navbar />
           <div className={`${stylesTentang.bannertentang}`}>
             <div className={`${styles.boxImg}`}>
@@ -290,8 +290,8 @@ export default function AsesorTable() {
             </div>
           </div>
           <Footer />
-        </>
+        </React.Fragment>
       ) : null}
-    </>
+    </React.Fragment>
   );
 }

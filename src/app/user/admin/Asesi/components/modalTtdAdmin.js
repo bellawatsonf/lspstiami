@@ -52,7 +52,7 @@ export default function ModalTtdAdmin(props) {
       });
   }
   return (
-    <>
+    <React.Fragment>
       <Modal
         open={props.openModalTtd}
         onClose={props.handleCloseModalTtd}
@@ -120,6 +120,6 @@ export default function ModalTtdAdmin(props) {
           </div>
         </Box>
       </Modal>
-    </>
+    </React.Fragment>
   );
 }

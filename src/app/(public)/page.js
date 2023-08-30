@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 import Footer from "./component/footer";
 import CountUp from "react-countup";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { fetchSkema } from "../services/skema";
 import { fetchAsesorServices } from "../services/asesor";
 import Navbar from "./component/Navbar";
@@ -30,7 +30,7 @@ export default function Home() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <Navbar />
       <div className={styles["box-banner"]}>
         <div className="container">
@@ -649,6 +649,6 @@ export default function Home() {
         </div>
       </div>
       <Footer />
-    </>
+    </Fragment>
   );
 }

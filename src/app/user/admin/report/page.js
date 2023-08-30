@@ -139,9 +139,9 @@ export default function Report() {
   ];
 
   return (
-    <>
+    <React.Fragment>
       {dataapl01 ? (
-        <>
+        <React.Fragment>
           <CompactTable
             columns={COLUMNS}
             data={{ nodes: dataapl01 }}
@@ -164,8 +164,8 @@ export default function Report() {
           className={classes.paginationStyle}
         /> */}
           </div>
-        </>
+        </React.Fragment>
       ) : null}
-    </>
+    </React.Fragment>
   );
 }

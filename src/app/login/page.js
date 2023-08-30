@@ -1,6 +1,6 @@
 "use client";
 
-import { React, useEffect, useState } from "react";
+import { Fragment, React, useEffect, useState } from "react";
 import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { googleLogout } from "@react-oauth/google";
@@ -207,7 +207,7 @@ export default function Login() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       {/* <a href="/registrasi">registrasi</a> */}
       <div className={`${style.container}`}>
         {/* <div className={`${style.boxLogo}`}></div> */}
@@ -248,7 +248,7 @@ export default function Login() {
           </div>
           <div className={`${style.contentLogin}`}>
             {role === "asesi" ? (
-              <>
+              <Fragment>
                 {/* <Typography
                   sx={{
                     fontSize: "30px",
@@ -284,7 +284,7 @@ export default function Login() {
                   {" "}
                   <GoogleIcon /> Sign in
                 </Button>
-              </>
+              </Fragment>
             ) : (
               // <div className="d-flex mb-3 mt-5">
               //   <hr
@@ -388,6 +388,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }

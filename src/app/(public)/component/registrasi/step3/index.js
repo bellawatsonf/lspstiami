@@ -3,7 +3,7 @@ import styles from "./step3.module.css";
 import { Button, TextField, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { Formik } from "formik";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { useSelector } from "react-redux";
 
@@ -100,7 +100,7 @@ export default function Step3(props) {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       {/* // <Formik
     //   enableReinitialize={true}
     //   initialValues={stateField}
@@ -353,6 +353,6 @@ export default function Step3(props) {
       {/* </form> */}
       {/* //   )}
     // </Formik> */}
-    </>
+    </Fragment>
   );
 }

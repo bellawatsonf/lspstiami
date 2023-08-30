@@ -14,6 +14,7 @@ import LoadingComponent from "@/app/(public)/component/loading";
 import { useRouter } from "next/navigation";
 import ModalDaftarSkema from "@/app/(public)/sertifikasi/modal-daftarskema";
 import axios from "axios";
+import { Fragment } from "react";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -90,7 +91,7 @@ export default function DashboardUser() {
   }
   console.log(info, "infoo");
   return (
-    <>
+    <Fragment>
       {info.length === 0 ? (
         <div style={{ width: "100%", marginBottom: "30px" }}>
           <Typography
@@ -186,15 +187,22 @@ export default function DashboardUser() {
                 aria-controls="panel1d-content"
                 id="panel1d-header"
               >
-                <Typography>{el.info_status}</Typography>
+                <Typography sx={{ fontSize: "15px" }}>
+                  {el.info_status}
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography>{el.deskripsi_info}</Typography>
+                <Typography sx={{ fontSize: "15px" }}>
+                  {el.deskripsi_info.split("dengan")[0]}
+                </Typography>
+                <Typography sx={{ marginTop: "5px", fontSize: "15px" }}>
+                  {el.deskripsi_info.split("dengan")[1]}
+                </Typography>
               </AccordionDetails>
             </Accordion>
           ))}
         </div>
       )}
-    </>
+    </Fragment>
   );
 }

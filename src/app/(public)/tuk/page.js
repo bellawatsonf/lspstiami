@@ -26,7 +26,7 @@ export default function TUkPage() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <React.Fragment>
       <Navbar />
       <div className={`${stylesTentang.bannertentang}`}>
         <div className={`${styles.boxImg}`}>
@@ -113,6 +113,6 @@ export default function TUkPage() {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 }

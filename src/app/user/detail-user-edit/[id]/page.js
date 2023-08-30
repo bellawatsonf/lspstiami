@@ -12,6 +12,7 @@ import Step4 from "../registrasi/step4";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAsesiById } from "@/app/services/asesi";
 import Step5 from "../registrasi/step5";
+import { Fragment } from "react";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -110,7 +111,7 @@ export default function DetailEdit() {
   let objectlength = Object.keys(userById);
   console.log(objectlength, "hhobjk");
   return (
-    <>
+    <Fragment>
       {objectlength.length !== 0 ? (
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -145,6 +146,6 @@ export default function DetailEdit() {
           </div> */}
         </Box>
       ) : null}
-    </>
+    </Fragment>
   );
 }

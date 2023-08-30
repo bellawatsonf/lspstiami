@@ -343,7 +343,7 @@ export default function Regitrasi() {
   //   dispatch(fetchAsesiById(user?.id));
   // }, []);
   return (
-    <>
+    <React.Fragment>
       {Object.keys(userById).length > 0 ? (
         <div className={`${styles.boxRegister}`}>
           <Box className={`${styles.boxRegisStepper}`}>
@@ -439,7 +439,7 @@ export default function Regitrasi() {
                   return (
                     <form onSubmit={handleSubmit}>
                       {activeStep === 0 ? (
-                        <>
+                        <React.Fragment>
                           <Step1
                             dataAsesi={userById}
                             values={values}
@@ -462,7 +462,7 @@ export default function Regitrasi() {
                             handleChangeProvinsi={handleChangeProvinsi}
                             stateField={stateField}
                           />
-                        </>
+                        </React.Fragment>
                       ) : activeStep === 1 ? (
                         <Step2
                           dataAsesi={userById}
@@ -559,6 +559,6 @@ export default function Regitrasi() {
       ) : (
         <LoadingComponent />
       )}
-    </>
+    </React.Fragment>
   );
 }

@@ -6,7 +6,7 @@ import { makeStyles } from "@mui/styles";
 import axios from "axios";
 
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import ModalRekomendasiAsesi from "../../components/modal";
@@ -123,7 +123,7 @@ export default function DetailAsesi_Pendaftaran() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <Typography
         sx={{
           fontWeight: "bold",
@@ -148,7 +148,7 @@ export default function DetailAsesi_Pendaftaran() {
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Name</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.nama_lengkap ?? <>-</>}
+                {asesiSkemaById?.asesi?.nama_lengkap ?? <p>-</p>}
               </Typography>
             </div>
             <div className="col-6 mb-3">
@@ -156,25 +156,25 @@ export default function DetailAsesi_Pendaftaran() {
                 Jenis Skema Sertifikasi
               </Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.skema?.nama_skema ?? <>-</>}
+                {asesiSkemaById?.skema?.nama_skema ?? <p>-</p>}
               </Typography>
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Email</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.email ?? <>-</>}
+                {asesiSkemaById?.asesi?.email ?? <p>-</p>}
               </Typography>
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Nomor Telepon</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.phone_number ?? <>-</>}
+                {asesiSkemaById?.asesi?.phone_number ?? <p>-</p>}
               </Typography>
             </div>
             {/* <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Birth</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.tgl_lahir ?? <>-</>}
+                {asesiSkemaById?.asesi?.tgl_lahir ?? <p>-</p>}
               </Typography>
             </div> */}
           </div>
@@ -195,25 +195,25 @@ export default function DetailAsesi_Pendaftaran() {
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Nama Instansi</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.nama_instansi ?? <>-</>}
+                {asesiSkemaById?.asesi?.nama_instansi ?? <p>-</p>}
               </Typography>
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Email</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.email_kantor ?? <>-</>}
+                {asesiSkemaById?.asesi?.email_kantor ?? <p>-</p>}
               </Typography>
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Alamat </Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.alamat_kantor ?? <>-</>}
+                {asesiSkemaById?.asesi?.alamat_kantor ?? <p>-</p>}
               </Typography>
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Nomor Telepon</Typography>
               <Typography sx={{ color: "black" }}>
-                {asesiSkemaById?.asesi?.tlp_kantor ?? <>-</>}
+                {asesiSkemaById?.asesi?.tlp_kantor ?? <p>-</p>}
               </Typography>
             </div>
           </div>
@@ -445,6 +445,6 @@ export default function DetailAsesi_Pendaftaran() {
         id_asesi={asesiSkemaById.asesi?.id}
         idAsesiSkema={id}
       />
-    </>
+    </Fragment>
   );
 }

@@ -16,6 +16,7 @@ import axios from "axios";
 import Link from "next/link";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { useSelector } from "react-redux";
+import { Fragment } from "react";
 
 export default function Step5(props) {
   const [loading, setLoading] = useState(true);
@@ -35,7 +36,7 @@ export default function Step5(props) {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <Formik
         initialValues={stateField}
         enableReinitialize={true}
@@ -70,6 +71,6 @@ export default function Step5(props) {
           </form>
         )}
       </Formik>
-    </>
+    </Fragment>
   );
 }

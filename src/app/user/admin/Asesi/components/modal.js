@@ -62,7 +62,7 @@ export default function ModalRekomendasiAsesi(props) {
       });
   }
   return (
-    <>
+    <React.Fragment>
       <Modal
         open={props.openModal}
         // onClose={props.handleCloseModal}
@@ -126,6 +126,6 @@ export default function ModalRekomendasiAsesi(props) {
         handleCloseModalTtd={handleCloseModalTtd}
         idAsesi={props.id_asesi}
       />
-    </>
+    </React.Fragment>
   );
 }

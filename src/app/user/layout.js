@@ -6,7 +6,7 @@ import Sidebar from "./component/sidebar";
 import HeaderDashboard from "./component/header";
 import Dashboard from "./component/dashboardContainer";
 import styleDashboard from "./component/dashboardContainer/styleDashboard.module.css";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -58,7 +58,7 @@ export default function DashboardLayout({ children }) {
 
   console.log(sessionToken, sessionUser?.role, "user");
   return (
-    <>
+    <Fragment>
       {(sessionToken && sessionUser?.role === "asesi") ||
       (sessionToken && sessionUser?.role === "admin") ? (
         // <PDFViewer>
@@ -75,6 +75,6 @@ export default function DashboardLayout({ children }) {
         // {/* </PDFViewer> */}
         router.push("/login")
       )}
-    </>
+    </Fragment>
   );
 }

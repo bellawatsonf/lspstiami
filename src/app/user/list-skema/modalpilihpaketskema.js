@@ -15,6 +15,7 @@ import MuiAccordion from "@mui/material/Accordion";
 import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ModalUpload from "./modalupload";
+import { Fragment } from "react";
 
 const style = {
   position: "absolute",
@@ -137,7 +138,7 @@ export default function ModalPilihPaketSkema(props) {
   }
   console.log(props);
   return (
-    <>
+    <Fragment>
       <ModalUpload
         openUpload={openUpload}
         handleOpenUpload={handleOpenUpload}
@@ -306,6 +307,6 @@ export default function ModalPilihPaketSkema(props) {
           </div>
         </Box>
       </Modal>
-    </>
+    </Fragment>
   );
 }

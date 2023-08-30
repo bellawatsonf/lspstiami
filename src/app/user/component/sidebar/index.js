@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
 import { useRouter } from "next/navigation";
+import { Fragment } from "react";
 
 export default function Sidebar() {
   let router = useRouter();
@@ -36,7 +37,7 @@ export default function Sidebar() {
   // }, []);
   console.log(user, "disidebar");
   return (
-    <>
+    <Fragment>
       {user !== null ? (
         <div className={`${sidebarStyle.boxMenu}`}>
           <div className="aa" style={{ height: "100vh" }}>
@@ -192,6 +193,6 @@ export default function Sidebar() {
           </div>
         </div>
       ) : null}
-    </>
+    </Fragment>
   );
 }

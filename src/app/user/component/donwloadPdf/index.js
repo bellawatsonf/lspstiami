@@ -11,6 +11,7 @@ import {
 } from "@react-pdf/renderer";
 import style from "./style.module.css";
 import { Button } from "@mui/material";
+import { Fragment } from "react";
 
 const styles = StyleSheet.create({
   body: {
@@ -1923,7 +1924,7 @@ export default function DownloadPdf(props) {
 
   if (Object.keys(props.data).length > 0) {
     return (
-      <>
+      <Fragment>
         {/* <PDFViewer>
           <DocumentPdf />
         </PDFViewer> */}
@@ -1952,7 +1953,7 @@ export default function DownloadPdf(props) {
             )
           }
         </PDFDownloadLink>
-      </>
+      </Fragment>
     );
   }
   return <div></div>;

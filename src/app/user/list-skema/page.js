@@ -17,6 +17,7 @@ import { fetchSkema } from "@/app/services/skema";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import ModalPilihPaketSkema from "./modalpilihpaketskema";
+import { Fragment } from "react";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -109,7 +110,7 @@ export default function ListSkema() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <ModalPilihPaketSkema
         open={open}
         handleClose={handleClose}
@@ -242,6 +243,6 @@ export default function ListSkema() {
           </Accordion>
         ))}
       </div>
-    </>
+    </Fragment>
   );
 }

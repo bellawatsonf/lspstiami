@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DownloadPdf from "../component/donwloadPdf";
 import { fetchApl01ByUser } from "@/app/services/apl01";
+import { Fragment } from "react";
 
 export default function ProfileUser() {
   let router = useRouter();
@@ -73,7 +74,7 @@ export default function ProfileUser() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       {/* {asesiskemabyuser.length > 0 ? (
         <> */}
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -258,6 +259,6 @@ export default function ProfileUser() {
       ) : (
         <LoadingComponent />
       )} */}
-    </>
+    </Fragment>
   );
 }

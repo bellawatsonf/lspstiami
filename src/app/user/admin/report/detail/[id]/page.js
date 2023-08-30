@@ -13,7 +13,7 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 import { useParams } from "next/navigation";
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -31,13 +31,13 @@ export default function detailReport() {
   console.log(apl01byid, "props apl");
   if (Object.keys(apl01byid).length > 0) {
     return (
-      <>
+      <Fragment>
         <PdfFile />
         {/* <PDFViewer>
           <Pdf2 />
         </PDFViewer> */}
         <DownloadPdf data={apl01byid} />
-      </>
+      </Fragment>
       // <Document>
       //   <Page size="A4" style={styles.page}>
       //     <View style={styles.section}>

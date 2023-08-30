@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import {
@@ -58,7 +58,7 @@ export default function SkemaSertifikasi() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <ModalForm
         open={open}
         handleClose={handleClose}
@@ -84,7 +84,7 @@ export default function SkemaSertifikasi() {
       </div>
       <Table data={{ nodes: dataSkema }} theme={theme}>
         {(tableList) => (
-          <>
+          <Fragment>
             <Header>
               <HeaderRow>
                 <HeaderCell>Nomor Skema Sertifikasi</HeaderCell>
@@ -134,9 +134,9 @@ export default function SkemaSertifikasi() {
                 </Row>
               ))}
             </Body>
-          </>
+          </Fragment>
         )}
       </Table>
-    </>
+    </Fragment>
   );
 }

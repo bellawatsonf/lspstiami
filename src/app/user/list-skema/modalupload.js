@@ -62,7 +62,7 @@ export default function ModalUpload(props) {
           timer: 1500,
         }).then((result) => {
           // if (result.isConfirmed) {
-          router.push("/user/profiluser");
+          router.push("/user/profileuser");
           // }
         });
       })

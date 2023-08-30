@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme } from "@table-library/react-table-library/baseline";
 import {
@@ -54,7 +54,7 @@ export default function UnitKompetensi() {
   const theme = useTheme(getTheme());
   console.log(dataSkema, "dataskema");
   return (
-    <>
+    <Fragment>
       <ModalForm
         open={open}
         handleClose={handleClose}
@@ -74,7 +74,7 @@ export default function UnitKompetensi() {
       </div>
       <Table data={{ nodes: dataSkema }} theme={theme}>
         {(tableList) => (
-          <>
+          <Fragment>
             <Header>
               <HeaderRow>
                 <HeaderCell>Nomor Skema Sertifikasi</HeaderCell>
@@ -90,9 +90,9 @@ export default function UnitKompetensi() {
                 </Row>
               ))}
             </Body>
-          </>
+          </Fragment>
         )}
       </Table>
-    </>
+    </Fragment>
   );
 }

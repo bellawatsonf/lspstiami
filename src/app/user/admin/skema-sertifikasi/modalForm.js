@@ -107,7 +107,7 @@ export default function ModalForm(props) {
               isSubmitting,
               /* and other goodies */
             }) => (
-              <>
+              <React.Fragment>
                 <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="col-3 mb-3">
@@ -163,7 +163,7 @@ export default function ModalForm(props) {
                     </Button>
                   </div>
                 </form>
-              </>
+              </React.Fragment>
             )}
           </Formik>
         </Box>

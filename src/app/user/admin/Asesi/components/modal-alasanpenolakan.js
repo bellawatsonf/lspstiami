@@ -82,7 +82,7 @@ export default function ModalAlasanPenolakan(props) {
       });
   }
   return (
-    <>
+    <React.Fragment>
       <Modal
         open={props.openModalPenolakan}
         // onClose={props.handleCloseModal}
@@ -179,6 +179,6 @@ export default function ModalAlasanPenolakan(props) {
         openModalTtd={openModalTtd}
         handleCloseModalTtd={handleCloseModalTtd}
       /> */}
-    </>
+    </React.Fragment>
   );
 }

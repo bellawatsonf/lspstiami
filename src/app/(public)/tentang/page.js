@@ -2,7 +2,7 @@
 
 import { Typography } from "@mui/material";
 import styles from "./tentang.module.css";
-import React from "react";
+import React, { Fragment } from "react";
 import Navbar from "../component/Navbar";
 import Footer from "../component/footer";
 import LoadingComponent from "../component/loading";
@@ -17,7 +17,7 @@ export default function AboutUs() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <Navbar />
       <div className={`${styles.bannertentang}`}>
         <div className={`${styles.boxImg}`}>
@@ -375,6 +375,6 @@ export default function AboutUs() {
         </div>
       </div>
       <Footer />
-    </>
+    </Fragment>
   );
 }

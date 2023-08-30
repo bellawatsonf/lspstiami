@@ -144,7 +144,7 @@ export default function SertifikasiPage() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <React.Fragment>
       <ModalDaftarSkema
         open={open}
         handleClose={handleClose}
@@ -301,6 +301,6 @@ export default function SertifikasiPage() {
         </div>
       </div>
       <Footer />
-    </>
+    </React.Fragment>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Fragment } from "react";
 import { useEffect, useState } from "react";
 import {
   Table,
@@ -102,7 +102,7 @@ export default function ApprovedPayment(props) {
   return (
     <Table data={{ nodes: props.dataAsesiSkema ?? [] }} theme={theme}>
       {(tableList) => (
-        <>
+        <Fragment>
           <Header>
             <HeaderRow>
               <HeaderCell>Nama Asesi</HeaderCell>
@@ -168,7 +168,7 @@ export default function ApprovedPayment(props) {
               ) : null
             )}
           </Body>
-        </>
+        </Fragment>
       )}
     </Table>
   );

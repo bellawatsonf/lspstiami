@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Fragment } from "react";
 import { useEffect, useState } from "react";
 import {
   Table,
@@ -118,7 +118,7 @@ export default function PendingPayment(props) {
     return (
       <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
         {(tableList) => (
-          <>
+          <Fragment>
             <Header>
               <HeaderRow>
                 <HeaderCell>Nama Asesi</HeaderCell>
@@ -136,7 +136,7 @@ export default function PendingPayment(props) {
             <Body>
               {tableList?.map(
                 (item, i) => (
-                  <>
+                  <Fragment>
                     {item.jenis_paket === "pengayaan-ujikom" ? (
                       <Row key={i} style={{ cursor: "pointer" }}>
                         <Cell>{item.asesi.nama_lengkap}</Cell>
@@ -171,13 +171,13 @@ export default function PendingPayment(props) {
                         </Cell>
                       </Row>
                     ) : null}
-                  </>
+                  </Fragment>
                   // item.asesi.status_pembayaran === "pending" ? (
                 )
                 // ) : null
               )}
             </Body>
-          </>
+          </Fragment>
         )}
       </Table>
     );

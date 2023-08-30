@@ -93,7 +93,7 @@ export default function detailSkema() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <React.Fragment>
       <ModalUnitKompetensi
         open={open}
         setOpen={setOpen}
@@ -305,9 +305,9 @@ export default function detailSkema() {
                       </li>
                       <ul>
                         {unitkerja.kriteriakerja.map((dt) => (
-                          <>
+                          <React.Fragment>
                             <li>{dt}</li>
-                          </>
+                          </React.Fragment>
                         ))}
                       </ul>
                     </ul>
@@ -318,6 +318,6 @@ export default function detailSkema() {
           </Accordion>
         ))}
       </div>
-    </>
+    </React.Fragment>
   );
 }

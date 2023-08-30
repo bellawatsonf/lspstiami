@@ -100,7 +100,7 @@ export default function Step4(props) {
   //   return <LoadingComponent />;
   // }
   return (
-    <>
+    <React.Fragment>
       {/* <Formik
         initialValues={stateField}
         enableReinitialize={true}
@@ -239,7 +239,7 @@ export default function Step4(props) {
       {/* </form>
         )}
       </Formik> */}
-    </>
+    </React.Fragment>
 
     // <div className="container">
     //   <div className="row">

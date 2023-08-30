@@ -15,6 +15,7 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { useSelector } from "react-redux";
+import { Fragment } from "react";
 
 export default function Step4(props) {
   const [loading, setLoading] = useState(true);
@@ -100,7 +101,7 @@ export default function Step4(props) {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       <Formik
         initialValues={stateField}
         enableReinitialize={true}
@@ -255,7 +256,7 @@ export default function Step4(props) {
           </form>
         )}
       </Formik>
-    </>
+    </Fragment>
 
     // <div className="container">
     //   <div className="row">

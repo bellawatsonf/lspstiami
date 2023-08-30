@@ -136,7 +136,7 @@ export default function Admin() {
   ];
 
   return (
-    <>
+    <React.Fragment>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
           variant="contained"
@@ -181,6 +181,6 @@ export default function Admin() {
         setStatusForm={setStatusForm}
         id={id}
       />
-    </>
+    </React.Fragment>
   );
 }

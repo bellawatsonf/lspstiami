@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
+import { Fragment } from "react";
 const style = {
   position: "absolute",
   top: "10%",
@@ -36,7 +37,7 @@ export default function HeaderDashboard() {
     router.push("/login");
   }
   return (
-    <>
+    <Fragment>
       <div className={`${styleHeader.boxheader}`}>
         <div
           style={{
@@ -77,6 +78,6 @@ export default function HeaderDashboard() {
           </Box>
         </Modal>
       </div>
-    </>
+    </Fragment>
   );
 }

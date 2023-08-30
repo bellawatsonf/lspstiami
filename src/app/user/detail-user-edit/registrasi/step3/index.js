@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import { useEffect, useState } from "react";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { useSelector } from "react-redux";
+import { Fragment } from "react";
 
 export default function Step3() {
   const router = useRouter();
@@ -100,7 +101,7 @@ export default function Step3() {
     return <LoadingComponent />;
   }
   return (
-    <>
+    <Fragment>
       {/* // <Formik
     //   enableReinitialize={true}
     //   initialValues={stateField}
@@ -343,6 +344,6 @@ export default function Step3() {
       {/* </form> */}
       {/* //   )}
     // </Formik> */}
-    </>
+    </Fragment>
   );
 }
