@@ -1807,7 +1807,7 @@ const DocumentPdf = (props) => {
                 <View style={{ width: "60%" }}>
                   <Image
                     style={{ width: 100, height: 100 }}
-                    src={`/download-asesi/${
+                    src={`/api/download-asesi/${
                       props.data.asesi_skema.asesi.ttd_asesi.split("/")[4]
                     }`}
                   ></Image>
@@ -1860,7 +1860,7 @@ const DocumentPdf = (props) => {
                 <View style={{ width: "60%" }}>
                   <Image
                     style={{ width: 100, height: 100 }}
-                    src={`/download-admin/${
+                    src={`/api/download-admin/${
                       props.data.admins.ttd_admin.split("/")[4]
                     }`}
                   ></Image>

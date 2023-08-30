@@ -8,6 +8,9 @@ import { useRef } from "react";
 import axios from "axios";
 import SignatureCanvas from "react-signature-canvas";
 import styles from "./sttyle.module.css";
+import { CloseOutlined } from "@mui/icons-material";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const style = {
   position: "absolute",
@@ -22,6 +25,7 @@ const style = {
 };
 
 export default function ModalTtdAdmin(props) {
+  let router = useRouter();
   console.log(props.openModal, "modal");
   let sigPad = useRef({});
   // let data = "";
@@ -46,6 +50,15 @@ export default function ModalTtdAdmin(props) {
     })
       .then((data) => {
         console.log(data, "ini datanya");
+        props.setOpenModalTtd(false);
+        router.push("/user/admin/Asesi");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "berhasil memperbaharui data",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((err) => {
         console.log(err, "errors");
@@ -55,11 +68,26 @@ export default function ModalTtdAdmin(props) {
     <React.Fragment>
       <Modal
         open={props.openModalTtd}
-        onClose={props.handleCloseModalTtd}
+        // onClose={props.handleCloseModalTtd}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              cursor: "pointer",
+              color: "red",
+            }}
+          >
+            <CloseOutlined
+              onClick={() => {
+                props.setOpenModalTtd(false);
+                // props.setStatusForm("");
+              }}
+            />
+          </div>
           <Typography
             id="modal-modal-title"
             sx={{ fontSize: "15px", marginBottom: "15px", fontWeight: 600 }}

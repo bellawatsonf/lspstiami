@@ -53,9 +53,9 @@ export default function ModalRekomendasiAsesi(props) {
         //   showConfirmButton: false,
         //   timer: 1500,
         // });
-        console.log(data, "ini datanya");
-        props.handleCloseModal();
-        handleOpenModalTtd();
+        // console.log(data, "ini datanya");
+        props.setOpenModal(false);
+        setOpenModalTtd(true);
       })
       .catch((err) => {
         console.log(err, "errors");
@@ -124,6 +124,7 @@ export default function ModalRekomendasiAsesi(props) {
       <ModalTtdAdmin
         openModalTtd={openModalTtd}
         handleCloseModalTtd={handleCloseModalTtd}
+        setOpenModalTtd={setOpenModalTtd}
         idAsesi={props.id_asesi}
       />
     </React.Fragment>
