@@ -21,17 +21,17 @@ const style = {
 };
 export default function ModalForm(props) {
   console.log(props.statusModal, "statusmodal");
-  let initialState = {
-    no_skema: "",
-    nama_skema: "",
-  };
-  const [stateField, setStateField] = React.useState("");
-  function handleSubmit(value) {
-    let input = {
-      no_skema: value.no_skema,
-      nama_skema: value.nama_skema,
-    };
-  }
+  // let initialState = {
+  //   no_skema: "",
+  //   nama_skema: "",
+  // };
+  // const [stateField, setStateField] = React.useState("");
+  // function handleSubmit(value) {
+  //   let input = {
+  //     no_skema: value.no_skema,
+  //     nama_skema: value.nama_skema,
+  //   };
+  // }
   return (
     <div>
       {/* <Button onClick={props.handleOpen}>Open modal</Button> */}

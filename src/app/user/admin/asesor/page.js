@@ -2,26 +2,24 @@
 
 import * as React from "react";
 
-import { CompactTable } from "@table-library/react-table-library/compact";
-import { useTheme } from "@table-library/react-table-library/theme";
-import {
-  DEFAULT_OPTIONS,
-  getTheme,
-} from "@table-library/react-table-library/material-ui";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteAdmin, fetchAdmin, fetchAdminById } from "@/app/services/admin";
-import { RemoveCircleOutline } from "@mui/icons-material";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import { Button, Pagination } from "@mui/material";
-import ModalAdmin from "./modalAsesor";
-import { usePagination } from "@table-library/react-table-library/pagination";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   deleteAsesor,
   fetchAsesorById,
   fetchAsesorServices,
 } from "@/app/services/asesor";
 import { fetchSkema } from "@/app/services/skema";
+import { makeStyles } from "@material-ui/core/styles";
+import { RemoveCircleOutline } from "@mui/icons-material";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import { Button, Pagination } from "@mui/material";
+import { CompactTable } from "@table-library/react-table-library/compact";
+import {
+  DEFAULT_OPTIONS,
+  getTheme,
+} from "@table-library/react-table-library/material-ui";
+import { useTheme } from "@table-library/react-table-library/theme";
+import { useDispatch, useSelector } from "react-redux";
+import ModalAdmin from "./modalAsesor";
 
 var bcrypt = require("bcryptjs");
 const key = "Base";
@@ -61,20 +59,20 @@ export default function Admin() {
     );
   }, []);
 
-  const pagination = usePagination(dataAsesor, {
-    state: {
-      page: stateField.page,
-      size: stateField.size,
-    },
-    onChange: onPaginationChange,
-  });
+  // const pagination = usePagination(dataAsesor, {
+  //   state: {
+  //     page: stateField.page,
+  //     size: stateField.size,
+  //   },
+  //   onChange: onPaginationChange,
+  // });
 
-  function onPaginationChange(action, state) {
-    console.log(action, state, "paginationstate");
-    dispatch(
-      fetchAsesorServices({ page: stateField.page, size: stateField.size })
-    );
-  }
+  // function onPaginationChange(action, state) {
+  //   console.log(action, state, "paginationstate");
+  //   dispatch(
+  //     fetchAsesorServices({ page: stateField.page, size: stateField.size })
+  //   );
+  // }
   const handleChange = (event, value) => {
     console.log(value, "value");
     setStateField((prevState) => {

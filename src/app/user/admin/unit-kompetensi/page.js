@@ -20,7 +20,7 @@ import styleSkema from "./skema.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSkema } from "@/app/services/skema";
 import ModalForm from "./modalForm";
-const key = "Composed Table";
+// const key = "Composed Table";
 
 export default function UnitKompetensi() {
   // const [dataSkema, setData] = useState({ nodes: [] });

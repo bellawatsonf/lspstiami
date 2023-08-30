@@ -1,24 +1,22 @@
 "use client";
-import * as React from "react";
-import { Button, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion from "@mui/material/Accordion";
-import MuiAccordionSummary from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAsesiById } from "@/app/services/asesi";
-import { useParams } from "next/navigation";
-import { fetchSkemaById } from "@/app/services/skema";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import ModalUnitKompetensi from "./ModalUnitKompetensi";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import { DeleteForeverOutlined } from "@mui/icons-material";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import { deleteUnitKompetensi } from "@/app/services/unitkompetensi";
-import ModalKriteriaUnjukKerja from "./ModalKriteria";
-import { deleteKriteriaKerja } from "@/app/services/kriteriakerja";
 import LoadingComponent from "@/app/(public)/component/loading";
+import { deleteKriteriaKerja } from "@/app/services/kriteriakerja";
+import { fetchSkemaById } from "@/app/services/skema";
+import { deleteUnitKompetensi } from "@/app/services/unitkompetensi";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { Typography } from "@mui/material";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import { styled } from "@mui/material/styles";
+import { useParams } from "next/navigation";
+import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import ModalKriteriaUnjukKerja from "./ModalKriteria";
+import ModalUnitKompetensi from "./ModalUnitKompetensi";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />

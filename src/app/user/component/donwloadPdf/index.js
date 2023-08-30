@@ -9,7 +9,7 @@ import {
   StyleSheet,
   PDFViewer,
 } from "@react-pdf/renderer";
-import style from "./style.module.css";
+// import style from "./style.module.css";
 import { Button } from "@mui/material";
 import { Fragment } from "react";
 

@@ -17,8 +17,8 @@ import ModalAdmin from "./modalAdmin";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { makeStyles } from "@material-ui/core/styles";
 
-var bcrypt = require("bcryptjs");
-const key = "Base";
+// var bcrypt = require("bcryptjs");
+// const key = "Base";
 
 const useStyles = makeStyles({
   paginationStyle: {

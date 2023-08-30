@@ -1,20 +1,13 @@
-import { useRef, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
 import styles from "./step4.module.css";
-import { Box, TextField, Typography, Button } from "@mui/material";
 var React = require("react");
 // var SignaturePad = require("react-signature-pad");
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import SignatureCanvas from "react-signature-canvas";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { Formik } from "formik";
-import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
-import LoadingComponent from "@/app/(public)/component/loading";
-import { useSelector } from "react-redux";
 
 export default function Step4(props) {
   // const [loading, setLoading] = useState(true);
@@ -63,10 +56,10 @@ export default function Step4(props) {
     props.sigPad.current.clear();
   }
 
-  function save() {
-    data = props.sigPad.current.toDataURL();
-    console.log(data, "simpan");
-  }
+  // function save() {
+  //   data = props.sigPad.current.toDataURL();
+  //   console.log(data, "simpan");
+  // }
 
   function show() {
     data = props.sigPad.current.toDataURL();

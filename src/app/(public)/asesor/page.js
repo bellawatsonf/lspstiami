@@ -1,27 +1,25 @@
 "use client";
 
-import styles from "./asesor.module.css";
-import stylesTentang from "../tentang/tentang.module.css";
-import { Box, Pagination, Typography } from "@mui/material";
+import { Pagination, Typography } from "@mui/material";
 import * as React from "react";
+import stylesTentang from "../tentang/tentang.module.css";
+import styles from "./asesor.module.css";
 
+import { fetchAsesorServices } from "@/app/services/asesor";
+import { makeStyles } from "@material-ui/core/styles";
 import { CompactTable } from "@table-library/react-table-library/compact";
-import { useTheme } from "@table-library/react-table-library/theme";
 import {
   DEFAULT_OPTIONS,
   getTheme,
 } from "@table-library/react-table-library/material-ui";
-import { useSort } from "@table-library/react-table-library/sort";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAsesorServices } from "@/app/services/asesor";
 import { usePagination } from "@table-library/react-table-library/pagination";
-import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@table-library/react-table-library/theme";
+import { useDispatch, useSelector } from "react-redux";
 // import dataAsesor from "./data.js";
-import dataAsesor from "./data";
 import Navbar from "../component/Navbar";
 import Footer from "../component/footer";
 import LoadingComponent from "../component/loading";
+import dataAsesor from "./data";
 
 const key = "Sort";
 const useStyles = makeStyles({
@@ -121,13 +119,13 @@ export default function AsesorTable() {
   }, []);
   console.log(stateField.page, "phsize");
 
-  const pagination = usePagination(data, {
-    state: {
-      page: stateField.page,
-      size: stateField.size,
-    },
-    onChange: onPaginationChange,
-  });
+  // const pagination = usePagination(data, {
+  //   state: {
+  //     page: stateField.page,
+  //     size: stateField.size,
+  //   },
+  //   onChange: onPaginationChange,
+  // });
 
   function onPaginationChange(action, state) {
     console.log(action, state, "paginationstate");

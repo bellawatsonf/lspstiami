@@ -1,18 +1,13 @@
 "use client";
 
-import "./../globals.css";
 import { Inter } from "next/font/google";
-import Sidebar from "./component/sidebar";
-import HeaderDashboard from "./component/header";
-import Dashboard from "./component/dashboardContainer";
-import styleDashboard from "./component/dashboardContainer/styleDashboard.module.css";
-import { Fragment, useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
+import { Fragment } from "react";
+import "./../globals.css";
+import styleDashboard from "./component/dashboardContainer/styleDashboard.module.css";
+import HeaderDashboard from "./component/header";
+import Sidebar from "./component/sidebar";
 // import jsHttpCookie from "cookie";
-import { NextRequest } from "next/server";
-import { PDFViewer } from "@react-pdf/renderer";
 
 const inter = Inter({ subsets: ["latin"] });
 

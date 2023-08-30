@@ -1,24 +1,21 @@
 "use client";
 
-import { Fragment, React, useEffect, useState } from "react";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import { googleLogout } from "@react-oauth/google";
-import jwt_decode from "jwt-decode";
-import style from "./login.module.css";
-import { TextField, Typography, Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import GoogleIcon from "@mui/icons-material/Google";
-import { Formik } from "formik";
+import { Button, TextField, Typography } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import LoadingComponent from "../(public)/component/loading";
+import Select from "@mui/material/Select";
+import { makeStyles } from "@mui/styles";
+import { googleLogout, useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import { Formik } from "formik";
+import jwt_decode from "jwt-decode";
+import { useRouter } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import LoadingComponent from "../(public)/component/loading";
+import style from "./login.module.css";
 
 const useStyles = makeStyles({
   root: {
@@ -56,57 +53,57 @@ export default function Login() {
   };
 
   console.log(role, "role");
-  const googleSuccess = (resp) => {
-    console.log(resp, "resp");
-    let decoded = jwt_decode(resp?.credential);
-    // console.log(decoded, "decode");
-    const email = decoded?.email;
-    const name = decoded?.name;
-    const token = resp?.tokenId;
-    const googleId = resp?.googleId;
-    const result = { email, name, token, googleId };
-    // dispatch(googleLogin({ result, navigate, toast }));
-    // console.log(result, "result");
-    let id_token_google = resp.credential;
-    // console.log(id_token_google, "tokengoogle");
+  // const googleSuccess = (resp) => {
+  //   console.log(resp, "resp");
+  //   let decoded = jwt_decode(resp?.credential);
+  //   // console.log(decoded, "decode");
+  //   const email = decoded?.email;
+  //   const name = decoded?.name;
+  //   const token = resp?.tokenId;
+  //   const googleId = resp?.googleId;
+  //   const result = { email, name, token, googleId };
+  //   // dispatch(googleLogin({ result, navigate, toast }));
+  //   // console.log(result, "result");
+  //   let id_token_google = resp.credential;
+  //   // console.log(id_token_google, "tokengoogle");
 
-    axios({
-      url: "/api/loginGoogle",
-      method: "POST",
-      data: { id_token_google },
-    })
-      .then((data) => {
-        console.log("masuk");
-        console.log(data, "dataaa");
-        localStorage.setItem("token", data.data.token);
+  //   axios({
+  //     url: "/api/loginGoogle",
+  //     method: "POST",
+  //     data: { id_token_google },
+  //   })
+  //     .then((data) => {
+  //       console.log("masuk");
+  //       console.log(data, "dataaa");
+  //       localStorage.setItem("token", data.data.token);
 
-        let token = localStorage.getItem("token");
-        // console.log(settoken, "settoken");
-        router.push("/admin/Asesi");
-        if (token) {
-          setStatusLogin(true);
-          setToken(token);
-        }
-        console.log(statusLogin, token, "tokeeen");
-      })
-      .catch((err) => console.log(err, "error"));
-  };
+  //       let token = localStorage.getItem("token");
+  //       // console.log(settoken, "settoken");
+  //       router.push("/admin/Asesi");
+  //       if (token) {
+  //         setStatusLogin(true);
+  //         setToken(token);
+  //       }
+  //       console.log(statusLogin, token, "tokeeen");
+  //     })
+  //     .catch((err) => console.log(err, "error"));
+  // };
 
-  const logOut = () => {
-    googleLogout();
-    setToken(localStorage.removeItem("token"));
-    setStatusLogin(false);
-    googleLogout();
-  };
+  // const logOut = () => {
+  //   googleLogout();
+  //   setToken(localStorage.removeItem("token"));
+  //   setStatusLogin(false);
+  //   googleLogout();
+  // };
 
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log("User signed out.");
-    });
-  }
+  // function signOut() {
+  //   var auth2 = gapi.auth2.getAuthInstance();
+  //   auth2.signOut().then(function () {
+  //     console.log("User signed out.");
+  //   });
+  // }
 
-  function setCookie() {}
+  // function setCookie() {}
 
   const login = useGoogleLogin({
     onSuccess: (resp) => {

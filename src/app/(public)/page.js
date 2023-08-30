@@ -1,16 +1,14 @@
 "use client";
 
-import Image from "next/image";
-import { Button, Typography, Box } from "@mui/material";
-import styles from "./page.module.css";
-import Footer from "./component/footer";
+import { Button, Typography } from "@mui/material";
+import { Fragment, useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { useDispatch, useSelector } from "react-redux";
-import { Fragment, useEffect, useState } from "react";
 import { fetchSkema } from "../services/skema";
-import { fetchAsesorServices } from "../services/asesor";
 import Navbar from "./component/Navbar";
+import Footer from "./component/footer";
 import LoadingComponent from "./component/loading";
+import styles from "./page.module.css";
 
 export default function Home() {
   let dispatch = useDispatch();

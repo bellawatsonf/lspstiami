@@ -1,11 +1,7 @@
-import axios from "axios";
-import styles from "./step3.module.css";
-import { Button, TextField, Typography } from "@mui/material";
-import { useParams, useRouter } from "next/navigation";
-import { Formik } from "formik";
-import { Fragment, useEffect, useState } from "react";
 import LoadingComponent from "@/app/(public)/component/loading";
-import { useSelector } from "react-redux";
+import { Typography } from "@mui/material";
+import { useParams, useRouter } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
 
 export default function Step3(props) {
   const router = useRouter();
@@ -28,17 +24,17 @@ export default function Step3(props) {
     sertifikat_pelatihan_pendukung: "",
   };
   const [stateField, setStateField] = useState(initialState);
-  function handleChangeImg(e) {
-    setStateField((prevState) => {
-      console.log(e.target.files[0], "cvent");
-      return {
-        ...prevState,
-        transkrip: e.target.files[0],
-        ijazah: e.target.files[0],
-        ktp: e.target.files[0],
-      };
-    });
-  }
+  // function handleChangeImg(e) {
+  //   setStateField((prevState) => {
+  //     console.log(e.target.files[0], "cvent");
+  //     return {
+  //       ...prevState,
+  //       transkrip: e.target.files[0],
+  //       ijazah: e.target.files[0],
+  //       ktp: e.target.files[0],
+  //     };
+  //   });
+  // }
 
   // function handleSubmitForm() {
   //   let formData = new FormData();

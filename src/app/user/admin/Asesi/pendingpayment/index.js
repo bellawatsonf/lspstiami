@@ -25,7 +25,7 @@ const key = "Composed Table";
 export default function PendingPayment(props) {
   console.log(props.dataAsesiSkema, "props");
   let loading = useSelector((state) => state.skema.loading);
-  const [dataSkema, setSkema] = useState({ nodes: [] });
+  // const [dataSkema, setSkema] = useState({ nodes: [] });
   const router = useRouter();
   const theme = useTheme(getTheme());
   let dispatch = useDispatch();
@@ -36,80 +36,80 @@ export default function PendingPayment(props) {
   //   }
   // });
   // console.log(dataSkema, "dtskema");
-  let data = [
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-    {
-      nama_asesi: "budianto",
-      ktp: "ktp.jpg",
-      ijazah: "ijazah.jpg",
-      pasfoto: "pasfoto.jpg",
-      buktibayar: "buktibayar.jpg",
-      status_pembayaran: "pending",
-    },
-  ];
+  // let data = [
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  //   {
+  //     nama_asesi: "budianto",
+  //     ktp: "ktp.jpg",
+  //     ijazah: "ijazah.jpg",
+  //     pasfoto: "pasfoto.jpg",
+  //     buktibayar: "buktibayar.jpg",
+  //     status_pembayaran: "pending",
+  //   },
+  // ];
 
   if (loading) {
     return <LoadingComponent />;

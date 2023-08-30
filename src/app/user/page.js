@@ -1,3 +1,4 @@
+"use client";
 import Asesi from "./admin/Asesi/page";
 
 export default function Home({ a }) {

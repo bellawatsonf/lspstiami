@@ -1,13 +1,12 @@
-import * as React from "react";
+import { CloseOutlined } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import ModalTtdAdmin from "./modalTtdAdmin";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
 import { useParams } from "next/navigation";
-import { CloseOutlined } from "@mui/icons-material";
-import Swal from "sweetalert2";
+import * as React from "react";
+import ModalTtdAdmin from "./modalTtdAdmin";
 
 const style = {
   position: "absolute",
@@ -24,7 +23,7 @@ const style = {
 export default function ModalRekomendasiAsesi(props) {
   console.log(props.openModal, "modal");
   const [openModalTtd, setOpenModalTtd] = React.useState(false);
-  const handleOpenModalTtd = () => setOpenModalTtd(true);
+  // const handleOpenModalTtd = () => setOpenModalTtd(true);
   const handleCloseModalTtd = () => setOpenModalTtd(false);
   let params = useParams();
   let id_asesikema = params.id;

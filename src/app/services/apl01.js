@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getAsesi } from "../reducers/asesiReducer";
 
 export function fetchApl01(params) {
   // console.log(params.page, params.size, "ph");

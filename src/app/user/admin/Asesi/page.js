@@ -1,18 +1,16 @@
 "use client";
 
-import * as React from "react";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
+import LoadingComponent from "@/app/(public)/component/loading";
 import Box from "@mui/material/Box";
-import PendingPayment from "./pendingpayment";
-import ApprovedPayment from "./approvedpayment";
-import RejectedPayment from "./rejectedpayment";
-import axios from "axios";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAsesiSkemaServices } from "../../../services/asesiskema";
-import LoadingComponent from "@/app/(public)/component/loading";
+import ApprovedPayment from "./approvedpayment";
+import PendingPayment from "./pendingpayment";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

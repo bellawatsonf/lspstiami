@@ -1,21 +1,10 @@
-import { useRef, useState } from "react";
-import styles from "./step4.module.css";
-import { Box, TextField, Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
+import { useState } from "react";
 var React = require("react");
 // var SignaturePad = require("react-signature-pad");
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import SignatureCanvas from "react-signature-canvas";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { Formik } from "formik";
-import { useParams } from "next/navigation";
-import axios from "axios";
-import Link from "next/link";
 import LoadingComponent from "@/app/(public)/component/loading";
-import { useSelector } from "react-redux";
+import { Formik } from "formik";
+import Link from "next/link";
 import { Fragment } from "react";
 
 export default function Step5(props) {

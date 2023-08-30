@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getAsesi } from "../reducers/asesiReducer";
 import { Loading } from "./skema";
 
 export function fetchAsesiSkemaServices(asesiskema) {

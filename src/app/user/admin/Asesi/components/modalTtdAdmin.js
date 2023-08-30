@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-var SignaturePad = require("react-signature-pad");
+// var SignaturePad = require("react-signature-pad");
 import { useRef } from "react";
 import axios from "axios";
 import SignatureCanvas from "react-signature-canvas";

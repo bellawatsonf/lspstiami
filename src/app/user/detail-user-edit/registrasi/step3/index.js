@@ -1,12 +1,8 @@
-import axios from "axios";
-import styles from "./step3.module.css";
-import { Button, TextField, Typography } from "@mui/material";
-import { useParams, useRouter } from "next/navigation";
-import { Formik } from "formik";
-import { useEffect, useState } from "react";
 import LoadingComponent from "@/app/(public)/component/loading";
-import { useSelector } from "react-redux";
-import { Fragment } from "react";
+import { Button, Typography } from "@mui/material";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
 
 export default function Step3() {
   const router = useRouter();

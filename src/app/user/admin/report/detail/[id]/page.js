@@ -3,18 +3,8 @@
 import { fetchApl01ById } from "@/app/services/apl01";
 import DownloadPdf from "@/app/user/component/donwloadPdf";
 import PdfFile from "@/app/user/component/pdfFile";
-import {
-  Document,
-  Page,
-  Text,
-  View,
-  StyleSheet,
-  PDFViewer,
-  PDFDownloadLink,
-} from "@react-pdf/renderer";
 import { useParams } from "next/navigation";
 import { Fragment, useEffect } from "react";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function detailReport() {

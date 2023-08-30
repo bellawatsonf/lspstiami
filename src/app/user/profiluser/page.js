@@ -1,17 +1,15 @@
 "use client";
 
 import LoadingComponent from "@/app/(public)/component/loading";
+import { fetchApl01ByUser } from "@/app/services/apl01";
 import { fetchAsesiById } from "@/app/services/asesi";
-import { fetchAsesiSkemaByUser } from "@/app/services/asesiskema";
-import { Typography, Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DownloadPdf from "../component/donwloadPdf";
-import { fetchApl01ByUser } from "@/app/services/apl01";
-import { Fragment } from "react";
 
 export default function ProfileUser() {
   let router = useRouter();

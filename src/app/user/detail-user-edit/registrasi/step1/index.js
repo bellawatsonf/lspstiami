@@ -1,25 +1,19 @@
-import { Formik } from "formik";
-import styles from "./step1.module.css";
+import LoadingComponent from "@/app/(public)/component/loading";
 import {
-  TextField,
-  Typography,
   Button,
   FormControl,
-  InputLabel,
-  Select,
   MenuItem,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DateField } from "@mui/x-date-pickers/DateField";
-import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import { useSelector } from "react-redux";
-import LoadingComponent from "@/app/(public)/component/loading";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import axios from "axios";
+import { Formik } from "formik";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Step1(props) {
   const router = useRouter();

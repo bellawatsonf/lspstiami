@@ -1,13 +1,12 @@
-import * as React from "react";
+import { CloseOutlined } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import ModalTtdAdmin from "./modalTtdAdmin";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import { CloseOutlined } from "@mui/icons-material";
 import { Formik } from "formik";
+import { useParams, useRouter } from "next/navigation";
+import * as React from "react";
 import Swal from "sweetalert2";
 
 const style = {
@@ -26,10 +25,10 @@ const style = {
 export default function ModalAlasanPenolakan(props) {
   console.log(props.openModal, "modal");
   const [openModalTtd, setOpenModalTtd] = React.useState(false);
-  const handleOpenModalTtd = () => setOpenModalTtd(true);
-  const handleCloseModalTtd = () => setOpenModalTtd(false);
+  // const handleOpenModalTtd = () => setOpenModalTtd(true);
+  // const handleCloseModalTtd = () => setOpenModalTtd(false);
   let params = useParams();
-  let id_asesikema = params.id;
+  // let id_asesikema = params.id;
   let router = useRouter();
 
   function handleUpdateStatusCek() {
@@ -53,7 +52,7 @@ export default function ModalAlasanPenolakan(props) {
 
   function prosesPenolakan(value) {
     console.log(value, "valuuee");
-    let idAdmin = JSON.parse(localStorage.getItem("user"));
+    // let idAdmin = JSON.parse(localStorage.getItem("user"));
     let input = {
       alasan_penolakan: value.alasan_penolakan,
     };

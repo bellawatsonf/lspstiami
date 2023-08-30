@@ -1,19 +1,15 @@
 "use client";
 
-import * as React from "react";
-import { styled } from "@mui/material/styles";
+import LoadingComponent from "@/app/(public)/component/loading";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion from "@mui/material/Accordion";
-import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import LoadingComponent from "@/app/(public)/component/loading";
-import { useRouter } from "next/navigation";
-import ModalDaftarSkema from "@/app/(public)/sertifikasi/modal-daftarskema";
+import { styled } from "@mui/material/styles";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import * as React from "react";
 import { Fragment } from "react";
 
 const Accordion = styled((props) => (
@@ -54,7 +50,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 export default function DashboardUser() {
   const [expanded, setExpanded] = React.useState("panel1");
-  const [sort, setSort] = React.useState("asc");
+  // const [sort, setSort] = React.useState("asc");
   const [loading, setLoading] = React.useState(true);
   const router = useRouter();
   const [userdata, setUser] = React.useState();

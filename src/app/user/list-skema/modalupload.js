@@ -1,15 +1,14 @@
-import * as React from "react";
+import { CloseOutlined } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { CloseOutlined } from "@mui/icons-material";
-import { Formik } from "formik";
-import styles from "./styles.module.css";
-import { useState } from "react";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
-import Swal from "sweetalert2";
+import { Formik } from "formik";
 import { useRouter } from "next/navigation";
+import * as React from "react";
+import Swal from "sweetalert2";
+import styles from "./styles.module.css";
 const style = {
   position: "absolute",
   top: "50%",
@@ -27,11 +26,11 @@ const style = {
 export default function ModalUpload(props) {
   const [bukti_bayar, setBuktiBayar] = React.useState();
   let router = useRouter();
-  let initialState = {
-    nama_pemilik_rekening: "",
-  };
+  // let initialState = {
+  //   nama_pemilik_rekening: "",
+  // };
 
-  const [stateField, setStateField] = useState();
+  // const [stateField, setStateField] = useState();
   const user = JSON.parse(sessionStorage.getItem("user"));
   console.log(user, "modaluploa");
 

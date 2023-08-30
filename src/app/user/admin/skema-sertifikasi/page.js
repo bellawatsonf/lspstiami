@@ -24,7 +24,7 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { useRouter } from "next/navigation";
 import LoadingComponent from "@/app/(public)/component/loading";
-const key = "Composed Table";
+// const key = "Composed Table";
 
 export default function SkemaSertifikasi() {
   // const [dataSkema, setData] = useState({ nodes: [] });

@@ -1,21 +1,16 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { Formik } from "formik";
-import { TextField, TextareaAutosize } from "@mui/material";
-import { CloseOutlined } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
-import { addSkema, editSkema, fetchSkemaById } from "@/app/services/skema";
-import {
-  addUnitKompetensi,
-  editUnitKompetensi,
-} from "@/app/services/unitkompetensi";
 import {
   addKriteriaKerja,
   editKriteriaKerja,
 } from "@/app/services/kriteriakerja";
+import { CloseOutlined } from "@mui/icons-material";
+import { TextField, TextareaAutosize } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
+import { Formik } from "formik";
+import * as React from "react";
+import { useDispatch } from "react-redux";
 
 const style = {
   position: "absolute",
@@ -39,11 +34,11 @@ export default function ModalKriteriaUnjukKerja(props) {
     kriteriakerja:
       props.modalKriteria === "edit" ? props.kriteriakerja.join("\n") : "",
   };
-  const [stateField, setStateField] = React.useState(initialState);
+  // const [stateField, setStateField] = React.useState(initialState);
 
   function handleProsesSubmit(value) {
     console.log(value.kriteriakerja, "valuekerja");
-    let arr = [];
+    // let arr = [];
 
     let input = {
       id_unit_kompetensi: props.idUnit,

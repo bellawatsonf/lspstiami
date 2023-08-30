@@ -1,23 +1,19 @@
 "use client";
 
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion from "@mui/material/Accordion";
-import MuiAccordionSummary from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import LoadingComponent from "@/app/(public)/component/loading";
-import { useRouter } from "next/navigation";
-import ModalDaftarSkema from "@/app/(public)/sertifikasi/modal-daftarskema";
 import { fetchSkema } from "@/app/services/skema";
+import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import { Button } from "@mui/material";
+import MuiAccordion from "@mui/material/Accordion";
+import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import MuiAccordionSummary from "@mui/material/AccordionSummary";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+import { useRouter } from "next/navigation";
+import * as React from "react";
+import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import ModalPilihPaketSkema from "./modalpilihpaketskema";
-import { Fragment } from "react";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />

@@ -1,14 +1,12 @@
 "use client";
 
-import { Button, MenuItem, MenuList } from "@mui/material";
-import sidebarStyle from "./sidebarstyle.module.css";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Button, MenuItem, MenuList } from "@mui/material";
 import Menu from "@mui/material/Menu";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import sidebarStyle from "./sidebarstyle.module.css";
 
 export default function Sidebar() {
   let router = useRouter();

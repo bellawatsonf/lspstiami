@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-import styles from "./step1.module.css";
+import LoadingComponent from "@/app/(public)/component/loading";
 import { Button, TextField, Typography } from "@mui/material";
+import axios from "axios";
 import { Formik } from "formik";
 import { useParams, useRouter } from "next/navigation";
-import axios from "axios";
-import LoadingComponent from "@/app/(public)/component/loading";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function Step2(props) {
   let router = useRouter();

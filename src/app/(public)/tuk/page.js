@@ -1,20 +1,12 @@
 "use client";
 
-import stylesTentang from "../tentang/tentang.module.css";
-import styles from "./tuk.module.css";
-import { Typography, Button } from "@mui/material";
+import { Typography } from "@mui/material";
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion from "@mui/material/Accordion";
-import MuiAccordionSummary from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSkema } from "@/app/services/skema";
-import axios from "axios";
 import Navbar from "../component/Navbar";
 import Footer from "../component/footer";
 import LoadingComponent from "../component/loading";
+import stylesTentang from "../tentang/tentang.module.css";
+import styles from "./tuk.module.css";
 
 export default function TUkPage() {
   const [loading, setLoading] = React.useState(true);

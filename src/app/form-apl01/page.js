@@ -1,11 +1,11 @@
 "use client";
-import * as React from "react";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
+import Button from "@mui/material/Button";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
+import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
+import * as React from "react";
 
 const steps = [
   "Data Pemohon Sertifikasi",
@@ -14,22 +14,19 @@ const steps = [
   "Tanda Tangan",
 ];
 
-import styles from "./registrasi.module.css";
+import axios from "axios";
+import { Formik } from "formik";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import LoadingComponent from "../(public)/component/loading";
 import Step1 from "../(public)/component/registrasi/step1.js/index.js";
 import Step2 from "../(public)/component/registrasi/step2";
 import Step3 from "../(public)/component/registrasi/step3";
 import Step4 from "../(public)/component/registrasi/step4";
-import { Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
 import { fetchAsesiById } from "../services/asesi";
-import { useEffect } from "react";
-import axios from "axios";
-import LoadingComponent from "../(public)/component/loading";
-import SignatureCanvas from "react-signature-canvas";
-import { useRef } from "react";
-import { useState } from "react";
-import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
+import styles from "./registrasi.module.css";
 // import Step1 from "../user/detail-user-edit/registrasi/step1";
 // import Step2 from "../user/detail-user-edit/registrasi/step2";
 // import Step3 from "../user/detail-user-edit/registrasi/step3";
@@ -92,7 +89,7 @@ export default function Regitrasi() {
 
   useEffect(() => {
     try {
-      let token = sessionStorage.getItem("token");
+      // let token = sessionStorage.getItem("token");
       let value = JSON.parse(sessionStorage.getItem("user")); //untuk ubah dari string ke obj
       console.log(value, "value");
       setUser(value);
@@ -216,22 +213,22 @@ export default function Regitrasi() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      throw new Error("You can't skip a step that isn't optional.");
-    }
+  // const handleSkip = () => {
+  //   if (!isStepOptional(activeStep)) {
+  //     throw new Error("You can't skip a step that isn't optional.");
+  //   }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
+  //   setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  //   setSkipped((prevSkipped) => {
+  //     const newSkipped = new Set(prevSkipped.values());
+  //     newSkipped.add(activeStep);
+  //     return newSkipped;
+  //   });
+  // };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
   function handleSubmitForm(value) {
     console.log(value.tgl_lahir, "value");
     let formData = new FormData();

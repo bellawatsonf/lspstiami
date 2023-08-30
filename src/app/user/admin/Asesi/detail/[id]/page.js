@@ -55,15 +55,15 @@ export default function DetailAsesi_Pendaftaran() {
   console.log(id, "id");
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [image, setImage] = useState("false");
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
   const [openModalPenolakan, setOpenModalPenolakan] = useState(false);
-  const handleOpenModalPenolakan = () => setOpenModalPenolakan(true);
-  const handleCloseModalPenolakan = () => setOpenModalPenolakan(false);
+  // const handleOpenModalPenolakan = () => setOpenModalPenolakan(true);
+  // const handleCloseModalPenolakan = () => setOpenModalPenolakan(false);
   let loading = useSelector((state) => state.skema.loading);
 
   const handleImage = (value) => {
@@ -77,23 +77,23 @@ export default function DetailAsesi_Pendaftaran() {
     dispatch(fetchAsesiSkemaByIdDetail(id));
   }, []);
 
-  function handleCheckBuktiBayar(status) {
-    let input = { status_pembayaran: status };
-    dispatch(Loading(true));
-    axios({
-      method: "PATCH",
-      url: `/api/edit-status-pembayaran/${asesiSkemaById?.asesi?.id}`,
-      data: input,
-    })
-      .then((data) => {
-        console.log(data);
-        handleOpenModal();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally((_) => dispatch(Loading(false)));
-  }
+  // function handleCheckBuktiBayar(status) {
+  //   let input = { status_pembayaran: status };
+  //   dispatch(Loading(true));
+  //   axios({
+  //     method: "PATCH",
+  //     url: `/api/edit-status-pembayaran/${asesiSkemaById?.asesi?.id}`,
+  //     data: input,
+  //   })
+  //     .then((data) => {
+  //       console.log(data);
+  //       handleOpenModal();
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     })
+  //     .finally((_) => dispatch(Loading(false)));
+  // }
 
   function handleUpdateStatusCek(param) {
     let input = { status_cek: param };
