@@ -14,7 +14,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 555,
+  width: 500,
   height: 350,
   bgcolor: "background.paper",
   border: "2px solid #000",
@@ -78,7 +78,21 @@ export default function ModalUpload(props) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: { xs: "400px", md: "550px" },
+            height: 350,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            //   paddingBottom: "20px",
+            p: 4,
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -148,6 +162,7 @@ export default function ModalUpload(props) {
                         width: "100%",
                         fontSize: "14px",
                         padding: "5px 0px 5px 5px",
+                        border: "1px solid black",
                       }}
                       onChange={handleChange}
                       onBlur={handleBlur}
