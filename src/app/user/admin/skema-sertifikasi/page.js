@@ -95,13 +95,7 @@ export default function SkemaSertifikasi() {
 
             <Body>
               {tableList.map((item, i) => (
-                <Row
-                  key={i}
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    router.push(`skema-sertifikasi/detail/${item.id}`);
-                  }}
-                >
+                <Row key={i} style={{ cursor: "pointer" }}>
                   <Cell>NO SKEMA BELUM ADA</Cell>
                   <Cell>{item.nama_skema}</Cell>
                   <Cell>
@@ -128,6 +122,19 @@ export default function SkemaSertifikasi() {
                           sx={{ cursor: "pointer" }}
                           onClick={() => dispatch(deleteSkema(item.id))}
                         />
+                        <Button
+                          variant="contained"
+                          sx={{
+                            marginLeft: "15px",
+                            fontSize: "13px",
+                            textTransform: "none",
+                          }}
+                          onClick={() => {
+                            router.push(`skema-sertifikasi/detail/${item.id}`);
+                          }}
+                        >
+                          Detail
+                        </Button>
                       </span>
                     </div>
                   </Cell>
