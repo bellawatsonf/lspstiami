@@ -339,7 +339,7 @@ export default function Login() {
                       autoComplete="current-password"
                       variant="standard"
                       className={classes.root}
-                      value={values.email}
+                      value={values.email.toLowerCase()}
                     />
                     <TextField
                       id="standard-password-input"
