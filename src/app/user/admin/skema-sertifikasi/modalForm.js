@@ -29,6 +29,7 @@ export default function ModalForm(props) {
   let initialState = {
     no_skema: props.statusModal === "edit" ? dtById.no_skema : "",
     nama_skema: props.statusModal === "edit" ? dtById.nama_skema : "",
+    kuota: props.statusModal === "edit" ? dtById.kuota : "",
   };
   const [stateField, setStateField] = React.useState(initialState);
 
@@ -36,6 +37,7 @@ export default function ModalForm(props) {
     let input = {
       no_skema: value.no_skema,
       nama_skema: value.nama_skema,
+      kuota: value.kuota,
     };
   }
 
@@ -43,6 +45,7 @@ export default function ModalForm(props) {
     let input = {
       no_skema: value.no_skema,
       nama_skema: value.nama_skema,
+      kuota: value.kuota,
     };
     console.log("masuk handle submit");
     if (props.statusModal === "add") {
@@ -126,10 +129,10 @@ export default function ModalForm(props) {
                         onChange={handleChange}
                       />
                     </div>
-                    <div className="col-3">
+                    <div className="col-3 mb-3">
                       <label style={{ paddingTop: "20px" }}>Nama Skema </label>
                     </div>
-                    <div className="col-9">
+                    <div className="col-9 mb-3">
                       <TextField
                         id="outlined-basic"
                         placeholder="nama skema"
@@ -138,6 +141,22 @@ export default function ModalForm(props) {
                         sx={{ width: "100%" }}
                         name="nama_skema"
                         value={values.nama_skema}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="col-3">
+                      <label style={{ paddingTop: "20px" }}>Kuota Skema </label>
+                    </div>
+                    <div className="col-9">
+                      <TextField
+                        id="outlined-basic"
+                        placeholder="nama skema"
+                        //   label="Outlined"
+                        variant="outlined"
+                        sx={{ width: "100%" }}
+                        name="kuota"
+                        value={values.kuota}
                         onBlur={handleBlur}
                         onChange={handleChange}
                       />
