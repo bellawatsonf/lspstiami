@@ -16,6 +16,8 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ModalUpload from "./modalupload";
 import { Fragment } from "react";
+import { useDispatch } from "react-redux";
+import { fetchSkema } from "@/app/services/skema";
 
 const style = {
   position: "absolute",
@@ -66,6 +68,8 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 export default function ModalPilihPaketSkema(props) {
   console.log(props.params, "paramsss");
+  let dispatch = useDispatch();
+
   let router = useRouter();
   const [expanded, setExpanded] = React.useState("panel1");
   const [openUpload, setOpenUpload] = React.useState(false);
@@ -85,33 +89,33 @@ export default function ModalPilihPaketSkema(props) {
     };
     console.log(input, "addskema");
     if (value === "pengayaan-ujikom") {
-      setOpenUpload(true);
-      props.setOpen(false);
-      // axios({
-      //   method: "POST",
-      //   url :"/api/add-asesi-skema",
-      //   data: input,
-      // })
-      //   .then((data) => {
-      //     console.log(data);
-      //     props.setOpen(false);
-      //     Swal.fire({
-      //       position: "center",
-      //       icon: "success",
-      //       title: "Berhasil mendaftar Skema",
-      //       showConfirmButton: false,
-      //       timer: 1500,
-      //     }).then((result) => {
-      //       if (value === "ujikom") {
-      //         router.push("/form-apl01");
-      //       } else {
-      //         alert("pengayaan+ujikom");
-      //       }
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      axios({
+        method: "POST",
+        url: "/api/add-asesi-skema",
+        data: input,
+      })
+        .then((data) => {
+          console.log(data);
+          setOpenUpload(true);
+          props.setOpen(false);
+          dispatch(fetchSkema());
+          // Swal.fire({
+          //   position: "center",
+          //   icon: "success",
+          //   title: "Berhasil mendaftar Skema",
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // }).then((result) => {
+          //   if (value === "ujikom") {
+          //     router.push("/form-apl01");
+          //   } else {
+          //     alert("pengayaan+ujikom");
+          //   }
+          // });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       axios({
         method: "POST",

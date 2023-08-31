@@ -341,6 +341,78 @@ export default function DetailAsesi_Pendaftaran() {
                 style={{ width: "100px", cursor: "pointer" }}
               />
             </div>
+            {asesiSkemaById?.jenis_paket === "pengayaan-ujikom" ? (
+              <div className="col-6 mb-3">
+                <Typography sx={{ color: "#acacac" }}>Bukti Bayar</Typography>
+                <div className="d-flex" style={{ width: "100%" }}>
+                  {/* <img
+                  src={asesiSkemaById?.asesi?.bukti_bayar}
+                  alt={asesiSkemaById?.asesi?.bukti_bayar}
+                  onClick={(e) =>
+                    handleImage(asesiSkemaById?.asesi?.bukti_bayar)
+                  }
+                  className="img"
+                  style={{ width: "100px", cursor: "pointer" }}
+                /> */}
+                  <img
+                    src={asesiSkemaById?.asesi?.bukti_bayar}
+                    alt={asesiSkemaById?.asesi?.bukti_bayar}
+                    onClick={(e) =>
+                      handleImage(asesiSkemaById?.asesi?.bukti_bayar)
+                    }
+                    className="img"
+                    style={{ width: "100px", cursor: "pointer" }}
+                  />
+                  <div
+                    className="d-flex "
+                    style={{
+                      width: "50%",
+                      justifyContent: "flex-end",
+                      height: "100%",
+                      bottom: "0px",
+                      position: "relative",
+                      // top: "30px",
+                    }}
+                  >
+                    {/* {asesiSkemaById?.status_cek === "terima" ? null : (
+                    <div style={{ marginTop: "20px" }}>
+                      <Button
+                        variant="contained"
+                        color="success"
+                        sx={{
+                          marginRight: "10px",
+                          fontSize: "14px",
+                          textTransform: "none",
+                        }}
+                        onClick={() => {
+                          // handleCheckBuktiBayar("paid");
+                          handleUpdateStatusCek("terima");
+                        }}
+                      >
+                        Terima
+                      </Button>
+
+                      <Button
+                        variant="contained"
+                        sx={{
+                          marginRight: "10px",
+                          fontSize: "14px",
+                          textTransform: "none",
+                        }}
+                        onClick={() => {
+                          // handleCheckBuktiBayar("unpaid");
+                          handleUpdateStatusCek("revisi");
+                        }}
+                      >
+                        Tolak
+                      </Button>
+                    </div>
+                  )} */}
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>
                 Tanda Tangan Asesi

@@ -39,3 +39,15 @@
   display: block;
   margin: auto;
 }
+
+@media (max-width: 768px) {
+  .boxMenu {
+    width: 32%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .boxMenu {
+    width: 32%;
+  }
+}

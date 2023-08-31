@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { RemoveCircle, RemoveCircleOutline } from "@mui/icons-material";
 import { deleteAsesiSkema } from "@/app/services/asesiskema";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 const key = "Composed Table";
 
@@ -147,7 +147,20 @@ export default function PendingPayment(props) {
                         <Cell>{item.asesi.bukti_bayar}</Cell>
                         <Cell>{item.jenis_paket}</Cell>
                         <Cell>
-                          {item.status_cek === "belum-dicek" ? "false" : "true"}
+                          <Typography
+                            sx={{
+                              color:
+                                item.status_cek === "belum-dicek"
+                                  ? "grey"
+                                  : item.status_cek === "revisi"
+                                  ? "red"
+                                  : "blue",
+                            }}
+                          >
+                            {item.status_cek === "belum-dicek"
+                              ? "false"
+                              : item.status_cek}
+                          </Typography>
                         </Cell>
                         <Cell>
                           <div className="d-flex">

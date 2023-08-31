@@ -14,8 +14,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
-  height: 320,
+  width: 555,
+  height: 350,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -61,7 +61,7 @@ export default function ModalUpload(props) {
           timer: 1500,
         }).then((result) => {
           // if (result.isConfirmed) {
-          router.push("/user/profileuser");
+          router.push("/form-apl01");
           // }
         });
       })
@@ -147,7 +147,7 @@ export default function ModalUpload(props) {
                       style={{
                         width: "100%",
                         fontSize: "14px",
-                        padding: "5px 0px 5px 0px",
+                        padding: "5px 0px 5px 5px",
                       }}
                       onChange={handleChange}
                       onBlur={handleBlur}

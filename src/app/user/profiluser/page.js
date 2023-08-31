@@ -240,7 +240,7 @@ export default function ProfileUser() {
           <div className="col-9 mt-2">
             :{" "}
             {selectedSkema === "" ? (
-              <Link style={{ textDecoration: "none" }} href="/list-skema">
+              <Link style={{ textDecoration: "none" }} href="/user/list-skema">
                 Pilih Skema
               </Link>
             ) : (

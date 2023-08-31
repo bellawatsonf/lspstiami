@@ -11,7 +11,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Fragment } from "react";
-
+import style from "./style.module.css";
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -100,7 +100,29 @@ export default function DashboardUser() {
           >
             Selamat Datang {userdata?.nama},
           </Typography>
-          <div className="d-flex" style={{ justifyContent: "center" }}>
+          <div className={`${style.forDesktop}${style.forMobile}`}>
+            <div className={`${style.boxGreetingDashboard}`}>
+              <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
+                Anda belum melakukan pendaftaran,
+              </Typography>
+              <Typography
+                sx={{
+                  color: "blue",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                  textAlign: "center",
+                }}
+                onClick={() => {
+                  router.push("/user/list-skema");
+                }}
+              >
+                {" "}
+                silahkan klik untuk melakukan pendaftaran{" "}
+              </Typography>
+            </div>
+          </div>
+
+          <div className={`${style.forMobile} ${style.forDesktop}`}>
             <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
               Anda belum melakukan pendaftaran,
             </Typography>
@@ -188,12 +210,25 @@ export default function DashboardUser() {
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
+                {/* {el.deskripsi_info !== null ? ( */}
                 <Typography sx={{ fontSize: "15px" }}>
-                  {el.deskripsi_info.split("dengan")[0]}
+                  {el.deskripsi_info}
                 </Typography>
-                <Typography sx={{ marginTop: "5px", fontSize: "15px" }}>
-                  {el.deskripsi_info.split("dengan")[1]}
-                </Typography>
+                {/* // ) : ( //{" "}
+                <Fragment>
+                  //{" "}
+                  <Typography sx={{ fontSize: "15px" }}>
+                    // {el.deskripsi_info.split("dengan")[0]}
+                    //{" "}
+                  </Typography>
+                  //{" "}
+                  <Typography sx={{ marginTop: "5px", fontSize: "15px" }}>
+                    // {el.deskripsi_info.split("dengan")[1]}
+                    //{" "}
+                  </Typography>
+                  //{" "}
+                </Fragment>
+                // )} */}
               </AccordionDetails>
             </Accordion>
           ))}

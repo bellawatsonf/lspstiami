@@ -230,7 +230,7 @@ export default function Regitrasi() {
   //   setActiveStep(0);
   // };
   function handleSubmitForm(value) {
-    console.log(value.tgl_lahir, "value");
+    console.log(value, "value");
     let formData = new FormData();
     formData.append("transkrip", transkrip);
     formData.append("ijazah", ijazah);

@@ -120,9 +120,9 @@ export default function ApprovedPayment(props) {
               item.jenis_paket === "ujikom" ? (
                 <Row
                   key={i}
-                  onClick={(e) => {
-                    router.push(`/user/admin/Asesi/detail/${item.id}`);
-                  }}
+                  // onClick={(e) => {
+                  //   router.push(`/user/admin/Asesi/detail/${item.id}`);
+                  // }}
                   style={{ cursor: "pointer" }}
                 >
                   <Cell>{item.asesi.nama_lengkap}</Cell>

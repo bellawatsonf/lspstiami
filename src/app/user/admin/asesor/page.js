@@ -21,8 +21,8 @@ import { useTheme } from "@table-library/react-table-library/theme";
 import { useDispatch, useSelector } from "react-redux";
 import ModalAdmin from "./modalAsesor";
 
-var bcrypt = require("bcryptjs");
-const key = "Base";
+// var bcrypt = require("bcryptjs");
+// const key = "Base";
 
 const useStyles = makeStyles({
   paginationStyle: {

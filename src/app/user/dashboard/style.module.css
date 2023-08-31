@@ -1,0 +1,40 @@
+.forDesktop {
+  display: block;
+}
+
+.forMobile {
+  display: none;
+}
+
+.boxGreetingDashboard {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
+  }
+  .boxGreetingDashboard {
+    display: none;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .forDesktop {
+    display: none;
+  }
+
+  .forMobile {
+    display: block;
+  }
+  .boxGreetingDashboard {
+    display: none;
+    justify-content: center;
+  }
+}

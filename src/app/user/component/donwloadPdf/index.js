@@ -70,6 +70,10 @@ const DocumentPdf = (props) => {
     return <div>pp</div>;
   }
   console.log(encodeURI(props?.data?.admins.ttd_admin), "dr document");
+  console.log(
+    encodeURI(props?.data?.asesi_skema.asesi.ttd_asesi),
+    "dr document"
+  );
 
   return (
     <Document>

@@ -29,6 +29,7 @@ export default function ModalRekomendasiAsesi(props) {
   let id_asesikema = params.id;
 
   function prosesRekomendasiAsesi(value) {
+    console.log(value, "value");
     let idAdmin = JSON.parse(sessionStorage.getItem("user"));
     let input = {
       rekomendasi_sebagai_asesi: value,
