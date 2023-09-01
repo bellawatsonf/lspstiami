@@ -119,13 +119,13 @@ export default function AsesorTable() {
   }, []);
   console.log(stateField.page, "phsize");
 
-  // const pagination = usePagination(data, {
-  //   state: {
-  //     page: stateField.page,
-  //     size: stateField.size,
-  //   },
-  //   onChange: onPaginationChange,
-  // });
+  const pagination = usePagination(data, {
+    state: {
+      page: stateField.page,
+      size: stateField.size,
+    },
+    onChange: onPaginationChange,
+  });
 
   function onPaginationChange(action, state) {
     console.log(action, state, "paginationstate");
