@@ -170,13 +170,24 @@ export default function Navbar() {
               </Link>
             </li>
             <li className={style["nav-item"]}>
-              <Link
-                onClick={() => setOpen(false)}
-                className={style["nav-item"]}
-                href="/login"
-              >
-                Masuk
-              </Link>
+              {user && token ? (
+                <Link
+                  className={style["nav-item"]}
+                  style={{ color: "blue", fontWeight: 700 }}
+                  // onClick={(e) => handleLogout(e)}
+                  href={
+                    user.role === "asesi"
+                      ? "/user/dashboard"
+                      : "/user/admin/Asesi"
+                  }
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <Link className={style["nav-item"]} href="/login">
+                  Masuk
+                </Link>
+              )}
             </li>
           </ul>
         </div>
