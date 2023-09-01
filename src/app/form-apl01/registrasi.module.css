@@ -3,7 +3,7 @@
   background-color: rgb(192, 237, 241);
   /* background-size: cover;
   background-repeat: no-repeat; */
-  height: 100%;
+  /* height: 100vh; */
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -14,7 +14,20 @@
   display: block;
   background: white;
   position: relative;
-  top: 15%;
+  /* top: 15%; */
   padding: 50px 50px;
-  height: 100%;
+  /* height: 100%; */
+}
+
+@media (max-width: 768px) {
+  .boxRegisStepper {
+    width: 95%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .boxRegisStepper {
+    width: 95%;
+  }
 }
