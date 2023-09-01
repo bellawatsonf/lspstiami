@@ -25,7 +25,7 @@ const key = "Sort";
 const useStyles = makeStyles({
   paginationStyle: {
     "& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected ": {
-      background: "rgb(45, 195, 208)",
+      background: "rgb(45, 195, 208) !important",
       color: "white",
     },
   },
