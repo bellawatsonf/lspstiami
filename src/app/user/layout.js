@@ -2,11 +2,12 @@
 
 import { Inter } from "next/font/google";
 import { useRouter } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "./../globals.css";
 import styleDashboard from "./component/dashboardContainer/styleDashboard.module.css";
 import HeaderDashboard from "./component/header";
 import Sidebar from "./component/sidebar";
+import Login from "../login/page";
 // import jsHttpCookie from "cookie";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -40,7 +41,8 @@ export default function DashboardLayout({ children }) {
   let user;
   let sessionToken = null;
   let sessionUser = null;
-
+  const [users, setUser] = useState();
+  const [tokens, setToken] = useState();
   try {
     sessionToken = sessionStorage.getItem("token");
     sessionUser = JSON.parse(sessionStorage.getItem("user"));
@@ -51,11 +53,16 @@ export default function DashboardLayout({ children }) {
     console.log("gak dapet token");
   }
 
-  console.log(sessionToken, sessionUser?.role, "user");
+  // console.log(sessionToken, sessionUser?.role, "user");
+  useEffect(() => {
+    setUser(JSON.parse(sessionStorage.getItem("user")));
+    setToken(sessionStorage.getItem("token"));
+  }, []);
+
   return (
     <Fragment>
-      {(sessionToken && sessionUser?.role === "asesi") ||
-      (sessionToken && sessionUser?.role === "admin") ? (
+      {(tokens && users.role === "asesi") ||
+      (tokens && users.role === "admin") ? (
         // <PDFViewer>
         <div className={inter.className}>
           <div className={`${styleDashboard.boxContainer}`}>
@@ -68,7 +75,8 @@ export default function DashboardLayout({ children }) {
         </div>
       ) : (
         // {/* </PDFViewer> */}
-        router.push("/login")
+        // router.push("/login")
+        <Login />
       )}
     </Fragment>
   );
