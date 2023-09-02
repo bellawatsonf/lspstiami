@@ -138,7 +138,7 @@ export default function PendingPayment(props) {
                 (item, i) => (
                   <Fragment>
                     {item.jenis_paket === "pengayaan-ujikom" ? (
-                      <Row key={i} style={{ cursor: "pointer" }}>
+                      <Row key={i}>
                         <Cell>{item.asesi.nama_lengkap}</Cell>
                         <Cell>{item.skema.nama_skema}</Cell>
                         <Cell>{item.asesi.img_ktp}</Cell>
@@ -175,10 +175,15 @@ export default function PendingPayment(props) {
                               Detail
                             </Button>
                             <RemoveCircleOutline
-                              sx={{ marginTop: "8px", marginLeft: "10px" }}
-                              onClick={() =>
-                                dispatch(deleteAsesiSkema(item.id))
-                              }
+                              sx={{
+                                marginTop: "8px",
+                                marginLeft: "10px",
+                                cursor: "pointer",
+                              }}
+                              onClick={() => {
+                                console.log("delete");
+                                dispatch(deleteAsesiSkema(item.id));
+                              }}
                             />
                           </div>
                         </Cell>

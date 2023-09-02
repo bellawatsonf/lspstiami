@@ -80,7 +80,7 @@ export default function Navbar() {
                   Tentang
                 </Link>
               </li>
-              <li className={style["nav-item"]}>
+              {/* <li className={style["nav-item"]}>
                 {user && token ? (
                   <Link
                     className={style["nav-item"]}
@@ -99,7 +99,7 @@ export default function Navbar() {
                     Masuk
                   </Link>
                 )}
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className={`${style.forMobile} col`}>
@@ -169,7 +169,7 @@ export default function Navbar() {
                 Tentang
               </Link>
             </li>
-            <li className={style["nav-item"]}>
+            {/* <li className={style["nav-item"]}>
               {user && token ? (
                 <Link
                   className={style["nav-item"]}
@@ -188,7 +188,7 @@ export default function Navbar() {
                   Masuk
                 </Link>
               )}
-            </li>
+            </li> */}
           </ul>
         </div>
       ) : null}

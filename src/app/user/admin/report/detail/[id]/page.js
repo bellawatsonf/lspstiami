@@ -22,11 +22,11 @@ export default function detailReport() {
   if (Object.keys(apl01byid).length > 0) {
     return (
       <Fragment>
+        <DownloadPdf data={apl01byid} />
         <PdfFile />
         {/* <PDFViewer>
           <Pdf2 />
         </PDFViewer> */}
-        <DownloadPdf data={apl01byid} />
       </Fragment>
       // <Document>
       //   <Page size="A4" style={styles.page}>

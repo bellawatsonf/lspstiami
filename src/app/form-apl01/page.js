@@ -70,7 +70,7 @@ export default function Regitrasi() {
   };
   const [stateField, setStateField] = React.useState(initialState);
   const [dtprovinsi, setProvinsi] = React.useState([]);
-  const [selectedProv, setSelected] = React.useState("");
+  const [selectedProv, setSelected] = React.useState();
   const [dtKota, setKota] = React.useState([]);
   const [selectedKota, setSelectedKota] = React.useState("");
   const [jenis_kelamin, setJenisKelamin] = React.useState("");
@@ -138,7 +138,7 @@ export default function Regitrasi() {
       setSelected(userById.provinsi);
       setDate(new Date(userById.tgl_lahir));
     }
-    getProvinsi();
+    // getProvinsi();
   }, [userById]);
   function getProvinsi() {
     console.log("masuk getprovinsi");
@@ -177,6 +177,7 @@ export default function Regitrasi() {
   //     getKota();
   //   }
   // }, [selectedProv]);
+  // console.log(dtkota, "dtkota");
   const handleChangeProvinsi = (event) => {
     console.log(event.target.value, "value");
     setSelected(event.target.value);

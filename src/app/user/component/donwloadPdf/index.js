@@ -740,7 +740,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -755,11 +755,24 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>Ada</Text>
               </View>
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
-                  <Text style={styles.tableCell}>memenuhi syarat</Text>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
-                <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
+                <View
+                  style={{
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
               </View>
             </View>
@@ -875,7 +888,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
           </View>
           <View style={styles.tableRow}>
@@ -977,7 +990,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
           </View>
           <View style={styles.tableRow}>
@@ -1075,7 +1088,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
           </View>
           <View style={styles.tableRow}>
@@ -1171,7 +1184,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
           </View>
           <View style={styles.tableRow}>
@@ -1269,7 +1282,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
           </View>
           <View style={styles.tableRow}>
@@ -1369,7 +1382,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
           </View>
         </View>
@@ -1434,7 +1447,7 @@ const DocumentPdf = (props) => {
                   <Text style={styles.tableCell}>ada</Text>
                 </View>
                 <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>ridak ada</Text>
+                  <Text style={styles.tableCell}>tidak ada</Text>
                 </View>
               </View>
             </View>
@@ -1460,7 +1473,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -1475,10 +1488,16 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>:Ada</Text>
               </View> */}
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    color: "white",
+                  }}
+                >
                   <Text style={styles.tableCell}>memenuhi syarat</Text>
                 </View>
-                <View style={{ width: "50%" }}>
+                <View style={{ width: "50%", color: "white" }}>
                   <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
                 </View>
               </View>
@@ -1505,7 +1524,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -1520,11 +1539,24 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>:Ada</Text>
               </View> */}
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
-                  <Text style={styles.tableCell}>memenuhi syarat</Text>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
-                <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
+                <View
+                  style={{
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
               </View>
             </View>
@@ -1550,7 +1582,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -1565,11 +1597,24 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>:Ada</Text>
               </View> */}
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
-                  <Text style={styles.tableCell}>memenuhi syarat</Text>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
-                <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
+                <View
+                  style={{
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
               </View>
             </View>
@@ -1595,7 +1640,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -1610,11 +1655,24 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>:Ada</Text>
               </View> */}
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
-                  <Text style={styles.tableCell}>memenuhi syarat</Text>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
-                <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
+                <View
+                  style={{
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
               </View>
             </View>
@@ -1640,7 +1698,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -1655,11 +1713,25 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>:Ada</Text>
               </View> */}
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
-                  <Text style={styles.tableCell}>memenuhi syarat</Text>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
-                <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
+                <View
+                  style={{
+                    width: "50%",
+
+                    paddingTop: "10px",
+                    paddingBottom: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
               </View>
             </View>
@@ -1685,7 +1757,7 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Bukti Persyaratan</Text>
+              <Text style={styles.tableCell}></Text>
             </View>
             <View
               style={{
@@ -1700,11 +1772,18 @@ const DocumentPdf = (props) => {
                 <Text style={styles.tableCell}>:Ada</Text>
               </View> */}
               <View style={{ flexDirection: "row" }}>
-                <View style={{ borderRight: "1px solid black", width: "50%" }}>
-                  <Text style={styles.tableCell}>memenuhi syarat</Text>
+                <View
+                  style={{
+                    borderRight: "1px solid black",
+                    width: "50%",
+                    paddingBottom: "10px",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <Text style={styles.tableCell}></Text>
                 </View>
-                <View style={{ width: "50%" }}>
-                  <Text style={styles.tableCell}>tidak memenuhi syarat</Text>
+                <View style={{ width: "50%", color: "white" }}>
+                  <Text style={styles.tableCell}></Text>
                 </View>
               </View>
             </View>
@@ -1940,20 +2019,28 @@ export default function DownloadPdf(props) {
             loading ? (
               "Loading document..."
             ) : (
-              <Button
-                variant="outlined"
-                // disabled={asesiskemabyuser.map((el) => {
-                //   el.status_cek === "sudah-dicek" ? false : true;
-                // })}
-
-                sx={{
-                  fontWeight: 700,
-                  textTransform: "none",
-                  marginRight: "10px",
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  marginBottom: "10px",
                 }}
               >
-                Download PDF
-              </Button>
+                <Button
+                  variant="outlined"
+                  // disabled={asesiskemabyuser.map((el) => {
+                  //   el.status_cek === "sudah-dicek" ? false : true;
+                  // })}
+
+                  sx={{
+                    fontWeight: 700,
+                    textTransform: "none",
+                    marginRight: "10px",
+                  }}
+                >
+                  Download PDF
+                </Button>
+              </div>
             )
           }
         </PDFDownloadLink>

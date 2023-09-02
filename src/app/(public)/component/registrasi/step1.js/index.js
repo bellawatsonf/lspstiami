@@ -75,6 +75,9 @@ export default function Step1(props) {
     axios({
       url: `/api/kota/${props.selectedProv}`,
       method: "get",
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3001",
+      },
     })
       .then((data) => {
         console.log(data.data.data, "dataprovinsi");
@@ -124,11 +127,11 @@ export default function Step1(props) {
   //   getProvinsi();
   // }, []);
 
-  useEffect(() => {
-    if (props.selectedProv !== "") {
-      getKota();
-    }
-  }, [props.selectedProv]);
+  // useEffect(() => {
+  //   if (props.selectedProv !== null) {
+  //     getKota();
+  //   }
+  // }, [props.selectedProv]);
   // if (loading) {
   //   return <LoadingComponent />;
   // }
