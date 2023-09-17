@@ -23,3 +23,17 @@
   height: 100%;
   /* box-shadow: 5px 10px #888888//; */
 }
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+    background-color: white;
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 2px;
+    padding: 50px 5px 50px 5px;
+    height: 100%;
+    /* box-shadow: 5px 10px #888888//; */
+  }
+}

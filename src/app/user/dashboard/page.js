@@ -131,7 +131,7 @@ export default function DashboardUser() {
           <Typography
             sx={{
               fontWeight: 700,
-              fontSize: "20px",
+              fontSize: { xs: "13px", md: "20px" },
               textAlign: "center",
               paddingBottom: "10px",
             }}
@@ -140,14 +140,19 @@ export default function DashboardUser() {
           </Typography>
           <div className={`${style.forDesktop}${style.forMobile}`}>
             <div className={`${style.boxGreetingDashboard}`}>
-              <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
+              <Typography
+                sx={{
+                  fontSize: { xs: "10px", md: "15px" },
+                  textAlign: "center",
+                }}
+              >
                 Anda belum melakukan pendaftaran,
               </Typography>
               <Typography
                 sx={{
                   color: "blue",
                   cursor: "pointer",
-                  fontSize: "15px",
+                  fontSize: { xs: "10px", md: "15px" },
                   textAlign: "center",
                 }}
                 onClick={() => {

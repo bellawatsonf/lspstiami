@@ -334,7 +334,7 @@ export default function Sidebar() {
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
-                      <PersonPinIcon sx={{ marginRight: "5px" }} />
+                      {/* <PersonPinIcon sx={{ marginRight: "5px" }} /> */}
                       <Link
                         className={`${sidebarStyle.boxlist}`}
                         href="/user/admin/jadwal"
@@ -359,7 +359,9 @@ export default function Sidebar() {
                 <MenuList sx={{ fontSize: "20px", letterSpacing: "3px" }}>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
-                      <PersonPinIcon sx={{ marginRight: "5px" }} />
+                      <PersonPinIcon
+                        sx={{ display: { xs: "none", md: "block" } }}
+                      />
                       <Link
                         className={`${sidebarStyle.boxlist}`}
                         href="/user/dashboard"
@@ -370,7 +372,9 @@ export default function Sidebar() {
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
-                      <PersonPinIcon sx={{ marginRight: "5px" }} />
+                      <PersonPinIcon
+                        sx={{ display: { xs: "none", md: "block" } }}
+                      />
                       <Link
                         className={`${sidebarStyle.boxlist}`}
                         href="/user/profiluser"
