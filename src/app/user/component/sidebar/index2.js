@@ -334,7 +334,7 @@ export default function Sidebar() {
                   </div>
                   <div className={`${sidebarStyle.boxlist}`}>
                     <MenuItem>
-                      {/* <PersonPinIcon sx={{ marginRight: "5px" }} /> */}
+                      <PersonPinIcon sx={{ marginRight: "5px" }} />
                       <Link
                         className={`${sidebarStyle.boxlist}`}
                         href="/user/admin/jadwal"

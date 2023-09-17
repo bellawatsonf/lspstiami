@@ -258,7 +258,7 @@ export default function DashboardUser() {
                   {el.deskripsi_info}
                 </Typography>
 
-                {el.info_status === "Info Penjadwalan ujikom" ? (
+                {el.info_status === "Info Penjadwalan pengayaan" ? (
                   <div style={{ display: "flex", justifyContent: "flex-end" }}>
                     <Button
                       variant="contained"

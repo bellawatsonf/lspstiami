@@ -1164,19 +1164,176 @@ const DocumentPdf = (props) => {
                 height: "70px",
               }}
             >
-              <Text
-                style={{
-                  marginLeft: "3px",
-                  marginRight: "3px",
-                  marginTop: 5,
-                  fontSize: 10,
-                }}
-              >
-                Mahasiswa Institut STIAMI Jakarta yang telah menyelesaikan mata
-                kuliah internal dan eksternal : Perencanaan dan Pengembangan
-                Bisnis, MSDM, Organisai dan Manajemen Bisnis, Manajemen
-                Operasional, Total Quality Manajemen, Atau Kewirausahaan
-              </Text>
+              {props.data?.asesi_skema.skema.id === 1 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa S1 Prodi Manajemen Logistik Institut Ilmu Sosial dan
+                  Manajemen STIAMI yang telah menyelesaikan mata kuliah
+                  Manajemen Pergudangan, Pengantar Ilmu Logistik and Supply
+                  Chain, Manajemen Distribusi.
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 2 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa aktif S1 Prodi Manajemen Komunikasi lnstitut STIAMI
+                  Jakarta yang telah menyelesaikan mata kuliah dan dinyatakan
+                  lulus pada mata kuliah Pendidikan Adab, Pengantar Manajemen,
+                  Dasar Dasar Akuntansi, Dasar Dasar Jurnalistik, Komunikasi
+                  Massa, Kepemimpinan, Fotografi, Manajemen Produksi Siaran
+                  Televisi, Tehnik Wawancara, Penulisan Berita, Perencanaan
+                  Media, Post Production & Editing, Etika dan fiilsafat
+                  KomuniLasi, JurnaTistik Foto, Rules & Ethics, Computer
+                  Mediated Communication, Print Media Management, Social Media
+                  Management, Kebijakan Media, Jurnalistik Foto. Kelulusan
+                  dibuktikan dengan foto kopi transkrip nilai serta kartu
+                  mahasiswa STIAMI yang masih berlaku.
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 3 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa Prodi Administrasi Bisnis Institut Ilmu Sosial dan
+                  Manajemen STIAMI yang telah menyelesaikan mata kuliah internal
+                  dan eksternal : Perencanaan dan Pengembangan Bisnis, MSDM,
+                  Organisasi dan Manajemen Bisnis, Manajemen Operasional.
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 4 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa aktif S1 program studi Manajemen Komunikasi Institut
+                  Ilmu Sosial dan Manajemen STIAMI yang telah menyelesaikan mata
+                  kuliah dan dinyatakan lulus pada mata kuliah Pendidikan Adab,
+                  Pengantar Manajemen, Dasar Dasar Akuntansi, Dasar Dasar
+                  Jurnalistik, Komunikasi Massa, Kepemimpinan, Fotografi,
+                  Manajemen Produksi Siaran Televisi, Tehnik Wawancara,
+                  Penulisan Berita, Perencanaan Media, Post Production &
+                  Editing, Etika dan fiilsafat KomuniLasi, JurnaTistik Foto,
+                  Rules & Ethics, Computer Mediated Communication, Print Media
+                  Management, Social Media Management, Kebijakan Media,
+                  Jurnalistik Foto.
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 5 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa S1 prodi Ilmu Administrasi Publik Institut Ilmu
+                  Sosial dan Manajemen STIAMI yang telah menyelesaikan mata
+                  kuliah Kebijakan Publik, Analisis Kebijakan Publik atau
+                  Komunikasi dan Advokasi Kebijakan.
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 6 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa S1 Prodi Ilmu Administrasi Publik Institut Ilmu
+                  Sosial dan Manajemen STIAMI yang telah menyelesaikan mata
+                  kuliah Pengantar Perpajakan, Kebijakan dan Adm. Pajak
+                  Penghasilan I, Kebijakan dan Adm. Pajak Penghasilan II, dan
+                  Praktikum Adm. PPh
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 7 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa S1 Prodi Manajemen Logistik Institut Ilmu Sosial dan
+                  Manajemen STIAMI yang telah menyelesaikan mata kuliah
+                  Pengantar Ilmu Logistik dan Supply Chain, Manajemen
+                  Pergudangan, Manajemen Distribusi, Etika Dan Komunikasi
+                  Bisnis, Manajemen Proyek Supply Chain.
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 8 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa S1 Prodi Manajemen Komunikasi Institut Ilmu Sosial
+                  dan Manajemen STIAMI yang telah menyelesaikan mata kuliah
+                  Pendidikan Adab, Pengantar Manajemen, Manajemen Komunikasi,
+                  English for Specific Purpose Communication, Komunikasi Massa,
+                  Komunikasi Antar Pribadi, Komunikasi Antar Budaya,
+                  Kepemimpinan, Metode Penelitian Komunikasi, Press Release,
+                  Retorika & Public Speaking, Manajemen PR, PR Writing, Opini
+                  Publik, Marketing PR, PR Event, Riset PR & Analisis Media,
+                  Strategi & Teknik PR, Publisitas, Etika PR, Keprotokolan,
+                  Cyber PR, Audit Humas, Dasar-dasar PR, Komunikasi Organisasi,
+                  Pengantar Statistik, Fotografi, Media Manajemen, Metode
+                  Penelitian Kualitatif, Metode Penelitian Kuantitatif, Internal
+                  & External Relations
+                </Text>
+              ) : props.data?.asesi_skema.skema.id === 9 ? (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa Institut Ilmu Sosial dan Manajemen STIAMI yang telah
+                  menyelesaikan mata kuliah Public Relation, Service Excellence,
+                  MSDM Pariwisata, Psikologi Pelayanan Pariwisata, Analisis
+                  Operasional Hospitaliti; atau;
+                </Text>
+              ) : (
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginRight: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                  }}
+                >
+                  Mahasiswa Prodi Manajemen Komunikasi Institut Ilmu Sosial dan
+                  Manajemen STIAMI yang telah menyelesaikan mata kuliah Brand
+                  Management, MPR Writing, Corporate Relationship Management,
+                  Integrated Marketing Communication, Negotiation Technique,
+                  Marcom Program & Event Management, Manajemen Periklanan &
+                  Branding, Etika PR dan Periklanan, Media Buying, Komunikasi
+                  Visual dan Copywriting, Digital Marketing, Skill Presentasi.
+                </Text>
+              )}
             </View>
             <View
               style={{
@@ -1282,7 +1439,137 @@ const DocumentPdf = (props) => {
                   fontSize: 10,
                 }}
               >
-                {`Memiliki sertifikasi pelatihan berbasis kompetensi pada jabatan ${props?.data?.asesi_skema.skema.nama_skema} yang diselenggarakan oleh Institut STIAMI Jakarta`}
+                {props.data?.asesi_skema.skema.id === 1 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikat pelatihan berbasis kompetensi pada
+                    Klaster Pengelolaan Sistem Pergudangan yang dilakukan oleh
+                    Institut Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 2 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikasi pelatihan berbasis kompetensi pada
+                    jabatan KKNI Level 5 pada bidang kewirausahaan industri yang
+                    dilakukan oleh Institut Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 3 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Telah mengikuti pelatihan berbasis kompetensi dibidang
+                    Penyelia ekspor yang dilakukan oleh Institut Ilmu Sosial dan
+                    Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 4 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikat pelatihan berbasis kompetensi pada
+                    jabatan Asisten Produser Produksi Program Televisi yang
+                    dilakukan oleh Institut Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 5 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki Sertifikat Pelatihan berbasis kompetensi pada
+                    Analis Kebijakan Publik yang dilakukan oleh Institut Ilmu
+                    Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 6 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Telah mengikuti pelatihan berbasis kompetensi Teknisi
+                    Perpajakan PPh Badan Sektor Usaha Jasa Dan Perdagangan yang
+                    dilakukan oleh Institut Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 7 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikat pelatihan berbasis kompetensi pada
+                    Okupasi Manajer Logistik Proyek yang dilakukan oleh Institut
+                    Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 8 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikat pelatihan berbasis kompetensi pada
+                    Jabatan Public Relations Coordinator yang dilakukan oleh
+                    Institut Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : props.data?.asesi_skema.skema.id === 9 ? (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikasi pelatihan berbasis kompetensi pada
+                    jabatan Front Office Supervisor yang dilakukan oleh Institut
+                    Ilmu Sosial dan Manajemen STIAMI
+                  </Text>
+                ) : (
+                  <Text
+                    style={{
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      marginTop: 5,
+                      fontSize: 10,
+                    }}
+                  >
+                    Memiliki sertifikat pelatihan berbasis kompetensi pada Media
+                    Planing Manajer yang dilakukan oleh Institut Ilmu Sosial dan
+                    Manajemen STIAMI
+                  </Text>
+                )}
               </Text>
             </View>
             <View

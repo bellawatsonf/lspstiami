@@ -125,7 +125,7 @@ export default function detailJadwal() {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "berhasil menambahkan adta",
+          title: "berhasil menambahkan data",
           // showConfirmButton: false,
           timer: 1500,
         });
