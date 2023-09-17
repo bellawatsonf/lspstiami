@@ -275,6 +275,8 @@ export default function Login() {
                     background: "grey",
                     display: "block",
                     margin: "auto",
+                    textTransform: "none",
+                    padding: "10px",
                   }}
                   onClick={() => login()}
                 >
