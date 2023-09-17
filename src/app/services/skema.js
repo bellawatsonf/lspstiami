@@ -35,11 +35,11 @@ export function fetchSkemaPage(param) {
       method: "GET",
     })
       .then((data) => {
-        console.log(data.data.data, "dataasesi dari service");
+        console.log(data.data.listData, "skemapage");
         dispatch({
           type: "skema/getSkemaWithPage",
           skemapage: {
-            dataSkema: data.data.listData,
+            data: data.data.listData,
             totalPage: data.data.totalPages,
           },
         });

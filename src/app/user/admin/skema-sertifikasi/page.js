@@ -144,7 +144,7 @@ export default function SkemaSertifikasi() {
           Tambah
         </Button>
       </div>
-      <Table data={{ nodes: dataSkema?.dataSkema }} theme={theme}>
+      <Table data={{ nodes: dataSkema?.data }} theme={theme}>
         {(tableList) => (
           <Fragment>
             <Header>
@@ -228,7 +228,7 @@ export default function SkemaSertifikasi() {
         }}
       >
         <Pagination
-          count={dataSkema.totalPage}
+          count={dataSkema?.data.totalPage}
           page={stateField.page}
           // color="primary"
           onChange={handleChange}
