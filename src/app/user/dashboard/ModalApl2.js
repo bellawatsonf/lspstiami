@@ -141,7 +141,7 @@ export default function ModalApl02(props) {
   ];
   return (
     <>
-      {Object.keys(props.dataApl01).length > 0 ? (
+      {props?.dataApl01 ? (
         <div>
           <Modal
             open={props.open}
