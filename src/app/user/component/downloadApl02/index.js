@@ -77,12 +77,6 @@ const DocumentPdf = (props) => {
   //   })
   // );
 
-  props?.data[0].APL01.asesi_skema?.skema?.unitkompetensi?.map((el) => {
-    el?.kriteria_unitkerja?.map((h) => {
-      console.log(h.eleme, "hasilnya");
-    });
-  });
-
   if (!props.data) {
     return <div>pp</div>;
   }
@@ -280,6 +274,7 @@ const DocumentPdf = (props) => {
               marginTop: "20px",
               breakInside: "avoid",
             }}
+            wrap={false}
           >
             <View style={styles.tableRow}>
               <View

@@ -33,7 +33,7 @@ export default function ProfileUser() {
   }, []);
 
   useEffect(() => {
-    if (Object.keys(aplbyuser).length > 0) {
+    if (aplbyuser) {
       dispatch(fetchApl02ByApl01Id(aplbyuser.id));
     }
   }, [aplbyuser]);
