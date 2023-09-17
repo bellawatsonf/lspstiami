@@ -281,7 +281,7 @@ export default function ModalPilihPaketSkema(props) {
                 </div>
               </AccordionDetails>
             </Accordion>
-            <Accordion
+            {/* <Accordion
               expanded={expanded === "panel2"}
               onChange={handleChange("panel2")}
             >
@@ -319,7 +319,7 @@ export default function ModalPilihPaketSkema(props) {
                   </Button>
                 </div>
               </AccordionDetails>
-            </Accordion>
+            </Accordion> */}
           </div>
         </Box>
       </Modal>

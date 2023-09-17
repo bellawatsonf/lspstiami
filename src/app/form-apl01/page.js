@@ -49,10 +49,10 @@ export default function Regitrasi() {
     telp: "",
     email: "",
     kode_pos: "",
-    kualifikasi_pendidikan: "",
+    // kualifikasi_pendidikan: "",
     nik: "",
     nama_instansi: "",
-    jabatan: "",
+    // jabatan: "",
     alamat_kantor: "",
     tlp_kantor: "",
     kodepos_kantor: "",
@@ -70,7 +70,7 @@ export default function Regitrasi() {
   };
   const [stateField, setStateField] = React.useState(initialState);
   const [dtprovinsi, setProvinsi] = React.useState([]);
-  const [selectedProv, setSelected] = React.useState();
+  const [selectedProv, setSelected] = React.useState("");
   const [dtKota, setKota] = React.useState([]);
   const [selectedKota, setSelectedKota] = React.useState("");
   const [jenis_kelamin, setJenisKelamin] = React.useState("");
@@ -81,6 +81,8 @@ export default function Regitrasi() {
   const [ktp, setKtp] = useState();
   const [surat_pernyataan, setSuratPernyataan] = useState();
   const [sertifikat_pelatihan_pendukung, setPendukung] = useState();
+  const [kualifikasi_pendidikan, setPendidikan] = useState();
+  const [jabatan, setJabatan] = useState();
   console.log(activeStep, "activestep");
   let sigPad = useRef({});
   console.log(sigPad, "signaturepad");
@@ -118,9 +120,9 @@ export default function Regitrasi() {
           telp: userById.telp,
           email: userById.email,
           kode_pos: userById.kodepos,
-          kualifikasi_pendidikan: userById.kualifikasi_pendidikan,
+          // kualifikasi_pendidikan: userById.kualifikasi_pendidikan,
           nama_instansi: userById.nama_instansi,
-          jabatan: userById.jabatan,
+          // jabatan: userById.jabatan,
           alamat_kantor: userById.alamat_kantor,
           tlp_kantor: userById.tlp_kantor,
           kodepos_kantor: userById.kodepos_kantor,
@@ -136,20 +138,26 @@ export default function Regitrasi() {
       setJenisKelamin(userById.jenis_kelamin);
       setSelectedKota(userById.kota);
       setSelected(userById.provinsi);
+      setPendidikan(userById.kualifikasi_pendidikan);
+      setJabatan(userById.jabatan);
       setDate(new Date(userById.tgl_lahir));
     }
-    // getProvinsi();
+    getProvinsi();
   }, [userById]);
   function getProvinsi() {
     console.log("masuk getprovinsi");
     axios({
-      url: "/api/provinsi",
+      url: "https://alamat.thecloudalert.com/api/provinsi/get/",
       method: "get",
+      // headers: {
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Content-Type": "application/json",
+      // },
     })
-      .then((data) => {
-        console.log(data.data.data, "dataprovinsi");
-        if (data.data.data.length > 0) {
-          setProvinsi(data.data.data);
+      .then((result) => {
+        console.log(result.data.result, "dataprovinsi");
+        if (result.data.result.length > 0) {
+          setProvinsi(result.data.result);
         }
       })
       .catch((err) => {
@@ -243,7 +251,7 @@ export default function Regitrasi() {
       "sertifikat_pelatihan_pendukung",
       sertifikat_pelatihan_pendukung
     );
-    formData.append("jabatan", value.jabatan);
+    formData.append("jabatan", jabatan);
     formData.append("alamat_kantor", value.alamat_kantor);
     formData.append("nama_instansi", value.nama_instansi);
     formData.append("tlp_kantor", value.tlp_kantor);
@@ -266,7 +274,7 @@ export default function Regitrasi() {
     formData.append("telp", value.telp);
     formData.append("email", value.email);
     formData.append("kodepos", value.kode_pos);
-    formData.append("kualifikasi_pendidikan", value.kualifikasi_pendidikan);
+    formData.append("kualifikasi_pendidikan", kualifikasi_pendidikan);
     formData.append("provinsi", selectedProv);
     formData.append("kota", selectedKota);
 
@@ -459,6 +467,8 @@ export default function Regitrasi() {
                             handleChangeKota={handleChangeKota}
                             handleChangeProvinsi={handleChangeProvinsi}
                             stateField={stateField}
+                            kualifikasi_pendidikan={kualifikasi_pendidikan}
+                            setPendidikan={setPendidikan}
                           />
                         </React.Fragment>
                       ) : activeStep === 1 ? (
@@ -468,6 +478,8 @@ export default function Regitrasi() {
                           handleBlur={handleBlur}
                           handleChange={handleChange}
                           stateField={stateField}
+                          jabatan={jabatan}
+                          setJabatan={setJabatan}
                         />
                       ) : activeStep === 2 ? (
                         <Step3

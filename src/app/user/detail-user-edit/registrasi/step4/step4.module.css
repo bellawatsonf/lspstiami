@@ -4,7 +4,34 @@
 
 .sigCanvas {
   border: 1px solid black;
-  /* width: 100%; */
+  width: 600px;
   /* height: 50%; */
   border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .sigCanvas {
+    border: 1px solid black;
+    width: 100% !important;
+    /* height: 50%; */
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 960px) {
+  .sigCanvas {
+    border: 1px solid black;
+    width: 100% !important;
+    /* height: 50%; */
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1199px) {
+  .sigCanvas {
+    border: 1px solid black;
+    width: 100% !important;
+    /* height: 50%; */
+    border-radius: 20px;
+  }
 }

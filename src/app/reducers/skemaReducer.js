@@ -4,6 +4,7 @@ const initialState = {
   skema: [],
   skemaById: {},
   loading: true,
+  skemapage: [],
 };
 
 const skemaSlice = createSlice({
@@ -16,6 +17,14 @@ const skemaSlice = createSlice({
         ...state,
         skema: action.skema,
         type: "skema/getSkema",
+      };
+    },
+    getSkemaWithPage: (state = initialState, action) => {
+      console.log(action, "action reducer");
+      return {
+        ...state,
+        skemapage: action.skemapage,
+        type: "skema/getSkemaWithPage",
       };
     },
     getSkemaById: (state = initialState, action) => {
@@ -36,7 +45,8 @@ const skemaSlice = createSlice({
     },
   },
 });
-export const { getSkema, getSkemaById, getLoading } = skemaSlice.actions;
+export const { getSkema, getSkemaById, getLoading, getSkemaWithPage } =
+  skemaSlice.actions;
 export default skemaSlice.reducer;
 
 // export default function reducer(state = initialState, action) {

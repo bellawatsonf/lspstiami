@@ -12,6 +12,12 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Fragment } from "react";
 import style from "./style.module.css";
+import { Button } from "@mui/material";
+import ModalApl02 from "./ModalApl2";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchApl01ByUser } from "@/app/services/apl01";
+import { useState } from "react";
+import { useEffect } from "react";
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -49,12 +55,19 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function DashboardUser() {
+  let dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState("panel1");
   // const [sort, setSort] = React.useState("asc");
   const [loading, setLoading] = React.useState(true);
   const router = useRouter();
   const [userdata, setUser] = React.useState();
   const [info, setInfo] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  let dataApl01 = useSelector((state) => state.apl01.apl01ByUser);
+  const [idJadwal_AsesiSkema_Asesor, setIdJadwal] = useState();
+
   // const user = JSON.parse(sessionStorage.getItem("user"));
   React.useEffect(() => {
     setTimeout(() => {
@@ -63,6 +76,8 @@ export default function DashboardUser() {
     let value = JSON.parse(sessionStorage.getItem("user"));
     setUser(value);
     getInfoByUser(value.id);
+    dispatch(fetchApl01ByUser(value.id));
+    getIdJadwal(value.id);
   }, []);
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -82,12 +97,35 @@ export default function DashboardUser() {
         console.log(err);
       });
   }
+
+  function getIdJadwal(idUser) {
+    axios({
+      url: `/api/getIdJadwal/${idUser}`,
+      method: "GET",
+    })
+      .then((data) => {
+        console.log(data.data.jadwal, "idJadwal");
+        data.data.jadwal.map((el) => {
+          console.log(el.id);
+          setIdJadwal(el.id);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   if (loading) {
     return <LoadingComponent />;
   }
   console.log(info, "infoo");
   return (
     <Fragment>
+      <ModalApl02
+        open={open}
+        setOpen={setOpen}
+        dataApl01={dataApl01}
+        idJadwal_AsesiSkema_Asesor={idJadwal_AsesiSkema_Asesor}
+      />
       {info.length === 0 ? (
         <div style={{ width: "100%", marginBottom: "30px" }}>
           <Typography
@@ -214,6 +252,18 @@ export default function DashboardUser() {
                 <Typography sx={{ fontSize: "15px" }}>
                   {el.deskripsi_info}
                 </Typography>
+
+                {el.info_status === "Info Penjadwalan ujikom" ? (
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Button
+                      variant="contained"
+                      sx={{ textTransform: "none" }}
+                      onClick={() => setOpen(true)}
+                    >
+                      Formulir Apl-02
+                    </Button>
+                  </div>
+                ) : null}
                 {/* // ) : ( //{" "}
                 <Fragment>
                   //{" "}

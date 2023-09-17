@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DownloadPdf from "../component/donwloadPdf";
+import { fetchApl02ByApl01Id } from "@/app/services/apl02";
+import DownloadApl02 from "../component/downloadApl02";
 
 export default function ProfileUser() {
   let router = useRouter();
@@ -23,11 +25,18 @@ export default function ProfileUser() {
   let loading = useSelector((state) => state.skema.loading);
   let [selectedSkema, setSkema] = useState("");
   let aplbyuser = useSelector((state) => state.apl01.apl01ByUser);
-  console.log(dataUser, "datauserrr");
+  let apl02byapl01id = useSelector((state) => state.apl02.apl02ByApl01Id);
+  console.log(aplbyuser, "datauserrr");
   useEffect(() => {
     dispatch(fetchAsesiById(id.id));
     dispatch(fetchApl01ByUser(id.id));
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(aplbyuser).length > 0) {
+      dispatch(fetchApl02ByApl01Id(aplbyuser.id));
+    }
+  }, [aplbyuser]);
 
   useEffect(() => {
     // try {
@@ -88,6 +97,9 @@ export default function ProfileUser() {
           Download PDF
         </Button> */}
         {aplbyuser !== null ? <DownloadPdf data={aplbyuser} /> : null}
+        {apl02byapl01id !== null ? (
+          <DownloadApl02 data={apl02byapl01id} />
+        ) : null}
 
         <Button
           variant="outlined"
@@ -99,13 +111,14 @@ export default function ProfileUser() {
             textTransform: "none",
             background: "#1976D2",
             color: "white",
+            height: "40px",
           }}
           onClick={() => DetailEdit(id.id)}
         >
           Ubah
         </Button>
       </div>
-      <Typography sx={{ fontWeight: 600 }}>
+      <Typography sx={{ fontWeight: 600, marginTop: "20px" }}>
         Bagian 1 : Rincian Data Pemohon Sertifikasi
       </Typography>
       <Box sx={{ marginTop: "30px" }}>
@@ -118,12 +131,12 @@ export default function ProfileUser() {
         </div>
         <div style={{ marginLeft: "25px" }}>
           <div className="row">
-            <div className="col-3 mt-3">Nama Lengkap</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Nama Lengkap</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.nama_lengkap ? dataUser.nama_lengkap : "-"}
             </div>
-            <div className="col-3 mt-3">Tempat / tgl. Lahir</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Tempat / tgl. Lahir</div>
+            <div className="col-6 col-md-9 mt-3">
               :{" "}
               {dataUser.tempat_lahir && dataUser.tgl_lahir
                 ? dataUser.tempat_lahir +
@@ -136,43 +149,43 @@ export default function ProfileUser() {
                     .join("-")
                 : "-"}
             </div>
-            <div className="col-3 mt-3">Jenis Kelamin</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Jenis Kelamin</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.jenis_kelamin ? dataUser.jenis_kelamin : "-"}
             </div>
-            <div className="col-3 mt-3">Kebangsaan</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Kebangsaan</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.kebangsaan ? dataUser.kebangsaan : "-"}
             </div>
-            <div className="col-3 mt-3">Alamat Rumah</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Alamat Rumah</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.alamat_rumah ? dataUser.alamat_rumah : "-"}
             </div>
-            <div className="col-3 mt-3">Kode Pos</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Kode Pos</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.kodepos ? dataUser.kodepos : "-"}
             </div>
-            <div className="col-3 mt-3">No.Telepon / Email</div>
-            <div className="col-9 mt-3">
+            <div className="col-12 col-md-3 mt-3">No.Telepon / Email</div>
+            <div className="col-12 col-md-9 mt-3">
               <div className="row">
-                <div className="col-2 mt-3">: Rumah</div>
-                <div className="col-4 mt-3">
+                <div className="col-6 col-md-2 mt-3">Rumah</div>
+                <div className="col-6 col-md-4 mt-3">
                   : {dataUser.tlp ? dataUser.tlp : "-"}
                 </div>
                 {/* <div className="col-2 mt-3">Kantor</div>
                 <div className="col-4 mt-3">: {dataUser.tlp_kantor}</div> */}
-                <div className="col-2 mt-3">HP</div>
-                <div className="col-4 mt-3">
+                <div className="col-6 col-md-2 mt-3">HP</div>
+                <div className="col-6 col-md-4 mt-3">
                   : {dataUser.phone_number ? dataUser.phone_number : "-"}
                 </div>
-                <div className="col-2 mt-3">Email</div>
-                <div className="col-4 mt-3">
+                <div className="col-6 col-md-2 mt-3">Email</div>
+                <div className="col-6 col-md-4 mt-3">
                   : {dataUser.email ? dataUser.email : "-"}
                 </div>
               </div>
             </div>
-            <div className="col-3 mt-3">Pendidikan Terakhir</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Pendidikan Terakhir</div>
+            <div className="col-6 col-md-9 mt-3">
               :{" "}
               {dataUser.kualifikasi_pendidikan
                 ? dataUser.kualifikasi_pendidikan
@@ -192,36 +205,36 @@ export default function ProfileUser() {
         </div>
         <div style={{ marginLeft: "25px" }}>
           <div className="row">
-            <div className="col-3 mt-3">Nama Lembaga / Perusahaan</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Nama Lembaga / Perusahaan</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.nama_instansi ? dataUser.nama_instansi : "-"}
             </div>
-            <div className="col-3 mt-3">Jabatan</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Jabatan</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.jabatan ? dataUser.jabatan : "-"}
             </div>
-            <div className="col-3 mt-3">Alamat</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Alamat</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.alamat_kantor ? dataUser.alamat_kantor : "-"}
             </div>
-            <div className="col-3 mt-3">Kode Pos</div>
-            <div className="col-9 mt-3">
+            <div className="col-6 col-md-3 mt-3">Kode Pos</div>
+            <div className="col-6 col-md-9 mt-3">
               : {dataUser.kodepos_kantor ? dataUser.kodepos_kantor : "-"}
             </div>
-            <div className="col-3 mt-3">No.Telepon / Fax / Email</div>
+            <div className="col-12 col-md-3 mt-3">No.Telepon / Fax / Email</div>
 
-            <div className="col-9 mt-3">
+            <div className="col-12 col-md-9 mt-3">
               <div className="row">
-                <div className="col-2 mt-3">: Telp</div>
-                <div className="col-4 mt-3">
+                <div className="col-6 col-md-2 mt-3"> Telp</div>
+                <div className="col-6 col-md-4 mt-3">
                   : {dataUser.tlp_kantor ? dataUser.tlp_kantor : "-"}
                 </div>
-                <div className="col-2 mt-3">Email</div>
-                <div className="col-4 mt-3">
+                <div className="col-6 col-md-2 mt-3">Email</div>
+                <div className="col-6 col-md-4 mt-3">
                   : {dataUser.email_kantor ? dataUser.email_kantor : "-"}
                 </div>
-                <div className="col-2 mt-3">: Fax</div>
-                <div className="col-4 mt-3">
+                <div className="col-6 col-md-2 mt-3"> Fax</div>
+                <div className="col-6 col-md-4 mt-3">
                   :{dataUser.fax ? dataUser.fax : "-"}
                 </div>
               </div>
@@ -236,8 +249,8 @@ export default function ProfileUser() {
 
       <Box sx={{ marginTop: "30px", paddingLeft: "25px" }}>
         <div className="row">
-          <div className="col-3 mt-2">Jenis Skema Sertifikasi</div>
-          <div className="col-9 mt-2">
+          <div className="col-6 col-md-3 mt-2">Jenis Skema Sertifikasi</div>
+          <div className="col-6 col-md-9 mt-2">
             :{" "}
             {selectedSkema === "" ? (
               <Link style={{ textDecoration: "none" }} href="/user/list-skema">
@@ -247,8 +260,8 @@ export default function ProfileUser() {
               selectedSkema
             )}
           </div>
-          <div className="col-3 mt-3">Tujuan Asesmen yang Diambil</div>
-          <div className="col-9 mt-3">
+          <div className="col-6 col-md-3 mt-3">Tujuan Asesmen yang Diambil</div>
+          <div className="col-6 col-md-9 mt-3">
             : {dataUser.tujuan_asesmen ? dataUser.tujuan_asesmen : "-"}
           </div>
         </div>

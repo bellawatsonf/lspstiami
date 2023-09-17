@@ -6,7 +6,7 @@ import { Fragment, useEffect, useState } from "react";
 import "./../globals.css";
 import styleDashboard from "./component/dashboardContainer/styleDashboard.module.css";
 import HeaderDashboard from "./component/header";
-import Sidebar from "./component/sidebar";
+import Sidebar from "./component/sidebar/index2";
 import Login from "../login/page";
 // import jsHttpCookie from "cookie";
 

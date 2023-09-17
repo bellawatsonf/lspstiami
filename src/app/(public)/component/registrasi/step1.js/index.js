@@ -22,7 +22,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers";
 
 export default function Step1(props) {
-  console.log(props.stateField, "propsvl");
+  console.log(props.selectedProv, "propsvl");
   // console.log(Object.keys(props?.dataAsesi).length, "propsstep1");
   // const initialState = {
   //   nama_lengkap: "",
@@ -71,18 +71,58 @@ export default function Step1(props) {
   //     });
   // }
 
+  let datapendidikan = [
+    {
+      id: "1",
+      tingkat: "SD",
+    },
+    {
+      id: "2",
+      tingkat: "SMP",
+    },
+    {
+      id: "3",
+      tingkat: "SMP/Sederajat",
+    },
+    {
+      id: "4",
+      tingkat: "D1",
+    },
+    {
+      id: "5",
+      tingkat: "D2",
+    },
+    {
+      id: "6",
+      tingkat: "D3",
+    },
+    {
+      id: "7",
+      tingkat: "D4",
+    },
+    {
+      id: "8",
+      tingkat: "S1",
+    },
+    {
+      id: "9",
+      tingkat: "S2",
+    },
+    {
+      id: "10",
+      tingkat: "S3",
+    },
+  ];
+
   function getKota() {
     axios({
-      url: `/api/kota/${props.selectedProv}`,
+      url: `https://alamat.thecloudalert.com/api/kabkota/get/?d_provinsi_id=${props.selectedProv}`,
       method: "get",
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3001",
-      },
     })
-      .then((data) => {
-        console.log(data.data.data, "dataprovinsi");
-        if (data.data.data.length > 0) {
-          props.setKota(data.data.data);
+      .then((result) => {
+        console.log(result.data.result, "datakota");
+        if (result.data.result.length > 0) {
+          props.setKota(result.data.result);
         }
       })
       .catch((err) => {
@@ -127,11 +167,11 @@ export default function Step1(props) {
   //   getProvinsi();
   // }, []);
 
-  // useEffect(() => {
-  //   if (props.selectedProv !== null) {
-  //     getKota();
-  //   }
-  // }, [props.selectedProv]);
+  useEffect(() => {
+    if (props.selectedProv !== "") {
+      getKota();
+    }
+  }, [props.selectedProv]);
   // if (loading) {
   //   return <LoadingComponent />;
   // }
@@ -382,7 +422,7 @@ export default function Step1(props) {
               </MenuItem>
               {props.dtprovinsi?.map((el) => (
                 <MenuItem value={el.id} key={el.id}>
-                  {el.name}
+                  {el.text}
                 </MenuItem>
               ))}
             </Select>
@@ -409,11 +449,11 @@ export default function Step1(props) {
               value={props.selectedKota}
               // label="Age"
               onChange={(e) => props.handleChangeKota(e)}
-              disabled={props.selectedProv !== "" ? false : true}
+              disabled={props.selectedProv !== null ? false : true}
             >
               {props.dtKota.map((el) => (
                 <MenuItem value={el.id} key={el.id}>
-                  {el.name}
+                  {el.text}
                 </MenuItem>
               ))}
             </Select>
@@ -583,7 +623,7 @@ export default function Step1(props) {
             
             <TextField fullWidth label="fullWidth" id="fullWidth" />
           </div> */}
-        <div className="col-6">
+        {/* <div className="col-6">
           <Typography
             sx={{
               fontSize: "15px",
@@ -594,17 +634,10 @@ export default function Step1(props) {
           >
             Klasifikasi Pendidikan
           </Typography>
-          {/* <input
-          type="email"
-          name="email"
-          onChange={props.handleChange}
-          onBlur={props.handleBlur}
-          value={props.values.email}
-        />
-        {errors.email && touched.email && errors.email} */}
+       
           <TextField
             fullWidth
-            // label="fullWidth"
+    
             placeholder="Masukkan Pendidikan Terakhir Anda"
             id="fullWidth"
             name="kualifikasi_pendidikan"
@@ -612,6 +645,41 @@ export default function Step1(props) {
             onBlur={props.handleBlur}
             onChange={props.handleChange}
           />
+        </div> */}
+        <div className="col-6">
+          <Typography
+            sx={{
+              fontSize: "15px",
+              fontWeight: 500,
+              paddingBottom: "10px",
+              paddingTop: "15px",
+            }}
+          >
+            Kualifikasi Pendidikan
+          </Typography>
+          <FormControl fullWidth>
+            {/* <InputLabel id="demo-simple-select-label">
+                  Pilih Kota Anda
+                </InputLabel> */}
+            <Select
+              // labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={props.kualifikasi_pendidikan}
+              // label="Age"
+              // placeholder="kualifikasi pendidikan"
+              onChange={(e) => {
+                props.setPendidikan(e.target.value);
+                // props.handleChangeKota(e);
+              }}
+              // disabled={props.selectedProv !== null ? false : true}
+            >
+              {datapendidikan.map((el) => (
+                <MenuItem value={el.tingkat} key={el.id}>
+                  {el.tingkat}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
       </div>
     </div>

@@ -36,9 +36,9 @@ export default function ModalTtdAdmin(props) {
   function prosesTtdAdmin() {
     let data = sigPad.current.toDataURL();
     console.log(data, "simpan");
-    let value = JSON.parse(localStorage.getItem("user"));
+    let value = JSON.parse(sessionStorage.getItem("user"));
     let idAdmin = value.id;
-    console.log(idAdmin);
+    console.log(idAdmin, "idadminmodalttd");
     let input = {
       ttd_admin: data,
     };

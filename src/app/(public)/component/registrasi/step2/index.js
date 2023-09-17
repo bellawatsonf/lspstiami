@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./step1.module.css";
-import { Button, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  TextField,
+  Typography,
+  MenuItem,
+  FormControl,
+  Select,
+} from "@mui/material";
 import { Formik } from "formik";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
@@ -73,6 +80,37 @@ export default function Step2(props) {
   // if (loading) {
   //   return <LoadingComponent />;
   // }
+  let datapekerjaan = [
+    {
+      id: 5,
+      nama: "Pegawai Negeri Sipil/PNS",
+    },
+
+    {
+      id: 1,
+      nama: "Belum/Tidak Bekerja",
+    },
+    {
+      id: 3,
+      nama: "Pelajar/Mahasiswa",
+    },
+    {
+      id: 4,
+      nama: "Pensiunan",
+    },
+    {
+      id: 15,
+      nama: "Karyawan Swasta",
+    },
+    {
+      id: 88,
+      nama: "Wiraswasta",
+    },
+    {
+      id: 89,
+      nama: "Lainnya",
+    },
+  ];
   return (
     // <Formik
     //   initialValues={stateField}
@@ -126,6 +164,28 @@ export default function Step2(props) {
             onChange={props.handleChange}
           />
         </div>
+        {/* <div className="col-12">
+          <Typography
+            sx={{
+              fontSize: "15px",
+              fontWeight: 500,
+              paddingBottom: "10px",
+              paddingTop: "15px",
+            }}
+          >
+            Jabatan
+          </Typography>
+         
+          <TextField
+            fullWidth
+            placeholder="Masukkan Jabatan Anda"
+            id="fullWidth"
+            name="jabatan"
+            value={props.values.jabatan}
+            onBlur={props.handleBlur}
+            onChange={props.handleChange}
+          />
+        </div> */}
         <div className="col-12">
           <Typography
             sx={{
@@ -137,24 +197,29 @@ export default function Step2(props) {
           >
             Jabatan
           </Typography>
-          {/* <input
-            type="email"
-            name="email"
-            onChange={props.handleChange}
-            onBlur={props.handleBlur}
-            value={props.values.email}
-          />
-          {errors.email && touched.email && errors.email} */}
-          <TextField
-            fullWidth
-            // label="fullWidth"
-            placeholder="Masukkan Jabatan Anda"
-            id="fullWidth"
-            name="jabatan"
-            value={props.values.jabatan}
-            onBlur={props.handleBlur}
-            onChange={props.handleChange}
-          />
+          <FormControl fullWidth>
+            {/* <InputLabel id="demo-simple-select-label">
+                  Pilih Kota Anda
+                </InputLabel> */}
+            <Select
+              // labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={props.jabatan}
+              // label="Age"
+              // placeholder="kualifikasi pendidikan"
+              onChange={(e) => {
+                props.setJabatan(e.target.value);
+                // props.handleChangeKota(e);
+              }}
+              // disabled={props.selectedProv !== null ? false : true}
+            >
+              {datapekerjaan.map((el) => (
+                <MenuItem value={el.nama} key={el.id}>
+                  {el.nama}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
         <div className="col-12">
           <Typography

@@ -543,7 +543,13 @@ export default function Home() {
                 >
                   Skema
                 </Typography>
-                <CountUp start={0} end={10} delay={0}>
+                <CountUp
+                  start={0}
+                  end={10}
+                  delay={0}
+                  enableScrollSpy={true}
+                  // scrollSpyDelay={100}
+                >
                   {({ countUpRef }) => (
                     <Typography
                       sx={{
@@ -571,7 +577,13 @@ export default function Home() {
                 >
                   Asesor
                 </Typography>
-                <CountUp start={0} end={23} delay={0}>
+                <CountUp
+                  start={0}
+                  end={23}
+                  delay={0}
+                  enableScrollSpy={true}
+                  // scrollSpyDelay={100}
+                >
                   {({ countUpRef }) => (
                     <Typography
                       sx={{
@@ -599,7 +611,13 @@ export default function Home() {
                 >
                   TUK
                 </Typography>
-                <CountUp start={0} end={2} delay={0}>
+                <CountUp
+                  start={0}
+                  end={2}
+                  delay={0}
+                  enableScrollSpy={true}
+                  // scrollSpyDelay={100}
+                >
                   {({ countUpRef }) => (
                     <Typography
                       sx={{
@@ -627,7 +645,13 @@ export default function Home() {
                 >
                   Asesi
                 </Typography>
-                <CountUp start={0} end={32} delay={0}>
+                <CountUp
+                  start={0}
+                  end={32}
+                  delay={0}
+                  enableScrollSpy={true}
+                  // scrollSpyDelay={100}
+                >
                   {({ countUpRef }) => (
                     <Typography
                       sx={{

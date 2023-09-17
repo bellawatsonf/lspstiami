@@ -5,6 +5,7 @@ const initialState = {
     dataAsesor: [],
     totalPage: 0,
     asesorById: {},
+    allAsesor: [],
   },
   AsesorById: {},
 };
@@ -19,6 +20,14 @@ const asesorSlice = createSlice({
         ...state,
         asesor: action.asesor,
         type: "asesor/getAsesor",
+      };
+    },
+    getAllAsesor: (state = initialState, action) => {
+      console.log(action, "action reducer");
+      return {
+        ...state,
+        allAsesor: action.allAsesor,
+        type: "asesor/getAllAsesor",
       };
     },
     getAsesorById: (state, action) => {

@@ -16,6 +16,7 @@
 @media (max-width: 768px) {
   .boxTable {
     width: 95%;
+    overflow-x: scroll;
   }
   .boxImg {
     max-width: 768px;

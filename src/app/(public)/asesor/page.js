@@ -20,6 +20,15 @@ import Navbar from "../component/Navbar";
 import Footer from "../component/footer";
 import LoadingComponent from "../component/loading";
 import dataAsesor from "./data";
+import {
+  Table,
+  Header,
+  HeaderRow,
+  Body,
+  Row,
+  HeaderCell,
+  Cell,
+} from "@table-library/react-table-library/table";
 
 const key = "Sort";
 const useStyles = makeStyles({
@@ -110,7 +119,30 @@ export default function AsesorTable() {
 
   let dispatch = useDispatch();
   const materialTheme = getTheme(DEFAULT_OPTIONS);
-  const theme = useTheme(materialTheme);
+  // const theme = useTheme(materialTheme);
+  const theme = useTheme({
+    Table: `width:100%;`,
+    HeaderRow: `
+        .th {
+          background:#47494a;
+          color:white;
+        }
+      `,
+    Row: `
+        & .td {
+          border-bottom: 1px solid #a0a8ae;
+
+        }
+      `,
+    BaseCell: `
+    border-right: 1px solid #a0a8ae;
+    border-left: 1px solid #a0a8ae;
+       
+          width:100%;
+          white-space:unset;
+       
+      `,
+  });
 
   React.useEffect(() => {
     dispatch(
@@ -167,25 +199,25 @@ export default function AsesorTable() {
   //   console.log(action, state);
   // }
 
-  const COLUMNS = [
-    {
-      label: "Nama Asesor",
-      renderCell: (item) => item.nama,
-      sort: { sortKey: "nama" },
-    },
-    {
-      label: "No Reg / No MET",
-      renderCell: (item) => item.no_reg,
-      sort: { sortKey: "no_reg" },
-    },
-    {
-      label: "Bidang Skema",
-      renderCell: (item) => item.Skema.nama_skema,
-      sort: { sortKey: "bidang_skema" },
-    },
-  ];
+  // const COLUMNS = [
+  //   {
+  //     label: "Nama Asesor",
+  //     renderCell: (item) => item.nama,
+  //     sort: { sortKey: "nama" },
+  //   },
+  //   {
+  //     label: "No Reg / No MET",
+  //     renderCell: (item) => item.no_reg,
+  //     sort: { sortKey: "no_reg" },
+  //   },
+  //   {
+  //     label: "Bidang Skema",
+  //     renderCell: (item) => item.Skema.nama_skema,
+  //     sort: { sortKey: "bidang_skema" },
+  //   },
+  // ];
 
-  console.log(COLUMNS, "colum");
+  // console.log(COLUMNS, "colum");
   // if (asesor.nodes.length === 0) {
   //   return <p>ddd</p>;
   // }
@@ -205,41 +237,6 @@ export default function AsesorTable() {
                 src="/aset3.png"
               />
             </div>
-            {/* <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <img
-                    className={`${stylesTentang.imgbannertentang}`}
-                    src="https://www.crayon.co/hs-fs/hubfs/new-bg.png?width=2566&height=781&name=new-bg.png"
-                  />
-                </div>
-                <div className="col-lg-6">
-                  <div>
-                    <Typography
-                      sx={{
-                        fontSize: "64px",
-                        color: "#040924",
-                        fontWeight: 600,
-                        paddingBottom: "15px",
-                      }}
-                    >
-                      Asesor
-                    </Typography>
-
-                    <Typography
-                      sx={{
-                        color: "#6f7375",
-                        fontSize: "20px",
-                        paddingBottom: "60px",
-                      }}
-                    >
-                      {" "}
-                      Data Asesor
-                    </Typography>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
           <div className={`${styles.boxTable}`}>
             <Typography
@@ -263,14 +260,52 @@ export default function AsesorTable() {
               {" "}
               Data Asesor
             </Typography>
-            <CompactTable
+            {/* <CompactTable
               columns={COLUMNS}
               data={{ nodes: data?.dataAsesor }}
               // data={{ nodes: dataAsesor }}
               // sort={sort}
               // pagination={pagination}
               theme={theme}
-            />
+            /> */}
+            <Table data={{ nodes: data?.dataAsesor }} theme={theme}>
+              {(tableList) => (
+                <>
+                  <Header>
+                    <HeaderRow>
+                      <HeaderCell>Nama Asesor</HeaderCell>
+                      <HeaderCell>
+                        <div className="text-wrap" style={{ width: "100%" }}>
+                          No Reg / No MET
+                        </div>
+                      </HeaderCell>
+                      <HeaderCell>Bidang Skema</HeaderCell>
+                    </HeaderRow>
+                  </Header>
+
+                  <Body>
+                    {tableList.map((item) => (
+                      <Row key={item.id} item={item}>
+                        <Cell>{item.nama}</Cell>
+                        <Cell>
+                          <div
+                            className="text-wrap"
+                            style={{ width: "100%", whiteSpace: "unset" }}
+                          >
+                            {item.no_reg}
+                          </div>
+                        </Cell>
+                        <Cell>
+                          <div className="text-wrap" style={{ width: "100%" }}>
+                            {item.Skema.nama_skema}
+                          </div>
+                        </Cell>
+                      </Row>
+                    ))}
+                  </Body>
+                </>
+              )}
+            </Table>
             <div
               style={{
                 display: "flex",

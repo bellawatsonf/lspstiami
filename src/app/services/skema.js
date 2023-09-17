@@ -24,6 +24,35 @@ export function fetchSkema(skema) {
   };
 }
 
+export function fetchSkemaPage(param) {
+  return (dispatch, prevState) => {
+    console.log(dispatch, "dispatch");
+    dispatch(Loading(true));
+    axios({
+      url: `/api/skemasertifikasiwithpage?page=${param.page - 1}&size=${
+        param.size
+      }`,
+      method: "GET",
+    })
+      .then((data) => {
+        console.log(data.data.data, "dataasesi dari service");
+        dispatch({
+          type: "skema/getSkemaWithPage",
+          skemapage: {
+            dataSkema: data.data.listData,
+            totalPage: data.data.totalPages,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err, "dari services asesi");
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
+      });
+  };
+}
+
 export function fetchSkemaById(id) {
   console.log(id, "skemabyid idservice");
   return (dispatch, prevState) => {

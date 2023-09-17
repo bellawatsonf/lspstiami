@@ -114,11 +114,21 @@ export default function DetailEdit() {
     <Fragment>
       {objectlength.length !== 0 ? (
         <Box sx={{ width: "100%" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "divider",
+              // background: "green",
+              width: { xs: "300px", md: "auto" },
+            }}
+          >
             <Tabs
               value={value}
               onChange={handleChange}
-              aria-label="basic tabs example"
+              variant="scrollable"
+              scrollButtons
+              allowScrollButtonsMobile
+              aria-label="scrollable force tabs example"
             >
               <Tab label="Data Pribadi" {...a11yProps(0)} />
               <Tab label="Data Pekerjaan" {...a11yProps(1)} />

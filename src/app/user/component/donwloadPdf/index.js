@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     margin: "auto",
     marginTop: 5,
     fontSize: 10,
+    paddingBottom: 5,
   },
   tableCellSpan2: {
     margin: "auto",
@@ -122,7 +123,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.nama_lengkap}</Text>
+                {props.data?.asesi_skema.asesi.nama_lengkap === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.nama_lengkap}</Text>
+                )}
               </View>
             </View>
             <View style={{ flexDirection: "row", marginBottom: "10px" }}>
@@ -158,7 +163,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.jenis_kelamin}</Text>
+                {props.data?.asesi_skema.asesi.jenis_kelamin === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.jenis_kelamin}</Text>
+                )}
               </View>
             </View>
             <View style={{ flexDirection: "row", marginBottom: "10px" }}>
@@ -171,7 +180,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.kebangsaan}</Text>
+                {props.data?.asesi_skema.asesi.kebangsaan === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.kebangsaan}</Text>
+                )}
               </View>
             </View>
             <View style={{ flexDirection: "row", marginBottom: "10px" }}>
@@ -184,7 +197,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.alamat_rumah}</Text>
+                {props.data?.asesi_skema.asesi.alamat_rumah === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.alamat_rumah}</Text>
+                )}
               </View>
             </View>
             <View style={{ flexDirection: "row", marginBottom: "10px" }}>
@@ -213,7 +230,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.kodepos}</Text>
+                    {props.data?.asesi_skema.asesi.kodepos === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>: {props.data?.asesi_skema.asesi.kodepos}</Text>
+                    )}
                   </View>
                 </View>
               </View>
@@ -230,7 +251,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.telp}</Text>
+                    {props.data?.asesi_skema.asesi.telp === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>: {props.data?.asesi_skema.asesi.telp}</Text>
+                    )}
                   </View>
                 </View>
                 <View
@@ -246,7 +271,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.telp_kantor}</Text>
+                    {props.data?.asesi_skema.asesi.telp_kantor === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>: {props.data?.asesi_skema.asesi.telp_kantor}</Text>
+                    )}
                   </View>
                 </View>
               </View>
@@ -263,7 +292,13 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.phone_number}</Text>
+                    {props.data?.asesi_skema.asesi.phone_number === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>
+                        : {props.data?.asesi_skema.asesi.phone_number}
+                      </Text>
+                    )}
                   </View>
                 </View>
                 <View
@@ -279,7 +314,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.email}</Text>
+                    {props.data?.asesi_skema.asesi.email === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>: {props.data?.asesi_skema.asesi.email}</Text>
+                    )}
                   </View>
                 </View>
               </View>
@@ -294,9 +333,14 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>
-                  :{props.data?.asesi_skema.asesi.kualifikasi_pendidikan}
-                </Text>
+                {props.data?.asesi_skema.asesi.kualifikasi_pendidikan ===
+                "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>
+                    : {props.data?.asesi_skema.asesi.kualifikasi_pendidikan}
+                  </Text>
+                )}
               </View>
             </View>
           </View>
@@ -328,7 +372,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.nama_instansi}</Text>
+                {props.data?.asesi_skema.asesi.nama_instansi === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.nama_instansi}</Text>
+                )}
               </View>
             </View>
             <View style={{ flexDirection: "row", marginBottom: "10px" }}>
@@ -341,7 +389,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.jabatan}</Text>
+                {props.data?.asesi_skema.asesi.jabatan === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.jabatan}</Text>
+                )}
               </View>
             </View>
 
@@ -355,7 +407,11 @@ const DocumentPdf = (props) => {
                   width: "100%",
                 }}
               >
-                <Text>: {props.data?.asesi_skema.asesi.alamat_kantor}</Text>
+                {props.data?.asesi_skema.asesi.alamat_kantor === "null" ? (
+                  <Text>:</Text>
+                ) : (
+                  <Text>: {props.data?.asesi_skema.asesi.alamat_kantor}</Text>
+                )}
               </View>
             </View>
             <View style={{ flexDirection: "row", marginBottom: "10px" }}>
@@ -384,9 +440,13 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>
-                      : {props.data?.asesi_skema.asesi.kodepos_kantor}
-                    </Text>
+                    {props.data?.asesi_skema.asesi.kodepos_kantor === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>
+                        : {props.data?.asesi_skema.asesi.kodepos_kantor}
+                      </Text>
+                    )}
                   </View>
                 </View>
               </View>
@@ -403,7 +463,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.telp_kantor}</Text>
+                    {props.data?.asesi_skema.asesi.telp_kantor === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>: {props.data?.asesi_skema.asesi.telp_kantor}</Text>
+                    )}
                   </View>
                 </View>
                 <View
@@ -419,7 +483,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.fax}</Text>
+                    {props.data?.asesi_skema.asesi.fax === "null" ? (
+                      <Text>:</Text>
+                    ) : (
+                      <Text>: {props.data?.asesi_skema.asesi.fax}</Text>
+                    )}
                   </View>
                 </View>
               </View>
@@ -436,7 +504,11 @@ const DocumentPdf = (props) => {
                   <View
                     style={{ borderBottom: "1px solid black", width: "100%" }}
                   >
-                    <Text>: {props.data?.asesi_skema.asesi.email_kantor}</Text>
+                    {props.data?.asesi_skema.asesi.email_kantor === "null" ? (
+                      <Text></Text>
+                    ) : (
+                      <Text>{props.data?.asesi_skema.asesi.email_kantor}</Text>
+                    )}
                   </View>
                 </View>
               </View>
@@ -470,11 +542,11 @@ const DocumentPdf = (props) => {
                 borderWidth: 1,
                 borderLeftWidth: 0,
                 borderTopWidth: 0,
-                widht: "30%",
+                width: "30%",
               }}
             >
-              <Text style={styles.tableCell}>
-                Skema Sertifikasi/Klaster Asesmen
+              <Text style={{ marginTop: 10, fontSize: 10, paddingLeft: "3px" }}>
+                Skema Sertifikasi / Klaster Asesmen
               </Text>
             </View>
 
@@ -487,8 +559,24 @@ const DocumentPdf = (props) => {
                 width: "10%",
               }}
             >
-              <View style={{ borderBottom: "1px solid black" }}>
-                <Text style={styles.tableCell}>Judul</Text>
+              <View
+                style={{
+                  borderBottom: "1px solid black",
+                  paddingTop: "2px",
+                  height: "35px",
+                }}
+              >
+                <Text
+                  style={{
+                    margin: "auto",
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                    marginTop: "10px",
+                  }}
+                >
+                  Judul
+                </Text>
               </View>
               <Text style={styles.tableCell}>Nomor</Text>
             </View>
@@ -501,11 +589,61 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <View style={{ borderBottom: "1px solid black" }}>
-                <Text style={styles.tableCell}>:</Text>
+              <View
+                style={{
+                  borderBottom: "1px solid black",
+                  paddingTop: "2px",
+                  height: "35px",
+                }}
+              >
+                <Text
+                  style={{
+                    margin: "auto",
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                    marginTop: "10px",
+                  }}
+                >
+                  :
+                </Text>
               </View>
               <Text style={styles.tableCell}>:</Text>
             </View>
+            {/* <View
+              style={{
+                width: "55%",
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderLeftWidth: 0,
+                borderTopWidth: 0,
+              }}
+            >
+              <View
+                style={{ borderBottom: "1px solid black", paddingTop: "2px" }}
+              >
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingLeft: "3px",
+                    paddingBottom: "4px",
+                  }}
+                >
+                  {props.data?.asesi_skema.skema.nama_skema}
+                </Text>
+              </View>
+              <Text
+                style={{
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingLeft: "3px",
+                  // paddingBottom: "4px",
+                }}
+              >
+                {props.data?.asesi_skema.skema.no_skema}
+              </Text>
+            </View> */}
             <View
               style={{
                 width: "55%",
@@ -515,12 +653,35 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <View style={{ borderBottom: "1px solid black" }}>
-                <Text style={styles.tableCell}>
+              <View
+                style={{
+                  borderBottom: "1px solid black",
+                  paddingTop: "2px",
+                  height: "35px",
+                }}
+                wrap
+              >
+                <Text
+                  style={{
+                    marginLeft: "3px",
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                  }}
+                >
+                  {" "}
                   {props.data?.asesi_skema.skema.nama_skema}
                 </Text>
               </View>
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingBottom: 5,
+                }}
+              >
+                {" "}
                 {props.data?.asesi_skema.skema.no_skema}
               </Text>
             </View>
@@ -535,7 +696,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tujuan Asesmen</Text>
+              <Text
+                style={{
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingLeft: "3px",
+                  paddingBottom: "3px",
+                }}
+              >
+                Tujuan Asesmen
+              </Text>
             </View>
             <View
               style={{
@@ -557,7 +727,44 @@ const DocumentPdf = (props) => {
                 width: "20%",
               }}
             >
-              <Text style={styles.tableCell}>Sertifikasi </Text>
+              <View style={{ flexDirection: "row" }}>
+                {/* <View style={{ borderRight: "1px solid black", width: "100%" }}> */}
+                <View
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                    border: "1px solid black",
+                    marginHorizontal: 6,
+                    marginVertical: 6,
+                    // position: "absolute",
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: "15px",
+                      display:
+                        props?.data?.asesi_skema.asesi.tujuan_asesmen ===
+                        "sertifikasi"
+                          ? "block"
+                          : "none",
+                    }}
+                    src="/check.png"
+                  >
+                    {" "}
+                  </Image>
+                </View>
+                <Text
+                  style={{
+                    marginTop: 7,
+                    marginLeft: "2px",
+                    fontSize: 10,
+                    paddingBottom: 5,
+                  }}
+                >
+                  Sertifikasi{" "}
+                </Text>
+                {/* </View> */}
+              </View>
             </View>
             <View
               style={{
@@ -568,8 +775,56 @@ const DocumentPdf = (props) => {
                 width: "20%",
               }}
             >
-              <Text style={styles.tableCell}>Sertifikasi Ulang</Text>
+              <View style={{ flexDirection: "row" }}>
+                {/* <View style={{ borderRight: "1px solid black", width: "100%" }}> */}
+                <View
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                    border: "1px solid black",
+                    marginHorizontal: 6,
+                    marginVertical: 6,
+                    // position: "absolute",
+                  }}
+                >
+                  <Image
+                    style={{
+                      width: "15px",
+                      display:
+                        props?.data?.asesi_skema.asesi.tujuan_asesmen !==
+                        "sertifikasi"
+                          ? "block"
+                          : "none",
+                    }}
+                    src="/check.png"
+                  >
+                    {" "}
+                  </Image>
+                </View>
+                <Text
+                  style={{
+                    marginTop: 7,
+                    marginLeft: "2px",
+                    fontSize: 10,
+                    paddingBottom: 5,
+                  }}
+                >
+                  Sertifikasi Ulang{" "}
+                </Text>
+                {/* </View> */}
+              </View>
             </View>
+            {/* <View
+              style={{
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderLeftWidth: 0,
+                borderTopWidth: 0,
+                width: "20%",
+              }}
+            >
+              <Text style={styles.tableCell}>Sertifikasi Ulang</Text>
+            </View> */}
             <View
               style={{
                 borderStyle: "solid",
@@ -604,7 +859,17 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>No.</Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 10,
+                  paddingLeft: "3px",
+                  paddingBottom: "3px",
+                  margin: "auto",
+                }}
+              >
+                No.
+              </Text>
             </View>
             <View
               style={{
@@ -615,7 +880,17 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Kode Unit</Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 10,
+                  paddingLeft: "3px",
+                  paddingBottom: "3px",
+                  margin: "auto",
+                }}
+              >
+                Kode Unit
+              </Text>
             </View>
             <View
               style={{
@@ -626,7 +901,17 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Judul Unit</Text>
+              <Text
+                style={{
+                  marginTop: 15,
+                  fontSize: 10,
+                  paddingLeft: "3px",
+                  paddingBottom: "3px",
+                  margin: "auto",
+                }}
+              >
+                Judul Unit
+              </Text>
             </View>
             <View
               style={{
@@ -665,7 +950,17 @@ const DocumentPdf = (props) => {
                   borderTopWidth: 0,
                 }}
               >
-                <Text style={styles.tableCell}>{el.kode_unit}</Text>
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                    // paddingLeft: "3px",
+                    margin: "auto",
+                  }}
+                >
+                  {el.kode_unit}
+                </Text>
               </View>
               <View
                 style={{
@@ -677,7 +972,16 @@ const DocumentPdf = (props) => {
                   paddingHorizontal: "3px",
                 }}
               >
-                <Text style={styles.tableCell}>{el.judul_unit}</Text>
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                    paddingLeft: "3px",
+                  }}
+                >
+                  {el.judul_unit}
+                </Text>
               </View>
               <View
                 style={{
@@ -700,6 +1004,7 @@ const DocumentPdf = (props) => {
             marginBottom: "20px",
             marginTop: "20px",
           }}
+          break
         >
           Bagian 3 : Bukti Kelengkapan Pemohon
         </Text>
@@ -729,7 +1034,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>No.</Text>
+              <Text
+                style={{
+                  margin: "auto",
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingTop: "20px",
+                }}
+              >
+                No.
+              </Text>
             </View>
             <View
               style={{
@@ -740,7 +1054,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}></Text>
+              <Text
+                style={{
+                  margin: "auto",
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingTop: "20px",
+                }}
+              >
+                Bukti Persyaratan
+              </Text>
             </View>
             <View
               style={{
@@ -760,19 +1083,41 @@ const DocumentPdf = (props) => {
                     borderRight: "1px solid black",
                     width: "50%",
                     paddingBottom: "10px",
-                    paddingTop: "10px",
+                    // paddingTop: "10px",
                   }}
                 >
-                  <Text style={styles.tableCell}></Text>
+                  <Text
+                    style={{
+                      margin: "auto",
+                      marginTop: 6,
+                      fontSize: 10,
+                      marginLeft: "2px",
+                      marginRight: "2px",
+                      textAlign: "center",
+                    }}
+                  >
+                    memenuhi syarat
+                  </Text>
                 </View>
                 <View
                   style={{
                     width: "50%",
                     paddingBottom: "10px",
-                    paddingTop: "10px",
+                    // paddingTop: "10px",
                   }}
                 >
-                  <Text style={styles.tableCell}></Text>
+                  <Text
+                    style={{
+                      margin: "auto",
+                      marginTop: 6,
+                      fontSize: 10,
+                      marginLeft: "2px",
+                      marginRight: "2px",
+                      textAlign: "center",
+                    }}
+                  >
+                    tidak memenuhi syarat
+                  </Text>
                 </View>
               </View>
             </View>
@@ -785,7 +1130,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Tidak Ada</Text>
+              <Text
+                style={{
+                  margin: "auto",
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingTop: "20px",
+                }}
+              >
+                Tidak Ada
+              </Text>
             </View>
           </View>
           <View style={styles.tableRow}>
@@ -810,7 +1164,14 @@ const DocumentPdf = (props) => {
                 height: "70px",
               }}
             >
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                }}
+              >
                 Mahasiswa Institut STIAMI Jakarta yang telah menyelesaikan mata
                 kuliah internal dan eksternal : Perencanaan dan Pengembangan
                 Bisnis, MSDM, Organisai dan Manajemen Bisnis, Manajemen
@@ -913,7 +1274,14 @@ const DocumentPdf = (props) => {
                 height: "50px",
               }}
             >
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                }}
+              >
                 {`Memiliki sertifikasi pelatihan berbasis kompetensi pada jabatan ${props?.data?.asesi_skema.skema.nama_skema} yang diselenggarakan oleh Institut STIAMI Jakarta`}
               </Text>
             </View>
@@ -1014,7 +1382,14 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                }}
+              >
                 Copy Ijazah terakhir (SLTA/sederajat)
               </Text>
             </View>
@@ -1112,7 +1487,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Copy KTP</Text>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                }}
+              >
+                Copy KTP
+              </Text>
             </View>
             <View
               style={{
@@ -1208,7 +1592,14 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                }}
+              >
                 Pas foto 3x4 berlatar warna merah sebanyak 2 lembar
               </Text>
             </View>
@@ -1306,7 +1697,14 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                }}
+              >
                 Surat pernyataan tidak merekam (bermaterai)
               </Text>
             </View>
@@ -1414,7 +1812,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>No.</Text>
+              <Text
+                style={{
+                  margin: "auto",
+                  marginTop: 15,
+                  fontSize: 10,
+                  // paddingBottom: 5,
+                }}
+              >
+                No.
+              </Text>
             </View>
             <View
               style={{
@@ -1425,7 +1832,14 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginTop: 10,
+                  fontSize: 10,
+                  paddingBottom: 5,
+                  marginLeft: "3px",
+                }}
+              >
                 Rincian Bukti Pendidikan/Pelatihan, Pengalaman Kerja, Pengalaman
                 Hidup
               </Text>
@@ -1809,21 +2223,40 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Rekomendasi (diisi oleh LSP)</Text>
-              <Text style={styles.tableCell}>
+              <Text
+                style={{
+                  marginTop: 6,
+                  marginLeft: "3px",
+                  fontSize: 12,
+                  paddingBottom: 4,
+                  fontWeight: 700,
+                }}
+              >
+                Rekomendasi (diisi oleh LSP)
+              </Text>
+              <Text
+                style={{
+                  marginLeft: "3px",
+                  marginRight: "3px",
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingBottom: 5,
+                }}
+              >
                 Berdasarkan ketentuan persyaratan dasar pemohon,maka pemohon:
               </Text>
-              <View style={{ flexDirection: "row" }}>
-                <Text
-                  style={{
-                    margin: "auto",
-                    marginTop: 5,
-                    fontSize: 10,
-                  }}
-                >
-                  Diterima
-                </Text>
-                {/* <Text
+              {/* <View style={{ flexDirection: "row" }}> */}
+              <Text
+                style={{
+                  // margin: "auto",
+                  marginTop: 10,
+                  fontSize: 10,
+                  marginLeft: "3px",
+                }}
+              >
+                Diterima sebagai peserta asesi
+              </Text>
+              {/* <Text
                   style={{
                     margin: "auto",
                     marginTop: 5,
@@ -1843,7 +2276,7 @@ const DocumentPdf = (props) => {
                 >
                   Tidak diterima
                 </Text> */}
-                <Text
+              {/* <Text
                   style={{
                     margin: "auto",
                     marginTop: 5,
@@ -1852,8 +2285,8 @@ const DocumentPdf = (props) => {
                   }}
                 >
                   *sebagai peserta sertifikasi
-                </Text>
-              </View>
+                </Text> */}
+              {/* </View> */}
               {/* <Text style={styles.tableCell}>* coret yang tidak sesuai</Text> */}
             </View>
             <View
@@ -1866,7 +2299,16 @@ const DocumentPdf = (props) => {
               }}
             >
               <View style={{ borderBottom: "1px solid black" }}>
-                <Text style={styles.tableCell}>Pemohon:</Text>
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                    marginLeft: "3px",
+                  }}
+                >
+                  Pemohon:
+                </Text>
               </View>
               <View
                 style={{
@@ -1875,17 +2317,54 @@ const DocumentPdf = (props) => {
                 }}
               >
                 <View style={{ borderRight: "1px solid black", width: "40%" }}>
-                  <Text style={styles.tableCell}>Nama</Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                    }}
+                  >
+                    Nama
+                  </Text>
                 </View>
                 <View style={{ width: "60%" }}>
-                  <Text style={styles.tableCell}>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                    }}
+                  >
                     {props?.data?.asesi_skema.asesi.nama_lengkap}
                   </Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ borderRight: "1px solid black", width: "40%" }}>
-                  <Text style={styles.tableCell}>Tanda Tangan/Tanggal</Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      paddingTop: "20px",
+                    }}
+                  >
+                    Tanda Tangan /
+                  </Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                    }}
+                  >
+                    Tanggal
+                  </Text>
                 </View>
                 <View style={{ width: "60%" }}>
                   <Image
@@ -1894,6 +2373,21 @@ const DocumentPdf = (props) => {
                       props.data.asesi_skema.asesi.ttd_asesi.split("/")[4]
                     }`}
                   ></Image>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                    }}
+                  >
+                    {
+                      new Date(props.data.asesi_skema.createdAt)
+                        .toISOString()
+                        .split("T")[0]
+                    }
+                  </Text>
                 </View>
               </View>
             </View>
@@ -1908,7 +2402,16 @@ const DocumentPdf = (props) => {
                 borderTopWidth: 0,
               }}
             >
-              <Text style={styles.tableCell}>Catatan:</Text>
+              <Text
+                style={{
+                  marginTop: 5,
+                  fontSize: 10,
+                  paddingBottom: 5,
+                  marginLeft: "3px",
+                }}
+              >
+                Catatan:
+              </Text>
               <Text></Text>
             </View>
             <View
@@ -1921,7 +2424,16 @@ const DocumentPdf = (props) => {
               }}
             >
               <View style={{ borderBottom: "1px solid black" }}>
-                <Text style={styles.tableCell}>Admin LSP:</Text>
+                <Text
+                  style={{
+                    marginTop: 5,
+                    fontSize: 10,
+                    paddingBottom: 5,
+                    marginLeft: "3px",
+                  }}
+                >
+                  Admin LSP:
+                </Text>
               </View>
               <View
                 style={{
@@ -1930,15 +2442,54 @@ const DocumentPdf = (props) => {
                 }}
               >
                 <View style={{ borderRight: "1px solid black", width: "40%" }}>
-                  <Text style={styles.tableCell}>Nama</Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                    }}
+                  >
+                    Nama
+                  </Text>
                 </View>
                 <View style={{ width: "60%" }}>
-                  <Text style={styles.tableCell}>{props.data.admins.nama}</Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                    }}
+                  >
+                    {props.data.admins.nama}
+                  </Text>
                 </View>
               </View>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ borderRight: "1px solid black", width: "40%" }}>
-                  <Text style={styles.tableCell}>Tanda Tangan/Tanggal</Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                      paddingTop: "20px",
+                    }}
+                  >
+                    Tanda Tangan /
+                  </Text>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                    }}
+                  >
+                    Tanggal
+                  </Text>
                 </View>
                 <View style={{ width: "60%" }}>
                   <Image
@@ -1947,6 +2498,17 @@ const DocumentPdf = (props) => {
                       props.data.admins.ttd_admin.split("/")[4]
                     }`}
                   ></Image>
+                  <Text
+                    style={{
+                      marginTop: 5,
+                      fontSize: 10,
+                      paddingBottom: 5,
+                      marginLeft: "3px",
+                      marginRight: "3px",
+                    }}
+                  >
+                    {new Date(props.data.createdAt).toISOString().split("T")[0]}
+                  </Text>
                 </View>
               </View>
             </View>
@@ -2023,7 +2585,7 @@ export default function DownloadPdf(props) {
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
-                  marginBottom: "10px",
+                  // marginBottom: "10px",
                 }}
               >
                 <Button
@@ -2036,6 +2598,7 @@ export default function DownloadPdf(props) {
                     fontWeight: 700,
                     textTransform: "none",
                     marginRight: "10px",
+                    height: "40px",
                   }}
                 >
                   Download PDF

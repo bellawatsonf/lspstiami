@@ -168,7 +168,7 @@ export default function Step4(props) {
         <SignatureCanvas
           penColor="black"
           canvasProps={{
-            width: 600,
+            // width: 600,
             height: 200,
             className: styles["sigCanvas"],
           }}

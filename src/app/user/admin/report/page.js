@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import ModalAdmin from "./modalAsesor";
 import { fetchApl01 } from "@/app/services/apl01";
 import { useRouter } from "next/navigation";
-
+import { read, utils, writeFile } from "xlsx";
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
 
@@ -31,6 +31,7 @@ export default function Report() {
   // const classes = useStyles();
   let router = useRouter();
   let dataapl01 = useSelector((state) => state.apl01.apl01);
+  console.log(dataapl01, "dataapl0");
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
   const dispatch = useDispatch();
@@ -57,6 +58,64 @@ export default function Report() {
   //   },
   //   onChange: onPaginationChange,
   // });
+
+  const handleExport = () => {
+    let dataapl01excel = [];
+
+    for (let i = 0; i < dataapl01.length; i++) {
+      let no = 1;
+      dataapl01excel.push({
+        No: no++,
+        "Nama Asesi": dataapl01[i].asesi_skema.asesi.nama_lengkap,
+        NIK: dataapl01[i].asesi_skema.asesi.nik,
+        "Tempat Lahir": dataapl01[i].asesi_skema.asesi.tempat_lahir,
+        "Tanggal Lahir": dataapl01[i].asesi_skema.asesi.tgl_lahir,
+        "Jenis Kelamin": dataapl01[i].asesi_skema.asesi.jenis_kelamin,
+        "Tempat Tinggal": dataapl01[i].asesi_skema.asesi.alamat_rumah,
+        Pekerjaan: dataapl01[i].asesi_skema.asesi.jabatan,
+        PEndidikan: dataapl01[i].asesi_skema.asesi.kualifikasi_pendidikan,
+        "Kode Kota": dataapl01[i].asesi_skema.asesi.kota,
+        "Kode Provinsi": dataapl01[i].asesi_skema.asesi.provinsi,
+        // "Kode Jadwal": dataapl01[i]
+        // "Tanggal Uji": dataapl01[i]
+        // "Nomor Registrasi Asesi": dataapl01[i]
+        // "Kode Sumber Anggaran": dataapl01[i]
+        // "Kode Kemetrian": dataapl01[i]
+        // "K/BK"
+      });
+    }
+
+    const headings = [
+      [
+        "No",
+        "Nama Asesi",
+        "NIK",
+        "Tempat Lahir",
+        "Tanggal Lahir",
+        "Jenis Kelamin",
+        "Tempat Tinggal",
+        "Pekerjaan",
+        "Pendidikan",
+        "Kode Kota",
+        "Kode Provinsi",
+        "Kode Jadwal",
+        "Tanggal Uji",
+        "Nomor Registrasi Asesi",
+        "Kode Sumber Anggaran",
+        "Kode Kementrian",
+        "K/BK",
+      ],
+    ];
+    const wb = utils.book_new();
+    const ws = utils.json_to_sheet([]);
+    utils.sheet_add_aoa(ws, headings);
+    utils.sheet_add_json(ws, dataapl01excel, {
+      origin: "A2",
+      skipHeader: true,
+    });
+    utils.book_append_sheet(wb, ws, "Report");
+    writeFile(wb, "APL01.xlsx");
+  };
 
   function onPaginationChange(action, state) {
     console.log(action, state, "paginationstate");
@@ -128,6 +187,20 @@ export default function Report() {
 
   return (
     <React.Fragment>
+      <div
+        style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}
+      >
+        <Button
+          variant="contained"
+          color="success"
+          sx={{ textTransform: "none" }}
+          onClick={() => {
+            handleExport();
+          }}
+        >
+          Unduh Data Apl01
+        </Button>
+      </div>
       {dataapl01 ? (
         <React.Fragment>
           <CompactTable

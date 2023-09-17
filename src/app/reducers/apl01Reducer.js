@@ -7,6 +7,7 @@ const initialState = {
 
   apl01ById: {},
   apl01ByUser: {},
+  apl01ByAllUser: [],
 };
 
 const apl01Slice = createSlice({
@@ -35,9 +36,17 @@ const apl01Slice = createSlice({
         type: "apl01/getApl01ByUser",
       };
     },
+    getApl01ByAllUser: (state, action) => {
+      return {
+        ...state,
+        apl01ByAllUser: action.apl01ByAllUser,
+        type: "apl01/getApl01ByAllUser",
+      };
+    },
   },
 });
-export const { getApl01, getApl01ById, getApl01ByUser } = apl01Slice.actions;
+export const { getApl01, getApl01ById, getApl01ByUser, getApl01ByAllUser } =
+  apl01Slice.actions;
 export default apl01Slice.reducer;
 
 // export default function reducer(state = initialState, action) {

@@ -16,6 +16,48 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Step1(props) {
+  let datapendidikan = [
+    {
+      id: "1",
+      tingkat: "SD",
+    },
+    {
+      id: "2",
+      tingkat: "SMP",
+    },
+    {
+      id: "3",
+      tingkat: "SMP/Sederajat",
+    },
+    {
+      id: "4",
+      tingkat: "D1",
+    },
+    {
+      id: "5",
+      tingkat: "D2",
+    },
+    {
+      id: "6",
+      tingkat: "D3",
+    },
+    {
+      id: "7",
+      tingkat: "D4",
+    },
+    {
+      id: "8",
+      tingkat: "S1",
+    },
+    {
+      id: "9",
+      tingkat: "S2",
+    },
+    {
+      id: "10",
+      tingkat: "S3",
+    },
+  ];
   const router = useRouter();
   console.log(
     new Date(props.dataAsesi.tgl_lahir).toLocaleDateString("en-US"),
@@ -42,7 +84,7 @@ export default function Step1(props) {
     telp: "",
     email: "",
     kode_pos: "",
-    kualifikasi_pendidikan: "",
+    // kualifikasi_pendidikan: "",
     nik: "",
   };
   const [stateField, setStateField] = useState(initialState);
@@ -52,8 +94,9 @@ export default function Step1(props) {
   const [selectedKota, setSelectedKota] = useState("");
   const [jenis_kelamin, setJenisKelamin] = useState("");
   const [selectedDate, setDate] = useState(null);
+  const [kualifikasi_pendidikan, setPendidikan] = useState(null);
 
-  console.log(Object.keys(props.dataAsesi).length !== 0, "hhh");
+  console.log(dtprovinsi, "hhh");
   //   useEffect(()=>{
   // setTimeout(() => {
 
@@ -62,13 +105,13 @@ export default function Step1(props) {
 
   function getProvinsi() {
     axios({
-      url: "/api/provinsi",
+      url: `https://alamat.thecloudalert.com/api/provinsi/get/`,
       method: "get",
     })
       .then((data) => {
-        console.log(data.data.data, "dataprovinsi");
-        if (data.data.data.length > 0) {
-          setProvinsi(data.data.data);
+        console.log(data.data.result, "dataprovinsi");
+        if (data.data.result.length > 0) {
+          setProvinsi(data.data.result);
         }
       })
       .catch((err) => {
@@ -76,21 +119,31 @@ export default function Step1(props) {
       });
   }
 
+  useEffect(() => {
+    getProvinsi();
+  }, []);
+
   function getKota() {
     axios({
-      url: `/api/kota/${selectedProv}`,
+      url: `https://alamat.thecloudalert.com/api/kabkota/get/?d_provinsi_id=${selectedProv}`,
       method: "get",
     })
       .then((data) => {
-        console.log(data.data.data, "dataprovinsi");
-        if (data.data.data.length > 0) {
-          setKota(data.data.data);
+        console.log(data.data.result.length > 0, "datakota");
+        if (data.data.result.length > 0) {
+          setKota(data.data.result);
         }
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
+  useEffect(() => {
+    if (selectedProv !== "") {
+      getKota();
+    }
+  }, [selectedProv]);
 
   const handleChangeProvinsi = (event) => {
     console.log(event.target.value, "value");
@@ -102,7 +155,7 @@ export default function Step1(props) {
   const handleChangeKota = (event) => {
     setSelectedKota(event.target.value);
   };
-  useState(() => {
+  useEffect(() => {
     if (Object.keys(props.dataAsesi).length !== 0) {
       setStateField((prevState) => {
         return {
@@ -118,22 +171,20 @@ export default function Step1(props) {
           telp: props.dataAsesi.telp,
           email: props.dataAsesi.email,
           kode_pos: props.dataAsesi.kodepos,
-          kualifikasi_pendidikan: props.dataAsesi.kualifikasi_pendidikan,
+          // kualifikasi_pendidikan: props.dataAsesi.kualifikasi_pendidikan,
         };
       });
       setJenisKelamin(props.dataAsesi.jenis_kelamin);
+      setPendidikan(props.dataAsesi.kualifikasi_pendidikan);
       setSelectedKota(props.dataAsesi.kota);
       setSelected(props.dataAsesi.provinsi);
       setDate(new Date(props.dataAsesi.tgl_lahir));
     }
-    getProvinsi();
+    // getProvinsi();
   }, []);
 
-  useEffect(() => {
-    if (selectedProv !== "") {
-      getKota();
-    }
-  }, [selectedProv]);
+  console.log(selectedProv, "provinsi");
+
   function handleSubmitForm(value) {
     console.log(value.tgl_lahir, "value");
     let input = {
@@ -148,7 +199,7 @@ export default function Step1(props) {
       telp: value.telp,
       email: value.email,
       kodepos: value.kode_pos,
-      kualifikasi_pendidikan: value.kualifikasi_pendidikan,
+      kualifikasi_pendidikan: kualifikasi_pendidikan,
       provinsi: selectedProv,
       kota: selectedKota,
     };
@@ -421,7 +472,7 @@ export default function Step1(props) {
                     </MenuItem>
                     {dtprovinsi?.map((el) => (
                       <MenuItem value={el.id} key={el.id}>
-                        {el.name}
+                        {el.text}
                       </MenuItem>
                     ))}
                   </Select>
@@ -452,7 +503,7 @@ export default function Step1(props) {
                   >
                     {dtKota.map((el) => (
                       <MenuItem value={el.id} key={el.id}>
-                        {el.name}
+                        {el.text}
                       </MenuItem>
                     ))}
                   </Select>
@@ -622,7 +673,7 @@ export default function Step1(props) {
               
               <TextField fullWidth label="fullWidth" id="fullWidth" />
             </div> */}
-              <div className="col-6">
+              {/* <div className="col-6">
                 <Typography
                   sx={{
                     fontSize: "15px",
@@ -633,17 +684,9 @@ export default function Step1(props) {
                 >
                   Klasifikasi Pendidikan
                 </Typography>
-                {/* <input
-            type="email"
-            name="email"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.email}
-          />
-          {errors.email && touched.email && errors.email} */}
+
                 <TextField
                   fullWidth
-                  // label="fullWidth"
                   placeholder="Masukkan Pendidikan Terakhir Anda"
                   id="fullWidth"
                   name="kualifikasi_pendidikan"
@@ -651,6 +694,41 @@ export default function Step1(props) {
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
+              </div> */}
+              <div className="col-6">
+                <Typography
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: 500,
+                    paddingBottom: "10px",
+                    paddingTop: "15px",
+                  }}
+                >
+                  Kualifikasi Pendidikan
+                </Typography>
+                <FormControl fullWidth>
+                  {/* <InputLabel id="demo-simple-select-label">
+                  Pilih Kota Anda
+                </InputLabel> */}
+                  <Select
+                    // labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={kualifikasi_pendidikan}
+                    // label="Age"
+                    // placeholder="kualifikasi pendidikan"
+                    onChange={(e) => {
+                      setPendidikan(e.target.value);
+                      // props.handleChangeKota(e);
+                    }}
+                    // disabled={props.selectedProv !== null ? false : true}
+                  >
+                    {datapendidikan.map((el) => (
+                      <MenuItem value={el.tingkat} key={el.id}>
+                        {el.tingkat}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
             </div>
           </div>

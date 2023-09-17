@@ -24,6 +24,27 @@ export function fetchAsesorServices(params) {
   };
 }
 
+export function fetchAsesorServicesWithoutPaging() {
+  // console.log(params.page, params.size, "ph");
+  return (dispatch, prevState) => {
+    console.log(dispatch, "dispatch");
+    axios({
+      url: `/api/all-asesor`,
+      method: "GET",
+    })
+      .then((data) => {
+        console.log(data, "dataasesor dari service");
+        dispatch({
+          type: "asesor/getAllAsesor",
+          allAsesor: data.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err, "dari services asesi");
+      });
+  };
+}
+
 export function fetchAsesorById(id) {
   return (dispatch, prevState) => {
     axios({

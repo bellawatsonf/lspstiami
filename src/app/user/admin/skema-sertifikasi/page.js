@@ -15,21 +15,64 @@ import {
 } from "@table-library/react-table-library/table";
 
 // import Dashboard from "../../component/dashboardContainer";
-import { Button } from "@mui/material";
+import { Button, Pagination } from "@mui/material";
 import styleSkema from "./skema.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSkema, fetchSkema, fetchSkemaById } from "@/app/services/skema";
+import {
+  deleteSkema,
+  fetchSkema,
+  fetchSkemaById,
+  fetchSkemaPage,
+} from "@/app/services/skema";
 import ModalForm from "./modalForm";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import { useRouter } from "next/navigation";
 import LoadingComponent from "@/app/(public)/component/loading";
+import { usePagination } from "@table-library/react-table-library/pagination";
+import { makeStyles } from "@material-ui/core/styles";
+
 // const key = "Composed Table";
 
+const useStyles = makeStyles({
+  paginationStyle: {
+    "& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected ": {
+      background: "rgb(45, 195, 208) !important",
+      color: "white",
+    },
+  },
+});
 export default function SkemaSertifikasi() {
+  const theme = useTheme(getTheme());
+  const classes = useStyles();
+
+  // const theme = useTheme({
+  //   Table: `width:100%;`,
+  //   HeaderRow: `
+  //       .th {
+  //         background:#47494a;
+  //         color:white;
+  //         text-align:center
+  //       }
+  //     `,
+  //   Row: `
+  //       & .td {
+  //         border-bottom: 1px solid #a0a8ae;
+
+  //       }
+  //     `,
+  //   BaseCell: `
+  //   border-right: 1px solid #a0a8ae;
+  //   border-left: 1px solid #a0a8ae;
+
+  //         width:100%;
+  //         white-space:unset;
+
+  //     `,
+  // });
   // const [dataSkema, setData] = useState({ nodes: [] });
   const dispatch = useDispatch();
-  let dataSkema = useSelector((state) => state.skema.skema);
+  let dataSkema = useSelector((state) => state.skema.skemapage);
   let dtById = useSelector((state) => state.skema.skemaById);
   let router = useRouter();
 
@@ -41,22 +84,41 @@ export default function SkemaSertifikasi() {
   let initialState = {
     no_skema: "",
     nama_skema: "",
+    page: 1,
+    size: 10,
   };
   const [stateField, setStateField] = React.useState(initialState);
-  // const [loading, setLoading] = useState(true);
   const loading = useSelector((state) => state.skema.loading);
-
-  // useEffect(() => {
-  //   setTimeout(() => dispatch(loading(false)), 1000);
-  // }, []);
-
   useEffect(() => {
-    dispatch(fetchSkema());
+    dispatch(fetchSkemaPage({ page: stateField.page, size: stateField.size }));
   }, []);
-  const theme = useTheme(getTheme());
+
+  const pagination = usePagination(dataSkema, {
+    state: {
+      page: stateField.page,
+      size: stateField.size,
+    },
+    onChange: onPaginationChange,
+  });
+
+  function onPaginationChange(action, state) {
+    console.log(action, state, "paginationstate");
+    dispatch(fetchSkemaPage({ page: stateField.page, size: stateField.size }));
+  }
+  const handleChange = (event, value) => {
+    console.log(value, "value");
+    setStateField((prevState) => {
+      return {
+        ...prevState,
+        page: value,
+      };
+    });
+  };
   if (loading) {
     return <LoadingComponent />;
   }
+
+  console.log(dataSkema, "dtskemapge");
   return (
     <Fragment>
       <ModalForm
@@ -82,31 +144,44 @@ export default function SkemaSertifikasi() {
           Tambah
         </Button>
       </div>
-      <Table data={{ nodes: dataSkema }} theme={theme}>
+      <Table data={{ nodes: dataSkema?.dataSkema }} theme={theme}>
         {(tableList) => (
           <Fragment>
             <Header>
               <HeaderRow>
                 <HeaderCell>Nomor Skema Sertifikasi</HeaderCell>
                 <HeaderCell>Judul Skema Sertifikasi</HeaderCell>
+                <HeaderCell style={{ textAlign: "center" }}>
+                  Kuota Tersedia
+                </HeaderCell>
                 <HeaderCell></HeaderCell>
               </HeaderRow>
             </Header>
 
             <Body>
               {tableList.map((item, i) => (
-                <Row key={i} style={{ cursor: "pointer" }}>
+                <Row key={i}>
                   <Cell>NO SKEMA BELUM ADA</Cell>
-                  <Cell>{item.nama_skema}</Cell>
+                  <Cell>
+                    <div
+                      className="text-wrap"
+                      style={{ width: "100%", whiteSpace: "unset" }}
+                    >
+                      {item.nama_skema}
+                    </div>
+                  </Cell>
+                  <Cell style={{ textAlign: "center" }}>
+                    {item.kuota} kuota
+                  </Cell>
                   <Cell>
                     <div
                       className="d-flex"
-                      style={{ justifyContent: "center" }}
+                      style={{ justifyContent: "flex-start" }}
                     >
                       <span>
                         <ModeEditIcon
                           sx={{
-                            color: "blue",
+                            color: "#139eaa",
                             marginRight: "10px",
                             cursor: "pointer",
                           }}
@@ -128,6 +203,7 @@ export default function SkemaSertifikasi() {
                             marginLeft: "15px",
                             fontSize: "13px",
                             textTransform: "none",
+                            background: "#040924",
                           }}
                           onClick={() => {
                             router.push(`skema-sertifikasi/detail/${item.id}`);
@@ -144,6 +220,21 @@ export default function SkemaSertifikasi() {
           </Fragment>
         )}
       </Table>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "35px",
+        }}
+      >
+        <Pagination
+          count={dataSkema.totalPage}
+          page={stateField.page}
+          // color="primary"
+          onChange={handleChange}
+          className={classes.paginationStyle}
+        />
+      </div>
     </Fragment>
   );
 }

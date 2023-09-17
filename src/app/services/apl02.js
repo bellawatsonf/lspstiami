@@ -1,18 +1,18 @@
 import axios from "axios";
 
-export function fetchApl01(params) {
+export function fetchApl02(params) {
   // console.log(params.page, params.size, "ph");
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: `/api/apl01`,
+      url: `/api/apl02`,
       method: "GET",
     })
       .then((data) => {
-        console.log(data.data.data, "apl01");
+        console.log(data.data.data, "apl02");
         dispatch({
-          type: "apl01/getApl01",
-          apl01: data.data.data,
+          type: "apl02/getApl02",
+          apl02: data.data.data,
         });
       })
       .catch((err) => {
@@ -21,17 +21,17 @@ export function fetchApl01(params) {
   };
 }
 
-export function fetchApl01ById(id) {
+export function fetchApl02ById(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `/api/apl01byid/${id}`,
+      url: `/api/apl02byid/${id}`,
       method: "GET",
     })
       .then((data) => {
         console.log(data.data.data, "databyids");
         dispatch({
-          type: "apl01/getApl01ById",
-          apl01ById: data.data.data,
+          type: "apl02/getApl02ById",
+          apl02ById: data.data.data,
         });
       })
       .catch((err) => {
@@ -49,7 +49,7 @@ export function addAsesor(input) {
     })
       .then((data) => {
         console.log(data, "skemabyid dari service");
-        dispatch(fetchAsesorServices({ page: 1, size: 10 }));
+        dispatch(fetchAsesorServices({ page: 2, size: 20 }));
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
@@ -67,7 +67,7 @@ export function editAsesor(input, id) {
     })
       .then((data) => {
         console.log(data, "skemabyid dari service");
-        dispatch(fetchAsesorServices({ page: 1, size: 10 }));
+        dispatch(fetchAsesorServices({ page: 2, size: 20 }));
       })
       .catch((err) => {
         console.log(err, "dari services Asesor");
@@ -83,7 +83,7 @@ export function deleteAsesor(id) {
     })
       .then((data) => {
         console.log(data, "deleteservice");
-        dispatch(fetchAsesorServices({ page: 1, size: 10 }));
+        dispatch(fetchAsesorServices({ page: 2, size: 20 }));
       })
       .catch((err) => {
         console.log(err, "dari services admin");
@@ -91,17 +91,17 @@ export function deleteAsesor(id) {
   };
 }
 
-export function fetchApl01ByUser(id) {
+export function fetchApl02ByUser(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `/api/apl01byuser/${id}`,
+      url: `/api/apl02byuser/${id}`,
       method: "GET",
     })
       .then((data) => {
         console.log(data.data.data, "apluser");
         dispatch({
-          type: "apl01/getApl01ByUser",
-          apl01ByUser: data.data.data,
+          type: "apl02/getApl02ByUser",
+          apl02ByUser: data.data.data,
         });
       })
       .catch((err) => {
@@ -110,17 +110,36 @@ export function fetchApl01ByUser(id) {
   };
 }
 
-export function fetchApl01ByAllUser(id) {
+export function fetchApl02ByAllUser(id) {
   return (dispatch, prevState) => {
     axios({
-      url: `/api/apl01byalluser/${id}`,
+      url: `/api/apl02byalluser/${id}`,
       method: "GET",
     })
       .then((data) => {
         console.log(data.data.data, "apluserall");
         dispatch({
-          type: "apl01/getApl01ByAllUser",
-          apl01ByAllUser: data.data.data,
+          type: "apl02/getApl02ByAllUser",
+          apl02ByAllUser: data.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
+
+export function fetchApl02ByApl01Id(id) {
+  return (dispatch, prevState) => {
+    axios({
+      url: `/api/apl02byapl01id/${id}`,
+      method: "GET",
+    })
+      .then((data) => {
+        console.log(data.data.data, "apluserall");
+        dispatch({
+          type: "apl02/getApl02ByApl01Id",
+          apl02ByApl01Id: data.data.data,
         });
       })
       .catch((err) => {
