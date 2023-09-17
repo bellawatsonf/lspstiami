@@ -47,13 +47,17 @@ export default function HeaderDashboard() {
           }}
         >
           <Typography
-            sx={{ fontWeight: 600, fontSize: "15px", paddingTop: "10px" }}
+            sx={{
+              fontWeight: 600,
+              fontSize: { xs: "12px", md: "15px" },
+              paddingTop: "10px",
+            }}
           >
             Halo, {user.nama}
           </Typography>
           <Person3Icon
             onClick={handleOpen}
-            sx={{ fontSize: "50px", cursor: "pointer" }}
+            sx={{ fontSize: { xs: "40px", md: "50px" }, cursor: "pointer" }}
           />
         </div>
       </div>

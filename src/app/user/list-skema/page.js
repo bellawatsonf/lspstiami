@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./styles.module.css";
 import ModalPilihPaketSkema from "./modalpilihpaketskema";
 
 const Accordion = styled((props) => (
@@ -119,7 +120,7 @@ export default function ListSkema() {
         <Typography
           sx={{
             fontWeight: 700,
-            fontSize: "20px",
+            fontSize: { xs: "15px", md: "20px" },
             textAlign: "center",
             paddingBottom: "10px",
           }}
@@ -184,12 +185,16 @@ export default function ListSkema() {
               aria-controls="panel1d-content"
               id="panel1d-header"
             >
-              <Typography>{el.nama_skema}</Typography>
+              <Typography sx={{ fontSize: { xs: "12px", md: "15px" } }}>
+                {el.nama_skema}
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <ul>
                 {el.unitkompetensi.map((unit, i) => (
-                  <li key={i}>{unit.judul_unit}</li>
+                  <li key={i} className={`${styles.listskema}`}>
+                    {unit.judul_unit}
+                  </li>
                 ))}
               </ul>
               <div className="d-flex" style={{ width: "100%" }}>
@@ -207,6 +212,7 @@ export default function ListSkema() {
                       border: "1px solid rgb(45, 195, 208)",
                       fontWeight: 600,
                       textTransform: "none",
+                      fontSize: { xs: "12px", md: "15px" },
                     }}
                     onClick={() => daftarSkema(el)}
                   >
@@ -223,6 +229,7 @@ export default function ListSkema() {
                     //   color="success"
                     sx={{
                       // background: "rgb(45, 195, 208)",
+                      fontSize: { xs: "12px", md: "15px" },
                       padding: "5px 10px 5px 10px",
                       color: "rgb(45, 195, 208)",
                       border: "1px solid rgb(45, 195, 208)",
