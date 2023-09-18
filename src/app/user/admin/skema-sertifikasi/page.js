@@ -162,7 +162,7 @@ export default function SkemaSertifikasi() {
             <Body>
               {tableList.map((item, i) => (
                 <Row key={i}>
-                  <Cell>NO SKEMA BELUM ADA</Cell>
+                  <Cell>{item.no_skema}</Cell>
                   <Cell>
                     <div
                       className="text-wrap"
