@@ -11,11 +11,12 @@ import Checkbox from "@mui/material/Checkbox";
 import { fetchApl01 } from "@/app/services/apl01";
 import { Formik } from "formik";
 import { fetchJadwalById } from "@/app/services/jadwal";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function detailJadwal() {
+  let router = useRouter();
   let dispatch = useDispatch();
   let param = useParams();
   let loading = useSelector((state) => state.skema.loading);
@@ -122,6 +123,8 @@ export default function detailJadwal() {
       data: datainput,
     })
       .then((data) => {
+        router.push("/user/admin/jadwal");
+
         Swal.fire({
           position: "center",
           icon: "success",

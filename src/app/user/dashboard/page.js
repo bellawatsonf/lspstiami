@@ -258,7 +258,7 @@ export default function DashboardUser() {
                   {el.deskripsi_info}
                 </Typography>
 
-                {el.info_status === "Info Penjadwalan pengayaan" ? (
+                {el.info_status === "Info Penjadwalan ujikom" ? (
                   <div style={{ display: "flex", justifyContent: "flex-end" }}>
                     <Button
                       variant="contained"
@@ -266,6 +266,16 @@ export default function DashboardUser() {
                       onClick={() => setOpen(true)}
                     >
                       Formulir Apl-02
+                    </Button>
+                  </div>
+                ) : el.info_status === "Perbaikan Data Asesi" ? (
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Button
+                      variant="contained"
+                      sx={{ textTransform: "none" }}
+                      onClick={() => router.push("/user/profiluser")}
+                    >
+                      Profil
                     </Button>
                   </div>
                 ) : null}

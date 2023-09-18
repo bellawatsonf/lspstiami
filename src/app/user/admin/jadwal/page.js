@@ -121,6 +121,7 @@ export default function Report() {
               color: "#296db0",
               cursor: "pointer",
               marginRight: "10px",
+              cursor: "pointer",
             }}
             onClick={() => {
               router.push(`/user/admin/jadwal/detail/${item.id}`);
@@ -128,22 +129,25 @@ export default function Report() {
           >
             Tentukan Asesi
           </Button>
-          <Button
-            variant="contained"
-            sx={{
-              textTransform: "none",
-              border: "1px solid #296db0",
-              color: "white",
-              cursor: "pointer",
-              marginRight: "10px",
-              background: "#296db0",
-            }}
-            onClick={() => {
-              router.push(`/user/admin/jadwal/pilih-asesor/${item.id}`);
-            }}
-          >
-            Tentukan Asesor
-          </Button>
+          {item.tipe === "ujikom" ? (
+            <Button
+              variant="contained"
+              sx={{
+                textTransform: "none",
+                border: "1px solid #296db0",
+                color: "white",
+                cursor: "pointer",
+                marginRight: "10px",
+                background: "#296db0",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                router.push(`/user/admin/jadwal/pilih-asesor/${item.id}`);
+              }}
+            >
+              Tentukan Asesor
+            </Button>
+          ) : null}
           <span>
             <DriveFileRenameOutlineIcon
               sx={{ color: "black", cursor: "pointer", marginTop: "10px" }}

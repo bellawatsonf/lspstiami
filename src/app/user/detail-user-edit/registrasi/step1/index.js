@@ -202,6 +202,7 @@ export default function Step1(props) {
       kualifikasi_pendidikan: kualifikasi_pendidikan,
       provinsi: selectedProv,
       kota: selectedKota,
+      alasan_penolakan: "belum-dicek",
     };
     console.log(input, "inputan");
     axios({

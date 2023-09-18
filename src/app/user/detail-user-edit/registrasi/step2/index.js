@@ -53,6 +53,7 @@ export default function Step2(props) {
       kodepos_kantor: value.kodepos_kantor,
       fax: value.fax,
       email_kantor: value.email_kantor,
+      alasan_penolakan: "belum-dicek",
     };
     console.log(input, "inputan");
     axios({

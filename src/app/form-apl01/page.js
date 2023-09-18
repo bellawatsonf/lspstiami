@@ -277,6 +277,7 @@ export default function Regitrasi() {
     formData.append("kualifikasi_pendidikan", kualifikasi_pendidikan);
     formData.append("provinsi", selectedProv);
     formData.append("kota", selectedKota);
+    formData.append("alasan_penolakan", "belum-dicek");
 
     //inputannya ubah jadi formdata append juga, coba baca2 lg
     // let input = {

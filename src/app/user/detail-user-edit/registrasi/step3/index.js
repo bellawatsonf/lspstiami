@@ -45,6 +45,7 @@ export default function Step3() {
     formData.append("pas_foto", stateField.pas_foto);
     formData.append("surat_pernyataan", stateField.surat_pernyataan);
     formData.append("bukti_bayar", stateField.bukti_bayar);
+    formData.append("alasan_penolakan", "belum-dicek");
     formData.append(
       "sertifikat_pelatihan_pendukung",
       stateField.sertifikat_pelatihan_pendukung

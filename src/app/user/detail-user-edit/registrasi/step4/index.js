@@ -79,6 +79,7 @@ export default function Step4(props) {
       tujuan_asesmen: stateField.tujuan_asesmen,
       ttd_asesi: sigPad.current.toDataURL(),
       nama_lengkap: props.dataAsesi.nama_lengkap,
+      alasan_penolakan: "belum-dicek",
     };
     console.log(input, "inputan");
     axios({
