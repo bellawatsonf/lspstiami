@@ -94,7 +94,7 @@ export default function SkemaSertifikasi() {
     dispatch(fetchSkemaPage({ page: stateField.page, size: stateField.size }));
   }, []);
 
-  const pagination = usePagination(dataSkema?.dataSkema, {
+  const pagination = usePagination(dataSkema, {
     state: {
       page: stateField.page,
       size: stateField.size,
