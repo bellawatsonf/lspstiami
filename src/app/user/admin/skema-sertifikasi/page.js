@@ -119,7 +119,7 @@ export default function SkemaSertifikasi() {
     return <LoadingComponent />;
   }
 
-  console.log(dataSkema.dataSkema, "dtskemapge");
+  console.log(dataSkema, "dtskemapge");
   return (
     <Fragment>
       <ModalForm
