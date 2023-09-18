@@ -229,7 +229,7 @@ export default function SkemaSertifikasi() {
         }}
       >
         <Pagination
-          count={dataSkema?.totalPage}
+          count={dataSkema.totalPage}
           page={stateField.page}
           // color="primary"
           onChange={handleChange}
