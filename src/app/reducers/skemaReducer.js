@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   skema: [],
   skemaById: {},
-  totalPage: 0,
 
   loading: true,
   skemapage: {
     dataSkema: [],
+    totalPage: 0,
   },
 };
 
