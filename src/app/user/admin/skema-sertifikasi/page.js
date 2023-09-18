@@ -89,11 +89,12 @@ export default function SkemaSertifikasi() {
   };
   const [stateField, setStateField] = React.useState(initialState);
   const loading = useSelector((state) => state.skema.loading);
+
   useEffect(() => {
     dispatch(fetchSkemaPage({ page: stateField.page, size: stateField.size }));
   }, []);
 
-  const pagination = usePagination(dataSkema, {
+  const pagination = usePagination(dataSkema?.dataSkema, {
     state: {
       page: stateField.page,
       size: stateField.size,
@@ -118,7 +119,7 @@ export default function SkemaSertifikasi() {
     return <LoadingComponent />;
   }
 
-  console.log(dataSkema, "dtskemapge");
+  console.log(dataSkema.dataSkema, "dtskemapge");
   return (
     <Fragment>
       <ModalForm
@@ -144,7 +145,7 @@ export default function SkemaSertifikasi() {
           Tambah
         </Button>
       </div>
-      <Table data={{ nodes: dataSkema?.data }} theme={theme}>
+      <Table data={{ nodes: dataSkema?.dataSkema }} theme={theme}>
         {(tableList) => (
           <Fragment>
             <Header>

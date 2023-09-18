@@ -35,11 +35,11 @@ export function fetchSkemaPage(param) {
       method: "GET",
     })
       .then((data) => {
-        console.log(data.data.listData, "skemapage");
+        console.log(data.data, "skemapage");
         dispatch({
           type: "skema/getSkemaWithPage",
           skemapage: {
-            data: data.data.listData,
+            dataSkema: data.data.listData,
             totalPage: data.data.totalPages,
           },
         });
