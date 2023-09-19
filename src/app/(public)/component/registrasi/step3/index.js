@@ -130,6 +130,7 @@ export default function Step3(props) {
 
             <input
               type="file"
+              accept="application/pdf"
               name="transkrip"
               onChange={(e) => {
                 props.setTranskrip(e.target.files[0]);
@@ -164,6 +165,7 @@ export default function Step3(props) {
 
             <input
               type="file"
+              accept="application/pdf"
               name="ijazah"
               onChange={(e) => {
                 // handleChangeImg(e);
@@ -192,6 +194,7 @@ export default function Step3(props) {
 
             <input
               type="file"
+              accept="application/pdf"
               name="img_ktp"
               onChange={(e) => {
                 props.setKtp(e.target.files[0]);
@@ -223,6 +226,7 @@ export default function Step3(props) {
 
             <input
               type="file"
+              accept="image/png, image/jpg, image/jpeg"
               name="pas_foto"
               onChange={(e) => {
                 props.setPasfoto(e.target.files[0]);
@@ -250,7 +254,7 @@ export default function Step3(props) {
                 paddingTop: "15px",
               }}
             >
-              Surat Pernyataan Tidak Merekam
+              Surat Pernyataan Tidak Merekam Bermaterai
             </Typography>
 
             <input

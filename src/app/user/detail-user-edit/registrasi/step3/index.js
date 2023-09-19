@@ -348,7 +348,7 @@ export default function Step3(props) {
                 paddingTop: "15px",
               }}
             >
-              Surat Pernyataan Tidak Merekam
+              Surat Pernyataan Tidak Merekam Bermaterai
             </Typography>
             <Typography
               sx={{

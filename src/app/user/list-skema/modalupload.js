@@ -139,6 +139,7 @@ export default function ModalUpload(props) {
                   <label style={{ fontSize: "14px" }}>Bukti Bayar</label>
                   <div style={{ marginTop: "5px", marginBottom: "15px" }}>
                     <input
+                      accept="image/png, image/jpg, image/jpeg"
                       type="file"
                       name="bukti_bayar"
                       style={{ fontSize: "14px" }}
@@ -151,8 +152,11 @@ export default function ModalUpload(props) {
                     />
                   </div>
                   <label style={{ fontSize: "14px" }}>
-                    Nama Pemilik Rekening
+                    Nama dan Nomor Pemilik Rekening
                   </label>
+                  <Typography sx={{ fontSize: "10px", color: "red" }}>
+                    contoh: Andhika, BNI-123456
+                  </Typography>
                   <div style={{ marginTop: "5px" }}>
                     <input
                       className={`${styles.textinput}`}

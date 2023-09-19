@@ -102,7 +102,7 @@ export default function Report() {
     },
     {
       label: "Tanggal",
-      renderCell: (item) => new Date(item.tgl).toISOString().split("T")[0],
+      renderCell: (item) => new Date(item.tgl).toLocaleDateString("en-GB"),
     },
     {
       label: "TUK",

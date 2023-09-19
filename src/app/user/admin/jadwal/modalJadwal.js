@@ -71,9 +71,12 @@ export default function ModalJadwal(props) {
   console.log(dtById, props.id, "jadwalbyid");
 
   function handleProsesSubmit(value) {
+    let judul = tipe + "_" + new Date(selectedDate).toLocaleDateString("en-GB");
+    console.log(judul, "input jadwal udul");
     let input = {
-      // tgl: new Date(selectedDate).toISOString().split("T")[0],
       tgl: selectedDate,
+      nama_jadwal: judul,
+      // tgl: selectedDate,
       tuk: value.tuk,
       tipe: tipe,
     };
@@ -85,6 +88,7 @@ export default function ModalJadwal(props) {
     } else {
       dispatch(editJadwal(input, props.id));
       props.setOpen(false);
+      props.setStatusForm("");
       // dispatch(Loading(true));
     }
   }
@@ -184,11 +188,14 @@ export default function ModalJadwal(props) {
                           // }}
                           className={classes.datestyle}
                           sx={{ width: "100%" }}
-                          format="YYYY-MM-DD"
+                          format="MM/dd/yyyy"
                           renderInput={(params) => <TextField {...params} />}
                           value={selectedDate}
                           onChange={(newValue) => {
-                            console.log(newValue, "input jadwal newvalue");
+                            console.log(
+                              new Date(newValue),
+                              "input jadwal newvalue"
+                            );
                             let dt = newValue.toISOString().split("T")[0];
                             console.log(dt, "input jadwal datanya");
                             setDate(newValue);
