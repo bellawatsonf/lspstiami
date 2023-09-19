@@ -209,7 +209,14 @@ export default function Login() {
       <div className={`${style.container}`}>
         {/* <div className={`${style.boxLogo}`}></div> */}
         <div className={`${style.boxLogin}`}>
-          <img className={`${style.logo}`} src="/logoolsp.png" />
+          <img
+            className={`${style.logo}`}
+            style={{ cursor: "pointer" }}
+            src="/logoolsp.png"
+            onClick={() => {
+              router.push("/");
+            }}
+          />
           <div className={`${style.contentLogin}`}>
             <Typography
               sx={{

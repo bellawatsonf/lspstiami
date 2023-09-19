@@ -9,7 +9,7 @@ export default function Step3(props) {
   let params = useParams();
   let id = params.id;
   const [loading, setLoading] = useState(true);
-
+  var reader = new FileReader();
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -25,6 +25,12 @@ export default function Step3(props) {
     sertifikat_pelatihan_pendukung: "",
   };
   const [stateField, setStateField] = useState(initialState);
+  const [previewTranskrip, setPreviewTranskrip] = useState("");
+  const [previewIjazah, setPreviewIjazah] = useState("");
+  const [previewKtp, setPreviewKtp] = useState("");
+  const [previewSuratPernyataan, setPreviewSuratPernyataan] = useState("");
+  const [previewSertifikatPendukung, setPreviewSertifikatPendukung] =
+    useState("");
   function handleChangeImg(e) {
     setStateField((prevState) => {
       console.log(e.target.files[0], "cvent");
@@ -124,18 +130,31 @@ export default function Step3(props) {
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               Transkrip
             </Typography>
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat pdf
+            </Typography>
 
             <input
               type="file"
               name="transkrip"
+              accept="application/pdf"
               onChange={(e) => {
                 // handleChangeImg(e);
+                setPreviewTranskrip(URL.createObjectURL(e.target.files[0]));
                 setStateField((prevState) => {
                   console.log(e.target.files[0], "cvent");
                   return {
@@ -151,32 +170,53 @@ export default function Step3(props) {
             />
             {/* {errors.ijazah && touched.ijazah && errors.ijazah} */}
             {/* <TextField fullWidth label="fullWidth" id="fullWidth" /> */}
-            <img
+            {/* <img
               style={{ width: "15%" }}
               src={
                 stateField.transkrip !== ""
                   ? URL.createObjectURL(stateField.transkrip)
                   : `${props.dataAsesi.transkrip}`
               }
-            />
+            /> */}
+
+            <embed
+              src={
+                previewTranskrip === ""
+                  ? `${props.dataAsesi.transkrip}`
+                  : previewTranskrip
+              }
+              style={{ width: "200px", height: "200px" }}
+            ></embed>
           </div>
           <div className="col-12">
             <Typography
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               Ijazah
             </Typography>
-
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                // paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat pdf
+            </Typography>
             <input
               type="file"
+              accept="application/pdf"
               name="ijazah"
               onChange={(e) => {
                 // handleChangeImg(e);
+                setPreviewIjazah(URL.createObjectURL(e.target.files[0]));
                 setStateField((prevState) => {
                   console.log(e.target.files[0], "cvent");
                   return {
@@ -186,32 +226,44 @@ export default function Step3(props) {
                 });
               }}
             />
-            <img
-              style={{ width: "15%" }}
+            <embed
               src={
-                stateField.ijazah !== ""
-                  ? URL.createObjectURL(stateField.ijazah)
-                  : `${props.dataAsesi.ijazah}`
+                previewIjazah === ""
+                  ? `${props.dataAsesi.ijazah}`
+                  : previewIjazah
               }
-            />
+              style={{ width: "200px", height: "200px" }}
+            ></embed>
           </div>
           <div className="col-12">
             <Typography
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               KTP
             </Typography>
-
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat pdf
+            </Typography>
             <input
               type="file"
+              accept="application/pdf"
               name="img_ktp"
               onChange={(e) => {
                 // handleChangeImg(e);
+                setPreviewKtp(URL.createObjectURL(e.target.files[0]));
                 setStateField((prevState) => {
                   console.log(e.target.files[0], "cvent");
                   return {
@@ -223,30 +275,47 @@ export default function Step3(props) {
                 });
               }}
             />
-            <img
+            {/* <img
               style={{ width: "15%" }}
               src={
                 stateField.ktp !== ""
                   ? URL.createObjectURL(stateField.ktp)
                   : `${props.dataAsesi.img_ktp}`
               }
-            />
+            /> */}
+            <embed
+              src={
+                previewKtp === "" ? `${props.dataAsesi.img_ktp}` : previewKtp
+              }
+              style={{ width: "200px", height: "200px" }}
+            ></embed>
           </div>
           <div className="col-12">
             <Typography
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               Pas Foto Background Merah
             </Typography>
-
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat jpg/jpeg/png
+            </Typography>
             <input
               type="file"
               name="pas_foto"
+              accept="image/png, image/jpg, image/jpeg"
               onChange={(e) => {
                 // handleChangeImg(e);
                 setStateField((prevState) => {
@@ -275,18 +344,32 @@ export default function Step3(props) {
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               Surat Pernyataan Tidak Merekam
             </Typography>
-
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat pdf
+            </Typography>
             <input
               type="file"
+              accept="application/pdf"
               name="surat_pernyataan"
               onChange={(e) => {
                 // handleChangeImg(e);
+                setPreviewSuratPernyataan(
+                  URL.createObjectURL(e.target.files[0])
+                );
                 setStateField((prevState) => {
                   console.log(e.target.files[0], "cvent");
                   return {
@@ -298,32 +381,54 @@ export default function Step3(props) {
                 });
               }}
             />
-            <img
+            {/* <img
               style={{ width: "15%" }}
               src={
                 stateField.surat_pernyataan !== ""
                   ? URL.createObjectURL(stateField.surat_pernyataan)
                   : `${props.dataAsesi.surat_pernyataan}`
               }
-            />
+            /> */}
+            <embed
+              src={
+                previewSuratPernyataan === ""
+                  ? `${props.dataAsesi.surat_pernyataan}`
+                  : previewSuratPernyataan
+              }
+              style={{ width: "200px", height: "200px" }}
+            ></embed>
           </div>
           <div className="col-12">
             <Typography
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               Sertifikat Pelatihan Pendukung
             </Typography>
-
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat pdf
+            </Typography>
             <input
               type="file"
+              accept="application/pdf"
               name="sertifikat_pelatihan_pendukung"
               onChange={(e) => {
                 // handleChangeImg(e);
+                setPreviewSertifikatPendukung(
+                  URL.createObjectURL(e.target.files[0])
+                );
                 setStateField((prevState) => {
                   console.log(e.target.files[0], "cvent");
                   return {
@@ -335,7 +440,7 @@ export default function Step3(props) {
                 });
               }}
             />
-            <img
+            {/* <img
               style={{ width: "15%" }}
               src={
                 stateField.sertifikat_pelatihan_pendukung !== ""
@@ -344,22 +449,41 @@ export default function Step3(props) {
                     )
                   : `${props.dataAsesi.sertifikat_pelatihan_pendukung}`
               }
-            />
+            /> */}
+            <embed
+              src={
+                previewSertifikatPendukung === ""
+                  ? `${props.dataAsesi.sertifikat_pelatihan_pendukung}`
+                  : previewSertifikatPendukung
+              }
+              style={{ width: "200px", height: "200px" }}
+            ></embed>
           </div>
           <div className="col-12">
             <Typography
               sx={{
                 fontSize: "15px",
                 fontWeight: 500,
-                paddingBottom: "5px",
+                // paddingBottom: "5px",
                 paddingTop: "15px",
               }}
             >
               Bukti Bayar
             </Typography>
-
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Document harus berformat jpg/jpeg/png
+            </Typography>
             <input
               type="file"
+              accept="image/png, image/jpg, image/jpeg"
               name="bukti_bayar"
               onChange={(e) => {
                 // handleChangeImg(e);

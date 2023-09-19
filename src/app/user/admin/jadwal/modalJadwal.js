@@ -72,10 +72,12 @@ export default function ModalJadwal(props) {
 
   function handleProsesSubmit(value) {
     let input = {
-      tgl: new Date(selectedDate).toISOString().split("T")[0],
+      // tgl: new Date(selectedDate).toISOString().split("T")[0],
+      tgl: selectedDate,
       tuk: value.tuk,
       tipe: tipe,
     };
+    console.log(input, selectedDate, "input jadwal");
     if (props.statusForm === "add") {
       dispatch(addJadwal(input, props.stateField));
       props.setOpen(false);
@@ -182,12 +184,13 @@ export default function ModalJadwal(props) {
                           // }}
                           className={classes.datestyle}
                           sx={{ width: "100%" }}
-                          format="dd/MM/yyyy"
+                          format="YYYY-MM-DD"
                           renderInput={(params) => <TextField {...params} />}
                           value={selectedDate}
                           onChange={(newValue) => {
-                            let dt = new Date(newValue).toISOString();
-                            console.log(dt, "datanya");
+                            console.log(newValue, "input jadwal newvalue");
+                            let dt = newValue.toISOString().split("T")[0];
+                            console.log(dt, "input jadwal datanya");
                             setDate(newValue);
                           }}
                         />

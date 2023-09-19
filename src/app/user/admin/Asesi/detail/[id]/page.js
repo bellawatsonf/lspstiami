@@ -232,52 +232,84 @@ export default function DetailAsesi_Pendaftaran() {
         <div style={{ marginTop: "20px" }}>
           <div className="row">
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>Ijazah</Typography>
+              <a
+                href={asesiSkemaById?.asesi?.ijazah}
+                target="_blank"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Typography sx={{ color: "#acacac" }}>Ijazah</Typography>
+              </a>
+
               {/* <Typography
                 sx={{ color: "black" }}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.ijazah)}
               >
                 {asesiSkemaById?.asesi?.ijazah}
               </Typography> */}
-              <img
+              {/* <img
                 src={asesiSkemaById?.asesi?.ijazah}
                 alt={asesiSkemaById?.asesi?.ijazah}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.ijazah)}
                 className="img"
                 style={{ width: "100px", cursor: "pointer" }}
-              />
+              /> */}
+              <embed
+                src={asesiSkemaById?.asesi?.ijazah}
+                style={{ width: "100px", height: "100px" }}
+              ></embed>
             </div>
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>Transkrip</Typography>
+              <a
+                href={asesiSkemaById?.asesi?.transkrip}
+                target="_blank"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Typography sx={{ color: "#acacac" }}>Transkrip</Typography>
+              </a>
               {/* <Typography
                 sx={{ color: "black" }}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.transkrip)}
               >
                 {asesiSkemaById?.asesi?.transkrip}
               </Typography> */}
-              <img
+              {/* <img
                 src={asesiSkemaById?.asesi?.transkrip}
                 alt={asesiSkemaById?.asesi?.transkrip}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.transkrip)}
                 className="img"
                 style={{ width: "100px", cursor: "pointer" }}
-              />
+              /> */}
+
+              <embed
+                src={asesiSkemaById?.asesi?.transkrip}
+                style={{ width: "100px", height: "100px" }}
+              ></embed>
             </div>
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>KTP</Typography>
+              <a
+                href={asesiSkemaById?.asesi?.img_ktp}
+                target="_blank"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Typography sx={{ color: "#acacac" }}>KTP</Typography>
+              </a>
               {/* <Typography
                 sx={{ color: "black" }}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.img_ktp)}
               >
                 {asesiSkemaById?.asesi?.img_ktp}
               </Typography> */}
-              <img
+              {/* <img
                 src={asesiSkemaById?.asesi?.img_ktp}
                 alt={asesiSkemaById?.asesi?.img_ktp}
                 onClick={(e) => handleImage(asesiSkemaById?.asesi?.img_ktp)}
                 className="img"
                 style={{ width: "100px", cursor: "pointer" }}
-              />
+              /> */}
+              <embed
+                src={asesiSkemaById?.asesi?.img_ktp}
+                style={{ width: "100px", height: "100px" }}
+              ></embed>
             </div>
             <div className="col-6 mb-3">
               <Typography sx={{ color: "#acacac" }}>Pas Foto</Typography>
@@ -296,9 +328,15 @@ export default function DetailAsesi_Pendaftaran() {
               />
             </div>
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>
-                Sertifikat Pendukung
-              </Typography>
+              <a
+                href={asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
+                target="_blank"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Typography sx={{ color: "#acacac" }}>
+                  Sertifikat Pendukung
+                </Typography>
+              </a>
               {/* <Typography
                 sx={{ color: "black" }}
                 onClick={(e) =>
@@ -307,7 +345,7 @@ export default function DetailAsesi_Pendaftaran() {
               >
                 {asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
               </Typography> */}
-              <img
+              {/* <img
                 src={asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
                 alt={asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
                 onClick={(e) =>
@@ -317,12 +355,23 @@ export default function DetailAsesi_Pendaftaran() {
                 }
                 className="img"
                 style={{ width: "100px", cursor: "pointer" }}
-              />
+              /> */}
+              <embed
+                src={asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
+                style={{ width: "100px", height: "100px" }}
+              ></embed>
             </div>
             <div className="col-6 mb-3">
-              <Typography sx={{ color: "#acacac" }}>
-                Surat Pernyataan
-              </Typography>
+              <a
+                href={asesiSkemaById?.asesi?.surat_pernyataan}
+                target="_blank"
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Typography sx={{ color: "#acacac" }}>
+                  Surat Pernyataan
+                </Typography>
+              </a>
+
               {/* <Typography
                 sx={{ color: "black" }}
                 onClick={(e) =>
@@ -331,7 +380,7 @@ export default function DetailAsesi_Pendaftaran() {
               >
                 {asesiSkemaById?.asesi?.sertifikat_pelatihan_pendukung}
               </Typography> */}
-              <img
+              {/* <img
                 src={asesiSkemaById?.asesi?.surat_pernyataan}
                 alt={asesiSkemaById?.asesi?.surat_pernyataan}
                 onClick={(e) =>
@@ -339,7 +388,11 @@ export default function DetailAsesi_Pendaftaran() {
                 }
                 className="img"
                 style={{ width: "100px", cursor: "pointer" }}
-              />
+              /> */}
+              <embed
+                src={asesiSkemaById?.asesi?.surat_pernyataan}
+                style={{ width: "100px", height: "100px" }}
+              ></embed>
             </div>
             {asesiSkemaById?.jenis_paket === "pengayaan-ujikom" ? (
               <div className="col-6 mb-3">
@@ -363,7 +416,8 @@ export default function DetailAsesi_Pendaftaran() {
                     className="img"
                     style={{ width: "100px", cursor: "pointer" }}
                   />
-                  <div
+
+                  {/* <div
                     className="d-flex "
                     style={{
                       width: "50%",
@@ -374,7 +428,7 @@ export default function DetailAsesi_Pendaftaran() {
                       // top: "30px",
                     }}
                   >
-                    {/* {asesiSkemaById?.status_cek === "terima" ? null : (
+                    {asesiSkemaById?.status_cek === "terima" ? null : (
                     <div style={{ marginTop: "20px" }}>
                       <Button
                         variant="contained"
@@ -407,9 +461,20 @@ export default function DetailAsesi_Pendaftaran() {
                         Tolak
                       </Button>
                     </div>
-                  )} */}
-                  </div>
+                  )}
+                  </div> */}
                 </div>
+                <Typography
+                  sx={{
+                    color: "black",
+                    paddingTop: "7px",
+                    fontSize: "12px",
+                    fontWeight: 600,
+                  }}
+                >
+                  nama pemilik rekening:{" "}
+                  {asesiSkemaById?.asesi?.nama_pemilik_rekening}
+                </Typography>
               </div>
             ) : null}
 
