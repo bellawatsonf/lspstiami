@@ -219,7 +219,7 @@ export default function ModalApl02(props) {
               <CompactTable
                 columns={COLUMNS}
                 data={{
-                  nodes: props.dataApl01.asesi_skema.skema.unitkompetensi,
+                  nodes: props?.dataApl01?.asesi_skema?.skema?.unitkompetensi,
                 }}
                 theme={theme}
               />

@@ -51,6 +51,8 @@ export default function DetailEdit() {
   let dispatch = useDispatch();
   const [value, setValue] = React.useState(0);
   const userById = useSelector((state) => state.asesi.AsesiById);
+  console.log(userById, "userbyiddd");
+
   const user = JSON.parse(sessionStorage.getItem("user"));
   // console.log(id);
 

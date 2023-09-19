@@ -355,7 +355,7 @@ export default function Step1(props) {
                 Pilih
               </MenuItem>
               <MenuItem value="wanita">Wanita</MenuItem>
-              <MenuItem value="pria">Pria</MenuItem>
+              <MenuItem value="laki-laki">Laki-Laki</MenuItem>
             </Select>
           </FormControl>
           {/* <TextField

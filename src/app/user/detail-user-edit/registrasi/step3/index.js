@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
-export default function Step3() {
+export default function Step3(props) {
   const router = useRouter();
   let params = useParams();
   let id = params.id;
@@ -36,6 +36,7 @@ export default function Step3() {
       };
     });
   }
+  console.log(stateField.transkrip, "transkridddp");
 
   function handleSubmitForm() {
     let formData = new FormData();
@@ -150,6 +151,14 @@ export default function Step3() {
             />
             {/* {errors.ijazah && touched.ijazah && errors.ijazah} */}
             {/* <TextField fullWidth label="fullWidth" id="fullWidth" /> */}
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.transkrip !== ""
+                  ? URL.createObjectURL(stateField.transkrip)
+                  : `${props.dataAsesi.transkrip}`
+              }
+            />
           </div>
           <div className="col-12">
             <Typography
@@ -176,6 +185,14 @@ export default function Step3() {
                   };
                 });
               }}
+            />
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.ijazah !== ""
+                  ? URL.createObjectURL(stateField.ijazah)
+                  : `${props.dataAsesi.ijazah}`
+              }
             />
           </div>
           <div className="col-12">
@@ -206,6 +223,14 @@ export default function Step3() {
                 });
               }}
             />
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.ktp !== ""
+                  ? URL.createObjectURL(stateField.ktp)
+                  : `${props.dataAsesi.img_ktp}`
+              }
+            />
           </div>
           <div className="col-12">
             <Typography
@@ -234,6 +259,14 @@ export default function Step3() {
                   };
                 });
               }}
+            />
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.pas_foto !== ""
+                  ? URL.createObjectURL(stateField.pas_foto)
+                  : `${props.dataAsesi.pas_foto}`
+              }
             />
           </div>
 
@@ -265,6 +298,14 @@ export default function Step3() {
                 });
               }}
             />
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.surat_pernyataan !== ""
+                  ? URL.createObjectURL(stateField.surat_pernyataan)
+                  : `${props.dataAsesi.surat_pernyataan}`
+              }
+            />
           </div>
           <div className="col-12">
             <Typography
@@ -294,6 +335,16 @@ export default function Step3() {
                 });
               }}
             />
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.sertifikat_pelatihan_pendukung !== ""
+                  ? URL.createObjectURL(
+                      stateField.sertifikat_pelatihan_pendukung
+                    )
+                  : `${props.dataAsesi.sertifikat_pelatihan_pendukung}`
+              }
+            />
           </div>
           <div className="col-12">
             <Typography
@@ -322,6 +373,14 @@ export default function Step3() {
                   };
                 });
               }}
+            />
+            <img
+              style={{ width: "15%" }}
+              src={
+                stateField.bukti_bayar !== ""
+                  ? URL.createObjectURL(stateField.bukti_bayar)
+                  : `${props.dataAsesi.bukti_bayar}`
+              }
             />
           </div>
         </div>
