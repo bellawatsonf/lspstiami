@@ -59,28 +59,31 @@ export default function Home() {
                   Mahasiswa yang telah didapatkan melalui proses kegiatan
                   pembelajaran di Institut STIAMI.
                 </Typography>
-                {/* <a href=""> */}
-
-                <Button
-                  sx={{
-                    background: "#2dc3d0",
-                    borderRadius: "8px",
-                    padding: "12px 20px",
-                    color: "#040924",
-                    fontWeight: 700,
-                    marginTop: "17px",
-                    minWidth: "250px",
-                    // textTransform: "none",
-                    fontSize: "20px",
-                    cursor: "pointer",
-                    textTransform: "none",
-                  }}
-                  variant="contained"
-                  color="success"
+                <a
+                  href="https://storage.googleapis.com/lspstiami/TATA%20CARA%20UJIKOM.pdf"
+                  target="_blank"
+                  style={{ textDecoration: "none" }}
                 >
-                  Tata Cara Pendaftaran
-                </Button>
-                {/* </a> */}
+                  <Button
+                    sx={{
+                      background: "#2dc3d0",
+                      borderRadius: "8px",
+                      padding: "12px 20px",
+                      color: "#040924",
+                      fontWeight: 700,
+                      marginTop: "17px",
+                      minWidth: "250px",
+                      // textTransform: "none",
+                      fontSize: "20px",
+                      cursor: "pointer",
+                      textTransform: "none",
+                    }}
+                    variant="contained"
+                    color="success"
+                  >
+                    Tata Cara Pendaftaran
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
