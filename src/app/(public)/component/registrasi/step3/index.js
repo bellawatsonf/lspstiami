@@ -259,6 +259,7 @@ export default function Step3(props) {
 
             <input
               type="file"
+              accept="application/pdf"
               name="surat_pernyataan"
               onChange={(e) => {
                 props.setSuratPernyataan(e.target.files[0]);
@@ -290,6 +291,7 @@ export default function Step3(props) {
 
             <input
               type="file"
+              accept="application/pdf"
               name="sertifikat_pelatihan_pendukung"
               onChange={(e) => {
                 props.setPendukung(e.target.files[0]);
