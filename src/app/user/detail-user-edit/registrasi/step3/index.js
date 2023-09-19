@@ -241,7 +241,7 @@ export default function Step3(props) {
                 paddingTop: "15px",
               }}
             >
-              Pas Foto
+              Pas Foto Background Merah
             </Typography>
 
             <input
