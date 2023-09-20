@@ -528,7 +528,8 @@ export default function DetailAsesi_Pendaftaran() {
                 <img
                   // src={`${ttdAsesi}`}
                   src={
-                    asesiSkemaById?.asesi?.ttd_asesi !== null
+                    asesiSkemaById?.asesi?.ttd_asesi !== null ||
+                    asesiSkemaById?.asesi?.ttd_asesi !== undefined
                       ? `/api/download-asesi/${
                           asesiSkemaById?.asesi?.ttd_asesi.split("/")[4]
                         }`
