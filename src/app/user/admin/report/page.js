@@ -73,9 +73,11 @@ export default function Report() {
         "Jenis Kelamin": dataapl01[i].asesi_skema.asesi.jenis_kelamin,
         "Tempat Tinggal": dataapl01[i].asesi_skema.asesi.alamat_rumah,
         Pekerjaan: dataapl01[i].asesi_skema.asesi.jabatan,
-        PEndidikan: dataapl01[i].asesi_skema.asesi.kualifikasi_pendidikan,
+        Pendidikan: dataapl01[i].asesi_skema.asesi.kualifikasi_pendidikan,
         "Kode Kota": dataapl01[i].asesi_skema.asesi.kota,
         "Kode Provinsi": dataapl01[i].asesi_skema.asesi.provinsi,
+        "Nama Skema Sertifikasi": dataapl01[i].asesi_skema.skema.nama_skema,
+        "Bukti Pembayaran": dataapl01[i].asesi_skema.asesi.bukti_bayar,
         // "Kode Jadwal": dataapl01[i]
         // "Tanggal Uji": dataapl01[i]
         // "Nomor Registrasi Asesi": dataapl01[i]
@@ -98,6 +100,8 @@ export default function Report() {
         "Pendidikan",
         "Kode Kota",
         "Kode Provinsi",
+        "Nama Skema Sertifikasi",
+        "Bukti Pembayaran",
         "Kode Jadwal",
         "Tanggal Uji",
         "Nomor Registrasi Asesi",

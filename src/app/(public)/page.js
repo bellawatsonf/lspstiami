@@ -60,7 +60,7 @@ export default function Home() {
                   pembelajaran di Institut STIAMI.
                 </Typography>
                 <a
-                  href="https://storage.googleapis.com/lspstiami/TATA%20CARA%20UJIKOM.pdf"
+                  href="https://storage.googleapis.com/lspstiami/TATA%20CARA%20UJIKOM%20(1).pdf"
                   target="_blank"
                   style={{ textDecoration: "none" }}
                 >
