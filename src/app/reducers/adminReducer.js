@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  admin: [],
+  admin: {
+    dataAdmin: [],
+  },
   adminById: {},
   loading: true,
 };

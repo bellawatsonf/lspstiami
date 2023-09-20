@@ -1,20 +1,23 @@
 import axios from "axios";
 import { Loading } from "./skema";
 
-export function fetchAsesiSkemaServices(asesiskema) {
+export function fetchAsesiSkemaServices(param) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     dispatch(Loading(true));
 
     axios({
-      url: "/api/asesi-skema",
+      url: `/api/asesi-skema?page=${param.page - 1}&size=${param.size}`,
       method: "GET",
     })
       .then((data) => {
         console.log(data.data.data, "asesiskema dari service");
         dispatch({
           type: "asesiskema/getAsesiSkema",
-          asesiskema: data.data.data,
+          asesiskema: {
+            dataAsesiSkema: data.data.listData,
+            totalPage: data.data.totalPages,
+          },
         });
       })
       .catch((err) => {

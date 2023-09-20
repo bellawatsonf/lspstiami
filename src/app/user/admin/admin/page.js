@@ -16,7 +16,8 @@ import { Button, Pagination } from "@mui/material";
 import ModalAdmin from "./modalAdmin";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { makeStyles } from "@material-ui/core/styles";
-
+const Cryptr = require("cryptr");
+const cryptr = new Cryptr("myTotallySecretKey");
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
 
@@ -83,6 +84,7 @@ export default function Admin() {
     {
       label: "Password Admin",
       renderCell: (item) => {
+        // const decryptedString = cryptr.decrypt(item.password);
         item.password;
         // bcrypt.hash(item.password, 10, function (error, response) {
         //   return response;
@@ -116,6 +118,7 @@ export default function Admin() {
     },
   ];
 
+  console.log(dataAdmin, "dataadmin");
   return (
     <React.Fragment>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -133,7 +136,7 @@ export default function Admin() {
       </div>
       <CompactTable
         columns={COLUMNS}
-        data={{ nodes: dataAdmin }}
+        data={{ nodes: dataAdmin?.dataAdmin }}
         theme={theme}
       />
 

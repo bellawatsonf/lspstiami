@@ -12,7 +12,10 @@ export function fetchAdmin(param) {
       .then((data) => {
         dispatch({
           type: "admin/getAdmin",
-          admin: data.data.data,
+          admin: {
+            dataAdmin: data.data.listData,
+            totalPage: data.data.totalPages,
+          },
         });
       })
       .catch((err) => {

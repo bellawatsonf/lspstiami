@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAsesiSkemaServices } from "../../../services/asesiskema";
 import ApprovedPayment from "./approvedpayment";
 import PendingPayment from "./pendingpayment";
+import { usePagination } from "@table-library/react-table-library/pagination";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,10 +61,35 @@ export default function Asesi() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  let initialState = {
+    page: 1,
+    size: 10,
+    // nodes: [],
+  };
+
+  const [stateField, setStateField] = React.useState(initialState);
 
   React.useEffect(() => {
-    dispatch(fetchAsesiSkemaServices());
+    dispatch(
+      fetchAsesiSkemaServices({ page: stateField.page, size: stateField.size })
+    );
   }, []);
+
+  const pagination = usePagination(dataAsesiSkema, {
+    state: {
+      page: stateField.page,
+      size: stateField.size,
+    },
+    onChange: onPaginationChange,
+  });
+
+  function onPaginationChange(action, state) {
+    console.log(action, state, "paginationstate");
+    dispatch(
+      fetchAsesiSkemaServices({ page: stateField.page, size: stateField.size })
+    );
+  }
+ 
   // const fetchData = () => {
   //   axios({
   //     url :"/api/asesi",
@@ -90,7 +116,7 @@ export default function Asesi() {
   console.log(dataAsesiSkema, "deteasesi");
   return (
     <React.Fragment>
-      {dataAsesiSkema.length > 0 ? (
+      {dataAsesiSkema ? (
         <Box sx={{ width: "100%" }}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <Tabs
@@ -99,16 +125,22 @@ export default function Asesi() {
               aria-label="basic tabs example"
             >
               <Tab label="Ujikom Pengayaan" {...a11yProps(0)} />
-              <Tab label="Ujikom" {...a11yProps(1)} />
+              {/* <Tab label="Ujikom" {...a11yProps(1)} /> */}
               {/* <Tab label="Rejected" {...a11yProps(2)} /> */}
             </Tabs>
           </Box>
           <div hidden={value !== 0}>
-            <PendingPayment dataAsesiSkema={dataAsesiSkema} />
+            <PendingPayment
+              dataAsesiSkema={dataAsesiSkema.dataAsesiSkema}
+              stateField={stateField}
+              setStateField={setStateField}
+              totalPage={dataAsesiSkema.totalPage}
+              // handleChangePage={handleChangePage}
+            />
           </div>
-          <div hidden={value !== 1}>
+          {/* <div hidden={value !== 1}>
             <ApprovedPayment dataAsesiSkema={dataAsesiSkema} />
-          </div>
+          </div> */}
           {/* <div hidden={value !== 2}>
             <RejectedPayment />
           </div> */}

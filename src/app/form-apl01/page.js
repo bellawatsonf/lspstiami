@@ -315,35 +315,51 @@ export default function Regitrasi() {
       data: formData,
     })
       .then((data) => {
-        console.log(data, "berhasil dftr apl1");
-        // Swal.fire({
-        //   title: "Pengisian Apl 01 Berhasil",
-        //   icon: "success",
-        //   showCancelButton: false,
-        //   confirmButtonColor: "#3085d6",
-        //   // cancelButtonColor: '#d33',
-        //   confirmButtonText: "Ok",
-        // }).then((result) => {
-        //   if (result.isConfirmed) {
-        //     router.push("/user/profiluser");
-        //   }
-        // });
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          showConfirmButton: false,
-          confirmButtonColor: "#3085d6",
-          title: "Pengisian Apl 01 Berhasil ",
-          // confirmButtonText: "Ok!",
-          timer: 1500,
-        }).then((result) => {
-          // if (result.isConfirmed) {
-          router.push("/user/profiluser");
-          // }
-        });
+        if (data) {
+          console.log(data, "berhasil dftr apl1");
+          // Swal.fire({
+          //   title: "Pengisian Apl 01 Berhasil",
+          //   icon: "success",
+          //   showCancelButton: false,
+          //   confirmButtonColor: "#3085d6",
+          //   // cancelButtonColor: '#d33',
+          //   confirmButtonText: "Ok",
+          // }).then((result) => {
+          //   if (result.isConfirmed) {
+          //     router.push("/user/profiluser");
+          //   }
+          // });
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            showConfirmButton: false,
+            confirmButtonColor: "#3085d6",
+            title: "Pengisian Apl 01 Berhasil ",
+            // confirmButtonText: "Ok!",
+            timer: 1500,
+          }).then((result) => {
+            // if (result.isConfirmed) {
+            router.push("/user/profiluser");
+            // }
+          });
+        } else {
+          console.log("tidak berahsil");
+          Swal.fire({
+            icon: "error",
+            // title: 'Silahkan Lengkapi data',
+            text: "Silahkan lengkapi data anda",
+            // footer: '<a href="">Why do I have this issue?</a>'
+          });
+        }
       })
       .catch((e) => {
         console.log(e, "errorini");
+        Swal.fire({
+          icon: "error",
+          // title: 'Silahkan Lengkapi data',
+          text: "Silahkan lengkapi data anda",
+          // footer: '<a href="">Why do I have this issue?</a>'
+        });
       });
   }
   // useEffect(() => {

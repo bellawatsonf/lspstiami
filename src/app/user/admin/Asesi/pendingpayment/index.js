@@ -18,18 +18,36 @@ import { useDispatch, useSelector } from "react-redux";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { RemoveCircle, RemoveCircleOutline } from "@mui/icons-material";
 import { deleteAsesiSkema } from "@/app/services/asesiskema";
-import { Button, Typography } from "@mui/material";
+import { Button, Pagination, Typography } from "@mui/material";
+import { makeStyles } from "@material-ui/core/styles";
 
 const key = "Composed Table";
+const useStyles = makeStyles({
+  paginationStyle: {
+    "& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected ": {
+      background: "rgb(45, 195, 208) !important",
+      color: "white",
+    },
+  },
+});
 
 export default function PendingPayment(props) {
-  console.log(props.dataAsesiSkema, "props");
+  console.log(props.dataAsesiSkema, "propslo");
+  const classes = useStyles();
   let loading = useSelector((state) => state.skema.loading);
   // const [dataSkema, setSkema] = useState({ nodes: [] });
   const router = useRouter();
   const theme = useTheme(getTheme());
   let dispatch = useDispatch();
-
+  const handleChangePage = (event, value) => {
+    console.log(value, "value");
+    props.setStateField((prevState) => {
+      return {
+        ...prevState,
+        page: value,
+      };
+    });
+  };
   // useEffect(() => {
   //   if (props.dataAsesiSkema.length > 0) {
   //     setSkema({ nodes: props.dataAsesiSkema });
@@ -114,8 +132,9 @@ export default function PendingPayment(props) {
   if (loading) {
     return <LoadingComponent />;
   }
-  if (props.dataAsesiSkema) {
-    return (
+
+  return (
+    <>
       <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
         {(tableList) => (
           <Fragment>
@@ -198,6 +217,22 @@ export default function PendingPayment(props) {
           </Fragment>
         )}
       </Table>
-    );
-  }
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "35px",
+        }}
+      >
+        <Pagination
+          count={props.totalPage}
+          page={props.stateField.page}
+          // color="primary"
+          onChange={() => handleChangePage()}
+          className={classes.paginationStyle}
+        />
+      </div>
+    </>
+  );
 }
