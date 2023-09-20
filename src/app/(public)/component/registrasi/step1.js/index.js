@@ -78,7 +78,7 @@ export default function Step1(props) {
     },
     {
       id: "2",
-      tingkat: "SMP",
+      tingkat: "SMA",
     },
     {
       id: "3",

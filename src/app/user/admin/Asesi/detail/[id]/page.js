@@ -62,6 +62,7 @@ export default function DetailAsesi_Pendaftaran() {
   const handleOpenModal = () => setOpenModal(true);
   const handleCloseModal = () => setOpenModal(false);
   const [openModalPenolakan, setOpenModalPenolakan] = useState(false);
+  let [ttdAsesi, setTtdAsesi] = useState("");
   // const handleOpenModalPenolakan = () => setOpenModalPenolakan(true);
   // const handleCloseModalPenolakan = () => setOpenModalPenolakan(false);
   let loading = useSelector((state) => state.skema.loading);
@@ -76,6 +77,35 @@ export default function DetailAsesi_Pendaftaran() {
   useEffect(() => {
     dispatch(fetchAsesiSkemaByIdDetail(id));
   }, []);
+
+  console.log(asesiSkemaById, "ttdasesiii");
+  // function getTtdAsesi() {
+  //   if (Object.keys(asesiSkemaById).length > 0) {
+  //     if (asesiSkemaById?.asesi?.ttd_asesi !== null) {
+  //       let ext = asesiSkemaById?.asesi?.ttd_asesi.split(".").pop();
+
+  //       axios({
+  //         method: "GET",
+  //         url: `/api/download-asesi/${
+  //           asesiSkemaById?.asesi?.ttd_asesi.split("/")[4]
+  //         }`,
+  //       })
+  //         .then((data) => {
+  //           console.log(data, "ttdasesi");
+  //           let dt = `data:image/${ext};base64,data`;
+  //           setTtdAsesi(dt);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //     }
+  //   }
+  // }
+  // useEffect(() => {
+  //   if (Object.keys(asesiSkemaById).length > 0) {
+  //     getTtdAsesi();
+  //   }
+  // }, [asesiSkemaById]);
 
   // function handleCheckBuktiBayar(status) {
   //   let input = { status_pembayaran: status };
@@ -120,6 +150,9 @@ export default function DetailAsesi_Pendaftaran() {
   }
 
   if (loading) {
+    return <LoadingComponent />;
+  }
+  if (Object.keys(asesiSkemaById).length === 0) {
     return <LoadingComponent />;
   }
   return (
@@ -493,10 +526,14 @@ export default function DetailAsesi_Pendaftaran() {
                   style={{ width: "100px", cursor: "pointer" }}
                 /> */}
                 <img
-                  // src={asesiSkemaById?.asesi?.ttd_asesi}.
-                  src={`/api/download-asesi/${
-                    asesiSkemaById?.asesi?.ttd_asesi?.split("/")[4]
-                  }`}
+                  // src={`${ttdAsesi}`}
+                  src={
+                    asesiSkemaById?.asesi?.ttd_asesi !== null
+                      ? `/api/download-asesi/${
+                          asesiSkemaById?.asesi?.ttd_asesi.split("/")[4]
+                        }`
+                      : ""
+                  }
                   alt={asesiSkemaById?.asesi?.ttd_asesi}
                   onClick={(e) => handleImage(asesiSkemaById?.asesi?.ttd_asesi)}
                   className="img"
