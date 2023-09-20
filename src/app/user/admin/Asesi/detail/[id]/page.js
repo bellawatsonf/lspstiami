@@ -495,7 +495,7 @@ export default function DetailAsesi_Pendaftaran() {
                 <img
                   // src={asesiSkemaById?.asesi?.ttd_asesi}.
                   src={`/api/download-asesi/${
-                    asesiSkemaById?.asesi?.ttd_asesi.split("/")[4]
+                    asesiSkemaById?.asesi?.ttd_asesi?.split("/")[4]
                   }`}
                   alt={asesiSkemaById?.asesi?.ttd_asesi}
                   onClick={(e) => handleImage(asesiSkemaById?.asesi?.ttd_asesi)}
