@@ -16,8 +16,7 @@ import { Button, Pagination } from "@mui/material";
 import ModalAdmin from "./modalAdmin";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import { makeStyles } from "@material-ui/core/styles";
-const Cryptr = require("cryptr");
-const cryptr = new Cryptr("myTotallySecretKey");
+
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
 
