@@ -2660,6 +2660,7 @@ const DocumentPdf = (props) => {
                       props.data.asesi_skema.asesi.ttd_asesi.split("/")[4]
                     }`}
                   ></Image>
+
                   <Text
                     style={{
                       marginTop: 5,
@@ -2785,6 +2786,9 @@ const DocumentPdf = (props) => {
                       props.data.admins.ttd_admin.split("/")[4]
                     }`}
                   ></Image>
+                  {/* <Text>{`/api/download-admin/${
+                    props.data.admins.ttd_admin.split("/")[4]
+                  }`}</Text> */}
                   <Text
                     style={{
                       marginTop: 5,

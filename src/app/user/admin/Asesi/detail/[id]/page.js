@@ -493,7 +493,10 @@ export default function DetailAsesi_Pendaftaran() {
                   style={{ width: "100px", cursor: "pointer" }}
                 /> */}
                 <img
-                  src={asesiSkemaById?.asesi?.ttd_asesi}
+                  // src={asesiSkemaById?.asesi?.ttd_asesi}.
+                  src={`/api/download-asesi/${
+                    asesiSkemaById?.asesi?.ttd_asesi.split("/")[4]
+                  }`}
                   alt={asesiSkemaById?.asesi?.ttd_asesi}
                   onClick={(e) => handleImage(asesiSkemaById?.asesi?.ttd_asesi)}
                   className="img"
