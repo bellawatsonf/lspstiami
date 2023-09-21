@@ -232,12 +232,18 @@ export default function PendingPayment(props) {
                         <Cell>
                           <div
                             className="text-wrap"
-                            style={{ width: "100%", whiteSpace: "unset" }}
+                            style={{
+                              width: "100%",
+                              whiteSpace: "unset",
+                              cursor: "pointer",
+                            }}
                           >
-                            <img
-                              src={item.asesi.bukti_bayar}
-                              style={{ width: "100%", height: "100%" }}
-                            />
+                            <a href={item.asesi.bukti_bayar} target="_blank">
+                              <img
+                                src={item.asesi.bukti_bayar}
+                                style={{ width: "100%", height: "100%" }}
+                              />
+                            </a>
                           </div>
                         </Cell>
                         <Cell>{item.jenis_paket}</Cell>
