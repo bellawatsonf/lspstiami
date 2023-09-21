@@ -75,21 +75,6 @@ export default function Asesi() {
     );
   }, []);
 
-  const pagination = usePagination(dataAsesiSkema, {
-    state: {
-      page: stateField.page,
-      size: stateField.size,
-    },
-    onChange: onPaginationChange,
-  });
-
-  function onPaginationChange(action, state) {
-    console.log(action, state, "paginationstate");
-    dispatch(
-      fetchAsesiSkemaServices({ page: stateField.page, size: stateField.size })
-    );
-  }
- 
   // const fetchData = () => {
   //   axios({
   //     url :"/api/asesi",

@@ -17,9 +17,13 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingComponent from "@/app/(public)/component/loading";
 import { RemoveCircle, RemoveCircleOutline } from "@mui/icons-material";
-import { deleteAsesiSkema } from "@/app/services/asesiskema";
+import {
+  deleteAsesiSkema,
+  fetchAsesiSkemaServices,
+} from "@/app/services/asesiskema";
 import { Button, Pagination, Typography } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
+import { usePagination } from "@table-library/react-table-library/pagination";
 
 const key = "Composed Table";
 const useStyles = makeStyles({
@@ -35,11 +39,29 @@ export default function PendingPayment(props) {
   console.log(props.dataAsesiSkema, "propslo");
   const classes = useStyles();
   let loading = useSelector((state) => state.skema.loading);
+
   // const [dataSkema, setSkema] = useState({ nodes: [] });
   const router = useRouter();
   const theme = useTheme(getTheme());
   let dispatch = useDispatch();
-  const handleChangePage = (event, value) => {
+
+  const pagination = usePagination(props.dataAsesiSkema, {
+    state: {
+      page: props.stateField.page,
+      size: props.stateField.size,
+    },
+    onChange: onPaginationChange,
+  });
+  function onPaginationChange(action, state) {
+    console.log(action, state, "paginationstate");
+    dispatch(
+      fetchAsesiSkemaServices({
+        page: props.stateField.page,
+        size: props.stateField.size,
+      })
+    );
+  }
+  const handleChange = (event, value) => {
     console.log(value, "value");
     props.setStateField((prevState) => {
       return {
@@ -132,6 +154,8 @@ export default function PendingPayment(props) {
   if (loading) {
     return <LoadingComponent />;
   }
+
+  console.log(props.stateField.page, "page");
 
   return (
     <>
@@ -229,7 +253,7 @@ export default function PendingPayment(props) {
           count={props.totalPage}
           page={props.stateField.page}
           // color="primary"
-          onChange={() => handleChangePage()}
+          onChange={handleChange}
           className={classes.paginationStyle}
         />
       </div>
