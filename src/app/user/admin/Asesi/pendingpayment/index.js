@@ -217,17 +217,19 @@ export default function PendingPayment(props) {
                             >
                               Detail
                             </Button>
-                            <RemoveCircleOutline
-                              sx={{
-                                marginTop: "8px",
-                                marginLeft: "10px",
-                                cursor: "pointer",
-                              }}
-                              onClick={() => {
-                                console.log("delete");
-                                dispatch(deleteAsesiSkema(item.id));
-                              }}
-                            />
+                            {item.status_cek !== "terima" ? (
+                              <RemoveCircleOutline
+                                sx={{
+                                  marginTop: "8px",
+                                  marginLeft: "10px",
+                                  cursor: "pointer",
+                                }}
+                                onClick={() => {
+                                  console.log("delete");
+                                  dispatch(deleteAsesiSkema(item.id));
+                                }}
+                              />
+                            ) : null}
                           </div>
                         </Cell>
                       </Row>
