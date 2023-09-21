@@ -69,6 +69,7 @@ export default function Asesi() {
 
   const [stateField, setStateField] = React.useState(initialState);
 
+  console.log(stateField.page, "paging");
   React.useEffect(() => {
     dispatch(
       fetchAsesiSkemaServices({ page: stateField.page, size: stateField.size })
