@@ -155,7 +155,7 @@ export default function PendingPayment(props) {
     return <LoadingComponent />;
   }
 
-  console.log(props.stateField.page, "page");
+  console.log(props.stateField.page, props.stateField.size, "page");
 
   return (
     <>

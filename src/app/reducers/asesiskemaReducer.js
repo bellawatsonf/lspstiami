@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  asesiskema: [],
+  asesiskema: {
+    dataAsesiSkema: {},
+  },
   AsesiSkemaById: {},
   asesiSkemaByUser: [],
 };
