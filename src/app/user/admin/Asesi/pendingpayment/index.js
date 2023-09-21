@@ -170,6 +170,7 @@ export default function PendingPayment(props) {
                 <HeaderCell>Ijazah</HeaderCell>
                 <HeaderCell>Pas Foto</HeaderCell>
                 <HeaderCell>Bukti Bayar</HeaderCell>
+                <HeaderCell>Nama Pemilik Rekening</HeaderCell>
                 <HeaderCell>Jenis Paket</HeaderCell>
                 <HeaderCell>Status Pengecekan</HeaderCell>
                 <HeaderCell></HeaderCell>
@@ -244,6 +245,18 @@ export default function PendingPayment(props) {
                                 style={{ width: "100%", height: "100%" }}
                               />
                             </a>
+                          </div>
+                        </Cell>
+                        <Cell>
+                          <div
+                            className="text-wrap"
+                            style={{
+                              width: "100%",
+                              whiteSpace: "unset",
+                              cursor: "pointer",
+                            }}
+                          >
+                            {item.asesi.nama_pemilik_rekening}
                           </div>
                         </Cell>
                         <Cell>{item.jenis_paket}</Cell>
