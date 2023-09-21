@@ -88,7 +88,7 @@ export function deleteAsesiSkema(id) {
     })
       .then((data) => {
         console.log(data.data, "datauserasesiskemabyuser");
-        dispatch(fetchAsesiSkemaServices());
+        dispatch(fetchAsesiSkemaServices({ page: 1, size: 10 }));
       })
       .catch((err) => {
         console.log(err, "datausererror");

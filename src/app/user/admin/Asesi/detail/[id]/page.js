@@ -523,8 +523,10 @@ export default function DetailAsesi_Pendaftaran() {
                     handleImage(asesiSkemaById?.asesi?.bukti_bayar)
                   }
                   className="img"
-                  style={{ width: "100px", cursor: "pointer" }}
+                  style={{
+                     width: "100px", cursor: "pointer" }}
                 /> */}
+
                 <img
                   // src={`${ttdAsesi}`}
                   src={
