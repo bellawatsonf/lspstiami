@@ -183,11 +183,63 @@ export default function PendingPayment(props) {
                     {item.jenis_paket === "pengayaan-ujikom" ? (
                       <Row key={i}>
                         <Cell>{item.asesi.nama_lengkap}</Cell>
-                        <Cell>{item.skema.nama_skema}</Cell>
-                        <Cell>{item.asesi.img_ktp}</Cell>
-                        <Cell>{item.asesi.ijazah}</Cell>
-                        <Cell>{item.asesi.pas_foto}</Cell>
-                        <Cell>{item.asesi.bukti_bayar}</Cell>
+                        <Cell>
+                          <div
+                            className="text-wrap"
+                            style={{ width: "100%", whiteSpace: "unset" }}
+                          >
+                            {item.skema.nama_skema}
+                          </div>
+                        </Cell>
+                        <Cell>
+                          <div
+                            className="text-wrap"
+                            style={{ width: "100%", whiteSpace: "unset" }}
+                          >
+                            <embed
+                              src={item.asesi.img_ktp}
+                              // alt={item.asesi.img_ktp
+                              style={{ width: "100%", height: "100%" }}
+                            ></embed>
+                          </div>
+                        </Cell>
+                        <Cell>
+                          {" "}
+                          <div
+                            className="text-wrap"
+                            style={{ width: "100%", whiteSpace: "unset" }}
+                          >
+                            {/* {item.asesi.ijazah} */}
+                            <embed
+                              src={item.asesi.ijazah}
+                              // alt={item.asesi.img_ktp
+                              style={{ width: "100%", height: "100%" }}
+                            ></embed>
+                          </div>
+                        </Cell>
+                        <Cell>
+                          {" "}
+                          <div
+                            className="text-wrap"
+                            style={{ width: "100%", whiteSpace: "unset" }}
+                          >
+                            <img
+                              src={item.asesi.pas_foto}
+                              style={{ width: "100%", height: "100%" }}
+                            />
+                          </div>
+                        </Cell>
+                        <Cell>
+                          <div
+                            className="text-wrap"
+                            style={{ width: "100%", whiteSpace: "unset" }}
+                          >
+                            <img
+                              src={item.asesi.bukti_bayar}
+                              style={{ width: "100%", height: "100%" }}
+                            />
+                          </div>
+                        </Cell>
                         <Cell>{item.jenis_paket}</Cell>
                         <Cell>
                           <Typography
