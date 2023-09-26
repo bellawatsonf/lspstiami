@@ -12,6 +12,7 @@ import { fetchAsesiSkemaServices } from "../../../services/asesiskema";
 import ApprovedPayment from "./approvedpayment";
 import PendingPayment from "./pendingpayment";
 import { usePagination } from "@table-library/react-table-library/pagination";
+import RejectedPayment from "./rejectedpayment";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,11 +60,13 @@ export default function Asesi() {
   const dispatch = useDispatch();
   let loading = useSelector((state) => state.skema.loading);
   const handleChange = (event, newValue) => {
+    console.log(newValue, "newvalue");
     setValue(newValue);
   };
   let initialState = {
     page: 1,
     size: 10,
+    statusCek: "belum-dicek",
     // nodes: [],
   };
 
@@ -71,10 +74,32 @@ export default function Asesi() {
 
   console.log(stateField.page, "paging");
   React.useEffect(() => {
-    dispatch(
-      fetchAsesiSkemaServices({ page: stateField.page, size: stateField.size })
-    );
-  }, []);
+    if (value === 0) {
+      dispatch(
+        fetchAsesiSkemaServices({
+          page: stateField.page,
+          size: stateField.size,
+          statusCek: stateField.statusCek,
+        })
+      );
+    } else if (value === 1) {
+      dispatch(
+        fetchAsesiSkemaServices({
+          page: stateField.page,
+          size: stateField.size,
+          statusCek: "revisi",
+        })
+      );
+    } else {
+      dispatch(
+        fetchAsesiSkemaServices({
+          page: stateField.page,
+          size: stateField.size,
+          statusCek: "terima",
+        })
+      );
+    }
+  }, [value]);
 
   // const fetchData = () => {
   //   axios({
@@ -110,9 +135,9 @@ export default function Asesi() {
               onChange={handleChange}
               aria-label="basic tabs example"
             >
-              <Tab label="Ujikom Pengayaan" {...a11yProps(0)} />
-              {/* <Tab label="Ujikom" {...a11yProps(1)} /> */}
-              {/* <Tab label="Rejected" {...a11yProps(2)} /> */}
+              <Tab label="Pending" {...a11yProps(0)} />
+              <Tab label="Revisi" {...a11yProps(1)} />
+              <Tab label="Approved" {...a11yProps(2)} />
             </Tabs>
           </Box>
           <div hidden={value !== 0}>
@@ -124,12 +149,22 @@ export default function Asesi() {
               // handleChangePage={handleChangePage}
             />
           </div>
-          {/* <div hidden={value !== 1}>
-            <ApprovedPayment dataAsesiSkema={dataAsesiSkema} />
-          </div> */}
-          {/* <div hidden={value !== 2}>
-            <RejectedPayment />
-          </div> */}
+          <div hidden={value !== 1}>
+            <RejectedPayment
+              dataAsesiSkema={dataAsesiSkema.dataAsesiSkema}
+              stateField={stateField}
+              setStateField={setStateField}
+              totalPage={dataAsesiSkema.totalPage}
+            />
+          </div>
+          <div hidden={value !== 2}>
+            <ApprovedPayment
+              dataAsesiSkema={dataAsesiSkema.dataAsesiSkema}
+              stateField={stateField}
+              setStateField={setStateField}
+              totalPage={dataAsesiSkema.totalPage}
+            />
+          </div>
         </Box>
       ) : (
         <p style={{ textAlign: "center" }}>data belum tersedia</p>

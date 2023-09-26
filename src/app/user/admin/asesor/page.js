@@ -20,6 +20,7 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 import { useDispatch, useSelector } from "react-redux";
 import ModalAdmin from "./modalAsesor";
+import { usePagination } from "@table-library/react-table-library/pagination";
 
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
@@ -59,20 +60,20 @@ export default function Admin() {
     );
   }, []);
 
-  // const pagination = usePagination(dataAsesor, {
-  //   state: {
-  //     page: stateField.page,
-  //     size: stateField.size,
-  //   },
-  //   onChange: onPaginationChange,
-  // });
+  const pagination = usePagination(dataAsesor, {
+    state: {
+      page: stateField.page,
+      size: stateField.size,
+    },
+    onChange: onPaginationChange,
+  });
 
-  // function onPaginationChange(action, state) {
-  //   console.log(action, state, "paginationstate");
-  //   dispatch(
-  //     fetchAsesorServices({ page: stateField.page, size: stateField.size })
-  //   );
-  // }
+  function onPaginationChange(action, state) {
+    console.log(action, state, "paginationstate");
+    dispatch(
+      fetchAsesorServices({ page: stateField.page, size: stateField.size })
+    );
+  }
   const handleChange = (event, value) => {
     console.log(value, "value");
     setStateField((prevState) => {

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export function fetchAsesorServices(params) {
+  console.log(params, "paramse");
   // console.log(params.page, params.size, "ph");
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");

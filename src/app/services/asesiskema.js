@@ -7,7 +7,9 @@ export function fetchAsesiSkemaServices(param) {
     dispatch(Loading(true));
 
     axios({
-      url: `/api/asesi-skema?page=${param.page - 1}&size=${param.size}`,
+      url: `/api/asesi-skema?page=${param.page - 1}&size=${
+        param.size
+      }&statusCek=${param.statusCek}`,
       method: "GET",
     })
       .then((data) => {
