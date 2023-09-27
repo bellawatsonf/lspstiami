@@ -62,6 +62,12 @@ export default function Asesi() {
   const handleChange = (event, newValue) => {
     console.log(newValue, "newvalue");
     setValue(newValue);
+    setStateField((prevState) => {
+      return {
+        ...prevState,
+        page: 1,
+      };
+    });
   };
   let initialState = {
     page: 1,
