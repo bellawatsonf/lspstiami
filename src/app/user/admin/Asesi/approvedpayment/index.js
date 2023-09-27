@@ -59,7 +59,7 @@ export default function ApprovedPayment(props) {
       fetchAsesiSkemaServices({
         page: props.stateField.page,
         size: props.stateField.size,
-        status_cek: "terima",
+        statusCek: "terima",
       })
     );
   }

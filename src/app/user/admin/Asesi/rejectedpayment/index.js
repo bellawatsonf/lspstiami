@@ -59,7 +59,7 @@ export default function RejectedPayment(props) {
       fetchAsesiSkemaServices({
         page: props.stateField.page,
         size: props.stateField.size,
-        status_cek: "revisi",
+        statusCek: "revisi",
       })
     );
   }

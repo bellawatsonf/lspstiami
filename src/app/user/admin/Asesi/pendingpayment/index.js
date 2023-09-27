@@ -59,7 +59,7 @@ export default function PendingPayment(props) {
       fetchAsesiSkemaServices({
         page: props.stateField.page,
         size: props.stateField.size,
-        status_cek: "belum-dicek",
+        statusCek: "belum-dicek",
       })
     );
   }
