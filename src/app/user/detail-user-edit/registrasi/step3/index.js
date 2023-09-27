@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
 export default function Step3(props) {
+  // console.log(props.dataAsesi.)
   const router = useRouter();
   let params = useParams();
   let id = params.id;
@@ -23,8 +24,11 @@ export default function Step3(props) {
     surat_pernyataan: "",
     bukti_bayar: "",
     sertifikat_pelatihan_pendukung: "",
+    nama_pemilik_rekening: "",
   };
   const [stateField, setStateField] = useState(initialState);
+  console.log(stateField.nama_pemilik_rekening, "pemilikk");
+
   const [previewTranskrip, setPreviewTranskrip] = useState("");
   const [previewIjazah, setPreviewIjazah] = useState("");
   const [previewKtp, setPreviewKtp] = useState("");
@@ -43,7 +47,15 @@ export default function Step3(props) {
     });
   }
   console.log(stateField.transkrip, "transkridddp");
+  useEffect(() => {
+    setStateField((prevState) => {
+      return {
+        ...prevState,
 
+        nama_pemilik_rekening: props.dataAsesi.nama_pemilik_rekening,
+      };
+    });
+  }, []);
   function handleSubmitForm() {
     let formData = new FormData();
     formData.append("transkrip", stateField.transkrip);
@@ -52,6 +64,7 @@ export default function Step3(props) {
     formData.append("pas_foto", stateField.pas_foto);
     formData.append("surat_pernyataan", stateField.surat_pernyataan);
     formData.append("bukti_bayar", stateField.bukti_bayar);
+    formData.append("nama_pemilik_rekening", stateField.nama_pemilik_rekening);
     formData.append("alasan_penolakan", "belum-dicek");
     formData.append(
       "sertifikat_pelatihan_pendukung",
@@ -505,6 +518,46 @@ export default function Step3(props) {
                   ? URL.createObjectURL(stateField.bukti_bayar)
                   : `${props.dataAsesi.bukti_bayar}`
               }
+            />
+          </div>
+          <div className="col-6">
+            <Typography
+              sx={{
+                fontSize: "15px",
+                fontWeight: 500,
+                // paddingBottom: "5px",
+                paddingTop: "15px",
+              }}
+            >
+              Nama Pemilik Rekening
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "10px",
+                fontWeight: 500,
+                paddingBottom: "5px",
+                // paddingTop: "5px",
+                color: "red",
+              }}
+            >
+              Contoh: Andhika, BNI-12345
+            </Typography>
+            <input
+              type="text"
+              name="nama_pemilik_rekening"
+              value={stateField.nama_pemilik_rekening}
+              onChange={(e) => {
+                // handleChangeImg(e);
+                setStateField((prevState) => {
+                  console.log(e.target.value, "pemilik");
+                  return {
+                    ...prevState,
+                    // transkrip: e.target.files[0],
+                    // ijazah: e.target.files[0],
+                    nama_pemilik_rekening: e.target.value,
+                  };
+                });
+              }}
             />
           </div>
         </div>

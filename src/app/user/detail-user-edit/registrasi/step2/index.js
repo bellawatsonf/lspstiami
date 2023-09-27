@@ -22,6 +22,7 @@ export default function Step2(props) {
     jabatan: "",
     alamat_kantor: "",
     tlp_kantor: "",
+    hp_kantor: "",
     kodepos_kantor: "",
     fax: "",
     email_kantor: "",
@@ -241,7 +242,7 @@ export default function Step2(props) {
                   // label="fullWidth"
                   placeholder="Masukkan Nomo Telp Kantor Anda"
                   id="fullWidth"
-                  name="telp_kantor"
+                  name="tlp_kantor"
                   value={values.tlp_kantor}
                   onBlur={handleBlur}
                   onChange={handleChange}
