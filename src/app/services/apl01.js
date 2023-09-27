@@ -1,9 +1,11 @@
 import axios from "axios";
+import { Loading } from "./skema";
 
 export function fetchApl01(params) {
   // console.log(params.page, params.size, "ph");
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
+    dispatch(Loading(true));
     axios({
       url: `/api/apl01?size=${params.size}&page=${params.page - 1}`,
       method: "GET",
@@ -20,6 +22,9 @@ export function fetchApl01(params) {
       })
       .catch((err) => {
         console.log(err, "dari services asesi");
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
       });
   };
 }

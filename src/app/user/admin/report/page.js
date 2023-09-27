@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { read, utils, writeFile } from "xlsx";
 import { makeStyles } from "@material-ui/core";
 import { usePagination } from "@table-library/react-table-library/pagination";
+import LoadingComponent from "@/app/(public)/component/loading";
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
 
@@ -33,6 +34,7 @@ export default function Report() {
   const classes = useStyles();
   let router = useRouter();
   let dataapl01 = useSelector((state) => state.apl01.apl01);
+  let loading = useSelector((state) => state.skema.loading);
   console.log(dataapl01, "dataapl0");
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
@@ -191,6 +193,9 @@ export default function Report() {
       ),
     },
   ];
+  if (loading) {
+    return <LoadingComponent />;
+  }
 
   return (
     <React.Fragment>
