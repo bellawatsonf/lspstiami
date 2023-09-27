@@ -200,7 +200,9 @@ const DocumentPdf = (props) => {
                 {props.data?.asesi_skema.asesi.alamat_rumah === "null" ? (
                   <Text>:</Text>
                 ) : (
-                  <Text>: {props.data?.asesi_skema.asesi.alamat_rumah}</Text>
+                  <Text style={{ fontSize: "10px" }}>
+                    : {props.data?.asesi_skema.asesi.alamat_rumah}
+                  </Text>
                 )}
               </View>
             </View>
@@ -317,7 +319,9 @@ const DocumentPdf = (props) => {
                     {props.data?.asesi_skema.asesi.email === "null" ? (
                       <Text>:</Text>
                     ) : (
-                      <Text>: {props.data?.asesi_skema.asesi.email}</Text>
+                      <Text style={{ fontSize: "10px" }}>
+                        : {props.data?.asesi_skema.asesi.email}
+                      </Text>
                     )}
                   </View>
                 </View>
