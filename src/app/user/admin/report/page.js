@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import { Button } from "@mui/material";
+import { Button, Pagination } from "@mui/material";
 import { CompactTable } from "@table-library/react-table-library/compact";
 import {
   DEFAULT_OPTIONS,
@@ -14,21 +14,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchApl01 } from "@/app/services/apl01";
 import { useRouter } from "next/navigation";
 import { read, utils, writeFile } from "xlsx";
+import { makeStyles } from "@material-ui/core";
+import { usePagination } from "@table-library/react-table-library/pagination";
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
 
-// const useStyles = makeStyles({
-//   paginationStyle: {
-//     "& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected ": {
-//       background: "rgb(45, 195, 208)",
-//       color: "white",
-//     },
-//   },
-// });
+const useStyles = makeStyles({
+  paginationStyle: {
+    "& .css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected ": {
+      background: "rgb(45, 195, 208)",
+      color: "white",
+    },
+  },
+});
 
 export default function Report() {
   //   const data = { nodes: [] };
-  // const classes = useStyles();
+  const classes = useStyles();
   let router = useRouter();
   let dataapl01 = useSelector((state) => state.apl01.apl01);
   console.log(dataapl01, "dataapl0");
@@ -48,41 +50,42 @@ export default function Report() {
   console.log(dataapl01, "datasesiskema");
   const [stateField, setStateField] = React.useState(initialState);
   React.useEffect(() => {
-    dispatch(fetchApl01());
+    dispatch(fetchApl01({ size: stateField.size, page: stateField.page }));
   }, []);
 
-  // const pagination = usePagination(dataapl01, {
-  //   state: {
-  //     page: stateField.page,
-  //     size: stateField.size,
-  //   },
-  //   onChange: onPaginationChange,
-  // });
+  const pagination = usePagination(dataapl01, {
+    state: {
+      page: stateField.page,
+      size: stateField.size,
+    },
+    onChange: onPaginationChange,
+  });
 
   const handleExport = () => {
     let dataapl01excel = [];
 
-    for (let i = 0; i < dataapl01.length; i++) {
+    for (let i = 0; i < dataapl01.apl01.length; i++) {
       let no = 1;
       dataapl01excel.push({
         No: no++,
-        "Nama Asesi": dataapl01[i].asesi_skema.asesi.nama_lengkap,
-        NIK: dataapl01[i].asesi_skema.asesi.nik,
-        "Tempat Lahir": dataapl01[i].asesi_skema.asesi.tempat_lahir,
-        "Tanggal Lahir": dataapl01[i].asesi_skema.asesi.tgl_lahir,
-        "Jenis Kelamin": dataapl01[i].asesi_skema.asesi.jenis_kelamin,
-        "Tempat Tinggal": dataapl01[i].asesi_skema.asesi.alamat_rumah,
-        Pekerjaan: dataapl01[i].asesi_skema.asesi.jabatan,
-        Pendidikan: dataapl01[i].asesi_skema.asesi.kualifikasi_pendidikan,
-        "Kode Kota": dataapl01[i].asesi_skema.asesi.kota,
-        "Kode Provinsi": dataapl01[i].asesi_skema.asesi.provinsi,
-        "Nama Skema Sertifikasi": dataapl01[i].asesi_skema.skema.nama_skema,
-        "Bukti Pembayaran": dataapl01[i].asesi_skema.asesi.bukti_bayar,
-        // "Kode Jadwal": dataapl01[i]
-        // "Tanggal Uji": dataapl01[i]
-        // "Nomor Registrasi Asesi": dataapl01[i]
-        // "Kode Sumber Anggaran": dataapl01[i]
-        // "Kode Kemetrian": dataapl01[i]
+        "Nama Asesi": dataapl01.apl01[i].asesi_skema.asesi.nama_lengkap,
+        NIK: dataapl01.apl01[i].asesi_skema.asesi.nik,
+        "Tempat Lahir": dataapl01.apl01[i].asesi_skema.asesi.tempat_lahir,
+        "Tanggal Lahir": dataapl01.apl01[i].asesi_skema.asesi.tgl_lahir,
+        "Jenis Kelamin": dataapl01.apl01[i].asesi_skema.asesi.jenis_kelamin,
+        "Tempat Tinggal": dataapl01.apl01[i].asesi_skema.asesi.alamat_rumah,
+        Pekerjaan: dataapl01.apl01[i].asesi_skema.asesi.jabatan,
+        Pendidikan: dataapl01.apl01[i].asesi_skema.asesi.kualifikasi_pendidikan,
+        "Kode Kota": dataapl01.apl01[i].asesi_skema.asesi.kota,
+        "Kode Provinsi": dataapl01.apl01[i].asesi_skema.asesi.provinsi,
+        "Nama Skema Sertifikasi":
+          dataapl01.apl01[i].asesi_skema.skema.nama_skema,
+        "Bukti Pembayaran": dataapl01.apl01[i].asesi_skema.asesi.bukti_bayar,
+        // "Kode Jadwal": dataapl01.apl01[i]
+        // "Tanggal Uji": dataapl01.apl01[i]
+        // "Nomor Registrasi Asesi": dataapl01.apl01[i]
+        // "Kode Sumber Anggaran": dataapl01.apl01[i]
+        // "Kode Kemetrian": dataapl01.apl01[i]
         // "K/BK"
       });
     }
@@ -123,7 +126,7 @@ export default function Report() {
 
   function onPaginationChange(action, state) {
     console.log(action, state, "paginationstate");
-    dispatch(fetchApl01());
+    dispatch(fetchApl01({ size: stateField.size, page: stateField.page }));
   }
   const handleChange = (event, value) => {
     console.log(value, "value");
@@ -209,7 +212,7 @@ export default function Report() {
         <React.Fragment>
           <CompactTable
             columns={COLUMNS}
-            data={{ nodes: dataapl01 }}
+            data={{ nodes: dataapl01.apl01 }}
             theme={theme}
           />
 
@@ -221,13 +224,13 @@ export default function Report() {
               marginTop: "35px",
             }}
           >
-            {/* <Pagination
-          count={dataapl01.totalPage}
-          page={stateField.page}
-          // color="primary"
-          onChange={handleChange}
-          className={classes.paginationStyle}
-        /> */}
+            <Pagination
+              count={dataapl01.totalPage}
+              page={stateField.page}
+              // color="primary"
+              onChange={handleChange}
+              className={classes.paginationStyle}
+            />
           </div>
         </React.Fragment>
       ) : null}

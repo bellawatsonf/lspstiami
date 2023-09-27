@@ -5,14 +5,17 @@ export function fetchApl01(params) {
   return (dispatch, prevState) => {
     console.log(dispatch, "dispatch");
     axios({
-      url: `/api/apl01`,
+      url: `/api/apl01?size=${params.size}&page=${params.page - 1}`,
       method: "GET",
     })
       .then((data) => {
         console.log(data.data.data, "apl01");
         dispatch({
           type: "apl01/getApl01",
-          apl01: data.data.data,
+          apl01: {
+            apl01: data.data.listData,
+            totalPage: data.data.totalPages,
+          },
         });
       })
       .catch((err) => {

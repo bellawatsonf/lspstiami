@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  apl01: [],
+  apl01: {
+    apl01: [],
+  },
   // totalPage: 0,
   // asesorById: {},
 
