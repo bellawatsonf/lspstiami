@@ -299,7 +299,9 @@ export default function PendingPayment(props) {
                                 }}
                                 onClick={() => {
                                   console.log("delete");
-                                  dispatch(deleteAsesiSkema(item.id));
+                                  dispatch(
+                                    deleteAsesiSkema(item.id, "belum-dicek")
+                                  );
                                 }}
                               />
                             ) : null}

@@ -299,7 +299,7 @@ export default function ApprovedPayment(props) {
                                 }}
                                 onClick={() => {
                                   console.log("delete");
-                                  dispatch(deleteAsesiSkema(item.id));
+                                  dispatch(deleteAsesiSkema(item.id, "terima"));
                                 }}
                               />
                             ) : null}

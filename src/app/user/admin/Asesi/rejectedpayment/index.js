@@ -299,7 +299,7 @@ export default function RejectedPayment(props) {
                                 }}
                                 onClick={() => {
                                   console.log("delete");
-                                  dispatch(deleteAsesiSkema(item.id));
+                                  dispatch(deleteAsesiSkema(item.id, "revisi"));
                                 }}
                               />
                             ) : null}

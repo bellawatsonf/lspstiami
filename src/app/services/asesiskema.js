@@ -80,7 +80,7 @@ export function fetchAsesiSkemaByUser(userId) {
   };
 }
 
-export function deleteAsesiSkema(id) {
+export function deleteAsesiSkema(id, statusCek) {
   return (dispatch, prevState) => {
     dispatch(Loading(true));
 
@@ -90,7 +90,9 @@ export function deleteAsesiSkema(id) {
     })
       .then((data) => {
         console.log(data.data, "datauserasesiskemabyuser");
-        dispatch(fetchAsesiSkemaServices({ page: 1, size: 10 }));
+        dispatch(
+          fetchAsesiSkemaServices({ page: 1, size: 10, statusCek: statusCek })
+        );
       })
       .catch((err) => {
         console.log(err, "datausererror");
