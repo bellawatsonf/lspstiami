@@ -49,7 +49,7 @@ export default function PendingPayment(props) {
     state: {
       page: props.stateField.page,
       size: props.stateField.size,
-      statusCek: props.stateField.statusCek,
+      statusCek: "belum-dicek",
     },
     onChange: onPaginationChange,
   });
@@ -59,7 +59,7 @@ export default function PendingPayment(props) {
       fetchAsesiSkemaServices({
         page: props.stateField.page,
         size: props.stateField.size,
-        status_cek: props.stateField.statusCek,
+        status_cek: "belum-dicek",
       })
     );
   }

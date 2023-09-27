@@ -79,7 +79,7 @@ export default function Asesi() {
         fetchAsesiSkemaServices({
           page: stateField.page,
           size: stateField.size,
-          statusCek: stateField.statusCek,
+          statusCek: "belum-dicek",
         })
       );
     } else if (value === 1) {
