@@ -74,7 +74,10 @@ export default function Asesi() {
 
   console.log(stateField.page, "paging");
   React.useEffect(() => {
+    console.log(value, "valuenya");
     if (value === 0) {
+      console.log(value, "valuenya0");
+
       dispatch(
         fetchAsesiSkemaServices({
           page: stateField.page,
@@ -83,6 +86,8 @@ export default function Asesi() {
         })
       );
     } else if (value === 1) {
+      console.log(value, "valuenya1");
+
       dispatch(
         fetchAsesiSkemaServices({
           page: stateField.page,
@@ -91,6 +96,8 @@ export default function Asesi() {
         })
       );
     } else {
+      console.log(value, "valuenya2");
+
       dispatch(
         fetchAsesiSkemaServices({
           page: stateField.page,
@@ -99,7 +106,7 @@ export default function Asesi() {
         })
       );
     }
-  }, [value]);
+  }, [value, stateField.page]);
 
   // const fetchData = () => {
   //   axios({
