@@ -61,7 +61,7 @@ export default function detailJadwal() {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchApl01());
+    dispatch(fetchApl01({ size: 100000000000, page: 1 }));
   }, []);
 
   console.log(tempSkema, "dataappl");
@@ -258,7 +258,7 @@ export default function detailJadwal() {
                     label={el.nama_skema}
                   />
 
-                  {dataApl01.map((skema) => (
+                  {dataApl01.apl01.map((skema) => (
                     <>
                       {tempSkema.map((tem) =>
                         skema.asesi_skema.skema.id === tem &&
