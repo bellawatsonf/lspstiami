@@ -22,6 +22,7 @@ export default function ProfileUser() {
   );
   const dispatch = useDispatch();
   const id = JSON.parse(sessionStorage.getItem("user"));
+  console.log(id.id, "idddd");
   let loading = useSelector((state) => state.skema.loading);
   let [selectedSkema, setSkema] = useState("");
   let aplbyuser = useSelector((state) => state.apl01.apl01ByUser);
@@ -47,12 +48,12 @@ export default function ProfileUser() {
     // if (value) {
     //   getSelectedSkema(value.id);
     // }
-    getSelectedSkema(dataUser.id);
+    getSelectedSkema();
 
     // } catch (error) {
     //   console.log(error);
     // }
-  }, []);
+  }, [id]);
 
   function getSelectedSkema(idUser) {
     console.log("masuk getselected");
