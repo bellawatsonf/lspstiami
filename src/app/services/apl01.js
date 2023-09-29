@@ -7,7 +7,7 @@ export function fetchApl01(params) {
     console.log(dispatch, "dispatch");
     dispatch(Loading(true));
     axios({
-      url: `/api/apl01?size=${params.size}&page=${params.page - 1}`,
+      url: `/api/apl01?size=10000&page=${params.page - 1}`,
       method: "GET",
     })
       .then((data) => {
