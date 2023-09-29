@@ -29,6 +29,30 @@ export function fetchApl01(params) {
   };
 }
 
+export function fetchApl01WithoutPage(params) {
+  // console.log(params.page, params.size, "ph");
+  return (dispatch, prevState) => {
+    console.log(dispatch, "dispatch");
+    dispatch(Loading(true));
+    axios({
+      url: `/api/apl01-withoutpage`,
+      method: "GET",
+    })
+      .then((data) => {
+        console.log(data.data.data, "apl01");
+        dispatch({
+          type: "apl01/getApl01WithoutPage",
+          apl01withoutpage: data.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err, "dari services asesi");
+      })
+      .finally((_) => {
+        dispatch(Loading(false));
+      });
+  };
+}
 export function fetchApl01ById(id) {
   return (dispatch, prevState) => {
     axios({

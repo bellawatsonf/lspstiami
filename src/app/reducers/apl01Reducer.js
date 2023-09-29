@@ -4,6 +4,7 @@ const initialState = {
   apl01: {
     apl01: [],
   },
+  apl01withoutpage: [],
   // totalPage: 0,
   // asesorById: {},
 
@@ -22,6 +23,14 @@ const apl01Slice = createSlice({
         ...state,
         apl01: action.apl01,
         type: "apl01/getApl01",
+      };
+    },
+    getApl01WithoutPage: (state = initialState, action) => {
+      console.log(action, "action reducer");
+      return {
+        ...state,
+        apl01withoutpage: action.apl01withoutpage,
+        type: "apl01/getApl01WithoutPage",
       };
     },
     getApl01ById: (state, action) => {
@@ -47,8 +56,13 @@ const apl01Slice = createSlice({
     },
   },
 });
-export const { getApl01, getApl01ById, getApl01ByUser, getApl01ByAllUser } =
-  apl01Slice.actions;
+export const {
+  getApl01,
+  getApl01ById,
+  getApl01ByUser,
+  getApl01ByAllUser,
+  getApl01WithoutPage,
+} = apl01Slice.actions;
 export default apl01Slice.reducer;
 
 // export default function reducer(state = initialState, action) {

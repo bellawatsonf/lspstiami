@@ -11,7 +11,7 @@ import {
 import { useTheme } from "@table-library/react-table-library/theme";
 import { useDispatch, useSelector } from "react-redux";
 // import ModalAdmin from "./modalAsesor";
-import { fetchApl01 } from "@/app/services/apl01";
+import { fetchApl01, fetchApl01WithoutPage } from "@/app/services/apl01";
 import { useRouter } from "next/navigation";
 import { read, utils, writeFile } from "xlsx";
 import { makeStyles } from "@material-ui/core";
@@ -34,6 +34,9 @@ export default function Report() {
   const classes = useStyles();
   let router = useRouter();
   let dataapl01 = useSelector((state) => state.apl01.apl01);
+  let dataapl01withoutpage = useSelector(
+    (state) => state.apl01.apl01withoutpage
+  );
   let loading = useSelector((state) => state.skema.loading);
   console.log(dataapl01, "dataapl0");
   const materialTheme = getTheme(DEFAULT_OPTIONS);
@@ -53,6 +56,7 @@ export default function Report() {
   const [stateField, setStateField] = React.useState(initialState);
   React.useEffect(() => {
     dispatch(fetchApl01({ size: stateField.size, page: stateField.page }));
+    dispatch(fetchApl01WithoutPage());
   }, []);
 
   const pagination = usePagination(dataapl01, {
@@ -62,32 +66,37 @@ export default function Report() {
     },
     onChange: onPaginationChange,
   });
-
+  console.log(dataapl01withoutpage, "wh");
   const handleExport = () => {
     let dataapl01excel = [];
+    // dispatch(fetchApl01({ size: 100000000000000000000000, page: 1 }));
 
-    for (let i = 0; i < dataapl01.apl01.length; i++) {
+    for (let i = 0; i < dataapl01withoutpage.length; i++) {
       let no = 1;
       dataapl01excel.push({
         No: no++,
-        "Nama Asesi": dataapl01.apl01[i].asesi_skema.asesi.nama_lengkap,
-        NIK: dataapl01.apl01[i].asesi_skema.asesi.nik,
-        "Tempat Lahir": dataapl01.apl01[i].asesi_skema.asesi.tempat_lahir,
-        "Tanggal Lahir": dataapl01.apl01[i].asesi_skema.asesi.tgl_lahir,
-        "Jenis Kelamin": dataapl01.apl01[i].asesi_skema.asesi.jenis_kelamin,
-        "Tempat Tinggal": dataapl01.apl01[i].asesi_skema.asesi.alamat_rumah,
-        Pekerjaan: dataapl01.apl01[i].asesi_skema.asesi.jabatan,
-        Pendidikan: dataapl01.apl01[i].asesi_skema.asesi.kualifikasi_pendidikan,
-        "Kode Kota": dataapl01.apl01[i].asesi_skema.asesi.kota,
-        "Kode Provinsi": dataapl01.apl01[i].asesi_skema.asesi.provinsi,
+        "Nama Asesi": dataapl01withoutpage[i].asesi_skema.asesi.nama_lengkap,
+        NIK: dataapl01withoutpage[i].asesi_skema.asesi.nik,
+        "Tempat Lahir": dataapl01withoutpage[i].asesi_skema.asesi.tempat_lahir,
+        "Tanggal Lahir": dataapl01withoutpage[i].asesi_skema.asesi.tgl_lahir,
+        "Jenis Kelamin":
+          dataapl01withoutpage[i].asesi_skema.asesi.jenis_kelamin,
+        "Tempat Tinggal":
+          dataapl01withoutpage[i].asesi_skema.asesi.alamat_rumah,
+        Pekerjaan: dataapl01withoutpage[i].asesi_skema.asesi.jabatan,
+        Pendidikan:
+          dataapl01withoutpage[i].asesi_skema.asesi.kualifikasi_pendidikan,
+        "Kode Kota": dataapl01withoutpage[i].asesi_skema.asesi.kota,
+        "Kode Provinsi": dataapl01withoutpage[i].asesi_skema.asesi.provinsi,
         "Nama Skema Sertifikasi":
-          dataapl01.apl01[i].asesi_skema.skema.nama_skema,
-        "Bukti Pembayaran": dataapl01.apl01[i].asesi_skema.asesi.bukti_bayar,
-        // "Kode Jadwal": dataapl01.apl01[i]
-        // "Tanggal Uji": dataapl01.apl01[i]
-        // "Nomor Registrasi Asesi": dataapl01.apl01[i]
-        // "Kode Sumber Anggaran": dataapl01.apl01[i]
-        // "Kode Kemetrian": dataapl01.apl01[i]
+          dataapl01withoutpage[i].asesi_skema.skema.nama_skema,
+        "Bukti Pembayaran":
+          dataapl01withoutpage[i].asesi_skema.asesi.bukti_bayar,
+        // "Kode Jadwal": dataapl01withoutpage?
+        // "Tanggal Uji": dataapl01withoutpage
+        // "Nomor Registrasi Asesi": dataapl01withoutpage
+        // "Kode Sumber Anggaran": dataapl01withoutpage
+        // "Kode Kemetrian": dataapl01withoutpage
         // "K/BK"
       });
     }
