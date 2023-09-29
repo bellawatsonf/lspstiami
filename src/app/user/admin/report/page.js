@@ -5,6 +5,15 @@ import * as React from "react";
 import { Button, Pagination } from "@mui/material";
 import { CompactTable } from "@table-library/react-table-library/compact";
 import {
+  Table,
+  Header,
+  HeaderRow,
+  Body,
+  Row,
+  HeaderCell,
+  Cell,
+} from "@table-library/react-table-library/table";
+import {
   DEFAULT_OPTIONS,
   getTheme,
 } from "@table-library/react-table-library/material-ui";
@@ -17,6 +26,7 @@ import { read, utils, writeFile } from "xlsx";
 import { makeStyles } from "@material-ui/core";
 import { usePagination } from "@table-library/react-table-library/pagination";
 import LoadingComponent from "@/app/(public)/component/loading";
+import { Fragment } from "react";
 // var bcrypt = require("bcryptjs");
 // const key = "Base";
 
@@ -148,60 +158,60 @@ export default function Report() {
       };
     });
   };
-  const COLUMNS = [
-    {
-      label: "Nama Asesi",
-      renderCell: (item) => item.asesi_skema.asesi.nama_lengkap,
-    },
-    {
-      label: "Jenis Skema",
-      renderCell: (item) => item.asesi_skema.skema.nama_skema,
-    },
-    {
-      label: "Status Rekomendasi",
-      renderCell: (item) => {
-        if (item.rekomendasi_sebagai_asesi) {
-          return "Rekomendasi";
-        }
-      },
-    },
+  // const COLUMNS = [
+  //   {
+  //     label: "Nama Asesi",
+  //     renderCell: (item) => item.asesi_skema.asesi.nama_lengkap,
+  //   },
+  //   {
+  //     label: "Jenis Skema",
+  //     renderCell: (item) => item.asesi_skema.skema.nama_skema,
+  //   },
+  //   {
+  //     label: "Status Rekomendasi",
+  //     renderCell: (item) => {
+  //       if (item.rekomendasi_sebagai_asesi) {
+  //         return "Rekomendasi";
+  //       }
+  //     },
+  //   },
 
-    {
-      label: "",
-      renderCell: (item) => (
-        <div style={{ display: "flex", justifyContent: "flex-start" }}>
-          {/* <span>
-            <DriveFileRenameOutlineIcon
-              sx={{ color: "black", cursor: "pointer" }}
-              onClick={() => {
-                handleOpen();
-                setStatusForm("edit");
-                setId(item.id);
-                dispatch(fetchAsesorById(item.id));
-                dispatch(fetchSkema());
-              }}
-            />
-            <RemoveCircleOutline
-              sx={{ color: "red", marginLeft: "10px", cursor: "pointer" }}
-              onClick={() => {
-                dispatch(deleteAsesor(item.id));
-              }}
-            />
-          </span> */}
-          <Button
-            variant="contained"
-            color="success"
-            sx={{ textTransform: "none" }}
-            onClick={() => {
-              router.push(`/user/admin/report/detail/${item.id}`);
-            }}
-          >
-            Detail
-          </Button>
-        </div>
-      ),
-    },
-  ];
+  //   {
+  //     label: "",
+  //     renderCell: (item) => (
+  //       <div style={{ display: "flex", justifyContent: "flex-start" }}>
+  //         {/* <span>
+  //           <DriveFileRenameOutlineIcon
+  //             sx={{ color: "black", cursor: "pointer" }}
+  //             onClick={() => {
+  //               handleOpen();
+  //               setStatusForm("edit");
+  //               setId(item.id);
+  //               dispatch(fetchAsesorById(item.id));
+  //               dispatch(fetchSkema());
+  //             }}
+  //           />
+  //           <RemoveCircleOutline
+  //             sx={{ color: "red", marginLeft: "10px", cursor: "pointer" }}
+  //             onClick={() => {
+  //               dispatch(deleteAsesor(item.id));
+  //             }}
+  //           />
+  //         </span> */}
+  //         <Button
+  //           variant="contained"
+  //           color="success"
+  //           sx={{ textTransform: "none" }}
+  //           onClick={() => {
+  //             router.push(`/user/admin/report/detail/${item.id}`);
+  //           }}
+  //         >
+  //           Detail
+  //         </Button>
+  //       </div>
+  //     ),
+  //   },
+  // ];
   if (loading) {
     return <LoadingComponent />;
   }
@@ -222,7 +232,7 @@ export default function Report() {
           Unduh Data Apl01
         </Button>
       </div>
-      {dataapl01 ? (
+      {/* {dataapl01 ? (
         <React.Fragment>
           <CompactTable
             columns={COLUMNS}
@@ -247,7 +257,96 @@ export default function Report() {
             />
           </div>
         </React.Fragment>
-      ) : null}
+      ) : null} */}
+      <Table data={{ nodes: dataapl01.dataapl01 }} theme={theme}>
+        {(tableList) => (
+          <Fragment>
+            <Header>
+              <HeaderRow>
+                <HeaderCell>Nama Asesi</HeaderCell>
+                <HeaderCell>Jenis Skema Sertifikasi</HeaderCell>
+                <HeaderCell>Status Rekomendasi</HeaderCell>
+
+                <HeaderCell></HeaderCell>
+              </HeaderRow>
+            </Header>
+
+            <Body>
+              {tableList?.map(
+                (item, i) => (
+                  <Fragment>
+                    <Row key={i}>
+                      <Cell>{item.asesi_skema.asesi.nama_lengkap}</Cell>
+                      <Cell>{item.asesi_skema.skema.nama_skema}</Cell>
+
+                      <Cell>
+                        {item.rekomendasi_sebagai_asesi ? "Rekomendasi" : null}
+                      </Cell>
+                      <Cell>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                          }}
+                        >
+                          {/* <span>
+            <DriveFileRenameOutlineIcon
+              sx={{ color: "black", cursor: "pointer" }}
+              onClick={() => {
+                handleOpen();
+                setStatusForm("edit");
+                setId(item.id);
+                dispatch(fetchAsesorById(item.id));
+                dispatch(fetchSkema());
+              }}
+            />
+            <RemoveCircleOutline
+              sx={{ color: "red", marginLeft: "10px", cursor: "pointer" }}
+              onClick={() => {
+                dispatch(deleteAsesor(item.id));
+              }}
+            />
+          </span> */}
+                          <Button
+                            variant="contained"
+                            color="success"
+                            sx={{ textTransform: "none" }}
+                            onClick={() => {
+                              router.push(
+                                `/user/admin/report/detail/${item.id}`
+                              );
+                            }}
+                          >
+                            Detail
+                          </Button>
+                        </div>
+                      </Cell>
+                    </Row>
+                  </Fragment>
+                  // item.asesi.status_pembayaran === "pending" ? (
+                )
+                // ) : null
+              )}
+            </Body>
+          </Fragment>
+        )}
+      </Table>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "35px",
+        }}
+      >
+        <Pagination
+          count={dataapl01.totalPage}
+          page={stateField.page}
+          // color="primary"
+          onChange={handleChange}
+          className={classes.paginationStyle}
+        />
+      </div>
     </React.Fragment>
   );
 }
