@@ -226,7 +226,7 @@ export default function Report() {
         <React.Fragment>
           <CompactTable
             columns={COLUMNS}
-            data={{ nodes: dataapl01.apl01 }}
+            data={{ nodes: dataapl01.dataapl01 }}
             theme={theme}
           />
 

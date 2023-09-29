@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   apl01: {
-    apl01: [],
+    dataapl01: [],
   },
   apl01withoutpage: [],
   // totalPage: 0,

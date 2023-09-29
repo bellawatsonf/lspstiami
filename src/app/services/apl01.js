@@ -15,7 +15,7 @@ export function fetchApl01(params) {
         dispatch({
           type: "apl01/getApl01",
           apl01: {
-            apl01: data.data.listData,
+            dataapl01: data.data.listData,
             totalPage: data.data.totalPages,
           },
         });
