@@ -162,18 +162,21 @@ export default function Step4(props) {
                   </FormControl>
                 </div>
               </div>
-              <div>
-                <img
-                  style={{ width: 150, height: 150 }}
-                  src={
-                    props.dataAsesi.ttd_asesi === null
-                      ? ""
-                      : `/api/download-asesi/${
-                          props.dataAsesi.ttd_asesi.split("/")[4]
-                        }`
-                  }
-                />
-              </div>
+              {props.dataAsesi.ttd_asesi !== null ? (
+                <div>
+                  <img
+                    style={{ width: 150, height: 150 }}
+                    src={
+                      props.dataAsesi.ttd_asesi === null
+                        ? ""
+                        : `/api/download-asesi/${
+                            props.dataAsesi.ttd_asesi.split("/")[4]
+                          }`
+                    }
+                  />
+                </div>
+              ) : null}
+
               <Typography
                 sx={{
                   fontSize: "15px",
