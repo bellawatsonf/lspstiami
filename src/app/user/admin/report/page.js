@@ -55,7 +55,7 @@ export default function Report() {
   console.log(dataapl01, "datasesiskema");
   const [stateField, setStateField] = React.useState(initialState);
   React.useEffect(() => {
-    dispatch(fetchApl01({ size: stateField.size, page: stateField.page }));
+    dispatch(fetchApl01({ page: stateField.page, size: stateField.size }));
     dispatch(fetchApl01WithoutPage());
   }, []);
 
@@ -137,7 +137,7 @@ export default function Report() {
 
   function onPaginationChange(action, state) {
     console.log(action, state, "paginationstate");
-    dispatch(fetchApl01({ size: stateField.size, page: stateField.page }));
+    dispatch(fetchApl01({ page: stateField.page, size: stateField.size }));
   }
   const handleChange = (event, value) => {
     console.log(value, "value");
