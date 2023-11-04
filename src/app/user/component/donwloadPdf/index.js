@@ -1165,10 +1165,11 @@ const DocumentPdf = (props) => {
                 borderWidth: 1,
                 borderLeftWidth: 0,
                 borderTopWidth: 0,
-                height: "70px",
+                height: "160px",
               }}
             >
-              {props.data?.asesi_skema.skema.id === 1 ? (
+              {props.data?.asesi_skema.skema.nama_skema ===
+              "Pengelolaan Sistem Pergudangan" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1182,7 +1183,8 @@ const DocumentPdf = (props) => {
                   Manajemen Pergudangan, Pengantar Ilmu Logistik and Supply
                   Chain, Manajemen Distribusi.
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 2 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "KKNI Level V Pada Kompetensi Keahlian Kewirausahaan Industri" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1204,7 +1206,8 @@ const DocumentPdf = (props) => {
                   dibuktikan dengan foto kopi transkrip nilai serta kartu
                   mahasiswa STIAMI yang masih berlaku.
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 3 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Penyelia Ekspor" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1218,7 +1221,8 @@ const DocumentPdf = (props) => {
                   dan eksternal : Perencanaan dan Pengembangan Bisnis, MSDM,
                   Organisasi dan Manajemen Bisnis, Manajemen Operasional.
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 4 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Asisten Produser Produksi Program Televisi" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1239,7 +1243,8 @@ const DocumentPdf = (props) => {
                   Management, Social Media Management, Kebijakan Media,
                   Jurnalistik Foto.
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 5 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Analis Kebijakan Publik" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1253,7 +1258,8 @@ const DocumentPdf = (props) => {
                   kuliah Kebijakan Publik, Analisis Kebijakan Publik atau
                   Komunikasi dan Advokasi Kebijakan.
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 6 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Teknisi Perpajakan PPh Badan Sektor Usaha Jasa Dan Perdagangan" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1268,7 +1274,8 @@ const DocumentPdf = (props) => {
                   Penghasilan I, Kebijakan dan Adm. Pajak Penghasilan II, dan
                   Praktikum Adm. PPh
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 7 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Manager Logistik Proyek" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1283,7 +1290,8 @@ const DocumentPdf = (props) => {
                   Pergudangan, Manajemen Distribusi, Etika Dan Komunikasi
                   Bisnis, Manajemen Proyek Supply Chain.
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 8 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Public Relation Coordinator" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1306,7 +1314,8 @@ const DocumentPdf = (props) => {
                   Penelitian Kualitatif, Metode Penelitian Kuantitatif, Internal
                   & External Relations
                 </Text>
-              ) : props.data?.asesi_skema.skema.id === 9 ? (
+              ) : props.data?.asesi_skema.skema.nama_skema ===
+                "Front Office Supervisor" ? (
                 <Text
                   style={{
                     marginLeft: "3px",
@@ -1346,7 +1355,7 @@ const DocumentPdf = (props) => {
                 borderWidth: 1,
                 borderLeftWidth: 0,
                 borderTopWidth: 0,
-                height: "70px",
+                height: "160px",
               }}
             >
               {/* <View style={{ borderBottom: "1px solid black" }}>
@@ -1443,7 +1452,8 @@ const DocumentPdf = (props) => {
                   fontSize: 10,
                 }}
               >
-                {props.data?.asesi_skema.skema.id === 1 ? (
+                {props.data?.asesi_skema.skema.nama_skema ===
+                "Pengelolaan Sistem Pergudangan" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1456,7 +1466,8 @@ const DocumentPdf = (props) => {
                     Klaster Pengelolaan Sistem Pergudangan yang dilakukan oleh
                     Institut Ilmu Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 2 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "KKNI Level V Pada Kompetensi Keahlian Kewirausahaan Industri" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1469,7 +1480,8 @@ const DocumentPdf = (props) => {
                     jabatan KKNI Level 5 pada bidang kewirausahaan industri yang
                     dilakukan oleh Institut Ilmu Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 3 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Penyelia Ekspor" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1482,7 +1494,8 @@ const DocumentPdf = (props) => {
                     Penyelia ekspor yang dilakukan oleh Institut Ilmu Sosial dan
                     Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 4 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Asisten Produser Produksi Program Televisi" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1495,7 +1508,8 @@ const DocumentPdf = (props) => {
                     jabatan Asisten Produser Produksi Program Televisi yang
                     dilakukan oleh Institut Ilmu Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 5 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Analis Kebijakan Publik" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1508,7 +1522,8 @@ const DocumentPdf = (props) => {
                     Analis Kebijakan Publik yang dilakukan oleh Institut Ilmu
                     Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 6 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Teknisi Perpajakan PPh Badan Sektor Usaha Jasa Dan Perdagangan" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1521,7 +1536,8 @@ const DocumentPdf = (props) => {
                     Perpajakan PPh Badan Sektor Usaha Jasa Dan Perdagangan yang
                     dilakukan oleh Institut Ilmu Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 7 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Manager Logistik Proyek" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1534,7 +1550,8 @@ const DocumentPdf = (props) => {
                     Okupasi Manajer Logistik Proyek yang dilakukan oleh Institut
                     Ilmu Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 8 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Public Relation Coordinator" ? (
                   <Text
                     style={{
                       marginLeft: "3px",
@@ -1547,7 +1564,8 @@ const DocumentPdf = (props) => {
                     Jabatan Public Relations Coordinator yang dilakukan oleh
                     Institut Ilmu Sosial dan Manajemen STIAMI
                   </Text>
-                ) : props.data?.asesi_skema.skema.id === 9 ? (
+                ) : props.data?.asesi_skema.skema.nama_skema ===
+                  "Front Office Supervisor" ? (
                   <Text
                     style={{
                       marginLeft: "3px",

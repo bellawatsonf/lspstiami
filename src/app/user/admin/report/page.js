@@ -86,6 +86,8 @@ export default function Report() {
       dataapl01excel.push({
         No: no++,
         "Nama Asesi": dataapl01withoutpage[i].asesi_skema.asesi.nama_lengkap,
+        Email: dataapl01withoutpage[i].asesi_skema.asesi.email,
+        "No Telp": dataapl01withoutpage[i].asesi_skema.asesi.phone_number,
         NIK: dataapl01withoutpage[i].asesi_skema.asesi.nik,
         "Tempat Lahir": dataapl01withoutpage[i].asesi_skema.asesi.tempat_lahir,
         "Tanggal Lahir": dataapl01withoutpage[i].asesi_skema.asesi.tgl_lahir,
@@ -115,6 +117,8 @@ export default function Report() {
       [
         "No",
         "Nama Asesi",
+        "Email",
+        "No.telp",
         "NIK",
         "Tempat Lahir",
         "Tanggal Lahir",

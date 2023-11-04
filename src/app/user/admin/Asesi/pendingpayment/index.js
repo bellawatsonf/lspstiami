@@ -25,6 +25,11 @@ import { Button, Pagination, Typography } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import { usePagination } from "@table-library/react-table-library/pagination";
 
+import {
+  useSort,
+  HeaderCellSort,
+} from "@table-library/react-table-library/sort";
+
 const key = "Composed Table";
 const useStyles = makeStyles({
   paginationStyle: {
@@ -38,7 +43,7 @@ const useStyles = makeStyles({
 export default function PendingPayment(props) {
   console.log(props.dataAsesiSkema, "propslo");
   const classes = useStyles();
-  let loading = useSelector((state) => state.skema.loading);
+  // let loading = useSelector((state) => state.skema.loading);
 
   // const [dataSkema, setSkema] = useState({ nodes: [] });
   const router = useRouter();
@@ -62,6 +67,28 @@ export default function PendingPayment(props) {
         statusCek: "belum-dicek",
       })
     );
+  }
+
+  const sort = useSort(
+    props.dataAsesiSkema,
+    {
+      onChange: onSortChange,
+    },
+    {
+      sortFns: {
+        nama_asesi: (array) =>
+          array.sort((a, b) => a.nama_lengkap.localeCompare(b.nama_lengkap)),
+        // DEADLINE: (array) => array.sort((a, b) => a.deadline - b.deadline),
+        // TYPE: (array) => array.sort((a, b) => a.type.localeCompare(b.type)),
+        // COMPLETE: (array) => array.sort((a, b) => a.isComplete - b.isComplete),
+        // TASKS: (array) =>
+        //   array.sort((a, b) => (a.nodes || []).length - (b.nodes || []).length),
+      },
+    }
+  );
+
+  function onSortChange(action, state) {
+    console.log(action, state, "sort");
   }
   const handleChange = (event, value) => {
     console.log(value, "value");
@@ -153,20 +180,20 @@ export default function PendingPayment(props) {
   //   },
   // ];
 
-  if (loading) {
-    return <LoadingComponent />;
-  }
+  // if (loading) {
+  //   return <LoadingComponent />;
+  // }
 
   console.log(props.stateField.page, props.stateField.size, "page");
 
   return (
     <>
-      <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
+      <Table data={{ nodes: props.dataAsesiSkema }} theme={theme} sort={sort}>
         {(tableList) => (
           <Fragment>
             <Header>
               <HeaderRow>
-                <HeaderCell>Nama Asesi</HeaderCell>
+                <HeaderCellSort sortKey="nama_asesi">Nama Asesi</HeaderCellSort>
                 <HeaderCell>Jenis Skema Sertifikasi</HeaderCell>
                 <HeaderCell>KTP</HeaderCell>
                 <HeaderCell>Ijazah</HeaderCell>

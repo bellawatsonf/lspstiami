@@ -16,6 +16,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import ModalPilihPaketSkema from "./modalpilihpaketskema";
 
+import {
+  fetchAsesiSkemaByUser,
+  fetchAsesiSkemaServices,
+} from "@/app/services/asesiskema";
+
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -65,6 +70,7 @@ export default function ListSkema() {
   const [paramsuser, setParams] = useState();
   let [tokenuser, settoken] = React.useState("");
   let dispatch = useDispatch();
+  const asesiskema = useSelector((state) => state.asesiskema.asesiSkemaByUser);
 
   // const user = JSON.parse(sessionStorage.getItem("user"));
   React.useEffect(() => {
@@ -81,6 +87,12 @@ export default function ListSkema() {
       console.log(err);
     }
   }, []);
+  console.log(asesiskema, "asesiskema");
+
+  React.useEffect(() => {
+    dispatch(fetchAsesiSkemaByUser(userdata?.id));
+  }, [userdata]);
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -106,6 +118,8 @@ export default function ListSkema() {
   if (loading) {
     return <LoadingComponent />;
   }
+
+  const cekSkemaAsesi = () => {};
   return (
     <Fragment>
       <ModalPilihPaketSkema
@@ -225,7 +239,11 @@ export default function ListSkema() {
                 >
                   <Button
                     variant="outlined"
-                    disabled={Number(el?.kuota) <= 0 ? true : false}
+                    disabled={
+                      Number(el?.kuota) <= 0 || asesiskema !== null
+                        ? true
+                        : false
+                    }
                     //   color="success"
                     sx={{
                       // background: "rgb(45, 195, 208)",

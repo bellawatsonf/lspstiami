@@ -94,6 +94,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function Sidebar() {
+  console.log("masuk sidebar");
   const theme = useTheme();
   const [openDraw, setOpenDraw] = useState(false);
 
@@ -113,6 +114,7 @@ export default function Sidebar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   // let [user, setUser] = useState("");
   // useEffect(() => {
   //   try {
@@ -127,8 +129,10 @@ export default function Sidebar() {
   // let user = null;
   // useEffect(() => {
   let user = JSON.parse(sessionStorage.getItem("user"));
+  console.log(user.role, "userrrr");
+
   // }, []);
-  console.log(user, "disidebar");
+
   return (
     <Fragment>
       {user !== null ? (

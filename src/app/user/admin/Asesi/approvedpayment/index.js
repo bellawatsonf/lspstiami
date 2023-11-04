@@ -24,7 +24,10 @@ import {
 import { Button, Pagination, Typography } from "@mui/material";
 import { makeStyles } from "@material-ui/core/styles";
 import { usePagination } from "@table-library/react-table-library/pagination";
-
+import {
+  useSort,
+  HeaderCellSort,
+} from "@table-library/react-table-library/sort";
 const key = "Composed Table";
 const useStyles = makeStyles({
   paginationStyle: {
@@ -72,6 +75,28 @@ export default function ApprovedPayment(props) {
       };
     });
   };
+
+  const sort = useSort(
+    props.dataAsesiSkema,
+    {
+      onChange: onSortChange,
+    },
+    {
+      sortFns: {
+        nama_asesi: (array) =>
+          array.sort((a, b) => a.nama_lengkap.localeCompare(b.nama_lengkap)),
+        // DEADLINE: (array) => array.sort((a, b) => a.deadline - b.deadline),
+        // TYPE: (array) => array.sort((a, b) => a.type.localeCompare(b.type)),
+        // COMPLETE: (array) => array.sort((a, b) => a.isComplete - b.isComplete),
+        // TASKS: (array) =>
+        //   array.sort((a, b) => (a.nodes || []).length - (b.nodes || []).length),
+      },
+    }
+  );
+
+  function onSortChange(action, state) {
+    console.log(action, state, "sort");
+  }
   // useEffect(() => {
   //   if (props.dataAsesiSkema.length > 0) {
   //     setSkema({ nodes: props.dataAsesiSkema });
@@ -161,12 +186,12 @@ export default function ApprovedPayment(props) {
 
   return (
     <>
-      <Table data={{ nodes: props.dataAsesiSkema }} theme={theme}>
+      <Table data={{ nodes: props.dataAsesiSkema }} theme={theme} sort={sort}>
         {(tableList) => (
           <Fragment>
             <Header>
               <HeaderRow>
-                <HeaderCell>Nama Asesi</HeaderCell>
+                <HeaderCellSort sortKey="nama_asesi">Nama Asesi</HeaderCellSort>
                 <HeaderCell>Jenis Skema Sertifikasi</HeaderCell>
                 <HeaderCell>KTP</HeaderCell>
                 <HeaderCell>Ijazah</HeaderCell>

@@ -6,7 +6,9 @@ import { Fragment, useEffect, useState } from "react";
 import "./../globals.css";
 import styleDashboard from "./component/dashboardContainer/styleDashboard.module.css";
 import HeaderDashboard from "./component/header";
+// import Sidebar from "./component/sidebar/";
 import Sidebar from "./component/sidebar/index2";
+
 import Login from "../login/page";
 // import jsHttpCookie from "cookie";
 import * as React from "react";
@@ -194,8 +196,28 @@ export default function DashboardLayout({ children }) {
       role: "asesi",
     },
     {
+      name: "Asesi",
+      url: "/user/admin/Asesi",
+      role: "admin",
+    },
+    {
+      name: "Skema Sertifikasi",
+      url: "/user/admin/skema-sertifikasi",
+      role: "admin",
+    },
+    {
       name: "User",
-      url: "/user/admin/admin",
+      url: "/user/admin/skema-sertifikasi",
+      role: "admin",
+    },
+    {
+      name: "Jadwal",
+      url: "/user/admin/jadwal",
+      role: "admin",
+    },
+    {
+      name: "Report",
+      url: "/user/admin/report",
       role: "admin",
     },
   ];
