@@ -16,8 +16,12 @@ import MuiAccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ModalUpload from "./modalupload";
 import { Fragment } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchSkema } from "@/app/services/skema";
+import { fetchAsesiById } from "@/app/services/asesi";
+import LoadingComponent from "@/app/(public)/component/loading";
+import { useEffect } from "react";
+import { fetchAsesiSkemaByUser } from "@/app/services/asesiskema";
 
 const style = {
   position: "absolute",
@@ -75,10 +79,15 @@ export default function ModalPilihPaketSkema(props) {
   const [openUpload, setOpenUpload] = React.useState(false);
   const handleOpenUpload = () => setOpenUpload(true);
   const handleCloseUpload = () => setOpenUpload(false);
+  const asesiskema = useSelector((state) => state.asesiskema.asesiSkemaByUser);
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  // useEffect(() => {
+  //   dispatch(fetchAsesiSkemaByUser(props.datauser.id));
+  // }, [props.loading]);
   function submitAsesiSkema(value) {
     console.log(value, "paramss");
     let input = {
@@ -99,6 +108,10 @@ export default function ModalPilihPaketSkema(props) {
           setOpenUpload(true);
           props.setOpen(false);
           dispatch(fetchSkema());
+          dispatch(fetchAsesiSkemaByUser(props.datauser.id));
+          // props.setReload(true);
+          // props.setLoading(false);
+          // props.setAsesiSkema(asesiskema);
           // Swal.fire({
           //   position: "center",
           //   icon: "success",
@@ -133,6 +146,10 @@ export default function ModalPilihPaketSkema(props) {
             timer: 1500,
           }).then((result) => {
             router.push("/form-apl01");
+            props.setLoading(false);
+            // dispatch(fetchAsesiSkemaByUser(props.datauser.id));
+            // props.setReload(true);
+            // props.setAsesiSkema(asesiskema);
           });
         })
         .catch((err) => {
@@ -141,6 +158,7 @@ export default function ModalPilihPaketSkema(props) {
     }
   }
   console.log(props);
+
   return (
     <Fragment>
       <ModalUpload

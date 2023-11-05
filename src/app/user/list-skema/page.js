@@ -70,8 +70,12 @@ export default function ListSkema() {
   const [paramsuser, setParams] = useState();
   let [tokenuser, settoken] = React.useState("");
   let dispatch = useDispatch();
-  const asesiskema = useSelector((state) => state.asesiskema.asesiSkemaByUser);
+  const [reloadAsesiSkema, setReload] = useState(false);
+  const dataasesiskema = useSelector(
+    (state) => state.asesiskema.asesiSkemaByUser
+  );
 
+  const [asesiskema, setAsesiSkema] = useState({});
   // const user = JSON.parse(sessionStorage.getItem("user"));
   React.useEffect(() => {
     dispatch(fetchSkema());
@@ -87,11 +91,12 @@ export default function ListSkema() {
       console.log(err);
     }
   }, []);
-  console.log(asesiskema, "asesiskema");
 
   React.useEffect(() => {
     dispatch(fetchAsesiSkemaByUser(userdata?.id));
-  }, [userdata]);
+  }, [userdata, loading]);
+
+  console.log(loading, dataasesiskema, "asesiskemadd");
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -115,10 +120,6 @@ export default function ListSkema() {
     // console.log(input, "input");
   }
 
-  if (loading) {
-    return <LoadingComponent />;
-  }
-
   const cekSkemaAsesi = () => {};
   return (
     <Fragment>
@@ -129,6 +130,11 @@ export default function ListSkema() {
         setOpen={setOpen}
         params={paramsuser}
         datauser={userdata}
+        reloadAsesiSkema={reloadAsesiSkema}
+        setReload={setReload}
+        setLoading={setLoading}
+        setAsesiSkema={setAsesiSkema}
+        loading={loading}
       />
       <div style={{ width: "100%", marginBottom: "30px" }}>
         <Typography
@@ -240,7 +246,9 @@ export default function ListSkema() {
                   <Button
                     variant="outlined"
                     disabled={
-                      Number(el?.kuota) <= 0 || asesiskema !== null
+                      Number(el?.kuota) <= 0 ||
+                      Object.keys(asesiskema).length !== 0 ||
+                      dataasesiskema !== null
                         ? true
                         : false
                     }
