@@ -29,6 +29,7 @@ import {
   useSort,
   HeaderCellSort,
 } from "@table-library/react-table-library/sort";
+import Swal from "sweetalert2";
 
 const key = "Composed Table";
 const useStyles = makeStyles({
@@ -99,6 +100,24 @@ export default function PendingPayment(props) {
       };
     });
   };
+
+  function deleteProses(item) {
+    Swal.fire({
+      text: `Apakah kamu yakin akan menghapus ${item.asesi.nama_lengkap} dengan skema ${item.skema.nama_skema}?`,
+      // text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Batal",
+      confirmButtonText: "Hapus",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        dispatch(deleteAsesiSkema(item.id, "delete"));
+      }
+    });
+  }
   // useEffect(() => {
   //   if (props.dataAsesiSkema.length > 0) {
   //     setSkema({ nodes: props.dataAsesiSkema });
@@ -326,9 +345,10 @@ export default function PendingPayment(props) {
                                 }}
                                 onClick={() => {
                                   console.log("delete");
-                                  dispatch(
-                                    deleteAsesiSkema(item.id, "belum-dicek")
-                                  );
+                                  // dispatch(
+                                  //   deleteAsesiSkema(item.id, "belum-dicek")
+                                  // );
+                                  deleteProses(item);
                                 }}
                               />
                             ) : null}

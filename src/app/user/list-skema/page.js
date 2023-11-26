@@ -43,7 +43,7 @@ const AccordionSummary = styled((props) => (
     theme.palette.mode === "dark"
       ? "rgba(255, 255, 255, .05)"
       : "rgba(0, 0, 0, .03)",
-  flexDirection: "row-reverse",
+  // flexDirection: "row-reverse",
   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
     transform: "rotate(90deg)",
   },
@@ -70,6 +70,7 @@ export default function ListSkema() {
   const [paramsuser, setParams] = useState();
   let [tokenuser, settoken] = React.useState("");
   let dispatch = useDispatch();
+
   const [reloadAsesiSkema, setReload] = useState(false);
   const dataasesiskema = useSelector(
     (state) => state.asesiskema.asesiSkemaByUser
@@ -121,6 +122,7 @@ export default function ListSkema() {
   }
 
   const cekSkemaAsesi = () => {};
+
   return (
     <Fragment>
       <ModalPilihPaketSkema
@@ -136,16 +138,53 @@ export default function ListSkema() {
         setAsesiSkema={setAsesiSkema}
         loading={loading}
       />
-      <div style={{ width: "100%", marginBottom: "30px" }}>
+      <Typography
+        sx={{
+          fontSize: { xs: "13px", md: "30px" },
+
+          color: "#333",
+          fontFamily: " Roboto",
+          fontStyle: "normal",
+          fontWeight: 600,
+          lineHeight: "30px",
+          paddingBottom: "30px",
+        }}
+      >
+        Selamat Datang {userdata?.nama}
+      </Typography>
+      <div
+        style={{
+          width: "100%",
+          marginBottom: "30px",
+          paddingLeft: "30px",
+          border: "1px solid #90CAF9",
+          paddingTop: "30px",
+        }}
+      >
         <Typography
           sx={{
             fontWeight: 700,
-            fontSize: { xs: "15px", md: "20px" },
-            textAlign: "center",
-            paddingBottom: "10px",
+            fontSize: { xs: "15px", md: "24px" },
+            textAlign: "left",
+            marginBottom: "30px",
+            color: "#333",
+            fontFamily: " Roboto",
           }}
         >
-          Silahkan Pilih Skema Anda
+          Pilih Skema
+        </Typography>
+        <Typography
+          sx={{
+            fontWeight: 400,
+            fontSize: { xs: "15px", md: "16px" },
+            textAlign: "left",
+            paddingBottom: "10px",
+            color: "#333",
+            fontFamily: " Roboto",
+          }}
+        >
+          Silahkan pilih salah satu skema dibawah ini sesuai dengan kuota yang
+          tersedia.
         </Typography>
 
         {/* <div
@@ -193,84 +232,122 @@ export default function ListSkema() {
             )}
           </Button>
         </div> */}
-      </div>
-      <div>
-        {skema.map((el) => (
-          <Accordion
-            key={el.id}
-            expanded={expanded === `panel${el.id}`}
-            onChange={handleChange(`panel${el.id}`)}
-          >
-            <AccordionSummary
-              aria-controls="panel1d-content"
-              id="panel1d-header"
+        <div>
+          {skema.map((el) => (
+            <Accordion
+              key={el.id}
+              expanded={expanded === `panel${el.id}`}
+              onChange={handleChange(`panel${el.id}`)}
             >
-              <Typography sx={{ fontSize: { xs: "12px", md: "15px" } }}>
-                {el.nama_skema}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <ul>
-                {el.unitkompetensi.map((unit, i) => (
-                  <li key={i} className={`${styles.listskema}`}>
-                    {unit.judul_unit}
-                  </li>
-                ))}
-              </ul>
-              <div className="d-flex" style={{ width: "100%" }}>
-                <div
-                  className="d-flex"
-                  style={{ justifyContent: "flex-start", width: "50%" }}
-                >
-                  <Button
-                    variant="outlined"
-                    //   color="success"
-                    sx={{
-                      background: "rgb(45, 195, 208)",
-                      padding: "5px 10px 5px 10px",
-                      color: "white",
-                      border: "1px solid rgb(45, 195, 208)",
-                      fontWeight: 600,
-                      textTransform: "none",
-                      fontSize: { xs: "12px", md: "15px" },
-                    }}
-                    onClick={() => daftarSkema(el)}
+              <AccordionSummary
+                aria-controls="panel1d-content"
+                id="panel1d-header"
+              >
+                <div className="d-flex" style={{ width: "100%" }}>
+                  <div
+                    className="d-flex"
+                    style={{ justifyContent: "flex-start", width: "50%" }}
                   >
-                    kuota tersedia : {el?.kuota}
-                  </Button>
-                </div>
-                <div
-                  className="d-flex"
-                  style={{ justifyContent: "flex-end", width: "50%" }}
-                >
-                  <Button
-                    variant="outlined"
-                    disabled={
-                      Number(el?.kuota) <= 0 ||
-                      Object.keys(asesiskema).length !== 0 ||
-                      dataasesiskema !== null
-                        ? true
-                        : false
-                    }
-                    //   color="success"
-                    sx={{
-                      // background: "rgb(45, 195, 208)",
-                      fontSize: { xs: "12px", md: "15px" },
-                      padding: "5px 10px 5px 10px",
-                      color: "rgb(45, 195, 208)",
-                      border: "1px solid rgb(45, 195, 208)",
-                      fontWeight: 600,
-                      textTransform: "none",
-                    }}
-                    onClick={() => daftarSkema(el)}
+                    <Typography
+                      sx={{
+                        fontSize: { xs: "12px", md: "16px" },
+                        textAlign: "left",
+                        fontWeight: 600,
+                        color: "#1976D2",
+                      }}
+                    >
+                      {el.nama_skema}
+                    </Typography>
+                  </div>
+                  <div
+                    className="d-flex"
+                    style={{ justifyContent: "flex-end", width: "50%" }}
                   >
-                    Pilih Skema
-                  </Button>
+                    <Button
+                      variant="contained"
+                      color="success"
+                      sx={{
+                        background: "#66BB6A",
+                        padding: "5px 10px 5px 10px",
+                        color: "white",
+                        border: "1px solid #66BB6A",
+                        fontWeight: 600,
+                        textTransform: "none",
+                        fontSize: { xs: "12px", md: "14px" },
+                        marginRight: "20px",
+                        width: "100px",
+                        borderRadius: "60px",
+                      }}
+                      onClick={() => daftarSkema(el)}
+                    >
+                      kuota : {el?.kuota}
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul>
+                  {el.unitkompetensi.map((unit, i) => (
+                    <li key={i} className={`${styles.listskema}`}>
+                      {unit.judul_unit}
+                    </li>
+                  ))}
+                </ul>
+                <div className="d-flex" style={{ width: "100%" }}>
+                  {/* <div
+                    className="d-flex"
+                    style={{ justifyContent: "flex-start", width: "50%" }}
+                  >
+                    <Button
+                      variant="outlined"
+                      //   color="success"
+                      sx={{
+                        background: "rgb(45, 195, 208)",
+                        padding: "5px 10px 5px 10px",
+                        color: "white",
+                        border: "1px solid rgb(45, 195, 208)",
+                        fontWeight: 600,
+                        textTransform: "none",
+                        fontSize: { xs: "12px", md: "15px" },
+                      }}
+                      onClick={() => daftarSkema(el)}
+                    >
+                      kuota tersedia : {el?.kuota}
+                    </Button>
+                  </div> */}
+                  <div
+                    className="d-flex"
+                    style={{ justifyContent: "flex-start", width: "50%" }}
+                  >
+                    <Button
+                      variant="containeds"
+                      disabled={
+                        Number(el?.kuota) <= 0 ||
+                        Object.keys(asesiskema).length !== 0 ||
+                        dataasesiskema !== null
+                          ? true
+                          : false
+                      }
+                      //   color="success"
+                      sx={{
+                        background: "#1976D2",
+                        fontSize: { xs: "12px", md: "14px" },
+                        padding: "5px 10px 5px 10px",
+                        color: "white",
+                        border: "1px solid rgb(45, 195, 208)",
+                        fontWeight: 600,
+                        textTransform: "none",
+                      }}
+                      onClick={() => daftarSkema(el)}
+                    >
+                      Pilih Skema
+                    </Button>
+                  </div>
+                </div>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </div>
       </div>
     </Fragment>
   );

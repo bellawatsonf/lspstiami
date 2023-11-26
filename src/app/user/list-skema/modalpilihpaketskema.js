@@ -200,13 +200,23 @@ export default function ModalPilihPaketSkema(props) {
               }}
             />
           </div>
+          <img
+            src="/Filing_system_pana1.svg"
+            style={{ display: "block", margin: "auto" }}
+          />
           <Typography id="modal-modal-title" sx={{ textAlign: "center" }}>
             Anda akan mendaftar skema
           </Typography>
           <Typography
             id="modal-modal-description"
             //   sx={{ mt: 2 }}
-            sx={{ textAlign: "center", fontWeight: 700, marginTop: "10px" }}
+            sx={{
+              textAlign: "center",
+              fontWeight: 600,
+              marginTop: "10px",
+              color: "#1976D2",
+              fontSize: "18px",
+            }}
           >
             {props?.params?.nama_skema}
           </Typography>

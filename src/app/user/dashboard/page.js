@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import * as React from "react";
 import { Fragment } from "react";
 import style from "./style.module.css";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import ModalApl02 from "./ModalApl2";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchApl01ByUser } from "@/app/services/apl01";
@@ -130,39 +130,69 @@ export default function DashboardUser() {
         <div style={{ width: "100%", marginBottom: "30px" }}>
           <Typography
             sx={{
-              fontWeight: 700,
-              fontSize: { xs: "13px", md: "20px" },
-              textAlign: "center",
+              fontSize: { xs: "13px", md: "30px" },
+
               paddingBottom: "10px",
+              color: "#333",
+              fontFamily: " Roboto",
+              fontStyle: "normal",
+              fontWeight: 600,
+              lineHeight: "30px",
             }}
           >
-            Selamat Datang {userdata?.nama},
+            Selamat Datang {userdata?.nama}
           </Typography>
           <div className={`${style.forDesktop}${style.forMobile}`}>
-            <div className={`${style.boxGreetingDashboard}`}>
-              <Typography
-                sx={{
-                  fontSize: { xs: "10px", md: "15px" },
-                  textAlign: "center",
+            <Box sx={{ marginTop: "10%" }}>
+              <img
+                src="/Group1000010535.svg"
+                style={{
+                  margin: "auto",
+                  display: "block",
+                  marginBottom: "40px",
                 }}
-              >
-                Anda belum melakukan pendaftaran,
-              </Typography>
-              <Typography
-                sx={{
-                  color: "blue",
-                  cursor: "pointer",
-                  fontSize: { xs: "10px", md: "15px" },
-                  textAlign: "center",
-                }}
-                onClick={() => {
-                  router.push("/user/list-skema");
-                }}
-              >
-                {" "}
-                silahkan klik untuk melakukan pendaftaran{" "}
-              </Typography>
-            </div>
+              />
+              <div className={`${style.boxGreetingDashboard}`}>
+                <Typography
+                  sx={{
+                    fontSize: { xs: "10px", md: "15px" },
+                    textAlign: "center",
+                  }}
+                >
+                  Anda belum melakukan pendaftaran, silahkan klik untuk
+                  melakukan pendaftaran
+                </Typography>
+                {/* <Typography
+                  sx={{
+                    color: "blue",
+                    cursor: "pointer",
+                    fontSize: { xs: "10px", md: "15px" },
+                    textAlign: "center",
+                  }}
+                >
+                  {" "}
+                  silahkan klik untuk melakukan pendaftaran{" "}
+                </Typography> */}
+              </div>
+              <div style={{ justifyContent: "center", display: "flex" }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    padding: "10px",
+                    flexDirection: "column",
+                    justifyXontent: "center",
+                    alignItems: "center",
+                    marginTop: "10px",
+                    flexShrink: 0,
+                  }}
+                  onClick={() => {
+                    router.push("/user/list-skema");
+                  }}
+                >
+                  Daftar Skema
+                </Button>
+              </div>
+            </Box>
           </div>
 
           <div className={`${style.forMobile} ${style.forDesktop}`}>
