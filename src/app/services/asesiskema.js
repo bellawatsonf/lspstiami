@@ -56,7 +56,7 @@ export function fetchAsesiSkemaByIdDetail(id) {
 }
 
 export function fetchAsesiSkemaByUser(userId) {
-  console.log("datauserasesiskemabyuser", userId);
+  console.log("datauserasesiskemabyuserppp", userId);
   return (dispatch, prevState) => {
     dispatch(Loading(true));
 

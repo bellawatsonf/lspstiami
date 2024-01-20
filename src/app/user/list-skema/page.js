@@ -150,14 +150,14 @@ export default function ListSkema() {
           paddingBottom: "30px",
         }}
       >
-        Selamat Datang {userdata?.nama}
+        Selamat Datang, {userdata?.nama}
       </Typography>
       <div
         style={{
           width: "100%",
           marginBottom: "30px",
           paddingLeft: "30px",
-          border: "1px solid #90CAF9",
+          // border: "1px solid #90CAF9",
           paddingTop: "30px",
         }}
       >
@@ -265,6 +265,7 @@ export default function ListSkema() {
                   >
                     <Button
                       variant="contained"
+                      disabled={el?.kuota < 1 ? true : false}
                       color="success"
                       sx={{
                         background: "#66BB6A",
@@ -278,7 +279,7 @@ export default function ListSkema() {
                         width: "100px",
                         borderRadius: "60px",
                       }}
-                      onClick={() => daftarSkema(el)}
+                      // onClick={() => daftarSkema(el)}
                     >
                       kuota : {el?.kuota}
                     </Button>

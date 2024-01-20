@@ -222,6 +222,20 @@ export default function ModalPilihPaketSkema(props) {
           </Typography>
           <Typography
             sx={{
+              color: " #333",
+              fontFamily: "Roboto",
+              fontSize: "32px",
+              fontStyle: "normal",
+              fontWeight: 600,
+              lineHeight: "30px" /* 93.75% */,
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            Rp. 250.000,-
+          </Typography>
+          <Typography
+            sx={{
               fontWeight: 500,
               textDecoration: "underline",
               paddingTop: "25px",
