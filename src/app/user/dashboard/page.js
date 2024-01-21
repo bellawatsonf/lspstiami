@@ -123,53 +123,51 @@ export default function DashboardUser() {
   console.log(dt, "infoo");
   return (
     // {
-    dt[0].dataAsesi.bukti_bayar === null ? (
-      <RiwayatTransaksiSertifikasi />
-    ) : (
-      <Fragment>
-        <ModalApl02
-          open={open}
-          setOpen={setOpen}
-          dataApl01={dataApl01}
-          idJadwal_AsesiSkema_Asesor={idJadwal_AsesiSkema_Asesor}
-        />
-        {info.length === 0 ? (
-          <div style={{ width: "100%", marginBottom: "30px" }}>
-            <Typography
-              sx={{
-                fontSize: { xs: "13px", md: "30px" },
 
-                paddingBottom: "10px",
-                color: "#333",
-                fontFamily: " Roboto",
-                fontStyle: "normal",
-                fontWeight: 600,
-                lineHeight: "30px",
-              }}
-            >
-              Selamat Datang, {userdata?.nama}
-            </Typography>
-            <div className={`${style.forDesktop}${style.forMobile}`}>
-              <Box sx={{ marginTop: "10%" }}>
-                <img
-                  src="/Group1000010535.svg"
-                  style={{
-                    margin: "auto",
-                    display: "block",
-                    marginBottom: "40px",
+    <Fragment>
+      <ModalApl02
+        open={open}
+        setOpen={setOpen}
+        dataApl01={dataApl01}
+        idJadwal_AsesiSkema_Asesor={idJadwal_AsesiSkema_Asesor}
+      />
+      {info.length === 0 ? (
+        <div style={{ width: "100%", marginBottom: "30px" }}>
+          <Typography
+            sx={{
+              fontSize: { xs: "13px", md: "30px" },
+
+              paddingBottom: "10px",
+              color: "#333",
+              fontFamily: " Roboto",
+              fontStyle: "normal",
+              fontWeight: 600,
+              lineHeight: "30px",
+            }}
+          >
+            Selamat Datang, {userdata?.nama}
+          </Typography>
+          <div className={`${style.forDesktop}${style.forMobile}`}>
+            <Box sx={{ marginTop: "10%" }}>
+              <img
+                src="/Group1000010535.svg"
+                style={{
+                  margin: "auto",
+                  display: "block",
+                  marginBottom: "40px",
+                }}
+              />
+              <div className={`${style.boxGreetingDashboard}`}>
+                <Typography
+                  sx={{
+                    fontSize: { xs: "10px", md: "15px" },
+                    textAlign: "center",
                   }}
-                />
-                <div className={`${style.boxGreetingDashboard}`}>
-                  <Typography
-                    sx={{
-                      fontSize: { xs: "10px", md: "15px" },
-                      textAlign: "center",
-                    }}
-                  >
-                    Anda belum melakukan pendaftaran, silahkan klik untuk
-                    melakukan pendaftaran
-                  </Typography>
-                  {/* <Typography
+                >
+                  Anda belum melakukan pendaftaran, silahkan klik untuk
+                  melakukan pendaftaran
+                </Typography>
+                {/* <Typography
                     sx={{
                       color: "blue",
                       cursor: "pointer",
@@ -180,48 +178,48 @@ export default function DashboardUser() {
                     {" "}
                     silahkan klik untuk melakukan pendaftaran{" "}
                   </Typography> */}
-                </div>
-                <div style={{ justifyContent: "center", display: "flex" }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      padding: "10px",
-                      flexDirection: "column",
-                      justifyXontent: "center",
-                      alignItems: "center",
-                      marginTop: "10px",
-                      flexShrink: 0,
-                    }}
-                    onClick={() => {
-                      router.push("/user/list-skema");
-                    }}
-                  >
-                    Daftar Skema
-                  </Button>
-                </div>
-              </Box>
-            </div>
+              </div>
+              <div style={{ justifyContent: "center", display: "flex" }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    padding: "10px",
+                    flexDirection: "column",
+                    justifyXontent: "center",
+                    alignItems: "center",
+                    marginTop: "10px",
+                    flexShrink: 0,
+                  }}
+                  onClick={() => {
+                    router.push("/user/list-skema");
+                  }}
+                >
+                  Daftar Skema
+                </Button>
+              </div>
+            </Box>
+          </div>
 
-            <div className={`${style.forMobile} ${style.forDesktop}`}>
-              <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
-                Anda belum melakukan pendaftaran,
-              </Typography>
-              <Typography
-                sx={{
-                  color: "blue",
-                  cursor: "pointer",
-                  fontSize: "15px",
-                  textAlign: "center",
-                }}
-                onClick={() => {
-                  router.push("/user/list-skema");
-                }}
-              >
-                {" "}
-                silahkan klik untuk melakukan pendaftaran{" "}
-              </Typography>
-            </div>
-            {/* <div
+          <div className={`${style.forMobile} ${style.forDesktop}`}>
+            <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
+              Anda belum melakukan pendaftaran,
+            </Typography>
+            <Typography
+              sx={{
+                color: "blue",
+                cursor: "pointer",
+                fontSize: "15px",
+                textAlign: "center",
+              }}
+              onClick={() => {
+                router.push("/user/list-skema");
+              }}
+            >
+              {" "}
+              silahkan klik untuk melakukan pendaftaran{" "}
+            </Typography>
+          </div>
+          {/* <div
             className="d-flex"
             style={{
               // background: "red",
@@ -245,7 +243,7 @@ export default function DashboardUser() {
               Sertifikasi
             </Button>
           </div> */}
-            {/* <div
+          {/* <div
             className="d-flex"
             style={{
               width: "100%",
@@ -266,65 +264,63 @@ export default function DashboardUser() {
               )}
             </Button>
           </div> */}
-          </div>
-        ) : (
-          <div>
-            <Typography
-              sx={{
-                fontSize: "15px",
-                fontWeight: "bold",
-                marginBottom: "10px",
-              }}
+        </div>
+      ) : dt[0].dataAsesi.bukti_bayar === undefined ? (
+        <RiwayatTransaksiSertifikasi />
+      ) : (
+        <div>
+          <Typography
+            sx={{
+              fontSize: "15px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+            }}
+          >
+            Info Status
+          </Typography>
+
+          {info?.map((el, i) => (
+            <Accordion
+              key={i}
+              expanded={expanded === `panel${i}`}
+              onChange={handleChange(`panel${i}`)}
             >
-              Info Status
-            </Typography>
-
-            {info?.map((el, i) => (
-              <Accordion
-                key={i}
-                expanded={expanded === `panel${i}`}
-                onChange={handleChange(`panel${i}`)}
+              <AccordionSummary
+                aria-controls="panel1d-content"
+                id="panel1d-header"
               >
-                <AccordionSummary
-                  aria-controls="panel1d-content"
-                  id="panel1d-header"
-                >
-                  <Typography sx={{ fontSize: "15px" }}>
-                    {el.info_status}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  {/* {el.deskripsi_info !== null ? ( */}
-                  <Typography sx={{ fontSize: "15px" }}>
-                    {el.deskripsi_info}
-                  </Typography>
+                <Typography sx={{ fontSize: "15px" }}>
+                  {el.info_status}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                {/* {el.deskripsi_info !== null ? ( */}
+                <Typography sx={{ fontSize: "15px" }}>
+                  {el.deskripsi_info}
+                </Typography>
 
-                  {el.info_status === "Info Penjadwalan ujikom" ? (
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
+                {el.info_status === "Info Penjadwalan ujikom" ? (
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Button
+                      variant="contained"
+                      sx={{ textTransform: "none" }}
+                      onClick={() => setOpen(true)}
                     >
-                      <Button
-                        variant="contained"
-                        sx={{ textTransform: "none" }}
-                        onClick={() => setOpen(true)}
-                      >
-                        Formulir Apl-02
-                      </Button>
-                    </div>
-                  ) : el.info_status === "Perbaikan Data Asesi" ? (
-                    <div
-                      style={{ display: "flex", justifyContent: "flex-end" }}
+                      Formulir Apl-02
+                    </Button>
+                  </div>
+                ) : el.info_status === "Perbaikan Data Asesi" ? (
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Button
+                      variant="contained"
+                      sx={{ textTransform: "none" }}
+                      onClick={() => router.push("/user/profiluser")}
                     >
-                      <Button
-                        variant="contained"
-                        sx={{ textTransform: "none" }}
-                        onClick={() => router.push("/user/profiluser")}
-                      >
-                        Profil
-                      </Button>
-                    </div>
-                  ) : null}
-                  {/* // ) : ( //{" "}
+                      Profil
+                    </Button>
+                  </div>
+                ) : null}
+                {/* // ) : ( //{" "}
                   <Fragment>
                     //{" "}
                     <Typography sx={{ fontSize: "15px" }}>
@@ -339,14 +335,13 @@ export default function DashboardUser() {
                     //{" "}
                   </Fragment>
                   // )} */}
-                </AccordionDetails>
-              </Accordion>
-            ))}
-          </div>
-        )}
-      </Fragment>
-    )
-
-    // }
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </div>
+      )}
+    </Fragment>
   );
+
+  // }
 }

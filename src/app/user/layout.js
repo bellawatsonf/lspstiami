@@ -338,12 +338,19 @@ export default function DashboardLayout({ children }) {
                           mr: open ? 3 : "auto",
                           justifyContent: "center",
                         }}
-                        onClick={() => router.push(text.url)}
+                        onClick={() => {
+                          console.log("opn");
+                          router.push(text.url);
+                        }}
                       >
                         {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                         {/* {text.name} */}
                       </ListItemIcon>
                       <ListItemText
+                        onClick={() => {
+                          console.log("opn");
+                          router.push(text.url);
+                        }}
                         primary={text.name}
                         sx={{ opacity: open ? 1 : 0 }}
                       />
