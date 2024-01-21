@@ -67,7 +67,7 @@ export default function ModalPembayaran(props) {
           timer: 1500,
         }).then((result) => {
           // if (result.isConfirmed) {
-          router.push("/form-apl01");
+          router.push("/user/form-apl01");
           // }
         });
       })

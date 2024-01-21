@@ -314,7 +314,7 @@ export default function Step3(props) {
                 display: prevKtp !== "" ? "block" : "none",
               }}
             >
-              <embed src={stateField.img_ktp} width="133px" />
+              <embed src={prevKtp} width="133px" />
             </Box>
           </div>
           <div className="col-12">
@@ -443,7 +443,7 @@ export default function Step3(props) {
                 display: prevPernyataan !== "" ? "block" : "none",
               }}
             >
-              <img src={prevPernyataan} style={{ width: "133px" }} />
+              <embed src={prevPernyataan} width="133px" />
             </Box>
           </div>
           <div className="col-12">
