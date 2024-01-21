@@ -265,7 +265,7 @@ export default function DashboardUser() {
             </Button>
           </div> */}
         </div>
-      ) : dt[0].dataAsesi.bukti_bayar === undefined ? (
+      ) : dt[0].dataAsesi.bukti_bayar === null ? (
         <RiwayatTransaksiSertifikasi />
       ) : (
         <div>
