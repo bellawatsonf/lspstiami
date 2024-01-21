@@ -324,6 +324,10 @@ export default function DashboardLayout({ children }) {
                     key={index}
                     disablePadding
                     sx={{ display: "block" }}
+                    onClick={() => {
+                      console.log("opn");
+                      router.push(text.url);
+                    }}
                   >
                     <ListItemButton
                       sx={{
