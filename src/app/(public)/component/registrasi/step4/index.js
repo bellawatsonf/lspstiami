@@ -8,8 +8,19 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import SignatureCanvas from "react-signature-canvas";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  label: {
+    "& .MuiFormControlLabel-label": {
+      fontSize: "14px",
+      fontFamily: "Roboto",
+    },
+  },
+});
 
 export default function Step4(props) {
+  const classes = useStyles();
   // const [loading, setLoading] = useState(true);
   // const router = useRouter();
   // React.useEffect(() => {
@@ -111,19 +122,23 @@ export default function Step4(props) {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit}> */}
-      <div style={{ marginTop: "20px", height: "100%" }}>
+      <div style={{ marginTop: "20px", height: "100%", fontSize: "14px" }}>
         <div className="row">
           <div className="col-6">
             <Typography
               sx={{
-                fontSize: "15px",
-                fontWeight: 500,
-                paddingBottom: "10px",
-                paddingTop: "15px",
+                color: "var(--Black, #333)",
+                fontFamily: "Roboto",
+                fontSize: "14px",
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "150%" /* 21px */,
+                letterSpacing: "0.15px",
               }}
             >
               Tujuan Asesmen
             </Typography>
+
             <FormControl>
               <RadioGroup
                 row
@@ -134,7 +149,15 @@ export default function Step4(props) {
                     ? "sertifkasi"
                     : props.stateField.tujuan_asesmen
                 }
-                sx={{ fontSize: "10px" }}
+                sx={{
+                  color: "var(--Black, #333)",
+                  fontFamily: "Roboto",
+                  fontSize: "14px",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  lineHeight: "150%" /* 21px */,
+                  letterSpacing: "0.15px",
+                }}
                 onChange={(e) => handleChangeRadio(e)}
                 onBlur={props.handleBlur}
               >
@@ -142,27 +165,98 @@ export default function Step4(props) {
                   value="sertifikasi"
                   control={<Radio />}
                   label="Sertifikasi"
+                  sx={{
+                    color: "var(--Black, #333)",
+                    fontFamily: "Roboto",
+                    fontSize: "14px",
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: "150%" /* 21px */,
+                    letterSpacing: "0.15px",
+                  }}
+                  className={classes.label}
+
                   // labelPlacement="sertifikasi"
                 />
                 <FormControlLabel
                   value="sertifikasi ulang"
                   control={<Radio />}
                   label="Sertifikasi Ulang"
+                  sx={{
+                    color: "var(--Black, #333)",
+                    fontFamily: "Roboto",
+                    fontSize: "14px",
+                    fontStyle: "normal",
+                    fontWeight: 400,
+                    lineHeight: "150%" /* 21px */,
+                    letterSpacing: "0.15px",
+                  }}
+                  className={classes.label}
                   // labelPlacement="sertifikasi ulang"
                 />
               </RadioGroup>
             </FormControl>
           </div>
         </div>
+        <hr style={{ borderTop: "2px solid grey" }} />
         <Typography
           sx={{
-            fontSize: "15px",
-            fontWeight: 500,
-            paddingBottom: "25px",
-            paddingTop: "15px",
+            color: "var(--Black, #333)",
+            fontFamily: "Roboto",
+            fontSize: "14px",
+            fontStyle: "normal",
+            fontWeight: 400,
+            lineHeight: "12px" /* 85.714% */,
+            letterSpacing: "0.15px",
+            marginBottom: "20px",
           }}
         >
-          Silahkan Tanda Tangan di bawah ini :
+          Saya yang bertandatangan dibawah ini:
+        </Typography>
+        <Typography
+          sx={{
+            marginBottom: "20px",
+            color: "var(--Black, #333)",
+            fontFamily: "Roboto",
+            fontSize: "14px",
+            fontStyle: "normal",
+            fontWeight: 400,
+            lineHeight: "12px" /* 85.714% */,
+            letterSpacing: "0.15px",
+            marginBottom: "20px",
+          }}
+        >
+          Nama : <b></b>
+        </Typography>
+        <Typography
+          sx={{
+            marginBottom: "20px",
+            color: "var(--Black, #333)",
+            fontFamily: "Roboto",
+            fontSize: "14px",
+            fontStyle: "normal",
+            fontWeight: 400,
+            lineHeight: "12px" /* 85.714% */,
+            letterSpacing: "0.15px",
+            marginBottom: "40px",
+          }}
+        >
+          Dengan ini saya menyatakan mengisi data dengan sebenarnya untuk dapat
+          digunakan sebagai bukti pemenuhan syarat sertifikasi.
+        </Typography>
+        <Typography
+          sx={{
+            color: "var(--Grey-Dark, var(--grey-600, #757575))",
+            fontFamily: " Roboto",
+            fontSize: "14px",
+            fontStyle: "normal",
+            fontWeight: 400,
+            lineHeight: "150%" /* 21px */,
+            letterSpacing: "0.15px",
+            marginBottom: "8px",
+          }}
+        >
+          Silahkan Tanda Tangan pada kolom di bawah ini :
         </Typography>
 
         <SignatureCanvas

@@ -8,6 +8,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Input,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -20,8 +21,23 @@ import LoadingComponent from "@/app/(public)/component/loading";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers";
+import { makeStyles } from "@mui/styles";
 
+const useStyles = makeStyles(() => ({
+  datePicker: {
+    "& .MuiInputBase-root": {
+      border: "none !important", // Remove border for the input base
+    },
+    "& .MuiOutlinedInput-notchedOutline .css-1d3z3hw-MuiOutlinedInput-notchedOutline":
+      {
+        borderWidth: "0px",
+        borderBottom: "1px solid grey !important",
+        borderStyle: "none !important",
+      },
+  },
+}));
 export default function Step1(props) {
+  const classes = useStyles();
   console.log(props.selectedProv, "propsvl");
   // console.log(Object.keys(props?.dataAsesi).length, "propsstep1");
   // const initialState = {
@@ -217,7 +233,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan NIK Anda"
@@ -249,7 +265,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Nama Lengkap Anda"
@@ -280,7 +296,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Tempat Lahir Anda"
@@ -323,7 +339,14 @@ export default function Step1(props) {
               //   });
               // }}
               format="dd/MM/yyyy"
-              renderInput={(params) => <TextField {...params} fullWidth />}
+              renderInput={(params) => (
+                <TextField
+                  variant="filled"
+                  {...params}
+                  fullWidth
+                  className={classes.datePicker}
+                />
+              )}
               value={props.selectedDate}
               onChange={(newValue) => {
                 let dt = new Date(newValue).toISOString();
@@ -344,7 +367,7 @@ export default function Step1(props) {
           >
             Jenis Kelamin
           </Typography>
-          <FormControl fullWidth>
+          <FormControl variant="standard" fullWidth>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -387,7 +410,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Kewarganegaraan Anda"
@@ -409,7 +432,7 @@ export default function Step1(props) {
           >
             Provinsi
           </Typography>
-          <FormControl fullWidth>
+          <FormControl variant="standard" fullWidth>
             <Select
               // labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -439,7 +462,7 @@ export default function Step1(props) {
           >
             Kota
           </Typography>
-          <FormControl fullWidth>
+          <FormControl variant="standard" fullWidth>
             {/* <InputLabel id="demo-simple-select-label">
                   Pilih Kota Anda
                 </InputLabel> */}
@@ -478,7 +501,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Alamat Anda"
@@ -508,7 +531,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Kode Pos Anda"
@@ -538,7 +561,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Nomor Handphone Anda"
@@ -568,7 +591,7 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan No.Telp Anda"
@@ -598,8 +621,9 @@ export default function Step1(props) {
           value={props.values.email}
         />
         {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
+            disabled
             // label="fullWidth"
             placeholder="Masukkan Email Anda"
             id="fullWidth"
@@ -657,15 +681,14 @@ export default function Step1(props) {
           >
             Kualifikasi Pendidikan
           </Typography>
-          <FormControl fullWidth>
+          <FormControl variant="standard" fullWidth>
             {/* <InputLabel id="demo-simple-select-label">
-                  Pilih Kota Anda
-                </InputLabel> */}
+              Pilih Kota Anda
+            </InputLabel> */}
             <Select
               // labelId="demo-simple-select-label"
               id="demo-simple-select"
               value={props.kualifikasi_pendidikan}
-              // label="Age"
               // placeholder="kualifikasi pendidikan"
               onChange={(e) => {
                 props.setPendidikan(e.target.value);

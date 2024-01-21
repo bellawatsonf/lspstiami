@@ -7,6 +7,7 @@ import {
   MenuItem,
   FormControl,
   Select,
+  Input,
 } from "@mui/material";
 import { Formik } from "formik";
 import { useParams, useRouter } from "next/navigation";
@@ -132,7 +133,7 @@ export default function Step2(props) {
     //     <form onSubmit={handleSubmit}>
     <div style={{ marginTop: "30px" }}>
       <div className="row">
-        <div className="col-12">
+        <div className="col-6">
           <label>
             <Typography
               sx={{
@@ -153,7 +154,7 @@ export default function Step2(props) {
             value={props.values.email}
           />
           {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Nama Instansi"
@@ -186,7 +187,7 @@ export default function Step2(props) {
             onChange={props.handleChange}
           />
         </div> */}
-        <div className="col-12">
+        <div className="col-6">
           <Typography
             sx={{
               fontSize: "15px",
@@ -197,7 +198,7 @@ export default function Step2(props) {
           >
             Jabatan
           </Typography>
-          <FormControl fullWidth>
+          <FormControl fullWidth variant="standard">
             {/* <InputLabel id="demo-simple-select-label">
                   Pilih Kota Anda
                 </InputLabel> */}
@@ -240,7 +241,7 @@ export default function Step2(props) {
             value={props.values.email}
           />
           {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Alamat Kantor Anda"
@@ -271,7 +272,7 @@ export default function Step2(props) {
             value={props.values.email}
           />
           {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Kode Pos Kantor Anda"
@@ -302,7 +303,7 @@ export default function Step2(props) {
             value={props.values.email}
           />
           {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Nomo Telp Kantor Anda"
@@ -333,7 +334,7 @@ export default function Step2(props) {
             value={props.values.email}
           />
           {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Fax Kantor Anda"
@@ -363,7 +364,7 @@ export default function Step2(props) {
             value={props.values.email}
           />
           {errors.email && touched.email && errors.email} */}
-          <TextField
+          <Input
             fullWidth
             // label="fullWidth"
             placeholder="Masukkan Email Kantor Anda"

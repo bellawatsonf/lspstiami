@@ -87,7 +87,7 @@ export default function ProsesPembayaran() {
               marginTop: "10px",
             }}
           >
-            Rp. 250.000,-
+            Rp. 500.000,-
           </Typography>
           <Typography
             sx={{

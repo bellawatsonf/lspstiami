@@ -1,3 +1,5 @@
+"use client";
+
 import { CloseOutlined } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -22,8 +24,12 @@ const style = {
   //   paddingBottom: "20px",
   p: 4,
 };
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
+import { Input } from "@mui/material";
 
-export default function ModalUpload(props) {
+const ariaLabel = { "aria-label": "description" };
+
+export default function ModalPembayaran(props) {
   const [bukti_bayar, setBuktiBayar] = React.useState();
   let router = useRouter();
   // let initialState = {
@@ -69,6 +75,7 @@ export default function ModalUpload(props) {
         console.log(e, "errorini");
       });
   }
+
   return (
     <div>
       {/* <Button onClick={props.handleOpen}>Open modal</Button> */}
@@ -85,7 +92,7 @@ export default function ModalUpload(props) {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: { xs: "400px", md: "550px" },
-            height: 350,
+            height: "auto",
             bgcolor: "background.paper",
             border: "2px solid #000",
             boxShadow: 24,
@@ -107,21 +114,33 @@ export default function ModalUpload(props) {
               }}
             />
           </div>
-       
-          <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-            Silahkan upload bukti bayar Andass
+          <img
+            src="/Group1000010538.svg"
+            style={{ margin: "auto", display: "block" }}
+          />
+          <Typography
+            sx={{
+              fontSize: "14px",
+              fontWeight: "bold",
+              color: "#1976D2",
+              textAlign: "center",
+              marginTop: "20px",
+              marginBottom: "40px",
+            }}
+          >
+            Silahkan upload bukti bayar Anda
           </Typography>
-          <div style={{ marginTop: "20px" }}>
+          <div>
             <Formik
               initialValues={{ nama_pemilik_rekening: "" }}
-              validate={(values) => {
-                const errors = {};
-                if (!values.nama_pemilik_rekening) {
-                  errors.nama_pemilik_rekening =
-                    "Anda belum mengisi nama pemilik rekening";
-                }
-                return errors;
-              }}
+              //   validate={(values) => {
+              //     const errors = {};
+              //     if (!values.nama_pemilik_rekening) {
+              //       errors.nama_pemilik_rekening =
+              //         "Anda belum mengisi nama pemilik rekening";
+              //     }
+              //     return errors;
+              //   }}
               onSubmit={(values, { setSubmitting }) => {
                 handleSubmit(values);
               }}
@@ -138,28 +157,41 @@ export default function ModalUpload(props) {
               }) => (
                 <form onSubmit={handleSubmit}>
                   <label style={{ fontSize: "14px" }}>Bukti Bayar</label>
-                  <div style={{ marginTop: "5px", marginBottom: "15px" }}>
-                    <input
-                      accept="image/png, image/jpg, image/jpeg"
-                      type="file"
-                      name="bukti_bayar"
-                      style={{ fontSize: "14px" }}
-                      onChange={(e) => {
-                        console.log(e.target.files[0], "value bukti bayar");
-                        setBuktiBayar(e.target.files[0]);
+                  <div style={{ marginTop: "5px", marginBottom: "24px" }}>
+                    <Button
+                      variant="contained"
+                      component="label"
+                      sx={{
+                        borderRadius: "4px",
+                        background: "#1976D2",
+                        textTransform: "capitalize",
+                        width: "136px",
                       }}
-                      onBlur={handleBlur}
-                      value={values.bukti_bayar}
-                    />
+                    >
+                      upload{" "}
+                      <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+                      <input
+                        type="file"
+                        name="bukti_bayar"
+                        style={{ fontSize: "14px" }}
+                        onChange={(e) => {
+                          console.log(e.target.files[0], "value bukti bayar");
+                          setBuktiBayar(e.target.files[0]);
+                        }}
+                        onBlur={handleBlur}
+                        value={values.bukti_bayar}
+                        hidden
+                      />
+                    </Button>
                   </div>
                   <label style={{ fontSize: "14px" }}>
                     Nama dan Nomor Pemilik Rekening
                   </label>
-                  <Typography sx={{ fontSize: "10px", color: "red" }}>
+                  {/* <Typography sx={{ fontSize: "10px", color: "red" }}>
                     contoh: Andhika, BNI-123456
-                  </Typography>
+                  </Typography> */}
                   <div style={{ marginTop: "5px" }}>
-                    <input
+                    {/* <input
                       className={`${styles.textinput}`}
                       type="text"
                       name="nama_pemilik_rekening"
@@ -171,13 +203,27 @@ export default function ModalUpload(props) {
                       }}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.nama_pemilik_rekening}
-                    />
-                    <div style={{ fontSize: "12px", color: "red" }}>
+                    /> */}
+                    {/* <div style={{ fontSize: "12px", color: "red" }}>
                       {errors.nama_pemilik_rekening &&
                         touched.nama_pemilik_rekening &&
                         errors.nama_pemilik_rekening}
-                    </div>
+                    </div> */}
+
+                    <Input
+                      placeholder="    contoh: Andhika, BNI-123456"
+                      className={`${styles.textinput}`}
+                      type="text"
+                      name="nama_pemilik_rekening"
+                      style={{
+                        width: "100%",
+                        fontSize: "14px",
+                        padding: "0px 0px 5px 5px",
+                      }}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.nama_pemilik_rekening}
+                    />
                   </div>
                   <div
                     className="d-flex "
@@ -186,9 +232,15 @@ export default function ModalUpload(props) {
                     <Button
                       type="submit"
                       variant="contained"
-                      sx={{ fontSize: "10px", marginTop: "20px" }}
+                      sx={{
+                        fontSize: "14px",
+                        marginTop: "40px",
+                        paddingLeft: "40px",
+                        paddingRight: "40px",
+                        borderRadius: "4px",
+                      }}
                     >
-                      Submit
+                      Kirim
                     </Button>
                   </div>
                 </form>

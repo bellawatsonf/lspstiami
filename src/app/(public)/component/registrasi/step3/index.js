@@ -1,8 +1,8 @@
 import LoadingComponent from "@/app/(public)/component/loading";
-import { Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
-
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 export default function Step3(props) {
   const router = useRouter();
   let params = useParams();
@@ -24,6 +24,13 @@ export default function Step3(props) {
     sertifikat_pelatihan_pendukung: "",
   };
   const [stateField, setStateField] = useState(initialState);
+  const [prevPas, setPrevPas] = useState("");
+  const [previjazah, setPrevIjazah] = useState("");
+  const [prevPernyataan, setPrevPernyataan] = useState("");
+  const [prevSertifikat, setPrevSertifikat] = useState("");
+  const [prevTranskrip, setPrevTranskrip] = useState("");
+  const [prevBukti, setPrevBukti] = useState("");
+  const [prevKtp, setPrevKtp] = useState("");
   // function handleChangeImg(e) {
   //   setStateField((prevState) => {
   //     console.log(e.target.files[0], "cvent");
@@ -127,29 +134,62 @@ export default function Step3(props) {
             >
               Transkrip
             </Typography>
-
-            <input
-              type="file"
-              accept="application/pdf"
-              name="transkrip"
-              onChange={(e) => {
-                props.setTranskrip(e.target.files[0]);
-                // handleChangeImg(e);
-                // props.setStateField((prevState) => {
-                //   console.log(e.target.files[0], "cvent");
-                //   return {
-                //     ...prevState,
-                //     transkrip: e.target.files[0],
-                //     // ijazah: e.target.files[0],
-                //     // ktp: e.target.files[0],
-                //   };
-                // });
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                borderRadius: "4px",
+                background: "#1976D2",
+                textTransform: "capitalize",
+                width: "136px",
               }}
-              // onBlur={handleBlur}
-              // value={values.transkrip}
-            />
+            >
+              upload <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+              <input
+                type="file"
+                hidden
+                accept="application/pdf"
+                name="transkrip"
+                onChange={(e) => {
+                  props.setTranskrip(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setPrevTranskrip(reader.result);
+                    };
+
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+
+                  // handleChangeImg(e);
+                  // props.setStateField((prevState) => {
+                  //   console.log(e.target.files[0], "cvent");
+                  //   return {
+                  //     ...prevState,
+                  //     transkrip: e.target.files[0],
+                  //     // ijazah: e.target.files[0],
+                  //     // ktp: e.target.files[0],
+                  //   };
+                  // });
+                }}
+                // onBlur={handleBlur}
+                // value={values.transkrip}
+              />
+            </Button>
+
             {/* {errors.ijazah && touched.ijazah && errors.ijazah} */}
             {/* <TextField fullWidth label="fullWidth" id="fullWidth" /> */}
+            <Box
+              sx={{
+                width: "40px",
+                marginTop: "48px",
+                marginBottom: "30px",
+                display: prevTranskrip !== "" ? "block" : "none",
+              }}
+            >
+              <embed src={prevTranskrip} width="133px" />
+            </Box>
           </div>
           <div className="col-12">
             <Typography
@@ -162,23 +202,56 @@ export default function Step3(props) {
             >
               Ijazah
             </Typography>
-
-            <input
-              type="file"
-              accept="application/pdf"
-              name="ijazah"
-              onChange={(e) => {
-                // handleChangeImg(e);
-                props.setIjazah(e.target.files[0]);
-                // props.setStateField((prevState) => {
-                //   console.log(e.target.files[0], "cvent");
-                //   return {
-                //     ...prevState,
-                //     ijazah: e.target.files[0],
-                //   };
-                // });
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                borderRadius: "4px",
+                background: "#1976D2",
+                textTransform: "capitalize",
+                width: "136px",
               }}
-            />
+            >
+              upload <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+              <input
+                type="file"
+                accept="application/pdf"
+                hidden
+                name="ijazah"
+                onChange={(e) => {
+                  // handleChangeImg(e);
+                  props.setIjazah(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setPrevIjazah(reader.result);
+                    };
+
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+
+                  // props.setStateField((prevState) => {
+                  //   console.log(e.target.files[0], "cvent");
+                  //   return {
+                  //     ...prevState,
+                  //     ijazah: e.target.files[0],
+                  //   };
+                  // });
+                }}
+              />
+            </Button>
+
+            <Box
+              sx={{
+                width: "40px",
+                marginTop: "48px",
+                marginBottom: "30px",
+                display: previjazah !== "" ? "block" : "none",
+              }}
+            >
+              <embed src={previjazah} width="133px" />
+            </Box>
           </div>
           <div className="col-12">
             <Typography
@@ -191,26 +264,58 @@ export default function Step3(props) {
             >
               KTP
             </Typography>
-
-            <input
-              type="file"
-              accept="application/pdf"
-              name="img_ktp"
-              onChange={(e) => {
-                props.setKtp(e.target.files[0]);
-
-                // handleChangeImg(e);
-                // props.setStateField((prevState) => {
-                //   console.log(e.target.files[0], "cvent");
-                //   return {
-                //     ...prevState,
-                //     // transkrip: e.target.files[0],
-                //     // ijazah: e.target.files[0],
-                //     ktp: e.target.files[0],
-                //   };
-                // });
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                borderRadius: "4px",
+                background: "#1976D2",
+                textTransform: "capitalize",
+                width: "136px",
               }}
-            />
+            >
+              upload <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+              <input
+                type="file"
+                accept="application/pdf"
+                hidden
+                name="img_ktp"
+                onChange={(e) => {
+                  props.setKtp(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setPrevKtp(reader.result);
+                    };
+
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+
+                  // handleChangeImg(e);
+                  // props.setStateField((prevState) => {
+                  //   console.log(e.target.files[0], "cvent");
+                  //   return {
+                  //     ...prevState,
+                  //     // transkrip: e.target.files[0],
+                  //     // ijazah: e.target.files[0],
+                  //     ktp: e.target.files[0],
+                  //   };
+                  // });
+                }}
+              />
+            </Button>
+
+            <Box
+              sx={{
+                width: "40px",
+                marginTop: "48px",
+                marginBottom: "30px",
+                display: prevKtp !== "" ? "block" : "none",
+              }}
+            >
+              <embed src={stateField.img_ktp} width="133px" />
+            </Box>
           </div>
           <div className="col-12">
             <Typography
@@ -223,26 +328,58 @@ export default function Step3(props) {
             >
               Pas Foto Background merah
             </Typography>
-
-            <input
-              type="file"
-              accept="image/png, image/jpg, image/jpeg"
-              name="pas_foto"
-              onChange={(e) => {
-                props.setPasfoto(e.target.files[0]);
-
-                // handleChangeImg(e);
-                // props.setStateField((prevState) => {
-                //   console.log(e.target.files[0], "cvent");
-                //   return {
-                //     ...prevState,
-                //     // transkrip: e.target.files[0],
-                //     // ijazah: e.target.files[0],
-                //     pas_foto: e.target.files[0],
-                //   };
-                // });
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                borderRadius: "4px",
+                background: "#1976D2",
+                textTransform: "capitalize",
+                width: "136px",
               }}
-            />
+            >
+              upload <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+              <input
+                type="file"
+                accept="image/png, image/jpg, image/jpeg"
+                name="pas_foto"
+                hidden
+                onChange={(e) => {
+                  console.log(e.target.files[0], "trgt");
+                  props.setPasfoto(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setPrevPas(reader.result);
+                    };
+
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+
+                  // handleChangeImg(e);
+                  // props.setStateField((prevState) => {
+                  //   console.log(e.target.files[0], "cvent");
+                  //   return {
+                  //     ...prevState,
+                  //     // transkrip: e.target.files[0],
+                  //     // ijazah: e.target.files[0],
+                  //     pas_foto: e.target.files[0],
+                  //   };
+                  // });
+                }}
+              />
+            </Button>
+            <Box
+              sx={{
+                width: "40px",
+                marginTop: "48px",
+                marginBottom: "30px",
+                display: prevPas !== "" ? "block" : "none",
+              }}
+            >
+              <img src={prevPas} style={{ width: "133px" }} />
+            </Box>
           </div>
 
           <div className="col-12">
@@ -256,26 +393,58 @@ export default function Step3(props) {
             >
               Surat Pernyataan Tidak Merekam Bermaterai
             </Typography>
-
-            <input
-              type="file"
-              accept="application/pdf"
-              name="surat_pernyataan"
-              onChange={(e) => {
-                props.setSuratPernyataan(e.target.files[0]);
-
-                // handleChangeImg(e);
-                // props.setStateField((prevState) => {
-                //   console.log(e.target.files[0], "cvent");
-                //   return {
-                //     ...prevState,
-                //     // transkrip: e.target.files[0],
-                //     // ijazah: e.target.files[0],
-                //     surat_pernyataan: e.target.files[0],
-                //   };
-                // });
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                borderRadius: "4px",
+                background: "#1976D2",
+                textTransform: "capitalize",
+                width: "136px",
               }}
-            />
+            >
+              upload <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+              <input
+                type="file"
+                accept="application/pdf"
+                hidden
+                name="surat_pernyataan"
+                onChange={(e) => {
+                  props.setSuratPernyataan(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setPrevPernyataan(reader.result);
+                    };
+
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+
+                  // handleChangeImg(e);
+                  // props.setStateField((prevState) => {
+                  //   console.log(e.target.files[0], "cvent");
+                  //   return {
+                  //     ...prevState,
+                  //     // transkrip: e.target.files[0],
+                  //     // ijazah: e.target.files[0],
+                  //     surat_pernyataan: e.target.files[0],
+                  //   };
+                  // });
+                }}
+              />
+            </Button>
+
+            <Box
+              sx={{
+                width: "40px",
+                marginTop: "48px",
+                marginBottom: "30px",
+                display: prevPernyataan !== "" ? "block" : "none",
+              }}
+            >
+              <img src={prevPernyataan} style={{ width: "133px" }} />
+            </Box>
           </div>
           <div className="col-12">
             <Typography
@@ -288,26 +457,58 @@ export default function Step3(props) {
             >
               Sertifikat Pelatihan Pendukung
             </Typography>
-
-            <input
-              type="file"
-              accept="application/pdf"
-              name="sertifikat_pelatihan_pendukung"
-              onChange={(e) => {
-                props.setPendukung(e.target.files[0]);
-
-                // handleChangeImg(e);
-                // props.setStateField((prevState) => {
-                //   console.log(e.target.files[0], "cvent");
-                //   return {
-                //     ...prevState,
-                //     // transkrip: e.target.files[0],
-                //     // ijazah: e.target.files[0],
-                //     sertifikat_pelatihan_pendukung: e.target.files[0],
-                //   };
-                // });
+            <Button
+              variant="contained"
+              component="label"
+              sx={{
+                borderRadius: "4px",
+                background: "#1976D2",
+                textTransform: "capitalize",
+                width: "136px",
               }}
-            />
+            >
+              upload <FileDownloadOutlinedIcon sx={{ marginLeft: "7px" }} />
+              <input
+                type="file"
+                accept="application/pdf"
+                name="sertifikat_pelatihan_pendukung"
+                hidden
+                onChange={(e) => {
+                  props.setPendukung(e.target.files[0]);
+                  if (e.target.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setPrevSertifikat(reader.result);
+                    };
+
+                    reader.readAsDataURL(e.target.files[0]);
+                  }
+
+                  // handleChangeImg(e);
+                  // props.setStateField((prevState) => {
+                  //   console.log(e.target.files[0], "cvent");
+                  //   return {
+                  //     ...prevState,
+                  //     // transkrip: e.target.files[0],
+                  //     // ijazah: e.target.files[0],
+                  //     sertifikat_pelatihan_pendukung: e.target.files[0],
+                  //   };
+                  // });
+                }}
+              />
+            </Button>
+
+            <Box
+              sx={{
+                width: "40px",
+                marginTop: "48px",
+                marginBottom: "30px",
+                display: prevSertifikat !== "" ? "block" : "none",
+              }}
+            >
+              <embed src={prevSertifikat} width="133px" />
+            </Box>
           </div>
           {/* <div className="col-12">
             <Typography

@@ -34,6 +34,7 @@ import Step2 from "@/app/(public)/component/registrasi/step2";
 import Step3 from "@/app/(public)/component/registrasi/step3";
 import { fetchAsesiById } from "@/app/services/asesi";
 import { fetchAsesiSkemaByUser } from "@/app/services/asesiskema";
+import Step4 from "@/app/(public)/component/registrasi/step4";
 
 // import Step1 from "../user/detail-user-edit/registrasi/step1";
 // import Step2 from "../user/detail-user-edit/registrasi/step2";
@@ -472,6 +473,21 @@ export default function Regitrasi() {
           {skema}
         </Typography>
       </Box>
+      <Typography
+        sx={{
+          color: "#333",
+          fontFamily: "Roboto",
+          fontSize: "30px",
+          fontStyle: "normal",
+          fontWeight: 600,
+          lineHeight: "30px",
+          marginTop: "40px",
+          marginBottom: "30px",
+          textAlign: "center",
+        }}
+      >
+        Formulir APL 01
+      </Typography>
       {Object.keys(userById).length > 0 ? (
         <>
           <Stepper activeStep={activeStep}>
@@ -504,8 +520,23 @@ export default function Regitrasi() {
                 padding: "50px 0px 10px 0px",
               }}
             >
+              Rincian Data Pemohon Sertifikasi
+            </Typography>
+            <Typography
+              sx={{
+                color: "var(--Blue, #1976D2)",
+                fontFamily: "Roboto",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: 600,
+                lineHeight: "30px",
+                marginBottom: "40px",
+              }}
+            >
+              {" "}
+              {activeStep + 1}/4{" "}
               {activeStep === 0
-                ? "Rincian Data Pemohon Sertifikasi"
+                ? "Data Pribadi"
                 : activeStep === 1
                 ? "Data Pekerjaan"
                 : activeStep === 2
