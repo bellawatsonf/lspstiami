@@ -106,7 +106,7 @@ export default function RiwayatTransaksiSertifikasi() {
         <div className="col-6">
           <Box
             sx={{
-              borderRadius: "4px",
+              borderRadius: " var(--borderRadius, 4px)",
               background: "#FFF",
               boxShadow: "0px 3px 3px 0px rgba(0, 0, 0, 0.15)",
               display: "flex",
