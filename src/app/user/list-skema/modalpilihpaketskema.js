@@ -232,7 +232,7 @@ export default function ModalPilihPaketSkema(props) {
               marginTop: "20px",
             }}
           >
-            Rp. 500.000,-
+            Rp. 600.000,-
           </Typography>
           <Typography
             sx={{
