@@ -646,6 +646,7 @@ export default function Regitrasi() {
                         imgttd={imgttd}
                         setimg={setimg}
                         sigPad={sigPad}
+                        namalengkap={values.nama_lengkap}
                       />
                     )}
 

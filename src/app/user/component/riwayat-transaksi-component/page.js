@@ -5,14 +5,33 @@ import { useEffect, useState } from "react";
 import HistoryIcon from "@mui/icons-material/History";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function RiwayatTransaksiSertifikasi() {
   const [user, setUser] = useState();
   const router = useRouter();
+  const [skema, setSkema] = useState("");
 
   useEffect(() => {
     setUser(JSON.parse(sessionStorage.getItem("user")));
   }, []);
+
+  function getSelectedSkema() {
+    console.log("masuk getselected");
+    axios({
+      method: "GET",
+      url: `/api/asesi-skema/${user?.id}`,
+    })
+      .then((data) => {
+        console.log(data.data.data.skema.nama_skema, "selectedskema");
+        setSkema(data.data.data.skema.nama_skema);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getSelectedSkema();
+  }, [user]);
   return (
     <>
       <Typography
@@ -72,7 +91,7 @@ export default function RiwayatTransaksiSertifikasi() {
         Skema Sertifikasi Anda
       </Typography>
       <hr style={{ background: "#C6C6C6", height: "2px" }} />
-      <div
+      {/* <div
         style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
       >
         <div
@@ -100,7 +119,7 @@ export default function RiwayatTransaksiSertifikasi() {
         >
           Lihat Skema Lainnya
         </Button>
-      </div>
+      </div> */}
 
       <div className="row">
         <div className="col-6">
@@ -129,7 +148,7 @@ export default function RiwayatTransaksiSertifikasi() {
                 lineHeight: "30px",
               }}
             >
-              Penyelia Ekspor
+              {skema}
             </Typography>
             <Button
               variant="contained"

@@ -61,15 +61,15 @@ export default function ModalPembayaran(props) {
         Swal.fire({
           position: "center",
           icon: "success",
-          showConfirmButton: false,
+          // showConfirmButton: false,
           confirmButtonColor: "#3085d6",
           title: "Upload Bukti Bayar ",
-          // confirmButtonText: "Ok!",
-          timer: 1500,
+          confirmButtonText: "Tutup",
+          // timer: 1500,
         }).then((result) => {
-          // if (result.isConfirmed) {
-          router.push("/user/form-apl01");
-          // }
+          if (result.isConfirmed) {
+            router.push("/user/dashboard");
+          }
         });
       })
       .catch((e) => {

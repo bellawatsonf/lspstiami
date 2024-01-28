@@ -226,7 +226,7 @@ export default function Step4(props) {
             marginBottom: "20px",
           }}
         >
-          Nama : <b></b>
+          Nama : <b>{props.namalengkap}</b>
         </Typography>
         <Typography
           sx={{

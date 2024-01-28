@@ -58,7 +58,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function ListSkema() {
-  const [expanded, setExpanded] = React.useState("panel1");
+  const [expanded, setExpanded] = React.useState();
   const [sort, setSort] = React.useState("asc");
   const [loading, setLoading] = React.useState(true);
   const router = useRouter();
@@ -234,68 +234,70 @@ export default function ListSkema() {
         </div> */}
         <div>
           {skema.map((el) => (
-            <Accordion
-              key={el.id}
-              expanded={expanded === `panel${el.id}`}
-              onChange={handleChange(`panel${el.id}`)}
-            >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
+            <>
+              {console.log(el.id, "ini el.id")}
+              <Accordion
+                key={el.id}
+                expanded={expanded === `panel${el.id}`}
+                onChange={handleChange(`panel${el.id}`)}
               >
-                <div className="d-flex" style={{ width: "100%" }}>
-                  <div
-                    className="d-flex"
-                    style={{ justifyContent: "flex-start", width: "50%" }}
-                  >
-                    <Typography
-                      sx={{
-                        fontSize: { xs: "12px", md: "16px" },
-                        textAlign: "left",
-                        fontWeight: 600,
-                        color: "#1976D2",
-                      }}
+                <AccordionSummary
+                  aria-controls="panel1d-content"
+                  id="panel1d-header"
+                >
+                  <div className="d-flex" style={{ width: "100%" }}>
+                    <div
+                      className="d-flex"
+                      style={{ justifyContent: "flex-start", width: "50%" }}
                     >
-                      {el.nama_skema}
-                    </Typography>
-                  </div>
-                  <div
-                    className="d-flex"
-                    style={{ justifyContent: "flex-end", width: "50%" }}
-                  >
-                    <Button
-                      variant="contained"
-                      disabled={el?.kuota < 1 ? true : false}
-                      color="success"
-                      sx={{
-                        background: "#66BB6A",
-                        padding: "5px 10px 5px 10px",
-                        color: "white",
-                        border: "1px solid #66BB6A",
-                        fontWeight: 600,
-                        textTransform: "none",
-                        fontSize: { xs: "12px", md: "14px" },
-                        marginRight: "20px",
-                        width: "100px",
-                        borderRadius: "60px",
-                      }}
-                      // onClick={() => daftarSkema(el)}
+                      <Typography
+                        sx={{
+                          fontSize: { xs: "12px", md: "16px" },
+                          textAlign: "left",
+                          fontWeight: 600,
+                          color: "#1976D2",
+                        }}
+                      >
+                        {el.nama_skema}
+                      </Typography>
+                    </div>
+                    <div
+                      className="d-flex"
+                      style={{ justifyContent: "flex-end", width: "50%" }}
                     >
-                      kuota : {el?.kuota}
-                    </Button>
+                      <Button
+                        variant="contained"
+                        disabled={el?.kuota < 1 ? true : false}
+                        color="success"
+                        sx={{
+                          background: "#66BB6A",
+                          padding: "5px 10px 5px 10px",
+                          color: "white",
+                          border: "1px solid #66BB6A",
+                          fontWeight: 600,
+                          textTransform: "none",
+                          fontSize: { xs: "12px", md: "14px" },
+                          marginRight: "20px",
+                          width: "100px",
+                          borderRadius: "60px",
+                        }}
+                        // onClick={() => daftarSkema(el)}
+                      >
+                        kuota : {el?.kuota}
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails>
-                <ul>
-                  {el.unitkompetensi.map((unit, i) => (
-                    <li key={i} className={`${styles.listskema}`}>
-                      {unit.judul_unit}
-                    </li>
-                  ))}
-                </ul>
-                <div className="d-flex" style={{ width: "100%" }}>
-                  {/* <div
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ul>
+                    {el.unitkompetensi.map((unit, i) => (
+                      <li key={i} className={`${styles.listskema}`}>
+                        {unit.judul_unit}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="d-flex" style={{ width: "100%" }}>
+                    {/* <div
                     className="d-flex"
                     style={{ justifyContent: "flex-start", width: "50%" }}
                   >
@@ -316,37 +318,38 @@ export default function ListSkema() {
                       kuota tersedia : {el?.kuota}
                     </Button>
                   </div> */}
-                  <div
-                    className="d-flex"
-                    style={{ justifyContent: "flex-start", width: "50%" }}
-                  >
-                    <Button
-                      variant="containeds"
-                      disabled={
-                        Number(el?.kuota) <= 0 ||
-                        Object.keys(asesiskema).length !== 0 ||
-                        dataasesiskema !== null
-                          ? true
-                          : false
-                      }
-                      //   color="success"
-                      sx={{
-                        background: "#1976D2",
-                        fontSize: { xs: "12px", md: "14px" },
-                        padding: "5px 10px 5px 10px",
-                        color: "white",
-                        border: "1px solid rgb(45, 195, 208)",
-                        fontWeight: 600,
-                        textTransform: "none",
-                      }}
-                      onClick={() => daftarSkema(el)}
+                    <div
+                      className="d-flex"
+                      style={{ justifyContent: "flex-start", width: "50%" }}
                     >
-                      Pilih Skema
-                    </Button>
+                      <Button
+                        variant="containeds"
+                        disabled={
+                          Number(el?.kuota) <= 0 ||
+                          Object.keys(asesiskema).length !== 0 ||
+                          dataasesiskema !== null
+                            ? true
+                            : false
+                        }
+                        //   color="success"
+                        sx={{
+                          background: "#1976D2",
+                          fontSize: { xs: "12px", md: "14px" },
+                          padding: "5px 10px 5px 10px",
+                          color: "white",
+                          border: "1px solid rgb(45, 195, 208)",
+                          fontWeight: 600,
+                          textTransform: "none",
+                        }}
+                        onClick={() => daftarSkema(el)}
+                      >
+                        Pilih Skema
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </AccordionDetails>
-            </Accordion>
+                </AccordionDetails>
+              </Accordion>
+            </>
           ))}
         </div>
       </div>

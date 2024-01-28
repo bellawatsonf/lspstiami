@@ -26,6 +26,7 @@ const style = {
 };
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import { Input } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const ariaLabel = { "aria-label": "description" };
 
@@ -39,6 +40,7 @@ export default function ModalPembayaran(props) {
   // const [stateField, setStateField] = useState();
   const user = JSON.parse(sessionStorage.getItem("user"));
   console.log(user, "modaluploa");
+  const [previewBuktiBayar, setPreview] = React.useState("");
 
   function handleSubmit(values) {
     let formData = new FormData();
@@ -60,15 +62,15 @@ export default function ModalPembayaran(props) {
         Swal.fire({
           position: "center",
           icon: "success",
-          showConfirmButton: false,
+          // showConfirmButton: false,
           confirmButtonColor: "#3085d6",
           title: "Upload Bukti Bayar ",
-          // confirmButtonText: "Ok!",
-          timer: 1500,
+          confirmButtonText: "Tutup",
+          // timer: 1500,
         }).then((result) => {
-          // if (result.isConfirmed) {
-          router.push("/user/form-apl01");
-          // }
+          if (result.isConfirmed) {
+            router.push("/user/form-apl01");
+          }
         });
       })
       .catch((e) => {
@@ -177,12 +179,31 @@ export default function ModalPembayaran(props) {
                         onChange={(e) => {
                           console.log(e.target.files[0], "value bukti bayar");
                           setBuktiBayar(e.target.files[0]);
+                          if (e.target.files[0]) {
+                            const reader = new FileReader();
+
+                            reader.onload = () => {
+                              setPreview(reader.result);
+                            };
+
+                            reader.readAsDataURL(e.target.files[0]);
+                          }
                         }}
                         onBlur={handleBlur}
                         value={values.bukti_bayar}
                         hidden
                       />
                     </Button>
+                    <Box
+                      component="img"
+                      src={previewBuktiBayar}
+                      sx={{
+                        display: previewBuktiBayar !== "" ? "block" : "none",
+                        width: "133px",
+                        marginTop: "30px",
+                        marginBottom: "30px",
+                      }}
+                    />
                   </div>
                   <label style={{ fontSize: "14px" }}>
                     Nama dan Nomor Pemilik Rekening

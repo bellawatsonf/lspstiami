@@ -2,12 +2,45 @@
 
 import { Alert, Box, Button, Typography } from "@mui/material";
 import ModalPembayaran from "./modal_pembayaran";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { fetchAsesiById } from "@/app/services/asesi";
 
 export default function ProsesPembayaran() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [skema, setSkema] = useState("");
+  const [user, setUser] = React.useState();
+  useEffect(() => {
+    try {
+      // let token = sessionStorage.getItem("token");
+      let value = JSON.parse(sessionStorage.getItem("user")); //untuk ubah dari string ke obj
+      console.log(value, "value");
+      setUser(value);
+      dispatch(fetchAsesiById(value.id));
+
+      // settoken(token);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  function getSelectedSkema(idUser) {
+    console.log("masuk getselected");
+    axios({
+      method: "GET",
+      url: `/api/asesi-skema/${user?.id}`,
+    })
+      .then((data) => {
+        console.log(data.data.data.skema.nama_skema, "selectedskema");
+        setSkema(data.data.data.skema.nama_skema);
+      })
+      .catch((err) => console.log(err));
+  }
+  useEffect(() => {
+    getSelectedSkema();
+  }, [user]);
   return (
     <>
       <ModalPembayaran open={open} setOpen={setOpen} />
@@ -55,7 +88,7 @@ export default function ProsesPembayaran() {
             lineHeight: "30px",
           }}
         >
-          Skema : Penyelia Ekspor
+          Skema : {skema}
         </Typography>
         <div>
           <img
@@ -87,7 +120,7 @@ export default function ProsesPembayaran() {
               marginTop: "10px",
             }}
           >
-            Rp. 500.000,-
+            Rp. 600.000,-
           </Typography>
           <Typography
             sx={{
